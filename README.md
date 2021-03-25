@@ -1,9 +1,9 @@
 # AdvanceShop
-AdvanceShop
+AdvanceShop - http://advanceshopsistema.com.br/
 Sistema controle de estoque,vendas,fiscal, apenas um pequno ERP.
 
 #Licença
-Todos os direitos reservados. O autor permite apenas a visualização do código, sendo proibida qualquer utilização do mesmo caso você não seja funcionario de Italo Ramon Lima Cunha.
+Todos os direitos reservados. O autor permite apenas a visualização do código, sendo proibida qualquer utilização do mesmo.
 
 #Instalação
 .NetFramework 4.6 ou superior.
