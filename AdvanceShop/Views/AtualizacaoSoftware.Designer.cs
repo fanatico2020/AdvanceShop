@@ -31,10 +31,8 @@ namespace AdvanceShop.Views
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtualizacaoSoftware));
             this.lblVersaoAtualServidor = new DevExpress.XtraEditors.LabelControl();
-            this.pgbProgresso = new DevExpress.XtraEditors.ProgressBarControl();
             this.btnVerificar = new DevExpress.XtraEditors.SimpleButton();
             this.lblProgresso = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.pgbProgresso.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVersaoAtualServidor
@@ -50,13 +48,6 @@ namespace AdvanceShop.Views
             this.lblVersaoAtualServidor.TabIndex = 0;
             this.lblVersaoAtualServidor.Text = "Versão atual 1.0.0.0 | Versão servidor 1.0.0.0";
             // 
-            // pgbProgresso
-            // 
-            this.pgbProgresso.Location = new System.Drawing.Point(12, 59);
-            this.pgbProgresso.Name = "pgbProgresso";
-            this.pgbProgresso.Size = new System.Drawing.Size(385, 26);
-            this.pgbProgresso.TabIndex = 1;
-            // 
             // btnVerificar
             // 
             this.btnVerificar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnVerificar.ImageOptions.SvgImage")));
@@ -69,14 +60,14 @@ namespace AdvanceShop.Views
             // 
             // lblProgresso
             // 
-            this.lblProgresso.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProgresso.Appearance.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProgresso.Appearance.Options.UseFont = true;
             this.lblProgresso.Appearance.Options.UseTextOptions = true;
-            this.lblProgresso.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lblProgresso.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.lblProgresso.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblProgresso.Location = new System.Drawing.Point(12, 37);
+            this.lblProgresso.Location = new System.Drawing.Point(12, 59);
             this.lblProgresso.Name = "lblProgresso";
-            this.lblProgresso.Size = new System.Drawing.Size(385, 16);
+            this.lblProgresso.Size = new System.Drawing.Size(385, 25);
             this.lblProgresso.TabIndex = 3;
             this.lblProgresso.Text = "%";
             // 
@@ -87,7 +78,6 @@ namespace AdvanceShop.Views
             this.ClientSize = new System.Drawing.Size(409, 157);
             this.Controls.Add(this.lblProgresso);
             this.Controls.Add(this.btnVerificar);
-            this.Controls.Add(this.pgbProgresso);
             this.Controls.Add(this.lblVersaoAtualServidor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("AtualizacaoSoftware.IconOptions.SvgImage")));
@@ -98,7 +88,6 @@ namespace AdvanceShop.Views
             this.Text = "Atualização de Software";
             this.Load += new System.EventHandler(this.AtualizacaoSoftware_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AtualizacaoSoftware_KeyPress);
-            ((System.ComponentModel.ISupportInitialize)(this.pgbProgresso.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -106,7 +95,6 @@ namespace AdvanceShop.Views
         #endregion
 
         private DevExpress.XtraEditors.LabelControl lblVersaoAtualServidor;
-        private DevExpress.XtraEditors.ProgressBarControl pgbProgresso;
         private DevExpress.XtraEditors.SimpleButton btnVerificar;
         private DevExpress.XtraEditors.LabelControl lblProgresso;
     }

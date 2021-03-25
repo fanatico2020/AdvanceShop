@@ -411,6 +411,7 @@
     <Compile Include="Shared\Library\EncryptorDecrypt.cs" />
     <Compile Include="Shared\Library\HashMd5.cs" />
     <Compile Include="Shared\Library\MostrarSenha.cs" />
+    <Compile Include="Shared\Library\SufixoTamanhoBytes.cs" />
     <Compile Include="Shared\Validation\ConfirmacaoForm.cs" />
     <Compile Include="Shared\Validation\ValidacaoCampos.cs" />
     <Compile Include="Models\CategoriasProdutosModel.cs" />
