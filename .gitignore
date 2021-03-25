@@ -348,3 +348,12 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+#Pasta para ignorar
+/.vs/*
+/AdvanceShop/.vs/*
+/AdvanceShop/obj/*
+/AdvanceShop/bin/*
+/AdvanceShop/AdvShopGeradorKey/.vs/*
+/AdvanceShop/AdvShopGeradorKey/obs/*
+/AdvanceShop/AdvShopGeradorKey/bin/*

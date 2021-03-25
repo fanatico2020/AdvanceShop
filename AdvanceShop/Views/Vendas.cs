@@ -1,0 +1,175 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraBars;
+using System.ComponentModel.DataAnnotations;
+using AdvanceShop.Models;
+using AdvanceShop.Shared.Validation;
+using AdvanceShop.Controllers;
+using AdvanceShop.Shared.CustomMessageBox;
+
+namespace AdvanceShop.Views
+{
+    public partial class Vendas : DevExpress.XtraBars.Ribbon.RibbonForm
+    {
+        UsuariosModel usuarioLogado = new UsuariosModel();
+        CaixasModel caixa = new CaixasModel();
+        CaixasController caixaController = new CaixasController();
+        VendasModel venda = new VendasModel();
+        VendasController vendaController = new VendasController();
+        ItensVendasModel itensVenda = new ItensVendasModel();
+        ItensVendasController itensVendaController = new ItensVendasController();
+        public Vendas(UsuariosModel UsuarioLogado)
+        {
+            InitializeComponent();
+            usuarioLogado = UsuarioLogado;
+
+        }
+        public void AtualizarGrid()
+        {
+            DataTable dataSource = vendaController.ObterTodasVendas();
+            gridControl.DataSource = dataSource;
+            gridControl.Refresh();
+            bsiRecordsCount.Caption = "Registros : " + dataSource.Rows.Count;
+        }
+        void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            gridControl.ShowRibbonPrintPreview();
+        }
+
+        private void Vendas_Load(object sender, EventArgs e)
+        {
+            AtualizarGrid();
+        }
+        private void NovaVenda()
+        {
+            caixa.usuarios_idusuarios = usuarioLogado.IdUsuarios;
+            
+            if (caixaController.VerificarCaixaAbertoOuNao(caixa))
+            {
+                
+                caixa = caixaController.AutenticarCaixaUsuario(caixa);
+                Views.VendaCaixaPDV FormPDV = new VendaCaixaPDV(usuarioLogado,caixa);
+                FormPDV.Show();
+            }
+            else
+            {
+                MessageBoxWarning.Show($"Você deve primeiro abrir seu caixa para usar o PDV!");
+                Views.AbrirCaixa FormAbrirCaixa = new AbrirCaixa(usuarioLogado);
+                FormAbrirCaixa.ShowDialog();
+            }
+        }
+        private void TrocaDevolucao()
+        {
+            venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
+
+            if(advBandedGridViewVendas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Continuar para tela de Troca/Devolução de itens da venda selecionada?") == DialogResult.Yes)
+            {
+                Views.TrocaDevolucao FormDevolucao = new TrocaDevolucao(usuarioLogado);
+                FormDevolucao.ShowDialog();
+            }
+        }
+        private void DeletarVenda()
+        {
+            venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
+
+            if (advBandedGridViewVendas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+            {
+                vendaController.Deletar(venda);
+                MessageBoxOK.Show("Deletado com sucesso!");
+                AtualizarGrid();
+            }
+        }
+        private void Vendas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ConfirmacaoForm.Fechar(e, this);
+        }
+
+        private void bbiNovaVenda_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            NovaVenda();
+        }
+
+        private void bbiEditarVenda_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void bbiDeletarVenda_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DeletarVenda();
+        }
+
+        private void bbiAtualizarGrid_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            AtualizarGrid();
+        }
+
+        private void bbiTrocaDevolucao_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            TrocaDevolucao();
+        }
+
+        private void advBandedGridViewVendas_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "nome")
+            {
+                if (Convert.ToString(e.Value) == "") e.DisplayText = "CONSUMIDOR";
+            }
+        }
+
+        private void advBandedGridViewVendas_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
+        {
+            e.RelationCount = 1;
+        }
+
+        private void advBandedGridViewVendas_MasterRowGetChildList(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventArgs e)
+        {
+            itensVenda.vendas_idvendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
+            if (e.RelationIndex == 0)
+            {
+                e.ChildList = new BindingSource(itensVendaController.ObterTodosItensDaVendas(itensVenda), "");
+            }
+        }
+
+        private void advBandedGridViewVendas_MasterRowGetRelationName(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventArgs e)
+        {
+            try
+            {
+                if (e.RelationIndex == 0)
+                {
+                    e.RelationName = $"Itens da Venda {advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0])}";
+                }
+            }
+            catch (System.IndexOutOfRangeException)
+            {
+
+            }
+            catch (System.NullReferenceException)
+            {
+
+            }
+        }
+
+        private void advBandedGridViewVendas_MasterRowEmpty(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowEmptyEventArgs e)
+        {
+            if (e.RelationIndex == 0)
+            {
+                e.IsEmpty = false;
+            }
+        }
+
+        private void advBandedGridViewVendas_MasterRowGetLevelDefaultView(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetLevelDefaultViewEventArgs e)
+        {
+            e.DefaultView = gridViewItensVenda;
+        }
+    }
+}

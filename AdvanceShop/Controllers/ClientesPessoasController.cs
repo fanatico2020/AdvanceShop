@@ -1,0 +1,101 @@
+﻿using AdvanceShop.Data;
+using AdvanceShop.Models;
+using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AdvanceShop.Controllers
+{
+    public class ClientesPessoasController
+    {
+        
+        public DataTable ObterTodosClientesPessoas()
+        {
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText = "select * from clientespessoas inner join datahora on datahora.clientespessoas_idclientespessoas = clientespessoas.idclientespessoas where clientespessoas.deletado = 0;";
+            comando.CommandType = CommandType.Text;
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(reader);
+            return dataTable;
+        }
+        public void Adicionar(ClientesPessoasModel clientePessoa, UsuariosModel usuarioLogado)
+        {
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText =
+                "insert into clientespessoas(nome,cpf_cnpj,datanascimento,email,contato1,contato2,sexo,status,tipopessoa,rg_ie,observacao,cep,endereco,numero,bairro,complemento,cidade,uf,deletado) " +
+                "values(@nome,@cpf_cnpj,@datanascimento,@email,@contato1,@contato2,@sexo,@status,@tipopessoa,@rg_ie,@observacao,@cep,@endereco,@numero,@bairro,@complemento,@cidade,@uf,0); " +
+                "insert into datahora(datahoracadastro,usuariocadastro,clientespessoas_idclientespessoas) values(now(),@usuariocadastro,last_insert_id());";
+            comando.Parameters.Add(new MySqlParameter("@nome", clientePessoa.NomeClientePessoa));
+            comando.Parameters.Add(new MySqlParameter("@cpf_cnpj", clientePessoa.CPFCNPJ));
+            comando.Parameters.Add(new MySqlParameter("@datanascimento", clientePessoa.DataNascimento));
+            comando.Parameters.Add(new MySqlParameter("@email", clientePessoa.Email));
+            comando.Parameters.Add(new MySqlParameter("@contato1", clientePessoa.Contato1));
+            comando.Parameters.Add(new MySqlParameter("@contato2", clientePessoa.Contato2));
+            comando.Parameters.Add(new MySqlParameter("@sexo", clientePessoa.Sexo));
+            comando.Parameters.Add(new MySqlParameter("@status", clientePessoa.StatusClientePessoa));
+            comando.Parameters.Add(new MySqlParameter("@tipopessoa", clientePessoa.TipoPessoa));
+            comando.Parameters.Add(new MySqlParameter("@rg_ie", clientePessoa.RGIE));
+            comando.Parameters.Add(new MySqlParameter("@observacao", clientePessoa.Observacao));
+            comando.Parameters.Add(new MySqlParameter("@cep", clientePessoa.CEP));
+            comando.Parameters.Add(new MySqlParameter("@endereco", clientePessoa.Endereco));
+            comando.Parameters.Add(new MySqlParameter("@numero", clientePessoa.NumeroCasa));
+            comando.Parameters.Add(new MySqlParameter("@bairro", clientePessoa.Bairro));
+            comando.Parameters.Add(new MySqlParameter("@complemento", clientePessoa.Complemento));
+            comando.Parameters.Add(new MySqlParameter("@cidade", clientePessoa.Cidade));
+            comando.Parameters.Add(new MySqlParameter("@uf", clientePessoa.UF));
+            comando.Parameters.Add(new MySqlParameter("@usuariocadastro", usuarioLogado.UsuarioAcesso));
+            comando.ExecuteNonQuery();
+        }
+
+        public void Editar(ClientesPessoasModel clientePessoa, UsuariosModel usuarioLogado)
+        {
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText =
+                "update clientespessoas set nome = @nome, cpf_cnpj = @cpf_cnpj,datanascimento = @datanascimento, email = @email, contato1 = @contato1, contato2 = @contato2," +
+                "sexo = @sexo,rg_ie = @rg_ie,observacao = @observacao,status = @status,endereco = @endereco,numero = @numero,bairro = @bairro,complemento = @complemento,cidade = @cidade,uf = @uf,cep = @cep where idclientespessoas = @idclientespessoas;" +
+                "update datahora set datahoraedicao = now(),usuarioedicao = @usuarioedicao where clientespessoas_idclientespessoas = @idclientespessoas;";
+            comando.Parameters.Add(new MySqlParameter("@idclientespessoas", clientePessoa.IdClientesPessoas));
+            comando.Parameters.Add(new MySqlParameter("@nome", clientePessoa.NomeClientePessoa));
+            comando.Parameters.Add(new MySqlParameter("@cpf_cnpj", clientePessoa.CPFCNPJ));
+            comando.Parameters.Add(new MySqlParameter("@datanascimento", clientePessoa.DataNascimento));
+            comando.Parameters.Add(new MySqlParameter("@email", clientePessoa.Email));
+            comando.Parameters.Add(new MySqlParameter("@contato1", clientePessoa.Contato1));
+            comando.Parameters.Add(new MySqlParameter("@contato2", clientePessoa.Contato2));
+            comando.Parameters.Add(new MySqlParameter("@sexo", clientePessoa.Sexo));
+            comando.Parameters.Add(new MySqlParameter("@status", clientePessoa.StatusClientePessoa));
+            comando.Parameters.Add(new MySqlParameter("@tipopessoa", clientePessoa.TipoPessoa));
+            comando.Parameters.Add(new MySqlParameter("@rg_ie", clientePessoa.RGIE));
+            comando.Parameters.Add(new MySqlParameter("@observacao", clientePessoa.Observacao));
+            comando.Parameters.Add(new MySqlParameter("@cep", clientePessoa.CEP));
+            comando.Parameters.Add(new MySqlParameter("@endereco", clientePessoa.Endereco));
+            comando.Parameters.Add(new MySqlParameter("@numero", clientePessoa.NumeroCasa));
+            comando.Parameters.Add(new MySqlParameter("@bairro", clientePessoa.Bairro));
+            comando.Parameters.Add(new MySqlParameter("@complemento", clientePessoa.Complemento));
+            comando.Parameters.Add(new MySqlParameter("@cidade", clientePessoa.Cidade));
+            comando.Parameters.Add(new MySqlParameter("@uf", clientePessoa.UF));
+            comando.Parameters.Add(new MySqlParameter("@usuarioedicao", usuarioLogado.UsuarioAcesso));
+            comando.ExecuteNonQuery();
+        }
+
+        public void Deletar(ClientesPessoasModel clientePessoa)
+        {
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText =
+                "update clientespessoas set deletado = 1 where idclientespessoas = @idclientespessoas;";
+            comando.Parameters.Add(new MySqlParameter("@idclientespessoas", clientePessoa.IdClientesPessoas));
+            comando.ExecuteNonQuery();
+        }
+    }
+}
