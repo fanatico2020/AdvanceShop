@@ -96,34 +96,44 @@ namespace AdvanceShop.Views
         
         private void bgwProgresso_DoWork(object sender, DoWorkEventArgs e)//onde chama a tarefa demorada.
         {
-            
-
-            FtpWebRequest request =
+            try
+            {
+                FtpWebRequest request =
             (FtpWebRequest)WebRequest.Create(urlsetup);
-            request.Credentials = credentials;
-            request.Method = WebRequestMethods.Ftp.DownloadFile;
+                request.Credentials = credentials;
+                request.Method = WebRequestMethods.Ftp.DownloadFile;
 
-            diretorioTemp = $@"{System.AppDomain.CurrentDomain.BaseDirectory.ToString()}Temp";
-            if (!Directory.Exists(diretorioTemp))
-            {
-                Directory.CreateDirectory(diretorioTemp);
-            }
-            using (Stream ftpStream = request.GetResponse().GetResponseStream())
-            using (Stream fileStream = File.Create($@"{diretorioTemp}\setup.exe"))
-            {
-                byte[] buffer = new byte[10240];
-                int read;
-
-
-                while ((read = ftpStream.Read(buffer, 0, buffer.Length)) > 0)
+                diretorioTemp = $@"{System.AppDomain.CurrentDomain.BaseDirectory.ToString()}Temp";
+                if (!Directory.Exists(diretorioTemp))
                 {
-                    fileStream.Write(buffer, 0, read);
-                    lblProgresso.Invoke(
-                        (MethodInvoker)(() => lblProgresso.Text = $"Baixando {SufixoTamanhoBytes.Converter(fileStream.Position)} de {SufixoTamanhoBytes.Converter(sizeSetup)}, aguarde..."));
-                    
+                    Directory.CreateDirectory(diretorioTemp);
+                }
+                using (Stream ftpStream = request.GetResponse().GetResponseStream())
+                using (Stream fileStream = File.Create($@"{diretorioTemp}\setup.exe"))
+                {
+                    byte[] buffer = new byte[10240];
+                    int read;
+
+
+                    while ((read = ftpStream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        fileStream.Write(buffer, 0, read);
+                        lblProgresso.Invoke(
+                            (MethodInvoker)(() => lblProgresso.Text = $"Baixando {SufixoTamanhoBytes.Converter(fileStream.Position)} de {SufixoTamanhoBytes.Converter(sizeSetup)}, aguarde..."));
+
+                    }
                 }
             }
+            catch (InvalidOperationException)
+            {
 
+                
+            }
+            catch (Exception error)
+            {
+                MessageBoxError.Show(error.Message);
+            }
+            
         }
         private void bgwProgresso_ProgressChanged(object sender, ProgressChangedEventArgs e)//Motra Incremento do processo ou decremento na barra.
         {
