@@ -79,6 +79,11 @@ namespace AdvanceShop.Views
             produto.StatusProduto = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[9]));
             produto.CalcularAutomatico = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[14]));
             produto.ControlarEstoque = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[15]));
+            //fiscal
+            produto.Codigo_NCM = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[20]).ToString();
+            produto.Codigo_CFOP = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[21]).ToString();
+            produto.ICMS_Origem = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[22]).ToString();
+            produto.ICMS_Situacao_Tributaria = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[23]).ToString();
 
             Views.NovoProduto FormEditarProduto = new NovoProduto(usuarioLogado, produto);
             FormEditarProduto.ShowDialog();

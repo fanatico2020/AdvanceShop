@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AdvanceShop.Shared.Validation
@@ -100,6 +101,11 @@ namespace AdvanceShop.Shared.Validation
                 return cnpj.EndsWith(digito);
             }
             return false;
+        }
+        public static string ApenasNumeros(string str)
+        {
+            var apenasDigitos = new Regex(@"[^\d]");
+            return apenasDigitos.Replace(str, "");
         }
     }
 }

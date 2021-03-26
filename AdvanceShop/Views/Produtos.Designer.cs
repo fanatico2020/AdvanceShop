@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Produtos));
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.advBandedGridViewProdutos = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCodigo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnDescricao = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCodigoBarra = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -65,6 +64,12 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.bandedGridColumncodigoncm = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumncodigocfop = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnicmsorigem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnicmssituacaotributaria = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -87,7 +92,8 @@
             // advBandedGridViewProdutos
             // 
             this.advBandedGridViewProdutos.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand1});
+            this.gridBand1,
+            this.gridBand2});
             this.advBandedGridViewProdutos.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.advBandedGridViewProdutos.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.bandedGridColumnCodigo,
@@ -109,7 +115,11 @@
             this.bandedGridColumnCategoria,
             this.bandedGridColumnFornecedor,
             this.bandedGridColumnMarca,
-            this.bandedGridColumnUnidadeMedida});
+            this.bandedGridColumnUnidadeMedida,
+            this.bandedGridColumncodigoncm,
+            this.bandedGridColumncodigocfop,
+            this.bandedGridColumnicmsorigem,
+            this.bandedGridColumnicmssituacaotributaria});
             this.advBandedGridViewProdutos.GridControl = this.gridControl;
             this.advBandedGridViewProdutos.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridViewProdutos.Name = "advBandedGridViewProdutos";
@@ -122,31 +132,6 @@
             this.advBandedGridViewProdutos.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.advBandedGridViewProdutos_PopupMenuShowing);
             this.advBandedGridViewProdutos.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.advBandedGridViewProdutos_CustomColumnDisplayText);
             this.advBandedGridViewProdutos.DoubleClick += new System.EventHandler(this.advBandedGridViewProdutos_DoubleClick);
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Columns.Add(this.bandedGridColumnCodigo);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDescricao);
-            this.gridBand1.Columns.Add(this.bandedGridColumnCodigoBarra);
-            this.gridBand1.Columns.Add(this.bandedGridColumnStatusProduto);
-            this.gridBand1.Columns.Add(this.bandedGridColumncontrolarestoque);
-            this.gridBand1.Columns.Add(this.bandedGridColumnEstoqueAtual);
-            this.gridBand1.Columns.Add(this.bandedGridColumnEstoqueMin);
-            this.gridBand1.Columns.Add(this.bandedGridColumnEstoqueMax);
-            this.gridBand1.Columns.Add(this.bandedGridColumnPrecoCusto);
-            this.gridBand1.Columns.Add(this.bandedGridColumnMargemLucro);
-            this.gridBand1.Columns.Add(this.bandedGridColumnPrecoVenda);
-            this.gridBand1.Columns.Add(this.bandedGridColumncategoriasprodutos_idcategoriasprodutos);
-            this.gridBand1.Columns.Add(this.bandedGridColumnCategoria);
-            this.gridBand1.Columns.Add(this.bandedGridColumnclientespessoas_idclientespessoas);
-            this.gridBand1.Columns.Add(this.bandedGridColumnFornecedor);
-            this.gridBand1.Columns.Add(this.bandedGridColumnmarcasprodutos_idmarcasprodutos);
-            this.gridBand1.Columns.Add(this.bandedGridColumnMarca);
-            this.gridBand1.Columns.Add(this.bandedGridColumnunidadesmedidasprodutos_idunidadesmedidasprodutos);
-            this.gridBand1.Columns.Add(this.bandedGridColumnUnidadeMedida);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 1941;
             // 
             // bandedGridColumnCodigo
             // 
@@ -563,6 +548,107 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(798, 24);
             // 
+            // bandedGridColumncodigoncm
+            // 
+            this.bandedGridColumncodigoncm.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumncodigoncm.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumncodigoncm.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumncodigoncm.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumncodigoncm.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumncodigoncm.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumncodigoncm.Caption = "Código NCM";
+            this.bandedGridColumncodigoncm.FieldName = "codigoncm";
+            this.bandedGridColumncodigoncm.Name = "bandedGridColumncodigoncm";
+            this.bandedGridColumncodigoncm.Visible = true;
+            // 
+            // bandedGridColumncodigocfop
+            // 
+            this.bandedGridColumncodigocfop.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumncodigocfop.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumncodigocfop.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumncodigocfop.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumncodigocfop.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumncodigocfop.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumncodigocfop.Caption = "Código CFOP";
+            this.bandedGridColumncodigocfop.FieldName = "codigocfop";
+            this.bandedGridColumncodigocfop.Name = "bandedGridColumncodigocfop";
+            this.bandedGridColumncodigocfop.Visible = true;
+            // 
+            // bandedGridColumnicmsorigem
+            // 
+            this.bandedGridColumnicmsorigem.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumnicmsorigem.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnicmsorigem.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnicmsorigem.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnicmsorigem.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnicmsorigem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnicmsorigem.Caption = "ICMS Origem";
+            this.bandedGridColumnicmsorigem.FieldName = "icmsorigem";
+            this.bandedGridColumnicmsorigem.Name = "bandedGridColumnicmsorigem";
+            this.bandedGridColumnicmsorigem.Visible = true;
+            // 
+            // bandedGridColumnicmssituacaotributaria
+            // 
+            this.bandedGridColumnicmssituacaotributaria.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumnicmssituacaotributaria.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnicmssituacaotributaria.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnicmssituacaotributaria.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnicmssituacaotributaria.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnicmssituacaotributaria.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnicmssituacaotributaria.Caption = "ICMS Situação Tributaria";
+            this.bandedGridColumnicmssituacaotributaria.FieldName = "icmssituacaotributaria";
+            this.bandedGridColumnicmssituacaotributaria.Name = "bandedGridColumnicmssituacaotributaria";
+            this.bandedGridColumnicmssituacaotributaria.Visible = true;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand1.AppearanceHeader.Options.UseFont = true;
+            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand1.Caption = "Dados Produtos";
+            this.gridBand1.Columns.Add(this.bandedGridColumnCodigo);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDescricao);
+            this.gridBand1.Columns.Add(this.bandedGridColumnCodigoBarra);
+            this.gridBand1.Columns.Add(this.bandedGridColumnStatusProduto);
+            this.gridBand1.Columns.Add(this.bandedGridColumncontrolarestoque);
+            this.gridBand1.Columns.Add(this.bandedGridColumnEstoqueAtual);
+            this.gridBand1.Columns.Add(this.bandedGridColumnEstoqueMin);
+            this.gridBand1.Columns.Add(this.bandedGridColumnEstoqueMax);
+            this.gridBand1.Columns.Add(this.bandedGridColumnPrecoCusto);
+            this.gridBand1.Columns.Add(this.bandedGridColumnMargemLucro);
+            this.gridBand1.Columns.Add(this.bandedGridColumnPrecoVenda);
+            this.gridBand1.Columns.Add(this.bandedGridColumncategoriasprodutos_idcategoriasprodutos);
+            this.gridBand1.Columns.Add(this.bandedGridColumnCategoria);
+            this.gridBand1.Columns.Add(this.bandedGridColumnclientespessoas_idclientespessoas);
+            this.gridBand1.Columns.Add(this.bandedGridColumnFornecedor);
+            this.gridBand1.Columns.Add(this.bandedGridColumnmarcasprodutos_idmarcasprodutos);
+            this.gridBand1.Columns.Add(this.bandedGridColumnMarca);
+            this.gridBand1.Columns.Add(this.bandedGridColumnunidadesmedidasprodutos_idunidadesmedidasprodutos);
+            this.gridBand1.Columns.Add(this.bandedGridColumnUnidadeMedida);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 1941;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridBand2.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand2.AppearanceHeader.Options.UseFont = true;
+            this.gridBand2.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand2.Caption = "Fiscal";
+            this.gridBand2.Columns.Add(this.bandedGridColumncodigoncm);
+            this.gridBand2.Columns.Add(this.bandedGridColumncodigocfop);
+            this.gridBand2.Columns.Add(this.bandedGridColumnicmsorigem);
+            this.gridBand2.Columns.Add(this.bandedGridColumnicmssituacaotributaria);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 300;
+            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -625,5 +711,10 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnMarca;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnUnidadeMedida;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumncodigoncm;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumncodigocfop;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnicmsorigem;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnicmssituacaotributaria;
     }
 }

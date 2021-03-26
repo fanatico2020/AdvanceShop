@@ -51,8 +51,8 @@ namespace AdvanceShop.Controllers
             MySqlCommand comando = ConexaoMySql.GetComando(conexao);
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText =
-                "insert into produtos(descricaoproduto,codigobarra,precocusto,margemlucro,precovenda,calcularprecovendaauto,estoqueatual,estoqueminimo,estoquemaximo,controlarestoque,statusproduto,categoriasprodutos_idcategoriasprodutos,clientespessoas_idclientespessoas,marcasprodutos_idmarcasprodutos,unidadesmedidasprodutos_idunidadesmedidasprodutos,deletado) " +
-                "values(@descricaoproduto,@codigobarra,@precocusto,@margemlucro,@precovenda,@calcularprecovendaauto,@estoqueatual,@estoqueminimo,@estoquemaximo,@controlarestoque,@statusproduto,@categoriasprodutos_idcategoriasprodutos,@clientespessoas_idclientespessoas,@marcasprodutos_idmarcasprodutos,@unidadesmedidasprodutos_idunidadesmedidasprodutos,0); " +
+                "insert into produtos(descricaoproduto,codigobarra,precocusto,margemlucro,precovenda,calcularprecovendaauto,estoqueatual,estoqueminimo,estoquemaximo,controlarestoque,statusproduto,categoriasprodutos_idcategoriasprodutos,clientespessoas_idclientespessoas,marcasprodutos_idmarcasprodutos,unidadesmedidasprodutos_idunidadesmedidasprodutos,codigoncm,codigocfop,icmsorigem,icmssituacaotributaria,deletado) " +
+                "values(@descricaoproduto,@codigobarra,@precocusto,@margemlucro,@precovenda,@calcularprecovendaauto,@estoqueatual,@estoqueminimo,@estoquemaximo,@controlarestoque,@statusproduto,@categoriasprodutos_idcategoriasprodutos,@clientespessoas_idclientespessoas,@marcasprodutos_idmarcasprodutos,@unidadesmedidasprodutos_idunidadesmedidasprodutos,codigoncm,codigocfop,icmsorigem,icmssituacaotributaria,0); " +
                 "insert into datahora(datahoracadastro,usuariocadastro,produtos_idprodutos) values(now(),@usuariocadastro,last_insert_id());";
             comando.Parameters.Add(new MySqlParameter("@descricaoproduto", produto.DescricaoProduto));
             comando.Parameters.Add(new MySqlParameter("@codigobarra", produto.CodigoBarra));
@@ -70,6 +70,11 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@marcasprodutos_idmarcasprodutos", produto.marcasprodutos_idmarcasprodutos));
             comando.Parameters.Add(new MySqlParameter("@unidadesmedidasprodutos_idunidadesmedidasprodutos", produto.unidadesmedidasprodutos_idunidadesmedidasprodutos));
             comando.Parameters.Add(new MySqlParameter("@usuariocadastro", usuarioLogado.UsuarioAcesso));
+            //fiscal
+            comando.Parameters.Add(new MySqlParameter("@codigoncm", produto.Codigo_NCM));
+            comando.Parameters.Add(new MySqlParameter("@codigocfop", produto.Codigo_CFOP));
+            comando.Parameters.Add(new MySqlParameter("@icmsorigem", produto.ICMS_Origem));
+            comando.Parameters.Add(new MySqlParameter("@icmssituacaotributaria", produto.ICMS_Situacao_Tributaria));
             comando.ExecuteNonQuery();
         }
         
@@ -80,7 +85,8 @@ namespace AdvanceShop.Controllers
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText =
                 "update produtos set descricaoproduto = @descricaoproduto,codigobarra = @codigobarra,precocusto = @precocusto,margemlucro = @margemlucro,precovenda = @precovenda,calcularprecovendaauto = @calcularprecovendaauto,estoqueatual = @estoqueatual,estoqueminimo = @estoqueminimo,estoquemaximo = @estoquemaximo," +
-                "controlarestoque = @controlarestoque,statusproduto = @statusproduto,categoriasprodutos_idcategoriasprodutos = @categoriasprodutos_idcategoriasprodutos,clientespessoas_idclientespessoas = @clientespessoas_idclientespessoas,marcasprodutos_idmarcasprodutos = @marcasprodutos_idmarcasprodutos,unidadesmedidasprodutos_idunidadesmedidasprodutos = @unidadesmedidasprodutos_idunidadesmedidasprodutos where idprodutos = @idprodutos; " +
+                "controlarestoque = @controlarestoque,statusproduto = @statusproduto,categoriasprodutos_idcategoriasprodutos = @categoriasprodutos_idcategoriasprodutos,clientespessoas_idclientespessoas = @clientespessoas_idclientespessoas,marcasprodutos_idmarcasprodutos = @marcasprodutos_idmarcasprodutos,"+
+                "unidadesmedidasprodutos_idunidadesmedidasprodutos = @unidadesmedidasprodutos_idunidadesmedidasprodutos,codigoncm = @codigoncm,codigocfop = @codigocfop,icmsorigem = @icmsorigem,icmssituacaotributaria = @icmssituacaotributaria where idprodutos = @idprodutos; " +
                 "update datahora set datahoraedicao = now(),usuarioedicao = @usuarioedicao where produtos_idprodutos = @idprodutos;";
             comando.Parameters.Add(new MySqlParameter("@idprodutos", produto.IdProdutos));
             comando.Parameters.Add(new MySqlParameter("@descricaoproduto", produto.DescricaoProduto));
@@ -99,6 +105,11 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@marcasprodutos_idmarcasprodutos", produto.marcasprodutos_idmarcasprodutos));
             comando.Parameters.Add(new MySqlParameter("@unidadesmedidasprodutos_idunidadesmedidasprodutos", produto.unidadesmedidasprodutos_idunidadesmedidasprodutos));
             comando.Parameters.Add(new MySqlParameter("@usuarioedicao", usuarioLogado.UsuarioAcesso));
+            //fiscal
+            comando.Parameters.Add(new MySqlParameter("@codigoncm", produto.Codigo_NCM));
+            comando.Parameters.Add(new MySqlParameter("@codigocfop", produto.Codigo_CFOP));
+            comando.Parameters.Add(new MySqlParameter("@icmsorigem", produto.ICMS_Origem));
+            comando.Parameters.Add(new MySqlParameter("@icmssituacaotributaria", produto.ICMS_Situacao_Tributaria));
             comando.ExecuteNonQuery();
         }
         

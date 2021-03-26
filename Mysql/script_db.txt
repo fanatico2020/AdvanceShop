@@ -4,5 +4,5 @@ insert into datahora(datahoracadastro,usuariocadastro,usuarios_idusuarios) value
 insert into permissoes(idpermissoes,descricaopermissao) values (1,'USUARIO PODE ENTRAR NO SISTEMA');
 insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,1,1);
 insert into configuracoesgerais(idconfiguracoesgerais,trocomaximo,valortrocomaximo,imprimircpfcnpjnocupom,imprimircupomfinalizarvenda,imprimircupomfiscalnfcefinalizarvenda,imprimirnomevendedorfinalizarvenda,vendacartaopermitirdesconto,avisarclienteaniversariante,avisarprodutoestoquebaixo) values (1,0,0,0,1,0,0,0,0,1);
-insert into apifocusnfe(idapifocusnfe,usarapi,tokenhomologacao,tokenproducao) values (1,0,'','');
+insert into apifocusnfe(idapifocusnfe,usarapi,tokenhomologacao,tokenproducao,ambiente) values (1,0,'','','');
 insert into emailsistema(idemailsistema,emailprincipal,emailcopia1,emailcopia2) values (1,'','','');

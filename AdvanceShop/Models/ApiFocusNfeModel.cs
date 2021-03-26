@@ -12,6 +12,7 @@ namespace AdvanceShop.Models
         public int usarapi { get; set; }
         public string tokenhomologacao { get; set; }
         public string tokenproducao { get; set; }
+        public string ambiente { get; set; }
 
     }
 }

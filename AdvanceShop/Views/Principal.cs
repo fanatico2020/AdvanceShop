@@ -42,7 +42,7 @@ namespace AdvanceShop.Views
 
         private void bbiApp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://advanceshopsistema.com.br/app");
+            System.Diagnostics.Process.Start("http://advanceshopsistema.com.br/app");
         }
 
         private void bbiUsuarios_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

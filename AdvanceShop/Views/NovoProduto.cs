@@ -1,9 +1,20 @@
 ﻿using AdvanceShop.Controllers;
+using AdvanceShop.JsonModels.FocusNFe.CFOP;
+using AdvanceShop.JsonModels.FocusNFe.NCM;
 using AdvanceShop.Models;
 using AdvanceShop.Shared.CustomInputBox;
 using AdvanceShop.Shared.CustomMessageBox;
 using AdvanceShop.Shared.Validation;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AdvanceShop.Views
@@ -21,11 +32,18 @@ namespace AdvanceShop.Views
         MarcasProdutosModel marca = new MarcasProdutosModel();
         MarcasProdutosController marcaController = new MarcasProdutosController();
         ClientesPessoasController clientePessoaController = new ClientesPessoasController();
+        ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
+        ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
         bool edicao = false;
+        //fiscal
+        string focusToken = "";//"RDEwh6XXtOLPUpkQckVePDwh7JPhT4aN";
+        string ambienteFocus = "";//homologacao ou producao
         public NovoProduto(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
+            
+            
             //txtEstoqueAtual.Enabled = false;
             //txtEstoqueMax.Enabled = false;
             //txtEstoqueMin.Enabled = false;
@@ -34,6 +52,7 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
+            
             edicao = true;
 
             produto.IdProdutos = produtoEdicao.IdProdutos;
@@ -52,16 +71,51 @@ namespace AdvanceShop.Views
             txtEstoqueMin.Text = Convert.ToString(produtoEdicao.EstoqueMinimo);
             txtEstoqueMax.Text = Convert.ToString(produtoEdicao.EstoqueMaximo);
             tsControlarEstoque.IsOn = Convert.ToBoolean(produtoEdicao.ControlarEstoque);
+            //fiscal
+            cbxCodigoNCM.Text = produtoEdicao.Codigo_NCM;
+            cbxCodigoCFOP.Text = produtoEdicao.Codigo_CFOP;
+            cbxICMSOrigem.Text = produtoEdicao.ICMS_Origem;
+            cbxICMSSituacaoTributaria.Text = produtoEdicao.ICMS_Situacao_Tributaria;
         }
 
         private void NovoProduto_Load(object sender, EventArgs e)
         {
+            cbxCodigoNCM.Enabled = false;
+            cbxCodigoCFOP.Enabled = false;
+            cbxICMSOrigem.Enabled = false;
+            cbxICMSSituacaoTributaria.Enabled = false;
+            lblApiObs.Visible = true;
+
             txtDescricao.Focus();
             AtualizarCategoriasProdutos();
             AtualizarMarcasProdutos();
             AtualizarUnidadesMedidas();
             AtualizarFornecedores();
-            
+
+            //fiscal
+            apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
+            if (apiFocusNfe.usarapi == 1)
+            {
+                cbxCodigoNCM.Enabled = true;
+                cbxCodigoCFOP.Enabled = true;
+                cbxICMSOrigem.Enabled = true;
+                cbxICMSSituacaoTributaria.Enabled = true;
+                lblApiObs.Visible = false;
+            }
+                
+            if(apiFocusNfe.ambiente == "homologacao")
+            {
+                ambienteFocus = "homologacao";
+                focusToken = apiFocusNfe.tokenhomologacao;
+            }
+            else
+            {
+                apiFocusNfe.ambiente = "producao";
+                focusToken = apiFocusNfe.tokenproducao;
+            }
+            AtualizarNCM();
+            AtualizarCFOP();
+
         }
         private void AtualizarGrid()
         {
@@ -115,6 +169,12 @@ namespace AdvanceShop.Views
                 produto.StatusProduto = Convert.ToInt32(tsStatus.IsOn);
                 produto.CalcularAutomatico = Convert.ToInt32(tsCalcularPrecoProdutoAut.IsOn);
                 produto.ControlarEstoque = Convert.ToInt32(tsControlarEstoque.IsOn);
+                //fiscal
+                produto.Codigo_NCM = Convert.ToString(cbxCodigoNCM.EditValue);
+                produto.Codigo_CFOP = Convert.ToString(cbxCodigoCFOP.EditValue);
+                produto.ICMS_Origem = ValidacaoCamposCustom.ApenasNumeros(Convert.ToString(cbxICMSOrigem.EditValue));
+                produto.ICMS_Situacao_Tributaria = ValidacaoCamposCustom.ApenasNumeros(Convert.ToString(cbxICMSSituacaoTributaria.EditValue));
+
                 ValidacaoCampos.Validar(produto);
                 if (ValidacaoCampos.IsValid() && MessageBoxQuestionYesNo.Show($"Deseja salvar?") == DialogResult.Yes)
                 {
@@ -338,5 +398,110 @@ namespace AdvanceShop.Views
                 Salvar();
             }
         }
+        
+        private async void AtualizarNCM()
+        {
+
+            DataTable dtNCM = new DataTable();
+            dtNCM.Columns.Add("codigo", typeof(string));
+            dtNCM.Columns.Add("descricao_completa", typeof(string));
+
+            //$@"https://{ambienteFocus}.focusnfe.com.br/v2/ncms?token={focusToken}&capitulo=90";
+            string url = $@"https://{ambienteFocus}.focusnfe.com.br/v2/ncms?token={focusToken}&capitulo={cbxCodigoNCM.Text}";
+            if(ambienteFocus != string.Empty && focusToken != string.Empty)
+            {
+                using (var httpClient = new HttpClient())
+                {
+
+                    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+                    using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+                    {
+
+                        var response = await httpClient.SendAsync(request);
+                        string json = response.Content.ReadAsStringAsync().Result;
+
+
+                        List<NCM> deserializeNCM = JsonConvert.DeserializeObject<List<NCM>>(json);
+
+
+                        foreach (NCM item in deserializeNCM)
+                        {
+                            dtNCM.Rows.Add(
+                                item.codigo,
+                                item.descricao_completa
+                                );
+                        }
+                    }
+                }
+                cbxCodigoNCM.Properties.DataSource = dtNCM;
+                cbxCodigoNCM.Properties.DisplayMember = "codigo";
+                cbxCodigoNCM.Properties.ValueMember = "codigo";
+            }
+            
+
+        }
+        private async void AtualizarCFOP()
+        {
+            DataTable dtCFOP = new DataTable();
+            dtCFOP.Columns.Add("codigo", typeof(string));
+            dtCFOP.Columns.Add("descricao", typeof(string));
+
+            string url = $@"https://{ambienteFocus}.focusnfe.com.br/v2/cfops?token={focusToken}&codigo={cbxCodigoCFOP.Text}";
+
+            if (ambienteFocus != string.Empty && focusToken != string.Empty)
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+                    using (var request = new HttpRequestMessage(new HttpMethod("GET"), url))
+                    {
+
+                        var response = await httpClient.SendAsync(request);
+                        string json = response.Content.ReadAsStringAsync().Result;
+
+
+                        List<CFOP> deserializeNCM = JsonConvert.DeserializeObject<List<CFOP>>(json);
+
+
+                        foreach (CFOP item in deserializeNCM)
+                        {
+                            dtCFOP.Rows.Add(
+                                item.codigo,
+                                item.descricao
+                                );
+                        }
+                    }
+                }
+                cbxCodigoCFOP.Properties.DataSource = dtCFOP;
+                cbxCodigoCFOP.Properties.DisplayMember = "codigo";
+                cbxCodigoCFOP.Properties.ValueMember = "codigo";
+            }
+                
+        }
+
+        
+
+        private void cbxCodigoNCM_QueryCloseUp(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            AtualizarNCM();
+        }
+
+        private void cbxCodigoNCM_EditValueChanged(object sender, EventArgs e)
+        {
+            
+            AtualizarNCM();
+        }
+
+        private void cbxCodigoCFOP_QueryCloseUp(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            AtualizarCFOP();
+        }
+
+        private void cbxCodigoCFOP_EditValueChanged(object sender, EventArgs e)
+        {
+            AtualizarCFOP();
+        }
+
+        
     }
 }

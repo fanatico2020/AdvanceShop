@@ -41,8 +41,8 @@ namespace AdvanceShop.Models
         public int Item { get; set; }//entrada estoque
 
         //fiscal
-        public string NCM { get; set; }
-        public string CFOP { get; set; }
+        public string Codigo_NCM { get; set; }
+        public string Codigo_CFOP { get; set; }
         public string ICMS_Origem { get; set; }
         public string ICMS_Situacao_Tributaria { get; set; }
 

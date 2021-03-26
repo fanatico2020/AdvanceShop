@@ -180,10 +180,14 @@
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.lblReferenteA);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "IdentidadePlano";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Identificação para usar o sistema";
+            this.Load += new System.EventHandler(this.IdentidadePlano_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IdentidadePlano_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.IdentidadePlano_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();

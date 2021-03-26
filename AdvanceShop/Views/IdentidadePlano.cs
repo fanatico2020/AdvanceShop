@@ -46,5 +46,20 @@ namespace AdvanceShop.Views
                 txtChave.Enabled = false;
             }
         }
+
+        private void IdentidadePlano_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IdentidadePlano_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void IdentidadePlano_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

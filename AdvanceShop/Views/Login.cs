@@ -77,12 +77,18 @@ namespace AdvanceShop.Views
 
         private void lblSiteAdvanceShop_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://advanceshopsistema.com.br");
+            System.Diagnostics.Process.Start("http://advanceshopsistema.com.br/");
         }
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lblEsqueceuSuaSenha_Click(object sender, EventArgs e)
+        {
+            Views.EsqueceuSenha FormEsqueceuSenha = new EsqueceuSenha();
+            FormEsqueceuSenha.ShowDialog();
         }
         /*
 private void GetLicencaAtiva()

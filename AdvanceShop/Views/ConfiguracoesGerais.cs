@@ -49,6 +49,16 @@ namespace AdvanceShop.Views
             tsAtivaApiFocusNfe.IsOn = Convert.ToBoolean(apiFocusNfe.usarapi);
             txtTokenHomologacao.Text = apiFocusNfe.tokenhomologacao;
             txtTokenProducao.Text = apiFocusNfe.tokenproducao;
+            
+            if (apiFocusNfe.ambiente =="homologacao")
+            {
+                rgbAmbiente.SelectedIndex = 0;
+            }
+            else if(apiFocusNfe.ambiente == "producao")
+            {
+                rgbAmbiente.SelectedIndex = 1;
+            }
+                
 
         }
         private void AtualizarEmailSistema()
@@ -90,6 +100,7 @@ namespace AdvanceShop.Views
                 apiFocusNfe.tokenhomologacao = txtTokenHomologacao.Text;
                 apiFocusNfe.tokenproducao = txtTokenProducao.Text;
                 apiFocusNfe.usarapi = Convert.ToInt32(tsAtivaApiFocusNfe.IsOn);
+                apiFocusNfe.ambiente = Convert.ToString(rgbAmbiente.EditValue);
 
                 apiFocusNfeController.SalvarConfiguracao(apiFocusNfe);
 

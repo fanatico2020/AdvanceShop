@@ -69,7 +69,7 @@
             this.xtbpDados = new DevExpress.XtraTab.XtraTabPage();
             this.xtbpFiscal = new DevExpress.XtraTab.XtraTabPage();
             this.panelControlFiscal = new DevExpress.XtraEditors.PanelControl();
-            this.cbxICMSSituacaoTributaria = new DevExpress.XtraEditors.LookUpEdit();
+            this.lblApiObs = new DevExpress.XtraEditors.LabelControl();
             this.lblICMSSituacaoTributaria = new DevExpress.XtraEditors.LabelControl();
             this.lblICMSOrigem = new DevExpress.XtraEditors.LabelControl();
             this.cbxCodigoCFOP = new DevExpress.XtraEditors.LookUpEdit();
@@ -77,6 +77,7 @@
             this.cbxCodigoNCM = new DevExpress.XtraEditors.LookUpEdit();
             this.lblCodigoNCM = new DevExpress.XtraEditors.LabelControl();
             this.cbxICMSOrigem = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbxICMSSituacaoTributaria = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlProduto)).BeginInit();
             this.panelControlProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tsStatus.Properties)).BeginInit();
@@ -104,10 +105,10 @@
             this.xtbpFiscal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlFiscal)).BeginInit();
             this.panelControlFiscal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxICMSSituacaoTributaria.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxCodigoCFOP.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxCodigoNCM.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxICMSOrigem.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxICMSSituacaoTributaria.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControlProduto
@@ -573,7 +574,7 @@
             // 
             // panelControlFiscal
             // 
-            this.panelControlFiscal.Controls.Add(this.cbxICMSSituacaoTributaria);
+            this.panelControlFiscal.Controls.Add(this.lblApiObs);
             this.panelControlFiscal.Controls.Add(this.lblICMSSituacaoTributaria);
             this.panelControlFiscal.Controls.Add(this.lblICMSOrigem);
             this.panelControlFiscal.Controls.Add(this.cbxCodigoCFOP);
@@ -581,24 +582,23 @@
             this.panelControlFiscal.Controls.Add(this.cbxCodigoNCM);
             this.panelControlFiscal.Controls.Add(this.lblCodigoNCM);
             this.panelControlFiscal.Controls.Add(this.cbxICMSOrigem);
+            this.panelControlFiscal.Controls.Add(this.cbxICMSSituacaoTributaria);
             this.panelControlFiscal.Location = new System.Drawing.Point(13, 15);
             this.panelControlFiscal.Name = "panelControlFiscal";
-            this.panelControlFiscal.Size = new System.Drawing.Size(644, 154);
+            this.panelControlFiscal.Size = new System.Drawing.Size(644, 169);
             this.panelControlFiscal.TabIndex = 2;
             // 
-            // cbxICMSSituacaoTributaria
+            // lblApiObs
             // 
-            this.cbxICMSSituacaoTributaria.Location = new System.Drawing.Point(168, 109);
-            this.cbxICMSSituacaoTributaria.Name = "cbxICMSSituacaoTributaria";
-            this.cbxICMSSituacaoTributaria.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxICMSSituacaoTributaria.Properties.Appearance.Options.UseFont = true;
-            this.cbxICMSSituacaoTributaria.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbxICMSSituacaoTributaria.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.cbxICMSSituacaoTributaria.Properties.NullText = "";
-            this.cbxICMSSituacaoTributaria.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.cbxFornecedor_Properties_ButtonClick);
-            this.cbxICMSSituacaoTributaria.Size = new System.Drawing.Size(471, 26);
-            this.cbxICMSSituacaoTributaria.TabIndex = 4;
+            this.lblApiObs.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApiObs.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblApiObs.Appearance.Options.UseFont = true;
+            this.lblApiObs.Appearance.Options.UseForeColor = true;
+            this.lblApiObs.Location = new System.Drawing.Point(5, 141);
+            this.lblApiObs.Name = "lblApiObs";
+            this.lblApiObs.Size = new System.Drawing.Size(351, 19);
+            this.lblApiObs.TabIndex = 10;
+            this.lblApiObs.Text = "Api Fiscal desativada, va até configurações gerais!";
             // 
             // lblICMSSituacaoTributaria
             // 
@@ -629,10 +629,16 @@
             this.cbxCodigoCFOP.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxCodigoCFOP.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.cbxCodigoCFOP.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("codigo", "Código CFOP", 10, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("descricao", "Descrição", 30, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.cbxCodigoCFOP.Properties.NullText = "";
+            this.cbxCodigoCFOP.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.cbxCodigoCFOP.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.cbxFornecedor_Properties_ButtonClick);
             this.cbxCodigoCFOP.Size = new System.Drawing.Size(471, 26);
             this.cbxCodigoCFOP.TabIndex = 2;
+            this.cbxCodigoCFOP.QueryCloseUp += new System.ComponentModel.CancelEventHandler(this.cbxCodigoCFOP_QueryCloseUp);
+            this.cbxCodigoCFOP.EditValueChanged += new System.EventHandler(this.cbxCodigoCFOP_EditValueChanged);
             // 
             // lblCodigoCFOP
             // 
@@ -653,10 +659,16 @@
             this.cbxCodigoNCM.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbxCodigoNCM.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.cbxCodigoNCM.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("codigo", "Código NCM", 10, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("descricao_completa", "Descrição", 30, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.cbxCodigoNCM.Properties.NullText = "";
+            this.cbxCodigoNCM.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.cbxCodigoNCM.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.cbxFornecedor_Properties_ButtonClick);
             this.cbxCodigoNCM.Size = new System.Drawing.Size(471, 26);
             this.cbxCodigoNCM.TabIndex = 1;
+            this.cbxCodigoNCM.QueryCloseUp += new System.ComponentModel.CancelEventHandler(this.cbxCodigoNCM_QueryCloseUp);
+            this.cbxCodigoNCM.EditValueChanged += new System.EventHandler(this.cbxCodigoNCM_EditValueChanged);
             // 
             // lblCodigoNCM
             // 
@@ -689,6 +701,28 @@
             this.cbxICMSOrigem.Properties.PopupSizeable = true;
             this.cbxICMSOrigem.Size = new System.Drawing.Size(471, 26);
             this.cbxICMSOrigem.TabIndex = 3;
+            // 
+            // cbxICMSSituacaoTributaria
+            // 
+            this.cbxICMSSituacaoTributaria.Location = new System.Drawing.Point(168, 109);
+            this.cbxICMSSituacaoTributaria.Name = "cbxICMSSituacaoTributaria";
+            this.cbxICMSSituacaoTributaria.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxICMSSituacaoTributaria.Properties.Appearance.Options.UseFont = true;
+            this.cbxICMSSituacaoTributaria.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbxICMSSituacaoTributaria.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.cbxICMSSituacaoTributaria.Properties.Items.AddRange(new object[] {
+            "102 - Tributada pelo Simples Nacional sem permissão de crédito.",
+            "300 - Imune.",
+            "500 - CMS cobrado anteriormente por substituição tributária (substituído) ou " +
+                "por antecipação.",
+            "00 - tributada integralmente.",
+            "40 - Isenta.",
+            "41 - Não tributada.",
+            "60 - ICMS cobrado anteriormente por substituição tributária."});
+            this.cbxICMSSituacaoTributaria.Properties.PopupSizeable = true;
+            this.cbxICMSSituacaoTributaria.Size = new System.Drawing.Size(471, 26);
+            this.cbxICMSSituacaoTributaria.TabIndex = 4;
             // 
             // NovoProduto
             // 
@@ -737,10 +771,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControlFiscal)).EndInit();
             this.panelControlFiscal.ResumeLayout(false);
             this.panelControlFiscal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxICMSSituacaoTributaria.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxCodigoCFOP.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxCodigoNCM.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxICMSOrigem.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxICMSSituacaoTributaria.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -781,7 +815,6 @@
         private DevExpress.XtraTab.XtraTabPage xtbpDados;
         private DevExpress.XtraTab.XtraTabPage xtbpFiscal;
         private DevExpress.XtraEditors.PanelControl panelControlFiscal;
-        private DevExpress.XtraEditors.LookUpEdit cbxICMSSituacaoTributaria;
         private DevExpress.XtraEditors.LabelControl lblICMSSituacaoTributaria;
         private DevExpress.XtraEditors.LabelControl lblICMSOrigem;
         private DevExpress.XtraEditors.LookUpEdit cbxCodigoCFOP;
@@ -790,5 +823,7 @@
         private DevExpress.XtraEditors.LabelControl lblCodigoNCM;
         private DevExpress.XtraEditors.ToggleSwitch tsStatus;
         private DevExpress.XtraEditors.ComboBoxEdit cbxICMSOrigem;
+        private DevExpress.XtraEditors.ComboBoxEdit cbxICMSSituacaoTributaria;
+        private DevExpress.XtraEditors.LabelControl lblApiObs;
     }
 }

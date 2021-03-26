@@ -33,6 +33,8 @@ namespace AdvanceShop.Shared.CustomPrint
 
 
             Report.Devexpress.xrCupomNaoFiscal report = new xrCupomNaoFiscal();
+
+
             report.Parameters["NumeroVenda"].Value = Venda.IdVendas;
             report.Parameters["DataHoraVenda"].Value = DateTime.Now;
             //Dados cliente da venda

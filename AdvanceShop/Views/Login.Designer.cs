@@ -112,6 +112,7 @@
             this.lblEsqueceuSuaSenha.Size = new System.Drawing.Size(138, 16);
             this.lblEsqueceuSuaSenha.TabIndex = 4;
             this.lblEsqueceuSuaSenha.Text = "Esqueceu sua senha?";
+            this.lblEsqueceuSuaSenha.Click += new System.EventHandler(this.lblEsqueceuSuaSenha_Click);
             // 
             // lblSiteAdvanceShop
             // 
