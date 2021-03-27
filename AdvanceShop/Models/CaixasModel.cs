@@ -22,5 +22,6 @@ namespace AdvanceShop.Models
         public DateTime DataHoraFechamento { get; set; }
         public int usuarios_idusuarios { get; set; }
         public bool caixaAberto { get; set; }
+        public int Deletado { get; set; }
     }
 }

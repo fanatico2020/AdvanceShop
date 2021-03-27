@@ -27,7 +27,7 @@ namespace AdvanceShop.Shared.CustomPrint
         //    public string DescricaoPagamento { get; set; }
         //    public decimal Valor { get; set; }
         //}
-        public static void ImprimirCupom(VendasModel Venda, ClientesPessoasModel Cliente, UsuariosModel Usuario, CaixasModel Caixa)
+        public static void ImprimirCupom(VendasModel Venda, ClientesPessoasModel Cliente, UsuariosModel Usuario, CaixasModel Caixa,DataHoraModel DataHora)
         {
 
 
@@ -36,7 +36,7 @@ namespace AdvanceShop.Shared.CustomPrint
 
 
             report.Parameters["NumeroVenda"].Value = Venda.IdVendas;
-            report.Parameters["DataHoraVenda"].Value = DateTime.Now;
+            report.Parameters["DataHoraVenda"].Value = DataHora.datahoracadastro;
             //Dados cliente da venda
             report.Parameters["ClienteVenda"].Value = Cliente.NomeClientePessoa;
             report.Parameters["CPFCNPJClienteVenda"].Value = Cliente.CPFCNPJ;
@@ -50,7 +50,7 @@ namespace AdvanceShop.Shared.CustomPrint
             
 
             //Maquina e Vendedor
-            report.Parameters["Maquina"].Value = Environment.MachineName;
+            report.Parameters["Maquina"].Value = Caixa.Maquina;
             report.Parameters["UsuarioCaixa"].Value = $"{Usuario.UsuarioAcesso} - CAIXA {Caixa.IdCaixas}";
             //report.PrintDialog();
 

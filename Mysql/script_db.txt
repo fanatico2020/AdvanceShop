@@ -1,5 +1,5 @@
 insert into usuarios(usuarioacesso,senhaacesso,nomecompleto,email,contato,usadescontomaximo,descontomaximo,status,deletado)
-values('ADMIN',md5('admin'),'ADMIN','admin@admin.com',99999999999,1,100,1,0);
+values('ADMIN',md5('admin'),'ADMINISTRADOR DO SISTEMA','admin@admin.com',99999999999,1,100,1,0);
 insert into datahora(datahoracadastro,usuariocadastro,usuarios_idusuarios) values(now(),'SUPORTE',last_insert_id());
 insert into permissoes(idpermissoes,descricaopermissao) values (1,'USUARIO PODE ENTRAR NO SISTEMA');
 insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,1,1);

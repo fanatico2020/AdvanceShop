@@ -21,6 +21,7 @@ namespace AdvanceShop.Views
     public partial class PagamentoPDV : DevExpress.XtraEditors.XtraForm
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
+        DataHoraModel dataHora = new DataHoraModel();
         VendasModel venda = new VendasModel();
         VendasController vendaController = new VendasController();
         TransacoesCaixaModel transacaoCaixa = new TransacoesCaixaModel();
@@ -155,7 +156,9 @@ namespace AdvanceShop.Views
                     vendaController.Adicionar(venda, formasPagamento, itensVenda, transacaoCaixa, usuarioLogado);
                     //ImprimirCupom
                     venda.IdVendas = vendaController.ObterUltimoIDVendaInserido();
-                    Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa);
+                    dataHora.datahoracadastro = DateTime.Now;
+                    caixa.Maquina = Environment.MachineName;
+                    Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora);
                     //Iniciar nova venda no pdv
                     NovaVenda();
                     AtualizarGridVendas();

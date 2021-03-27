@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.btnEntrar = new DevExpress.XtraEditors.SimpleButton();
             this.txtSenha = new DevExpress.XtraEditors.TextEdit();
-            this.txtUsuario = new DevExpress.XtraEditors.LookUpEdit();
+            this.cbxUsuario = new DevExpress.XtraEditors.LookUpEdit();
             this.lblUsuario = new DevExpress.XtraEditors.LabelControl();
             this.lblSenha = new DevExpress.XtraEditors.LabelControl();
             this.lblEsqueceuSuaSenha = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.lblSiteAdvanceShop = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.txtSenha.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUsuario.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxUsuario.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEntrar
@@ -67,21 +67,22 @@
             this.txtSenha.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtSenha_MouseDoubleClick);
             this.txtSenha.MouseMove += new System.Windows.Forms.MouseEventHandler(this.txtSenha_MouseMove);
             // 
-            // txtUsuario
+            // cbxUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(12, 132);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Properties.Appearance.Options.UseFont = true;
-            this.txtUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbxUsuario.Location = new System.Drawing.Point(12, 132);
+            this.cbxUsuario.Name = "cbxUsuario";
+            this.cbxUsuario.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxUsuario.Properties.Appearance.Options.UseFont = true;
+            this.cbxUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.txtUsuario.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.cbxUsuario.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("idusuarios", "Código", 5, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("usuarioacesso", "Usuário Acesso")});
-            this.txtUsuario.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("txtUsuario.Properties.ContextImageOptions.Image")));
-            this.txtUsuario.Properties.NullText = "Selecione seu usuário";
-            this.txtUsuario.Size = new System.Drawing.Size(396, 26);
-            this.txtUsuario.TabIndex = 1;
+            this.cbxUsuario.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cbxUsuario.Properties.ContextImageOptions.Image")));
+            this.cbxUsuario.Properties.NullText = "Selecione seu usuário";
+            this.cbxUsuario.Size = new System.Drawing.Size(396, 26);
+            this.cbxUsuario.TabIndex = 1;
+            this.cbxUsuario.EditValueChanged += new System.EventHandler(this.cbxUsuario_EditValueChanged);
             // 
             // lblUsuario
             // 
@@ -107,6 +108,7 @@
             // 
             this.lblEsqueceuSuaSenha.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEsqueceuSuaSenha.Appearance.Options.UseFont = true;
+            this.lblEsqueceuSuaSenha.Enabled = false;
             this.lblEsqueceuSuaSenha.Location = new System.Drawing.Point(12, 235);
             this.lblEsqueceuSuaSenha.Name = "lblEsqueceuSuaSenha";
             this.lblEsqueceuSuaSenha.Size = new System.Drawing.Size(138, 16);
@@ -147,17 +149,18 @@
             this.Controls.Add(this.lblEsqueceuSuaSenha);
             this.Controls.Add(this.lblSenha);
             this.Controls.Add(this.lblUsuario);
-            this.Controls.Add(this.txtUsuario);
+            this.Controls.Add(this.cbxUsuario);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.btnEntrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed);
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtSenha.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtUsuario.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxUsuario.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,7 +170,7 @@
 
         private DevExpress.XtraEditors.SimpleButton btnEntrar;
         private DevExpress.XtraEditors.TextEdit txtSenha;
-        private DevExpress.XtraEditors.LookUpEdit txtUsuario;
+        private DevExpress.XtraEditors.LookUpEdit cbxUsuario;
         private DevExpress.XtraEditors.LabelControl lblUsuario;
         private DevExpress.XtraEditors.LabelControl lblSenha;
         private DevExpress.XtraEditors.HyperlinkLabelControl lblEsqueceuSuaSenha;

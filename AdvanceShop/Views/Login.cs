@@ -17,14 +17,14 @@ namespace AdvanceShop.Views
     public partial class Login : DevExpress.XtraEditors.XtraForm
     {
         UsuariosModel usuarioLogin = new UsuariosModel();
-        UsuariosController usuarioControllers = new UsuariosController();
+        UsuariosController usuarioController = new UsuariosController();
         public Login()
         {
             InitializeComponent();
-            txtUsuario.Properties.DataSource = 
-            usuarioControllers.ObterTodosUsuariosAcesso_Nome();
-            txtUsuario.Properties.DisplayMember = "usuarioacesso";
-            txtUsuario.Properties.ValueMember = "usuarioacesso";
+            cbxUsuario.Properties.DataSource = 
+            usuarioController.ObterTodosUsuariosAcesso_Nome();
+            cbxUsuario.Properties.DisplayMember = "usuarioacesso";
+            cbxUsuario.Properties.ValueMember = "usuarioacesso";
         }
 
         private void txtSenha_TextChanged(object sender, EventArgs e)
@@ -54,9 +54,9 @@ namespace AdvanceShop.Views
         private void btnEntrar_Click(object sender, EventArgs e)
         {
             
-            usuarioLogin.UsuarioAcesso = txtUsuario.Text;
+            usuarioLogin.UsuarioAcesso = cbxUsuario.Text;
             usuarioLogin.SenhaAcesso = txtSenha.Text;
-            usuarioLogin =  usuarioControllers.AutenticarUsuario(usuarioLogin);
+            usuarioLogin =  usuarioController.AutenticarUsuario(usuarioLogin);
             if (usuarioLogin.logado == 1)
             {
                 Hide();
@@ -87,8 +87,31 @@ namespace AdvanceShop.Views
 
         private void lblEsqueceuSuaSenha_Click(object sender, EventArgs e)
         {
-            Views.EsqueceuSenha FormEsqueceuSenha = new EsqueceuSenha();
-            FormEsqueceuSenha.ShowDialog();
+            usuarioLogin.UsuarioAcesso = cbxUsuario.Text;
+            usuarioLogin = usuarioController.ObterDadosUsuarioPorNomeUsuario(usuarioLogin);
+            if (cbxUsuario.Text != "Selecione seu usuário")
+            {
+                Views.EsqueceuSenha FormEsqueceuSenha = new EsqueceuSenha(usuarioLogin);
+                FormEsqueceuSenha.ShowDialog();
+            }
+            
+        }
+
+        private void cbxUsuario_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cbxUsuario.Text != "Selecione seu usuário")
+            {
+                lblEsqueceuSuaSenha.Enabled = true;
+            }
+            else
+            {
+                lblEsqueceuSuaSenha.Enabled = false;
+            }
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
         /*
 private void GetLicencaAtiva()

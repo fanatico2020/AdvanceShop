@@ -134,7 +134,53 @@ namespace AdvanceShop.Controllers
                 comando.Parameters.Clear();
             }
         }
-        
+        //Cupom não fiscal
+        public VendasModel ObterDadosDaVendaPorID(VendasModel Venda)
+        {
+            bool resultado;
+            VendasModel venda = new VendasModel();
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText =
+                "select * from vendas where idvendas = @idvendas;";
+            comando.CommandType = CommandType.Text;
+            comando.Parameters.Add(new MySqlParameter("@idvendas", Venda.IdVendas));
+            //Montando dataTable
+            DataTable dt = new DataTable();
+            dt.Columns.Add("idvendas", typeof(int));
+            dt.Columns.Add("valor", typeof(decimal));
+            dt.Columns.Add("desconto", typeof(decimal));
+            dt.Columns.Add("totalfinal", typeof(decimal));
+            dt.Columns.Add("valorpago", typeof(decimal));
+            dt.Columns.Add("troco", typeof(decimal));
+            dt.Columns.Add("clientespessoas_idclientespessoas", typeof(int));
+            dt.Columns.Add("deletado", typeof(int));
+            dt.Columns.Add("caixas_idcaixas", typeof(int));
+            //Lendo dt
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            resultado = reader.HasRows;
+            dt.Load(reader);
+
+            if (resultado)
+            {
+                venda.IdVendas = Convert.ToInt32(dt.Rows[0]["idvendas"]);
+                venda.Valor = Convert.ToDecimal(dt.Rows[0]["valor"]);
+                venda.Desconto = Convert.ToDecimal(dt.Rows[0]["desconto"]);
+                venda.TotalFinal = Convert.ToDecimal(dt.Rows[0]["totalfinal"]);
+                venda.ValorPago = Convert.ToDecimal(dt.Rows[0]["valorpago"]);
+                venda.Troco = Convert.ToDecimal(dt.Rows[0]["troco"]);
+                venda.clientespessoas_idclientespessoas = Convert.ToInt32(dt.Rows[0]["clientespessoas_idclientespessoas"]);
+                venda.deletado = Convert.ToInt32(dt.Rows[0]["deletado"]);
+                venda.caixas_idcaixas = Convert.ToInt32(dt.Rows[0]["caixas_idcaixas"]);
+
+                return venda;
+            }
+            else
+            {
+                return venda;
+            }
+
+        }
 
     }
 }

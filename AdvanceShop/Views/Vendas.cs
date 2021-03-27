@@ -20,6 +20,10 @@ namespace AdvanceShop.Views
     public partial class Vendas : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
+        DataHoraModel dataHora = new DataHoraModel();
+        DataHoraController dataHoraController = new DataHoraController();
+        ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
+        ClientesPessoasController clientePessoaController = new ClientesPessoasController();
         CaixasModel caixa = new CaixasModel();
         CaixasController caixaController = new CaixasController();
         VendasModel venda = new VendasModel();
@@ -170,6 +174,21 @@ namespace AdvanceShop.Views
         private void advBandedGridViewVendas_MasterRowGetLevelDefaultView(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetLevelDefaultViewEventArgs e)
         {
             e.DefaultView = gridViewItensVenda;
+        }
+
+        private void bbiReimprimirCupomNaoFiscal_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //ImprimirCupom
+            venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
+            clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[11]));
+            caixa.IdCaixas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[12]));
+            dataHora.vendas_idvendas = venda.IdVendas;
+
+            //puxa 
+
+
+
+            Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa,dataHora);
         }
     }
 }

@@ -33,6 +33,7 @@ namespace AdvanceShop.Models
         public string Observacao { get; set; }
         public int TipoPessoa { get; set; }
         public int StatusClientePessoa { get; set; }
+        public int Deletado { get; set; }
 
     }
 }

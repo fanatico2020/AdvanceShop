@@ -52,6 +52,7 @@
             this.bandedGridColumnUsuarioCad = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnDataHoraEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnUsuarioEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnclientespessoas_idclientespessoas = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiImprimirVisualizar = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -60,10 +61,12 @@
             this.bbiDeletarVenda = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAtualizarGrid = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTrocaDevolucao = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiReimprimirCupomNaoFiscal = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.bandedGridColumncaixas_idcaixas = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItensVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewVendas)).BeginInit();
@@ -226,7 +229,9 @@
             this.bandedGridColumnDataHoraCad,
             this.bandedGridColumnDataHoraEdi,
             this.bandedGridColumnUsuarioCad,
-            this.bandedGridColumnUsuarioEdi});
+            this.bandedGridColumnUsuarioEdi,
+            this.bandedGridColumnclientespessoas_idclientespessoas,
+            this.bandedGridColumncaixas_idcaixas});
             this.advBandedGridViewVendas.GridControl = this.gridControl;
             this.advBandedGridViewVendas.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridViewVendas.Name = "advBandedGridViewVendas";
@@ -425,6 +430,16 @@
             this.bandedGridColumnUsuarioEdi.Visible = true;
             this.bandedGridColumnUsuarioEdi.Width = 133;
             // 
+            // bandedGridColumnclientespessoas_idclientespessoas
+            // 
+            this.bandedGridColumnclientespessoas_idclientespessoas.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnclientespessoas_idclientespessoas.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnclientespessoas_idclientespessoas.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnclientespessoas_idclientespessoas.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnclientespessoas_idclientespessoas.Caption = "clientespessoas_idclientespessoas";
+            this.bandedGridColumnclientespessoas_idclientespessoas.FieldName = "clientespessoas_idclientespessoas";
+            this.bandedGridColumnclientespessoas_idclientespessoas.Name = "bandedGridColumnclientespessoas_idclientespessoas";
+            // 
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
@@ -437,9 +452,10 @@
             this.bbiEditarVenda,
             this.bbiDeletarVenda,
             this.bbiAtualizarGrid,
-            this.bbiTrocaDevolucao});
+            this.bbiTrocaDevolucao,
+            this.bbiReimprimirCupomNaoFiscal});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 21;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -526,6 +542,15 @@
             this.bbiTrocaDevolucao.Name = "bbiTrocaDevolucao";
             this.bbiTrocaDevolucao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTrocaDevolucao_ItemClick);
             // 
+            // bbiReimprimirCupomNaoFiscal
+            // 
+            this.bbiReimprimirCupomNaoFiscal.Caption = "Reimprimir Cupom Não Fiscal";
+            this.bbiReimprimirCupomNaoFiscal.Id = 21;
+            this.bbiReimprimirCupomNaoFiscal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReimprimirCupomNaoFiscal.ImageOptions.Image")));
+            this.bbiReimprimirCupomNaoFiscal.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReimprimirCupomNaoFiscal.ImageOptions.LargeImage")));
+            this.bbiReimprimirCupomNaoFiscal.Name = "bbiReimprimirCupomNaoFiscal";
+            this.bbiReimprimirCupomNaoFiscal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReimprimirCupomNaoFiscal_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -546,6 +571,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiEditarVenda);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDeletarVenda);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAtualizarGrid);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiReimprimirCupomNaoFiscal);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tarefas";
             // 
@@ -563,6 +589,16 @@
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(978, 24);
+            // 
+            // bandedGridColumncaixas_idcaixas
+            // 
+            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumncaixas_idcaixas.Caption = "caixas_idcaixas";
+            this.bandedGridColumncaixas_idcaixas.FieldName = "caixas_idcaixas";
+            this.bandedGridColumncaixas_idcaixas.Name = "bandedGridColumncaixas_idcaixas";
             // 
             // Vendas
             // 
@@ -623,5 +659,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnSubtotal;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnValorProdutoHoje;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnQuantidadeEstoque;
+        private DevExpress.XtraBars.BarButtonItem bbiReimprimirCupomNaoFiscal;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnclientespessoas_idclientespessoas;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumncaixas_idcaixas;
     }
 }

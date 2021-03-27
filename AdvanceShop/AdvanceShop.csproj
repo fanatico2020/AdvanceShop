@@ -345,6 +345,7 @@
     <Compile Include="Controllers\ClientesPessoasController.cs" />
     <Compile Include="Controllers\ConfiguracoesGeraisController.cs" />
     <Compile Include="Controllers\ContasAPagarController.cs" />
+    <Compile Include="Controllers\DataHoraController.cs" />
     <Compile Include="Controllers\EmailSistemaController.cs" />
     <Compile Include="Controllers\FormasPagamentoController.cs" />
     <Compile Include="Controllers\ItensVendasController.cs" />

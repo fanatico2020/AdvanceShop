@@ -134,6 +134,17 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@idusuarios", usuario.IdUsuarios));
             comando.ExecuteNonQuery();
         }
+        public void GerarNovaSenhaAcesso(UsuariosModel usuario)
+        {
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText =
+                "update usuarios set senhaacesso = md5(@senhaacesso) where idusuarios = @idusuarios;";
+            comando.Parameters.Add(new MySqlParameter("@idusuarios", usuario.IdUsuarios));
+            comando.Parameters.Add(new MySqlParameter("@senhaacesso", usuario.SenhaAcesso));
+            comando.ExecuteNonQuery();
+        }
         public bool AutenticarSenha(UsuariosModel usuario)
         {
             bool resultado;
@@ -200,6 +211,51 @@ namespace AdvanceShop.Controllers
                 return usuarioLogin;
             }
             
+        }
+        public UsuariosModel ObterDadosUsuarioPorNomeUsuario(UsuariosModel usuario)
+        {
+            bool resultado;
+            UsuariosModel usuarioLogin = new UsuariosModel();
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText =
+                "select * from usuarios where usuarioacesso  = '" + usuario.UsuarioAcesso + "' and status = 1;";
+            comando.CommandType = CommandType.Text;
+            //Montando dataTable
+            DataTable dt = new DataTable();
+            dt.Columns.Add("idusuarios", typeof(int));
+            dt.Columns.Add("usuarioacesso", typeof(string));
+            dt.Columns.Add("senhaacesso", typeof(string));
+            dt.Columns.Add("nomecompleto", typeof(string));
+            dt.Columns.Add("email", typeof(string));
+            dt.Columns.Add("contato", typeof(string));
+            dt.Columns.Add("usadescontomaximo", typeof(int));
+            dt.Columns.Add("descontomaximo", typeof(decimal));
+            dt.Columns.Add("status", typeof(int));
+            //Lendo dt
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            resultado = reader.HasRows;
+            dt.Load(reader);
+
+            if (resultado)
+            {
+                usuarioLogin.IdUsuarios = Convert.ToInt32(dt.Rows[0]["idusuarios"]);
+                usuarioLogin.UsuarioAcesso = dt.Rows[0]["usuarioacesso"].ToString();
+                usuarioLogin.SenhaAcesso = dt.Rows[0]["senhaacesso"].ToString();
+                usuarioLogin.NomeCompleto = dt.Rows[0]["nomecompleto"].ToString();
+                usuarioLogin.Email = dt.Rows[0]["email"].ToString();
+                usuarioLogin.Contato = dt.Rows[0]["contato"].ToString();
+                usuarioLogin.UsaDescontoMaximo = Convert.ToInt32(dt.Rows[0]["usadescontomaximo"]);
+                usuarioLogin.DescontoMaximo = Convert.ToDecimal(dt.Rows[0]["descontomaximo"]);
+                usuarioLogin.Status = Convert.ToInt32(dt.Rows[0]["status"]);
+
+                return usuarioLogin;
+            }
+            else
+            {
+                return usuarioLogin;
+            }
+
         }
         public void EditarUsuarioComoLogadoOnOff(UsuariosModel usuarioLogado)//Falta implementar
         {

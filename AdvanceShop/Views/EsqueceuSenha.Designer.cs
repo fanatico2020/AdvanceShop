@@ -32,12 +32,12 @@ namespace AdvanceShop.Views
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EsqueceuSenha));
             this.lblUsuario = new DevExpress.XtraEditors.LabelControl();
             this.btnNovaSenha = new DevExpress.XtraEditors.SimpleButton();
-            this.cbxUsuario = new DevExpress.XtraEditors.LookUpEdit();
             this.lblEmail = new DevExpress.XtraEditors.LabelControl();
             this.txtEmail = new DevExpress.XtraEditors.TextEdit();
             this.lblInformacao = new DevExpress.XtraEditors.LabelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxUsuario.Properties)).BeginInit();
+            this.txtUsuario = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUsuario.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblUsuario
@@ -59,22 +59,6 @@ namespace AdvanceShop.Views
             this.btnNovaSenha.TabIndex = 3;
             this.btnNovaSenha.Text = "Nova senha (F2)";
             this.btnNovaSenha.Click += new System.EventHandler(this.btnNovaSenha_Click);
-            // 
-            // cbxUsuario
-            // 
-            this.cbxUsuario.Location = new System.Drawing.Point(12, 75);
-            this.cbxUsuario.Name = "cbxUsuario";
-            this.cbxUsuario.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxUsuario.Properties.Appearance.Options.UseFont = true;
-            this.cbxUsuario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbxUsuario.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("idusuarios", "Código", 5, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("usuarioacesso", "Usuário Acesso")});
-            this.cbxUsuario.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cbxUsuario.Properties.ContextImageOptions.Image")));
-            this.cbxUsuario.Properties.NullText = "Selecione seu usuário";
-            this.cbxUsuario.Size = new System.Drawing.Size(396, 26);
-            this.cbxUsuario.TabIndex = 1;
             // 
             // lblEmail
             // 
@@ -101,13 +85,28 @@ namespace AdvanceShop.Views
             // 
             // lblInformacao
             // 
-            this.lblInformacao.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformacao.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformacao.Appearance.ForeColor = System.Drawing.Color.Red;
             this.lblInformacao.Appearance.Options.UseFont = true;
+            this.lblInformacao.Appearance.Options.UseForeColor = true;
             this.lblInformacao.Location = new System.Drawing.Point(12, 12);
             this.lblInformacao.Name = "lblInformacao";
-            this.lblInformacao.Size = new System.Drawing.Size(380, 19);
+            this.lblInformacao.Size = new System.Drawing.Size(369, 16);
             this.lblInformacao.TabIndex = 9;
-            this.lblInformacao.Text = "Selecione seu usuário e entre com endereço de email ";
+            this.lblInformacao.Text = "Confirme o endereço de email para geração de uma nova senha";
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.EditValue = "";
+            this.txtUsuario.Location = new System.Drawing.Point(12, 75);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsuario.Properties.Appearance.Options.UseFont = true;
+            this.txtUsuario.Properties.ContextImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("cbxUsuario.Properties.ContextImageOptions.Image")));
+            this.txtUsuario.Properties.NullText = "Selecione seu usuário";
+            this.txtUsuario.Properties.ReadOnly = true;
+            this.txtUsuario.Size = new System.Drawing.Size(396, 26);
+            this.txtUsuario.TabIndex = 1;
             // 
             // EsqueceuSenha
             // 
@@ -117,9 +116,9 @@ namespace AdvanceShop.Views
             this.Controls.Add(this.lblInformacao);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.cbxUsuario);
             this.Controls.Add(this.btnNovaSenha);
             this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.txtUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("EsqueceuSenha.IconOptions.SvgImage")));
             this.KeyPreview = true;
@@ -130,8 +129,8 @@ namespace AdvanceShop.Views
             this.Load += new System.EventHandler(this.EsqueceuSenha_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EsqueceuSenha_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EsqueceuSenha_KeyPress);
-            ((System.ComponentModel.ISupportInitialize)(this.cbxUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtUsuario.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,9 +140,9 @@ namespace AdvanceShop.Views
 
         private DevExpress.XtraEditors.LabelControl lblUsuario;
         private DevExpress.XtraEditors.SimpleButton btnNovaSenha;
-        private DevExpress.XtraEditors.LookUpEdit cbxUsuario;
         private DevExpress.XtraEditors.LabelControl lblEmail;
         private DevExpress.XtraEditors.TextEdit txtEmail;
         private DevExpress.XtraEditors.LabelControl lblInformacao;
+        private DevExpress.XtraEditors.TextEdit txtUsuario;
     }
 }
