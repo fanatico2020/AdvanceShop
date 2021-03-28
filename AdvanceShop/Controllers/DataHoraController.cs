@@ -13,16 +13,16 @@ namespace AdvanceShop.Controllers
     public class DataHoraController
     {
         //Cupom não fiscal
-        public DataHoraModel ObterDadosDataHoraPorID(DataHoraModel DataHora)
+        public DataHoraModel ObterDadosDataHoraPorIDVenda(DataHoraModel DataHora)
         {
             bool resultado;
             DataHoraModel dataHora = new DataHoraModel();
             MySqlConnection conexao = ConexaoMySql.GetConexao();
             MySqlCommand comando = ConexaoMySql.GetComando(conexao);
             comando.CommandText =
-                "select * from datahora where iddatahora = @iddatahora;";
+                "select * from datahora where vendas_idvendas = @vendas_idvendas;";
             comando.CommandType = CommandType.Text;
-            comando.Parameters.Add(new MySqlParameter("@idcaixas", DataHora.iddatahora));
+            comando.Parameters.Add(new MySqlParameter("@vendas_idvendas", DataHora.vendas_idvendas));
             //Montando dataTable
             DataTable dt = new DataTable();
             dt.Columns.Add("iddatahora", typeof(int));
@@ -45,19 +45,27 @@ namespace AdvanceShop.Controllers
 
             if (resultado)
             {
-                dataHora.iddatahora = Convert.ToInt32(dt.Rows[0]["iddatahora"]);
-                dataHora.datahoracadastro = Convert.ToDateTime(dt.Rows[0]["datahoracadastro"]);
-                dataHora.datahoraedicao = Convert.ToDateTime(dt.Rows[0]["datahoraedicao"]);
-                dataHora.usuariocadastro = dt.Rows[0]["usuariocadastro"].ToString();
-                dataHora.usuarioedicao = dt.Rows[0]["usuarioedicao"].ToString();
-                dataHora.usuarios_idusuarios = Convert.ToInt32(dt.Rows[0]["usuarios_idusuarios"]);
-                dataHora.clientespessoas_idclientespessoas = Convert.ToInt32(dt.Rows[0]["clientespessoas_idclientespessoas"]);
-                dataHora.caixas_idcaixas = Convert.ToInt32(dt.Rows[0]["caixas_idcaixas"]);
-                dataHora.produtos_idprodutos = Convert.ToInt32(dt.Rows[0]["produtos_idprodutos"]);
-                dataHora.transacoescaixa_idtransacoescaixa = Convert.ToInt32(dt.Rows[0]["transacoescaixa_idtransacoescaixa"]);
-                dataHora.transacoesestoque_idtransacoesestoque = Convert.ToInt32(dt.Rows[0]["transacoesestoque_idtransacoesestoque"]);
-                dataHora.contasapagar_idcontasapagar = Convert.ToInt32(dt.Rows[0]["contasapagar_idcontasapagar"]);
-                dataHora.vendas_idvendas = Convert.ToInt32(dt.Rows[0]["vendas_idvendas"]);
+                try
+                {
+                    dataHora.iddatahora = Convert.ToInt32(dt.Rows[0]["iddatahora"]);
+                    dataHora.datahoracadastro = Convert.ToDateTime(dt.Rows[0]["datahoracadastro"]);
+                    dataHora.datahoraedicao = Convert.ToDateTime(dt.Rows[0]["datahoraedicao"]);
+                    dataHora.usuariocadastro = dt.Rows[0]["usuariocadastro"].ToString();
+                    dataHora.usuarioedicao = dt.Rows[0]["usuarioedicao"].ToString();
+                    dataHora.usuarios_idusuarios = Convert.ToInt32(dt.Rows[0]["usuarios_idusuarios"]);
+                    dataHora.clientespessoas_idclientespessoas = Convert.ToInt32(dt.Rows[0]["clientespessoas_idclientespessoas"]);
+                    dataHora.caixas_idcaixas = Convert.ToInt32(dt.Rows[0]["caixas_idcaixas"]);
+                    dataHora.produtos_idprodutos = Convert.ToInt32(dt.Rows[0]["produtos_idprodutos"]);
+                    dataHora.transacoescaixa_idtransacoescaixa = Convert.ToInt32(dt.Rows[0]["transacoescaixa_idtransacoescaixa"]);
+                    dataHora.transacoesestoque_idtransacoesestoque = Convert.ToInt32(dt.Rows[0]["transacoesestoque_idtransacoesestoque"]);
+                    dataHora.contasapagar_idcontasapagar = Convert.ToInt32(dt.Rows[0]["contasapagar_idcontasapagar"]);
+                    dataHora.vendas_idvendas = Convert.ToInt32(dt.Rows[0]["vendas_idvendas"]);
+                }
+                catch (InvalidCastException)
+                {
+
+                }
+                
 
                 return dataHora;
             }

@@ -164,6 +164,7 @@ namespace AdvanceShop.Controllers
         //Cupom não fiscal
         public CaixasModel ObterDadosDoCaixaPorID(CaixasModel Caixa)
         {
+            
             bool resultado;
             CaixasModel caixa = new CaixasModel();
             MySqlConnection conexao = ConexaoMySql.GetConexao();
@@ -193,18 +194,27 @@ namespace AdvanceShop.Controllers
 
             if (resultado)
             {
-                caixa.IdCaixas = Convert.ToInt32(dt.Rows[0]["idcaixas"]);
-                caixa.Maquina = dt.Rows[0]["maquina"].ToString();
-                caixa.SaldoInicial = Convert.ToDecimal(dt.Rows[0]["saldoinicial"]);
-                caixa.ValorInformado = Convert.ToDecimal(dt.Rows[0]["valorinformado"]);
-                caixa.QuebraCaixa = Convert.ToDecimal(dt.Rows[0]["quebracaixa"]);
-                caixa.SaldoFinal = Convert.ToDecimal(dt.Rows[0]["saldofinal"]);
-                caixa.ObservacaoCaixa = dt.Rows[0]["observacaocaixa"].ToString();
-                caixa.status = Convert.ToInt32(dt.Rows[0]["status"]);
-                caixa.UsuarioFechamento = dt.Rows[0]["usuariofechamento"].ToString();
-                caixa.DataHoraFechamento = Convert.ToDateTime(dt.Rows[0]["datahorafechamento"]);
-                caixa.Deletado = Convert.ToInt32(dt.Rows[0]["deletado"]);
-                caixa.usuarios_idusuarios = Convert.ToInt32(dt.Rows[0]["usuarios_idusuarios"]);
+                try
+                {
+                    caixa.IdCaixas = Convert.ToInt32(dt.Rows[0]["idcaixas"]);
+                    caixa.Maquina = dt.Rows[0]["maquina"].ToString();
+                    caixa.SaldoInicial = Convert.ToDecimal(dt.Rows[0]["saldoinicial"]);
+                    caixa.ValorInformado = Convert.ToDecimal(dt.Rows[0]["valorinformado"]);
+                    caixa.QuebraCaixa = Convert.ToDecimal(dt.Rows[0]["quebracaixa"]);
+                    caixa.SaldoFinal = Convert.ToDecimal(dt.Rows[0]["saldofinal"]);
+                    caixa.ObservacaoCaixa = dt.Rows[0]["observacaocaixa"].ToString();
+                    caixa.status = Convert.ToInt32(dt.Rows[0]["status"]);
+                    caixa.UsuarioFechamento = dt.Rows[0]["usuariofechamento"].ToString();
+                    caixa.DataHoraFechamento = Convert.ToDateTime(dt.Rows[0]["datahorafechamento"]);
+                    caixa.Deletado = Convert.ToInt32(dt.Rows[0]["deletado"]);
+                    caixa.usuarios_idusuarios = Convert.ToInt32(dt.Rows[0]["usuarios_idusuarios"]);
+                }
+                catch (InvalidCastException)
+                {
+
+                    
+                }
+                
 
                 return caixa;
             }

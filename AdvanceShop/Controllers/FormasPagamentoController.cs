@@ -25,6 +25,18 @@ namespace AdvanceShop.Controllers
             dataTable.Load(reader);
             return dataTable;
         }
+        public DataTable ObterFormasPagamentosPorIDVenda(VendasModel venda)
+        {
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText = "select * from formaspagamento left join transacoescaixa on formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa where vendas_idvendas = @vendas_idvendas;";
+            comando.CommandType = CommandType.Text;
+            comando.Parameters.Add(new MySqlParameter("@vendas_idvendas", venda.IdVendas));
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(reader);
+            return dataTable;
+        }
 
         //somar formas de pagamento
 

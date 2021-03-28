@@ -163,16 +163,22 @@ namespace AdvanceShop.Controllers
 
             if (resultado)
             {
-                venda.IdVendas = Convert.ToInt32(dt.Rows[0]["idvendas"]);
-                venda.Valor = Convert.ToDecimal(dt.Rows[0]["valor"]);
-                venda.Desconto = Convert.ToDecimal(dt.Rows[0]["desconto"]);
-                venda.TotalFinal = Convert.ToDecimal(dt.Rows[0]["totalfinal"]);
-                venda.ValorPago = Convert.ToDecimal(dt.Rows[0]["valorpago"]);
-                venda.Troco = Convert.ToDecimal(dt.Rows[0]["troco"]);
-                venda.clientespessoas_idclientespessoas = Convert.ToInt32(dt.Rows[0]["clientespessoas_idclientespessoas"]);
-                venda.deletado = Convert.ToInt32(dt.Rows[0]["deletado"]);
-                venda.caixas_idcaixas = Convert.ToInt32(dt.Rows[0]["caixas_idcaixas"]);
+                try
+                {
+                    venda.IdVendas = Convert.ToInt32(dt.Rows[0]["idvendas"]);
+                    venda.Valor = Convert.ToDecimal(dt.Rows[0]["valor"]);
+                    venda.Desconto = Convert.ToDecimal(dt.Rows[0]["desconto"]);
+                    venda.TotalFinal = Convert.ToDecimal(dt.Rows[0]["totalfinal"]);
+                    venda.ValorPago = Convert.ToDecimal(dt.Rows[0]["valorpago"]);
+                    venda.Troco = Convert.ToDecimal(dt.Rows[0]["troco"]);
+                    venda.clientespessoas_idclientespessoas = Convert.ToInt32(dt.Rows[0]["clientespessoas_idclientespessoas"]);
+                    venda.deletado = Convert.ToInt32(dt.Rows[0]["deletado"]);
+                    venda.caixas_idcaixas = Convert.ToInt32(dt.Rows[0]["caixas_idcaixas"]);
+                }
+                catch (InvalidCastException)
+                {
 
+                }
                 return venda;
             }
             else

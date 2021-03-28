@@ -76,7 +76,7 @@ namespace AdvanceShop.Views
 
             if(advBandedGridViewVendas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Continuar para tela de Troca/Devolução de itens da venda selecionada?") == DialogResult.Yes)
             {
-                Views.TrocaDevolucao FormDevolucao = new TrocaDevolucao(usuarioLogado);
+                Views.TrocaDevolucao FormDevolucao = new TrocaDevolucao(venda,usuarioLogado);
                 FormDevolucao.ShowDialog();
             }
         }
@@ -178,17 +178,33 @@ namespace AdvanceShop.Views
 
         private void bbiReimprimirCupomNaoFiscal_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //ImprimirCupom
-            venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
-            clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[11]));
-            caixa.IdCaixas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[12]));
-            dataHora.vendas_idvendas = venda.IdVendas;
+            if(advBandedGridViewVendas.SelectedRowsCount == 1)
+            {
+                try
+                {
+                    //Dados para cupom
+                    venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
+                    if(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[11]) != DBNull.Value) clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[11]));
+                    caixa.IdCaixas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[12]));
+                    dataHora.vendas_idvendas = venda.IdVendas;
 
-            //puxa 
+                    venda = vendaController.ObterDadosDaVendaPorID(venda);
+                    clientePessoa = clientePessoaController.ObterDadosDoClientePessoaPorID(clientePessoa);
+                    caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
+                    dataHora = dataHoraController.ObterDadosDataHoraPorIDVenda(dataHora);
 
 
-
-            Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa,dataHora);
+                    //print
+                    Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora);
+                }
+                
+                catch(Exception error)
+                {
+                    MessageBoxError.Show(error.Message);
+                }
+                
+            }
+            
         }
     }
 }

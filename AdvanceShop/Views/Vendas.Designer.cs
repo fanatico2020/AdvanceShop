@@ -53,6 +53,7 @@
             this.bandedGridColumnDataHoraEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnUsuarioEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnclientespessoas_idclientespessoas = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumncaixas_idcaixas = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiImprimirVisualizar = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -66,7 +67,7 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.bandedGridColumncaixas_idcaixas = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumnItem = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItensVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewVendas)).BeginInit();
@@ -82,7 +83,8 @@
             this.gridColumnValorUnitario,
             this.gridColumnSubtotal,
             this.gridColumnValorProdutoHoje,
-            this.gridColumnQuantidadeEstoque});
+            this.gridColumnQuantidadeEstoque,
+            this.gridColumnItem});
             this.gridViewItensVenda.GridControl = this.gridControl;
             this.gridViewItensVenda.Name = "gridViewItensVenda";
             this.gridViewItensVenda.OptionsBehavior.Editable = false;
@@ -104,7 +106,7 @@
             this.gridColumnCodigoproduto.Name = "gridColumnCodigoproduto";
             this.gridColumnCodigoproduto.Visible = true;
             this.gridColumnCodigoproduto.VisibleIndex = 0;
-            this.gridColumnCodigoproduto.Width = 78;
+            this.gridColumnCodigoproduto.Width = 67;
             // 
             // gridColumnDescricaoProduto
             // 
@@ -116,8 +118,8 @@
             this.gridColumnDescricaoProduto.FieldName = "descricaoproduto";
             this.gridColumnDescricaoProduto.Name = "gridColumnDescricaoProduto";
             this.gridColumnDescricaoProduto.Visible = true;
-            this.gridColumnDescricaoProduto.VisibleIndex = 1;
-            this.gridColumnDescricaoProduto.Width = 290;
+            this.gridColumnDescricaoProduto.VisibleIndex = 2;
+            this.gridColumnDescricaoProduto.Width = 251;
             // 
             // gridColumnQuantidade
             // 
@@ -131,8 +133,8 @@
             this.gridColumnQuantidade.FieldName = "quantidade";
             this.gridColumnQuantidade.Name = "gridColumnQuantidade";
             this.gridColumnQuantidade.Visible = true;
-            this.gridColumnQuantidade.VisibleIndex = 2;
-            this.gridColumnQuantidade.Width = 85;
+            this.gridColumnQuantidade.VisibleIndex = 3;
+            this.gridColumnQuantidade.Width = 67;
             // 
             // gridColumnValorUnitario
             // 
@@ -146,8 +148,8 @@
             this.gridColumnValorUnitario.FieldName = "valorunitario";
             this.gridColumnValorUnitario.Name = "gridColumnValorUnitario";
             this.gridColumnValorUnitario.Visible = true;
-            this.gridColumnValorUnitario.VisibleIndex = 3;
-            this.gridColumnValorUnitario.Width = 90;
+            this.gridColumnValorUnitario.VisibleIndex = 4;
+            this.gridColumnValorUnitario.Width = 79;
             // 
             // gridColumnSubtotal
             // 
@@ -161,8 +163,8 @@
             this.gridColumnSubtotal.FieldName = "subtotal";
             this.gridColumnSubtotal.Name = "gridColumnSubtotal";
             this.gridColumnSubtotal.Visible = true;
-            this.gridColumnSubtotal.VisibleIndex = 4;
-            this.gridColumnSubtotal.Width = 101;
+            this.gridColumnSubtotal.VisibleIndex = 5;
+            this.gridColumnSubtotal.Width = 88;
             // 
             // gridColumnValorProdutoHoje
             // 
@@ -176,8 +178,8 @@
             this.gridColumnValorProdutoHoje.FieldName = "precovenda";
             this.gridColumnValorProdutoHoje.Name = "gridColumnValorProdutoHoje";
             this.gridColumnValorProdutoHoje.Visible = true;
-            this.gridColumnValorProdutoHoje.VisibleIndex = 5;
-            this.gridColumnValorProdutoHoje.Width = 104;
+            this.gridColumnValorProdutoHoje.VisibleIndex = 6;
+            this.gridColumnValorProdutoHoje.Width = 91;
             // 
             // gridColumnQuantidadeEstoque
             // 
@@ -191,8 +193,8 @@
             this.gridColumnQuantidadeEstoque.FieldName = "estoqueatual";
             this.gridColumnQuantidadeEstoque.Name = "gridColumnQuantidadeEstoque";
             this.gridColumnQuantidadeEstoque.Visible = true;
-            this.gridColumnQuantidadeEstoque.VisibleIndex = 6;
-            this.gridColumnQuantidadeEstoque.Width = 115;
+            this.gridColumnQuantidadeEstoque.VisibleIndex = 7;
+            this.gridColumnQuantidadeEstoque.Width = 105;
             // 
             // gridControl
             // 
@@ -440,6 +442,16 @@
             this.bandedGridColumnclientespessoas_idclientespessoas.FieldName = "clientespessoas_idclientespessoas";
             this.bandedGridColumnclientespessoas_idclientespessoas.Name = "bandedGridColumnclientespessoas_idclientespessoas";
             // 
+            // bandedGridColumncaixas_idcaixas
+            // 
+            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumncaixas_idcaixas.Caption = "caixas_idcaixas";
+            this.bandedGridColumncaixas_idcaixas.FieldName = "caixas_idcaixas";
+            this.bandedGridColumncaixas_idcaixas.Name = "bandedGridColumncaixas_idcaixas";
+            // 
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
@@ -590,15 +602,20 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(978, 24);
             // 
-            // bandedGridColumncaixas_idcaixas
+            // gridColumnItem
             // 
-            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.Options.UseForeColor = true;
-            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumncaixas_idcaixas.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumncaixas_idcaixas.Caption = "caixas_idcaixas";
-            this.bandedGridColumncaixas_idcaixas.FieldName = "caixas_idcaixas";
-            this.bandedGridColumncaixas_idcaixas.Name = "bandedGridColumncaixas_idcaixas";
+            this.gridColumnItem.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnItem.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnItem.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumnItem.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumnItem.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnItem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnItem.Caption = "Item";
+            this.gridColumnItem.FieldName = "item";
+            this.gridColumnItem.Name = "gridColumnItem";
+            this.gridColumnItem.Visible = true;
+            this.gridColumnItem.VisibleIndex = 1;
+            this.gridColumnItem.Width = 65;
             // 
             // Vendas
             // 
@@ -662,5 +679,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiReimprimirCupomNaoFiscal;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnclientespessoas_idclientespessoas;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumncaixas_idcaixas;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnItem;
     }
 }
