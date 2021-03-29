@@ -14,19 +14,7 @@ namespace AdvanceShop.Shared.CustomPrint
 {
     public static  class CupomNaoFiscal
     {
-        //private class ItensVenda
-        //{
-        //    public int CodigoItem { get; set; }
-        //    public string DescricaoProduto { get; set; }
-        //    public int Quantidade { get; set; }
-        //    public decimal VlrUnit { get; set; }
-        //    public decimal Subtotal { get; set; }
-        //}
-        //private class FormasPagamento
-        //{
-        //    public string DescricaoPagamento { get; set; }
-        //    public decimal Valor { get; set; }
-        //}
+        
         public static void ImprimirCupom(VendasModel Venda, ClientesPessoasModel Cliente, UsuariosModel Usuario, CaixasModel Caixa,DataHoraModel DataHora)
         {
 
@@ -61,8 +49,8 @@ namespace AdvanceShop.Shared.CustomPrint
             //report.ReportUnit = ReportUnit.HundredthsOfAnInch;
             report.FilterString = $"[vendas_idvendas] = {Venda.IdVendas}";
             report.CreateDocument();
-            report.ShowPreview(UserLookAndFeel.Default);//para teste
-            //report.PrintDialog();//mostrar dialog para selecionar a impressora para impressão
+            //report.ShowPreview(UserLookAndFeel.Default);//para teste
+            report.PrintDialog();//mostrar dialog para selecionar a impressora para impressão
         }
 
         

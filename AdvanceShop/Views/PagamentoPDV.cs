@@ -21,12 +21,13 @@ namespace AdvanceShop.Views
     public partial class PagamentoPDV : DevExpress.XtraEditors.XtraForm
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
+        ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
+        ConfiguracoesGeraisModel configGerais = new ConfiguracoesGeraisModel();
         DataHoraModel dataHora = new DataHoraModel();
         VendasModel venda = new VendasModel();
         VendasController vendaController = new VendasController();
         TransacoesCaixaModel transacaoCaixa = new TransacoesCaixaModel();
         TransacoesCaixaController transacaoCaixaController = new TransacoesCaixaController();
-        //FormasPagamentoModel formaPagamento = new FormasPagamentoModel();
         ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
         CaixasModel caixa = new CaixasModel();
         List<ItensVendasModel> itensVenda = new List<ItensVendasModel>();
@@ -51,6 +52,12 @@ namespace AdvanceShop.Views
             lblValorDesconto.Text = $"{venda.Desconto.ToString("C")}";
             VendaOuEditarFormaPagamento = "Venda";
 
+            configGerais = configGeraisController.ObterConfiguracoesGerais();
+
+            cbxImprimirNFCe.Enabled = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
+            cbxImprimirNFCe.Checked = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
+            
+
         }
         public PagamentoPDV(TransacoesCaixaModel TransacaoCaixa, UsuariosModel UsuarioLogado)//Editar Formas de pagamento
         {
@@ -61,7 +68,7 @@ namespace AdvanceShop.Views
             transacaoCaixa = TransacaoCaixa;
             lblValorTotalAPagar.Text = $"{transacaoCaixa.Valor.ToString("C")}";
             lblValorDesconto.Text = $"{transacaoCaixaController.ObterValorDescontoVenda(TransacaoCaixa).ToString("C")}";
-            cbxImprimirComprovante.Visible = false;
+            
             cbxImprimirNFCe.Visible = false;
             VendaOuEditarFormaPagamento = "Edição de formas de pagamento";
 
@@ -90,10 +97,27 @@ namespace AdvanceShop.Views
                 view.NovaVenda();
             }
         }
-        
+        private void ChecarConfigacoes()
+        {
+            if (Convert.ToBoolean(configGerais.trocomaximo))
+            {
+                if (Convert.ToDecimal(lblValorTroco.Text.Replace("R$", "")) <= Convert.ToDecimal(configGerais.valortrocomaximo))
+                {
+                    FinalizarVenda();
+                }
+                else
+                {
+                    MessageBoxWarning.Show($"Troco máximo permitido {configGerais.valortrocomaximo.ToString("C")}");
+                }
+            }
+            else
+            {
+                FinalizarVenda();
+            }
+        }
         private void FinalizarVenda()
         {
-           
+            
             if (Troco >= 0 && lblTroco.Text == "Troco" && MessageBoxQuestionYesNo.Show($"Deseja finalizar a {VendaOuEditarFormaPagamento}?") == DialogResult.Yes)
             {
                 if (!editarformaspagamento)
@@ -143,38 +167,39 @@ namespace AdvanceShop.Views
                             default:
                                 break;
                         }
-                        
+
                     }
-                    
+
                     for (int x = 0; x < ValoresPagamento.Length; x++)
                     {
                         venda.ValorPago += ValoresPagamento[x];
                     }
-                    
-
 
                     vendaController.Adicionar(venda, formasPagamento, itensVenda, transacaoCaixa, usuarioLogado);
-                    //ImprimirCupom
-                    venda.IdVendas = vendaController.ObterUltimoIDVendaInserido();
-                    dataHora.datahoracadastro = DateTime.Now;
-                    caixa.Maquina = Environment.MachineName;
-                    Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora);
+                    if (Convert.ToBoolean(configGerais.imprimircupomfinalizarvenda))
+                    {
+                        //ImprimirCupom
+                        venda.IdVendas = vendaController.ObterUltimoIDVendaInserido();
+                        dataHora.datahoracadastro = DateTime.Now;
+                        caixa.Maquina = Environment.MachineName;
+                        Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora);
+                    }
                     //Iniciar nova venda no pdv
                     NovaVenda();
                     AtualizarGridVendas();
-                    
+
                 }
                 else//Editar formas de pagamento
                 {
-                    
+
                     AtualizarGridTransacoesCaixa();
-                    
+
                 }
-                
+
                 //fim
                 formasPagamento.Clear();
                 venda.ValorPago = 0;
-                
+
                 MessageBoxOK.Show($"{VendaOuEditarFormaPagamento} finalizada com sucesso!");
                 Close();
             }
@@ -182,7 +207,6 @@ namespace AdvanceShop.Views
             {
                 MessageBoxWarning.Show($"Opa ainda falta receber {lblValorTroco.Text}");
             }
-
             
         }
         
@@ -250,7 +274,7 @@ namespace AdvanceShop.Views
         {
             if(e.KeyCode == Keys.F2)
             {
-                FinalizarVenda();
+                ChecarConfigacoes();
             }
         }
 
@@ -261,7 +285,8 @@ namespace AdvanceShop.Views
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            FinalizarVenda();
+
+            ChecarConfigacoes();
         }
 
         private void txtDinheiro_KeyPress(object sender, KeyPressEventArgs e)

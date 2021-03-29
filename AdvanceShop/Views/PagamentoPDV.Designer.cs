@@ -47,7 +47,6 @@
             this.txtCartaoCredito = new DevExpress.XtraEditors.TextEdit();
             this.txtDinheiro = new DevExpress.XtraEditors.TextEdit();
             this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
-            this.cbxImprimirComprovante = new DevExpress.XtraEditors.CheckEdit();
             this.cbxImprimirNFCe = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlTotalAPagar)).BeginInit();
             this.panelControlTotalAPagar.SuspendLayout();
@@ -59,7 +58,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoDebito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoCredito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDinheiro.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxImprimirComprovante.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxImprimirNFCe.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -327,40 +325,29 @@
             // btnSalvar
             // 
             this.btnSalvar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.ImageOptions.Image")));
-            this.btnSalvar.Location = new System.Drawing.Point(430, 348);
+            this.btnSalvar.Location = new System.Drawing.Point(430, 336);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(98, 29);
+            this.btnSalvar.Size = new System.Drawing.Size(98, 41);
             this.btnSalvar.TabIndex = 5;
             this.btnSalvar.Text = "Salvar (F2)";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // cbxImprimirComprovante
-            // 
-            this.cbxImprimirComprovante.Location = new System.Drawing.Point(12, 320);
-            this.cbxImprimirComprovante.Name = "cbxImprimirComprovante";
-            this.cbxImprimirComprovante.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxImprimirComprovante.Properties.Appearance.Options.UseFont = true;
-            this.cbxImprimirComprovante.Properties.Caption = "Imprimir comprovante";
-            this.cbxImprimirComprovante.Size = new System.Drawing.Size(198, 23);
-            this.cbxImprimirComprovante.TabIndex = 6;
-            // 
             // cbxImprimirNFCe
             // 
-            this.cbxImprimirNFCe.Location = new System.Drawing.Point(12, 349);
+            this.cbxImprimirNFCe.Location = new System.Drawing.Point(12, 343);
             this.cbxImprimirNFCe.Name = "cbxImprimirNFCe";
             this.cbxImprimirNFCe.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxImprimirNFCe.Properties.Appearance.Options.UseFont = true;
-            this.cbxImprimirNFCe.Properties.Caption = "Imprimir NFC-e";
-            this.cbxImprimirNFCe.Size = new System.Drawing.Size(151, 23);
+            this.cbxImprimirNFCe.Properties.Caption = "Imprimir NFC-e (Venda Fiscal)";
+            this.cbxImprimirNFCe.Size = new System.Drawing.Size(244, 23);
             this.cbxImprimirNFCe.TabIndex = 7;
             // 
             // PagamentoPDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 402);
+            this.ClientSize = new System.Drawing.Size(540, 393);
             this.Controls.Add(this.cbxImprimirNFCe);
-            this.Controls.Add(this.cbxImprimirComprovante);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.panelControlFormasPagamento);
             this.Controls.Add(this.panelControlDesconto);
@@ -387,7 +374,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoDebito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoCredito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDinheiro.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxImprimirComprovante.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxImprimirNFCe.Properties)).EndInit();
             this.ResumeLayout(false);
 
@@ -409,7 +395,6 @@
         private DevExpress.XtraEditors.LabelControl lblValorTroco;
         private DevExpress.XtraEditors.LabelControl lblTroco;
         private DevExpress.XtraEditors.SimpleButton btnSalvar;
-        private DevExpress.XtraEditors.CheckEdit cbxImprimirComprovante;
         private DevExpress.XtraEditors.CheckEdit cbxImprimirNFCe;
         private DevExpress.XtraEditors.LabelControl lblDinheiro;
         private DevExpress.XtraEditors.LabelControl lblLinkPagamento;

@@ -38,6 +38,7 @@ namespace AdvanceShop.Models
     {
         public int IdTransacoesEstoque { get; set; }
         public int Tipo { get; set; }
+        public int TipoDescricao { get; set; }
         public string DescricaoTransacao { get; set; }
         public string Observacao { get; set; }
         public string Documento { get; set; }

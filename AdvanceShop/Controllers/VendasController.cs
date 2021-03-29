@@ -51,7 +51,7 @@ namespace AdvanceShop.Controllers
             "insert into transacoescaixa(tipo, descricaotransacao,observacaotransacao,valor,status,caixas_idcaixas,vendas_idvendas,deletado) values(1,CONCAT('VENDA PDV Código ',@first_id),@observacaotransacao,@totalfinal,1, @caixas_idcaixas,@first_id,0); " +
             "select last_insert_id() into @second_id ;" +
             "insert into datahora(datahoracadastro, usuariocadastro, transacoescaixa_idtransacoescaixa) values(now(), @usuariocadastro, last_insert_id()); " +
-            "insert into transacoesestoque(tipo,descricaotransacao,observacaotransacaoestoque,clientespessoas_idclientespessoas,vendas_idvendas,deletado) values (5,CONCAT('VENDA PDV Código ',@first_id),@observacaotransacao,@clientespessoas_idclientespessoas,@first_id,0); " +
+            "insert into transacoesestoque(tipo,tipodescricao,descricaotransacao,observacaotransacaoestoque,clientespessoas_idclientespessoas,vendas_idvendas,deletado) values (5,0,CONCAT('VENDA PDV Código ',@first_id),@observacaotransacao,@clientespessoas_idclientespessoas,@first_id,0); " +
             "select last_insert_id() into @id_transacaoestoque; " +
             "insert into datahora(datahoracadastro,usuariocadastro,transacoesestoque_idtransacoesestoque) values(now(),@usuariocadastro,last_insert_id()); ";
 

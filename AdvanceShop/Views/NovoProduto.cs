@@ -110,7 +110,7 @@ namespace AdvanceShop.Views
             }
             else
             {
-                apiFocusNfe.ambiente = "producao";
+                ambienteFocus = "producao";
                 focusToken = apiFocusNfe.tokenproducao;
             }
             AtualizarNCM();

@@ -1,10 +1,14 @@
 ﻿using AdvanceShop.Data;
+using AdvanceShop.JsonModels.FocusNFe.NFC_e;
 using AdvanceShop.Models;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,6 +65,37 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@tokenproducao", config.tokenproducao));
             comando.Parameters.Add(new MySqlParameter("@ambiente", config.ambiente));
             comando.ExecuteNonQuery();
+        }
+        public async void EnviandoNFC_e(ApiFocusNfeModel config,FocusNFe focusNFe)
+        {
+            string ambienteFocus = "";
+            string focusToken = "";
+            if (config.ambiente == "homologacao")
+            {
+                ambienteFocus = "homologacao";
+                focusToken = config.tokenhomologacao;
+            }
+            else
+            {
+                ambienteFocus = "producao";
+                focusToken = config.tokenproducao;
+            }
+            //dados
+            string json = JsonConvert.SerializeObject(focusNFe, Formatting.Indented);
+
+
+            using (var httpClient = new HttpClient())
+            {
+                using (var request = new HttpRequestMessage(new HttpMethod("POST"), $"https://{ambienteFocus}.focusnfe.com.br/v2/nfce"))
+                {
+                    var base64authorization = Convert.ToBase64String(Encoding.ASCII.GetBytes(focusToken));
+                    request.Headers.TryAddWithoutValidation("Authorization", $"Basic {base64authorization}");
+
+                    request.Content = new ByteArrayContent(File.ReadAllBytes(json));
+
+                    var response = await httpClient.SendAsync(request);
+                }
+            }
         }
     }
 }

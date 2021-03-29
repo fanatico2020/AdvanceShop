@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransacoesEstoque));
             this.gridViewItensTransacaoEstoque = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnCodigoProduto = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,6 +56,7 @@
             this.bandedGridColumnDataHoraEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnUsuarioEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnvendas_idvendas = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnTipoDescricao = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiImprimirVisualizar = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -200,7 +206,28 @@
             this.bandedGridColumnDataHoraCad,
             this.bandedGridColumnDataHoraEdi,
             this.bandedGridColumnUsuarioCad,
-            this.bandedGridColumnUsuarioEdi});
+            this.bandedGridColumnUsuarioEdi,
+            this.bandedGridColumnTipoDescricao});
+            gridFormatRule1.Column = this.bandedGridColumnTipoDescricao;
+            gridFormatRule1.ColumnApplyTo = this.bandedGridColumnTipo;
+            gridFormatRule1.Name = "FormatTipoEntradaSaida";
+            formatConditionIconSet1.CategoryName = "Directional";
+            formatConditionIconSetIcon1.PredefinedName = "ArrowsGray3_1.png";
+            formatConditionIconSetIcon1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            formatConditionIconSetIcon1.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon2.PredefinedName = "ArrowsGray3_3.png";
+            formatConditionIconSetIcon2.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon1);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon2);
+            formatConditionIconSet1.Name = "Arrows3Colored";
+            formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
+            gridFormatRule1.Rule = formatConditionRuleIconSet1;
+            this.advBandedGridViewTransacoesEstoque.FormatRules.Add(gridFormatRule1);
             this.advBandedGridViewTransacoesEstoque.GridControl = this.gridControl;
             this.advBandedGridViewTransacoesEstoque.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridViewTransacoesEstoque.Name = "advBandedGridViewTransacoesEstoque";
@@ -391,6 +418,18 @@
             this.bandedGridColumnvendas_idvendas.FieldName = "vendas_idvendas";
             this.bandedGridColumnvendas_idvendas.Name = "bandedGridColumnvendas_idvendas";
             // 
+            // bandedGridColumnTipoDescricao
+            // 
+            this.bandedGridColumnTipoDescricao.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumnTipoDescricao.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnTipoDescricao.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnTipoDescricao.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnTipoDescricao.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnTipoDescricao.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnTipoDescricao.Caption = "Tipo Descrição";
+            this.bandedGridColumnTipoDescricao.FieldName = "tipodescricao";
+            this.bandedGridColumnTipoDescricao.Name = "bandedGridColumnTipoDescricao";
+            // 
             // ribbonControl
             // 
             this.ribbonControl.ExpandCollapseItem.Id = 0;
@@ -456,6 +495,8 @@
             this.bbiEditar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiEditar.Name = "bbiEditar";
+            this.bbiEditar.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bbiEditar.VisibleInSearchMenu = false;
             this.bbiEditar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditar_ItemClick);
             // 
             // bbiDeletar
@@ -546,6 +587,7 @@
             this.Text = "Transações Estoque";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TransacoesEstoque_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TransacoesEstoque_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItensTransacaoEstoque)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewTransacoesEstoque)).EndInit();
@@ -590,5 +632,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnQuantidade;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnValorUnitario;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnSubtotal;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnTipoDescricao;
     }
 }

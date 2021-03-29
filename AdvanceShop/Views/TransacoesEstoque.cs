@@ -12,6 +12,8 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraBars;
 using AdvanceShop.Models;
 using AdvanceShop.Controllers;
+using AdvanceShop.Shared.CustomMessageBox;
+using AdvanceShop.Shared.Validation;
 
 namespace AdvanceShop.Views
 {
@@ -68,7 +70,8 @@ namespace AdvanceShop.Views
         }
         private void NovaTransacaoSaida()
         {
-           
+            Views.NovaSaidaEstoque FormSaidaEstoque = new NovaSaidaEstoque(usuarioLogado);
+            FormSaidaEstoque.ShowDialog();
         }
         private void EditarTransacao()
         {
@@ -76,7 +79,22 @@ namespace AdvanceShop.Views
         }
         private void DeletarTransacao()
         {
-
+            transacaoEstoque.IdTransacoesEstoque = Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[0]));
+            transacaoEstoque.TipoDescricao = Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[12]));
+            if (Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[1])) != 5)
+            {
+                if (advBandedGridViewTransacoesEstoque.SelectedRowsCount == 1 &&
+                MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                {
+                    transacaoEstoqueController.Deletar(transacaoEstoque);
+                    MessageBoxOK.Show("Deletado com sucesso!");
+                    AtualizarGrid();
+                }
+            }
+            else
+            {
+                MessageBoxWarning.Show("Opa para deletar esse tipo de transação de venda somente deletando a venda!");
+            }
         }
         private void bbiEntrada_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -180,6 +198,11 @@ namespace AdvanceShop.Views
         private void advBandedGridViewTransacoesEstoque_MasterRowGetLevelDefaultView(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetLevelDefaultViewEventArgs e)
         {
             e.DefaultView = gridViewItensTransacaoEstoque;
+        }
+
+        private void TransacoesEstoque_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ConfirmacaoForm.Fechar(e, this);
         }
     }
 }

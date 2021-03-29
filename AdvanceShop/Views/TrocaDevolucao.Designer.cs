@@ -36,14 +36,13 @@ namespace AdvanceShop.Views
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.grbxFormaDevolucao = new DevExpress.XtraEditors.RadioGroup();
             this.gridControlItensDevolucao = new DevExpress.XtraGrid.GridControl();
-            this.advBandedGridViewItensDevolucao = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumnCodigoProd = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnItem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnDescricaoProduto = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnQuantidade = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnValorUnit = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnSubtotal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridViewItensDevolucao = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.bandedGridColumnCodigoProd = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bandedGridColumnItem = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bandedGridColumnDescricaoProduto = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bandedGridColumnQuantidade = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bandedGridColumnValorUnit = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.bandedGridColumnSubtotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblObs = new DevExpress.XtraEditors.LabelControl();
             this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
             this.gridControlFormasPagamento = new DevExpress.XtraGrid.GridControl();
@@ -56,21 +55,20 @@ namespace AdvanceShop.Views
             this.lblValorPagoTroco = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtbpDevolucao = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.xtbpPagamento = new DevExpress.XtraTab.XtraTabPage();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.gridControlFormaDevolucao = new DevExpress.XtraGrid.GridControl();
             this.gridViewFormaDevolucao = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.gridColumnFormaPagDescricao = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnValorDevolucao = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservacaoNfe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbxInformarObsNfe.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grbxFormaDevolucao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlItensDevolucao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewItensDevolucao)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewItensDevolucao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFormasPagamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFormasPagamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -135,55 +133,34 @@ namespace AdvanceShop.Views
             // 
             // gridControlItensDevolucao
             // 
-            this.gridControlItensDevolucao.Location = new System.Drawing.Point(3, 360);
-            this.gridControlItensDevolucao.MainView = this.advBandedGridViewItensDevolucao;
+            this.gridControlItensDevolucao.Location = new System.Drawing.Point(3, 378);
+            this.gridControlItensDevolucao.MainView = this.gridViewItensDevolucao;
             this.gridControlItensDevolucao.Name = "gridControlItensDevolucao";
-            this.gridControlItensDevolucao.Size = new System.Drawing.Size(716, 196);
+            this.gridControlItensDevolucao.Size = new System.Drawing.Size(716, 179);
             this.gridControlItensDevolucao.TabIndex = 5;
             this.gridControlItensDevolucao.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.advBandedGridViewItensDevolucao});
+            this.gridViewItensDevolucao});
             // 
-            // advBandedGridViewItensDevolucao
+            // gridViewItensDevolucao
             // 
-            this.advBandedGridViewItensDevolucao.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand1});
-            this.advBandedGridViewItensDevolucao.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.gridViewItensDevolucao.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.bandedGridColumnCodigoProd,
             this.bandedGridColumnItem,
             this.bandedGridColumnDescricaoProduto,
             this.bandedGridColumnQuantidade,
             this.bandedGridColumnValorUnit,
             this.bandedGridColumnSubtotal});
-            this.advBandedGridViewItensDevolucao.GridControl = this.gridControlItensDevolucao;
-            this.advBandedGridViewItensDevolucao.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
-            this.advBandedGridViewItensDevolucao.Name = "advBandedGridViewItensDevolucao";
-            this.advBandedGridViewItensDevolucao.OptionsBehavior.Editable = false;
-            this.advBandedGridViewItensDevolucao.OptionsCustomization.AllowBandMoving = false;
-            this.advBandedGridViewItensDevolucao.OptionsCustomization.AllowColumnMoving = false;
-            this.advBandedGridViewItensDevolucao.OptionsSelection.EnableAppearanceFocusedCell = false;
-            this.advBandedGridViewItensDevolucao.OptionsSelection.MultiSelect = true;
-            this.advBandedGridViewItensDevolucao.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.advBandedGridViewItensDevolucao.OptionsView.ShowGroupPanel = false;
-            this.advBandedGridViewItensDevolucao.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Red;
-            this.gridBand1.AppearanceHeader.Options.UseFont = true;
-            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand1.Caption = "Selecione os itens que deseja devolver";
-            this.gridBand1.Columns.Add(this.bandedGridColumnCodigoProd);
-            this.gridBand1.Columns.Add(this.bandedGridColumnItem);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDescricaoProduto);
-            this.gridBand1.Columns.Add(this.bandedGridColumnQuantidade);
-            this.gridBand1.Columns.Add(this.bandedGridColumnValorUnit);
-            this.gridBand1.Columns.Add(this.bandedGridColumnSubtotal);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 780;
+            this.gridViewItensDevolucao.GridControl = this.gridControlItensDevolucao;
+            this.gridViewItensDevolucao.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridViewItensDevolucao.Name = "gridViewItensDevolucao";
+            this.gridViewItensDevolucao.OptionsCustomization.AllowColumnMoving = false;
+            this.gridViewItensDevolucao.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewItensDevolucao.OptionsSelection.MultiSelect = true;
+            this.gridViewItensDevolucao.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gridViewItensDevolucao.OptionsView.ShowGroupPanel = false;
+            this.gridViewItensDevolucao.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gridViewItensDevolucao.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridViewItensDevolucao_CellValueChanged);
+            this.gridViewItensDevolucao.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewItensDevolucao_CustomColumnDisplayText);
             // 
             // bandedGridColumnCodigoProd
             // 
@@ -196,7 +173,9 @@ namespace AdvanceShop.Views
             this.bandedGridColumnCodigoProd.Caption = "Código Prod.";
             this.bandedGridColumnCodigoProd.FieldName = "produtos_idprodutos";
             this.bandedGridColumnCodigoProd.Name = "bandedGridColumnCodigoProd";
+            this.bandedGridColumnCodigoProd.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnCodigoProd.Visible = true;
+            this.bandedGridColumnCodigoProd.VisibleIndex = 1;
             this.bandedGridColumnCodigoProd.Width = 93;
             // 
             // bandedGridColumnItem
@@ -210,7 +189,9 @@ namespace AdvanceShop.Views
             this.bandedGridColumnItem.Caption = "Item";
             this.bandedGridColumnItem.FieldName = "item";
             this.bandedGridColumnItem.Name = "bandedGridColumnItem";
+            this.bandedGridColumnItem.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnItem.Visible = true;
+            this.bandedGridColumnItem.VisibleIndex = 2;
             this.bandedGridColumnItem.Width = 47;
             // 
             // bandedGridColumnDescricaoProduto
@@ -222,11 +203,15 @@ namespace AdvanceShop.Views
             this.bandedGridColumnDescricaoProduto.Caption = "Descrição";
             this.bandedGridColumnDescricaoProduto.FieldName = "descricaoproduto";
             this.bandedGridColumnDescricaoProduto.Name = "bandedGridColumnDescricaoProduto";
+            this.bandedGridColumnDescricaoProduto.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnDescricaoProduto.Visible = true;
+            this.bandedGridColumnDescricaoProduto.VisibleIndex = 3;
             this.bandedGridColumnDescricaoProduto.Width = 315;
             // 
             // bandedGridColumnQuantidade
             // 
+            this.bandedGridColumnQuantidade.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.bandedGridColumnQuantidade.AppearanceCell.Options.UseForeColor = true;
             this.bandedGridColumnQuantidade.AppearanceCell.Options.UseTextOptions = true;
             this.bandedGridColumnQuantidade.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.bandedGridColumnQuantidade.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
@@ -237,6 +222,7 @@ namespace AdvanceShop.Views
             this.bandedGridColumnQuantidade.FieldName = "quantidade";
             this.bandedGridColumnQuantidade.Name = "bandedGridColumnQuantidade";
             this.bandedGridColumnQuantidade.Visible = true;
+            this.bandedGridColumnQuantidade.VisibleIndex = 4;
             this.bandedGridColumnQuantidade.Width = 94;
             // 
             // bandedGridColumnValorUnit
@@ -250,7 +236,9 @@ namespace AdvanceShop.Views
             this.bandedGridColumnValorUnit.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumnValorUnit.FieldName = "valorunitario";
             this.bandedGridColumnValorUnit.Name = "bandedGridColumnValorUnit";
+            this.bandedGridColumnValorUnit.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnValorUnit.Visible = true;
+            this.bandedGridColumnValorUnit.VisibleIndex = 5;
             this.bandedGridColumnValorUnit.Width = 110;
             // 
             // bandedGridColumnSubtotal
@@ -264,7 +252,9 @@ namespace AdvanceShop.Views
             this.bandedGridColumnSubtotal.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumnSubtotal.FieldName = "subtotal";
             this.bandedGridColumnSubtotal.Name = "bandedGridColumnSubtotal";
+            this.bandedGridColumnSubtotal.OptionsColumn.AllowEdit = false;
             this.bandedGridColumnSubtotal.Visible = true;
+            this.bandedGridColumnSubtotal.VisibleIndex = 6;
             this.bandedGridColumnSubtotal.Width = 121;
             // 
             // lblObs
@@ -291,7 +281,7 @@ namespace AdvanceShop.Views
             this.gridControlFormasPagamento.Location = new System.Drawing.Point(3, 201);
             this.gridControlFormasPagamento.MainView = this.gridViewFormasPagamento;
             this.gridControlFormasPagamento.Name = "gridControlFormasPagamento";
-            this.gridControlFormasPagamento.Size = new System.Drawing.Size(716, 133);
+            this.gridControlFormasPagamento.Size = new System.Drawing.Size(716, 121);
             this.gridControlFormasPagamento.TabIndex = 4;
             this.gridControlFormasPagamento.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewFormasPagamento});
@@ -376,7 +366,7 @@ namespace AdvanceShop.Views
             // 
             this.lblValorPagoTroco.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorPagoTroco.Appearance.Options.UseFont = true;
-            this.lblValorPagoTroco.Location = new System.Drawing.Point(3, 340);
+            this.lblValorPagoTroco.Location = new System.Drawing.Point(3, 328);
             this.lblValorPagoTroco.Name = "lblValorPagoTroco";
             this.lblValorPagoTroco.Size = new System.Drawing.Size(248, 19);
             this.lblValorPagoTroco.TabIndex = 7;
@@ -395,6 +385,7 @@ namespace AdvanceShop.Views
             // 
             // xtbpDevolucao
             // 
+            this.xtbpDevolucao.Controls.Add(this.labelControl3);
             this.xtbpDevolucao.Controls.Add(this.panelControl1);
             this.xtbpDevolucao.Controls.Add(this.lblValorPagoTroco);
             this.xtbpDevolucao.Controls.Add(this.lblValoreVenda);
@@ -404,6 +395,16 @@ namespace AdvanceShop.Views
             this.xtbpDevolucao.Size = new System.Drawing.Size(722, 560);
             this.xtbpDevolucao.Text = "Devolução";
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(3, 353);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(218, 19);
+            this.labelControl3.TabIndex = 8;
+            this.labelControl3.Text = "Selecione os itens a devoluver:";
+            // 
             // xtbpPagamento
             // 
             this.xtbpPagamento.Controls.Add(this.labelControl2);
@@ -411,6 +412,16 @@ namespace AdvanceShop.Views
             this.xtbpPagamento.Name = "xtbpPagamento";
             this.xtbpPagamento.Size = new System.Drawing.Size(722, 560);
             this.xtbpPagamento.Text = "Pagamento";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(3, 14);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(293, 19);
+            this.labelControl2.TabIndex = 6;
+            this.labelControl2.Text = "Selecione a forma de devolução do valor:";
             // 
             // gridControlFormaDevolucao
             // 
@@ -425,78 +436,50 @@ namespace AdvanceShop.Views
             // gridViewFormaDevolucao
             // 
             this.gridViewFormaDevolucao.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn2,
-            this.gridColumn3,
-            this.gridColumn4});
+            this.gridColumnFormaPagDescricao,
+            this.gridColumnValorDevolucao});
             this.gridViewFormaDevolucao.GridControl = this.gridControlFormaDevolucao;
             this.gridViewFormaDevolucao.Name = "gridViewFormaDevolucao";
-            this.gridViewFormaDevolucao.OptionsBehavior.Editable = false;
             this.gridViewFormaDevolucao.OptionsCustomization.AllowColumnMoving = false;
             this.gridViewFormaDevolucao.OptionsFilter.AllowFilterEditor = false;
             this.gridViewFormaDevolucao.OptionsFilter.AllowFilterIncrementalSearch = false;
             this.gridViewFormaDevolucao.OptionsMenu.ShowAutoFilterRowItem = false;
             this.gridViewFormaDevolucao.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewFormaDevolucao.OptionsSelection.MultiSelect = true;
+            this.gridViewFormaDevolucao.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewFormaDevolucao.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
             this.gridViewFormaDevolucao.OptionsView.ShowGroupPanel = false;
             // 
-            // gridColumn1
+            // gridColumnFormaPagDescricao
             // 
-            this.gridColumn1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridColumn1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn1.Caption = "Código";
-            this.gridColumn1.FieldName = "idformaspagamento";
-            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumnFormaPagDescricao.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumnFormaPagDescricao.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumnFormaPagDescricao.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnFormaPagDescricao.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnFormaPagDescricao.Caption = "Formas Pagamento";
+            this.gridColumnFormaPagDescricao.FieldName = "Descricao";
+            this.gridColumnFormaPagDescricao.Name = "gridColumnFormaPagDescricao";
+            this.gridColumnFormaPagDescricao.OptionsColumn.AllowEdit = false;
+            this.gridColumnFormaPagDescricao.Visible = true;
+            this.gridColumnFormaPagDescricao.VisibleIndex = 1;
+            this.gridColumnFormaPagDescricao.Width = 641;
             // 
-            // gridColumn2
+            // gridColumnValorDevolucao
             // 
-            this.gridColumn2.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridColumn2.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn2.Caption = "Formas Pagamento";
-            this.gridColumn2.FieldName = "descricao";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 641;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridColumn3.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn3.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn3.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn3.Caption = "Valor";
-            this.gridColumn3.DisplayFormat.FormatString = "c";
-            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn3.FieldName = "valor";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 172;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridColumn4.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumn4.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumn4.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumn4.Caption = "transacoescaixa_idtransacoescaixa";
-            this.gridColumn4.FieldName = "transacoescaixa_idtransacoescaixa";
-            this.gridColumn4.Name = "gridColumn4";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(3, 14);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(293, 19);
-            this.labelControl2.TabIndex = 6;
-            this.labelControl2.Text = "Selecione a forma de devolução do valor:";
+            this.gridColumnValorDevolucao.AppearanceCell.ForeColor = System.Drawing.Color.Red;
+            this.gridColumnValorDevolucao.AppearanceCell.Options.UseForeColor = true;
+            this.gridColumnValorDevolucao.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumnValorDevolucao.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumnValorDevolucao.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnValorDevolucao.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnValorDevolucao.Caption = "Valor";
+            this.gridColumnValorDevolucao.DisplayFormat.FormatString = "c";
+            this.gridColumnValorDevolucao.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumnValorDevolucao.FieldName = "Valor";
+            this.gridColumnValorDevolucao.Name = "gridColumnValorDevolucao";
+            this.gridColumnValorDevolucao.Visible = true;
+            this.gridColumnValorDevolucao.VisibleIndex = 2;
+            this.gridColumnValorDevolucao.Width = 172;
             // 
             // TrocaDevolucao
             // 
@@ -522,7 +505,7 @@ namespace AdvanceShop.Views
             ((System.ComponentModel.ISupportInitialize)(this.cbxInformarObsNfe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grbxFormaDevolucao.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlItensDevolucao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewItensDevolucao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewItensDevolucao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFormasPagamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFormasPagamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
@@ -546,7 +529,6 @@ namespace AdvanceShop.Views
         private DevExpress.XtraEditors.CheckEdit cbxInformarObsNfe;
         private DevExpress.XtraGrid.GridControl gridControlItensDevolucao;
         private DevExpress.XtraEditors.TextEdit txtObservacaoNfe;
-        private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView advBandedGridViewItensDevolucao;
         private DevExpress.XtraEditors.LabelControl lblObs;
         private DevExpress.XtraEditors.SimpleButton btnSalvar;
         private DevExpress.XtraGrid.GridControl gridControlFormasPagamento;
@@ -557,22 +539,21 @@ namespace AdvanceShop.Views
         private DevExpress.XtraGrid.Columns.GridColumn gridColumntransacoescaixa_idtransacoescaixa;
         private DevExpress.XtraEditors.LabelControl lblValoreVenda;
         private DevExpress.XtraEditors.LabelControl lblValorPagoTroco;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnCodigoProd;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnItem;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnDescricaoProduto;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnQuantidade;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnValorUnit;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnSubtotal;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraTab.XtraTabPage xtbpDevolucao;
         private DevExpress.XtraTab.XtraTabPage xtbpPagamento;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraGrid.GridControl gridControlFormaDevolucao;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewFormaDevolucao;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnFormaPagDescricao;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnValorDevolucao;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewItensDevolucao;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumnCodigoProd;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumnItem;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumnDescricaoProduto;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumnQuantidade;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumnValorUnit;
+        private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumnSubtotal;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }
