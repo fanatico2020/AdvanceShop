@@ -11,6 +11,17 @@ namespace AdvanceShop.Report.Devexpress
         public xrCupomNaoFiscal()
         {
             InitializeComponent();
+            
+        }
+
+        private void lblUsuario_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            
+            
+            if (Parameters["UsuarioCaixa"].Value == null)
+            {
+                lblUsuario.Visible = false;
+            }
         }
 
     }

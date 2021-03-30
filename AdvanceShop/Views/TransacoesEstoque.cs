@@ -14,6 +14,7 @@ using AdvanceShop.Models;
 using AdvanceShop.Controllers;
 using AdvanceShop.Shared.CustomMessageBox;
 using AdvanceShop.Shared.Validation;
+using DevExpress.Utils.Menu;
 
 namespace AdvanceShop.Views
 {
@@ -203,6 +204,45 @@ namespace AdvanceShop.Views
         private void TransacoesEstoque_KeyPress(object sender, KeyPressEventArgs e)
         {
             ConfirmacaoForm.Fechar(e, this);
+        }
+
+        private void advBandedGridViewTransacoesEstoque_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (advBandedGridViewTransacoesEstoque.SelectedRowsCount == 1)
+            {
+                if (e.MenuType == DevExpress.XtraGrid.Views.Grid.GridMenuType.Row)
+                {
+                    DXMenuItem item1 = new DXMenuItem("Novo Entrada Estoque");
+                    DXMenuItem item2 = new DXMenuItem("Nova Saída Estoque");
+                    DXMenuItem item3 = new DXMenuItem("Deletar Transação");
+                    DXMenuItem item4 = new DXMenuItem("Atualizar Grid");
+                    
+
+                    item1.Click += (o, args) =>
+                    {
+                        NovaTransacaoEntrada();
+                    };
+                    item2.Click += (o, args) =>
+                    {
+                        NovaTransacaoSaida();
+                    };
+                    item3.Click += (o, args) =>
+                    {
+                        DeletarTransacao();
+                    };
+                    item4.Click += (o, args) =>
+                    {
+                        AtualizarGrid();
+                    };
+
+                    e.Menu.Items.Add(item1);
+                    e.Menu.Items.Add(item2);
+                    e.Menu.Items.Add(item3);
+                    e.Menu.Items.Add(item4);
+
+
+                }
+            }
         }
     }
 }

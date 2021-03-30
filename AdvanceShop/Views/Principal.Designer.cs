@@ -495,6 +495,10 @@
             this.bbiAtualizacaoSoftware.Caption = "Atualização de Software";
             this.bbiAtualizacaoSoftware.Id = 58;
             this.bbiAtualizacaoSoftware.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiAtualizacaoSoftware.ImageOptions.SvgImage")));
+            this.bbiAtualizacaoSoftware.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.bbiAtualizacaoSoftware.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiAtualizacaoSoftware.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.bbiAtualizacaoSoftware.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAtualizacaoSoftware.Name = "bbiAtualizacaoSoftware";
             this.bbiAtualizacaoSoftware.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtualizacaoSoftware_ItemClick);
             // 

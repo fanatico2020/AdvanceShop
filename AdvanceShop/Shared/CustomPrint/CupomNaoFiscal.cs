@@ -9,16 +9,16 @@ using AdvanceShop.Report.Devexpress;
 using DevExpress.LookAndFeel;
 using System.Drawing.Printing;
 using AdvanceShop.Models;
+using AdvanceShop.Controllers;
 
 namespace AdvanceShop.Shared.CustomPrint
 {
     public static  class CupomNaoFiscal
     {
         
-        public static void ImprimirCupom(VendasModel Venda, ClientesPessoasModel Cliente, UsuariosModel Usuario, CaixasModel Caixa,DataHoraModel DataHora)
+        public static void ImprimirCupom(VendasModel Venda, ClientesPessoasModel Cliente, UsuariosModel Usuario, CaixasModel Caixa,DataHoraModel DataHora,ConfiguracoesGeraisModel configGerais)
         {
-
-
+            
 
             Report.Devexpress.xrCupomNaoFiscal report = new xrCupomNaoFiscal();
 
@@ -39,7 +39,9 @@ namespace AdvanceShop.Shared.CustomPrint
 
             //Maquina e Vendedor
             report.Parameters["Maquina"].Value = Caixa.Maquina;
-            report.Parameters["UsuarioCaixa"].Value = $"{Usuario.UsuarioAcesso} - CAIXA {Caixa.IdCaixas}";
+            
+            if(Convert.ToBoolean(configGerais.imprimirnomevendedorfinalizarvenda))
+                report.Parameters["UsuarioCaixa"].Value = $"{Usuario.UsuarioAcesso} - CAIXA {Caixa.IdCaixas}";
             //report.PrintDialog();
 
 

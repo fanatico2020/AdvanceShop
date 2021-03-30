@@ -245,6 +245,7 @@
             this.advBandedGridViewTransacoesEstoque.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.advBandedGridViewTransacoesEstoque_MasterRowGetChildList);
             this.advBandedGridViewTransacoesEstoque.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.advBandedGridViewTransacoesEstoque_MasterRowGetRelationName);
             this.advBandedGridViewTransacoesEstoque.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.advBandedGridViewTransacoesEstoque_MasterRowGetRelationCount);
+            this.advBandedGridViewTransacoesEstoque.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.advBandedGridViewTransacoesEstoque_PopupMenuShowing);
             this.advBandedGridViewTransacoesEstoque.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.advBandedGridViewTransacoesEstoque_CustomColumnDisplayText);
             // 
             // gridBand1

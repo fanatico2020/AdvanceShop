@@ -20,6 +20,8 @@ namespace AdvanceShop.Views
     {
         
         UsuariosModel usuarioLogado = new UsuariosModel();
+        ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
+        ConfiguracoesGeraisModel configGerais = new ConfiguracoesGeraisModel();
         CaixasModel caixa = new CaixasModel();
         ProdutosModel produto = new ProdutosModel();
         ProdutosController produtoController = new ProdutosController();
@@ -37,6 +39,8 @@ namespace AdvanceShop.Views
             caixa = Caixa;
             venda.caixas_idcaixas = caixa.IdCaixas;
             transacaoCaixa.caixas_idcaixas = caixa.IdCaixas;
+
+            configGerais = configGeraisController.ObterConfiguracoesGerais();
 
         }
         
@@ -167,20 +171,16 @@ namespace AdvanceShop.Views
                 clientePessoa = FormPesquisarCliente.clientePessoaPDV;
                 lblClienteSelecionado.Text = clientePessoa.NomeClientePessoa;
                 //Avisar cliente aniversariante
-                /*
-                 if (c_configuracoesGerais.GetAvisarClienteAniversarianteOnOff() && m_pessoas.idpessoas != 1)
+                
+                if (Convert.ToBoolean(configGerais.avisarclienteaniversariante) && clientePessoa.IdClientesPessoas != 0 &&
+                    clientePessoa.DataNascimento.ToShortDateString() != "01/01/0001")
+                {
+                    if (clientePessoa.DataNascimento.Day == DateTime.Now.Day && clientePessoa.DataNascimento.Month == DateTime.Now.Month)
                     {
-                        DateTime dataAniversario = Convert.ToDateTime(c_pessoas.GetDataNascimento(m_pessoas));
-                        if (dataAniversario.ToShortDateString() != "01/01/0001")
-                        {
-                            if (dataAniversario.Day == DateTime.Now.Day && dataAniversario.Month == DateTime.Now.Month)
-                            {
-                                MessageBox.Show($"Cliente {txtClienteVenda.Text} estar aniversariando hoje", "FoxShop", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-
+                        MessageBoxOK.Show($"Cliente '{lblClienteSelecionado.Text}' estar aniversariando hoje!");
                     }
-                */
+                }
+                
             }
         }
         private void ObservacaoVenda()//Adicionando uma observaçao a venda, pela transação
@@ -304,9 +304,8 @@ namespace AdvanceShop.Views
             lblPrecoUniTotal.Text = "Preço: R$0,00 Total: R$0,00";
 
             advBandedGridViewItensPDV.FocusedRowHandle = advBandedGridViewItensPDV.RowCount;
-
+            
             cbxProcurarProduto.Focus();
-
         }
 
         private void cbxProcurarProduto_KeyPress(object sender, KeyPressEventArgs e)
@@ -321,7 +320,13 @@ namespace AdvanceShop.Views
 
         private void txtQtd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)13)
+            //Verificar se produto estar com estoque baixo, caso a conf esteja marcado pra avisar usuario
+            produto.IdProdutos = Convert.ToInt32(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[0]));
+            if (Convert.ToBoolean(configGerais.avisarprodutoestoquebaixo) && Convert.ToBoolean(produtoController.VerificarProdutoEstoqueBaixo(produto)))
+            {
+                MessageBoxWarning.Show($"Produto '{cbxProcurarProduto.Text}' com estoque baixo!");
+            }
+            if (e.KeyChar == (char)13)
             {
                 decimal valorproduto = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[4]));
                 int quantidade = Convert.ToInt32(txtQtd.Text);
@@ -331,6 +336,7 @@ namespace AdvanceShop.Views
                 e.Handled = true;
                 SendKeys.Send("{TAB}");
             }
+            
         }
 
         private void advBandedGridViewItensPDV_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)

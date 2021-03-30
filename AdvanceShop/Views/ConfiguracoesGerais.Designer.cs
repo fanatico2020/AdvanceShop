@@ -50,14 +50,14 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtbpFocusNFE = new DevExpress.XtraTab.XtraTabPage();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.lblAmbiente = new DevExpress.XtraEditors.LabelControl();
+            this.rgbAmbiente = new DevExpress.XtraEditors.RadioGroup();
             this.txtTokenProducao = new DevExpress.XtraEditors.TextEdit();
             this.lblTokenProducao = new DevExpress.XtraEditors.LabelControl();
             this.txtTokenHomologacao = new DevExpress.XtraEditors.TextEdit();
             this.lblTokenHomologacao = new DevExpress.XtraEditors.LabelControl();
             this.tsAtivaApiFocusNfe = new DevExpress.XtraEditors.ToggleSwitch();
             this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
-            this.rgbAmbiente = new DevExpress.XtraEditors.RadioGroup();
-            this.lblAmbiente = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtbpcConfigGerais)).BeginInit();
             this.xtbpcConfigGerais.SuspendLayout();
             this.xtbpVenda.SuspendLayout();
@@ -78,10 +78,10 @@
             this.xtbpFocusNFE.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgbAmbiente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTokenProducao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTokenHomologacao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAtivaApiFocusNfe.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rgbAmbiente.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtbpcConfigGerais
@@ -166,6 +166,7 @@
             // 
             // tsImprimirCPFCNPJCupomVenda
             // 
+            this.tsImprimirCPFCNPJCupomVenda.Enabled = false;
             this.tsImprimirCPFCNPJCupomVenda.Location = new System.Drawing.Point(3, 153);
             this.tsImprimirCPFCNPJCupomVenda.Name = "tsImprimirCPFCNPJCupomVenda";
             this.tsImprimirCPFCNPJCupomVenda.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -343,6 +344,26 @@
             this.panelControl1.Size = new System.Drawing.Size(599, 232);
             this.panelControl1.TabIndex = 3;
             // 
+            // lblAmbiente
+            // 
+            this.lblAmbiente.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAmbiente.Appearance.Options.UseFont = true;
+            this.lblAmbiente.Location = new System.Drawing.Point(5, 119);
+            this.lblAmbiente.Name = "lblAmbiente";
+            this.lblAmbiente.Size = new System.Drawing.Size(74, 19);
+            this.lblAmbiente.TabIndex = 9;
+            this.lblAmbiente.Text = "Ambiente:";
+            // 
+            // rgbAmbiente
+            // 
+            this.rgbAmbiente.Location = new System.Drawing.Point(5, 144);
+            this.rgbAmbiente.Name = "rgbAmbiente";
+            this.rgbAmbiente.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("homologacao", "Homologação"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem("producao", "Produção")});
+            this.rgbAmbiente.Size = new System.Drawing.Size(589, 51);
+            this.rgbAmbiente.TabIndex = 4;
+            // 
             // txtTokenProducao
             // 
             this.txtTokenProducao.Location = new System.Drawing.Point(5, 87);
@@ -404,26 +425,6 @@
             this.btnSalvar.Text = "Salvar (F2)";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // rgbAmbiente
-            // 
-            this.rgbAmbiente.Location = new System.Drawing.Point(5, 144);
-            this.rgbAmbiente.Name = "rgbAmbiente";
-            this.rgbAmbiente.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("homologacao", "Homologação"),
-            new DevExpress.XtraEditors.Controls.RadioGroupItem("producao", "Produção")});
-            this.rgbAmbiente.Size = new System.Drawing.Size(589, 51);
-            this.rgbAmbiente.TabIndex = 4;
-            // 
-            // lblAmbiente
-            // 
-            this.lblAmbiente.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAmbiente.Appearance.Options.UseFont = true;
-            this.lblAmbiente.Location = new System.Drawing.Point(5, 119);
-            this.lblAmbiente.Name = "lblAmbiente";
-            this.lblAmbiente.Size = new System.Drawing.Size(74, 19);
-            this.lblAmbiente.TabIndex = 9;
-            this.lblAmbiente.Text = "Ambiente:";
-            // 
             // ConfiguracoesGerais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,10 +463,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rgbAmbiente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTokenProducao.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTokenHomologacao.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAtivaApiFocusNfe.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rgbAmbiente.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

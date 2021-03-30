@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AdvanceShop.Controllers
 {
@@ -122,6 +123,23 @@ namespace AdvanceShop.Controllers
                 "update produtos set deletado = 1 where idprodutos = @idprodutos;";
             comando.Parameters.Add(new MySqlParameter("@idprodutos", produto.IdProdutos));
             comando.ExecuteNonQuery();
+        }
+        public int VerificarProdutoEstoqueBaixo(ProdutosModel produto)
+        {
+            int result = 0;
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText =
+                "select if((select estoqueatual from produtos where idprodutos = @idprodutos) < (select estoqueminimo from produtos where idprodutos = @idprodutos),true,false);";
+            comando.CommandType = CommandType.Text;
+            comando.Parameters.Add(new MySqlParameter("@idprodutos", produto.IdProdutos));
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            while (reader.Read())
+            {
+                result = Convert.ToInt32(reader.GetInt32(0).ToString());
+            }
+            
+            return result;
         }
 
     }

@@ -58,12 +58,12 @@ namespace AdvanceShop.Report.Devexpress
             this.lblDescricao = new DevExpress.XtraReports.UI.XRLabel();
             this.lblCodigoProd = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel13 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblUsuarioCaixa = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel7 = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblUsuario = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine5 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine4 = new DevExpress.XtraReports.UI.XRLine();
@@ -417,20 +417,20 @@ namespace AdvanceShop.Report.Devexpress
             this.xrLabel13.Text = "xrLabel13";
             this.xrLabel13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // xrLabel12
+            // lblUsuarioCaixa
             // 
-            this.xrLabel12.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            this.lblUsuarioCaixa.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?UsuarioCaixa")});
-            this.xrLabel12.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(77.08344F, 151.5833F);
-            this.xrLabel12.Multiline = true;
-            this.xrLabel12.Name = "xrLabel12";
-            this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel12.SizeF = new System.Drawing.SizeF(211.9167F, 23F);
-            this.xrLabel12.StylePriority.UseFont = false;
-            this.xrLabel12.StylePriority.UseTextAlignment = false;
-            this.xrLabel12.Text = "xrLabel12";
-            this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lblUsuarioCaixa.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarioCaixa.LocationFloat = new DevExpress.Utils.PointFloat(77.08344F, 151.5833F);
+            this.lblUsuarioCaixa.Multiline = true;
+            this.lblUsuarioCaixa.Name = "lblUsuarioCaixa";
+            this.lblUsuarioCaixa.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblUsuarioCaixa.SizeF = new System.Drawing.SizeF(211.9167F, 23F);
+            this.lblUsuarioCaixa.StylePriority.UseFont = false;
+            this.lblUsuarioCaixa.StylePriority.UseTextAlignment = false;
+            this.lblUsuarioCaixa.Text = "lblUsuarioCaixa";
+            this.lblUsuarioCaixa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // xrLabel11
             // 
@@ -490,18 +490,19 @@ namespace AdvanceShop.Report.Devexpress
             this.xrLabel8.Text = "Maquina:";
             this.xrLabel8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
-            // xrLabel7
+            // lblUsuario
             // 
-            this.xrLabel7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrLabel7.LocationFloat = new DevExpress.Utils.PointFloat(0.000166893F, 151.5833F);
-            this.xrLabel7.Multiline = true;
-            this.xrLabel7.Name = "xrLabel7";
-            this.xrLabel7.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel7.SizeF = new System.Drawing.SizeF(77.08334F, 23F);
-            this.xrLabel7.StylePriority.UseFont = false;
-            this.xrLabel7.StylePriority.UseTextAlignment = false;
-            this.xrLabel7.Text = "USUÁRIO:";
-            this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lblUsuario.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.LocationFloat = new DevExpress.Utils.PointFloat(0.000166893F, 151.5833F);
+            this.lblUsuario.Multiline = true;
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblUsuario.SizeF = new System.Drawing.SizeF(77.08334F, 23F);
+            this.lblUsuario.StylePriority.UseFont = false;
+            this.lblUsuario.StylePriority.UseTextAlignment = false;
+            this.lblUsuario.Text = "USUÁRIO:";
+            this.lblUsuario.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.lblUsuario.BeforePrint += new System.Drawing.Printing.PrintEventHandler(this.lblUsuario_BeforePrint);
             // 
             // xrLabel6
             // 
@@ -794,8 +795,8 @@ namespace AdvanceShop.Report.Devexpress
             this.xrLabel16,
             this.xrLabel15,
             this.xrLabel23,
-            this.xrLabel12,
-            this.xrLabel7,
+            this.lblUsuarioCaixa,
+            this.lblUsuario,
             this.xrLabel13,
             this.xrLabel8,
             this.xrLine4,
@@ -885,10 +886,10 @@ namespace AdvanceShop.Report.Devexpress
         private DevExpress.XtraReports.UI.XRLine xrLine5;
         private DevExpress.XtraReports.UI.XRLine xrLine4;
         private DevExpress.XtraReports.UI.XRLabel xrLabel8;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel7;
+        private DevExpress.XtraReports.UI.XRLabel lblUsuario;
         private DevExpress.XtraReports.UI.XRLabel xrLabel6;
         private DevExpress.XtraReports.UI.XRLabel xrLabel13;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel12;
+        private DevExpress.XtraReports.UI.XRLabel lblUsuarioCaixa;
         private DevExpress.XtraReports.UI.XRLabel xrLabel11;
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
         private DevExpress.XtraReports.UI.XRLabel xrLabel9;

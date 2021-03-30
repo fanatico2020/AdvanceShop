@@ -176,6 +176,8 @@
             this.lblCartaoDebito.Appearance.Options.UseBackColor = true;
             this.lblCartaoDebito.Appearance.Options.UseFont = true;
             this.lblCartaoDebito.Appearance.Options.UseForeColor = true;
+            this.lblCartaoDebito.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblCartaoDebito.AppearanceDisabled.Options.UseBackColor = true;
             this.lblCartaoDebito.Location = new System.Drawing.Point(53, 97);
             this.lblCartaoDebito.Name = "lblCartaoDebito";
             this.lblCartaoDebito.Size = new System.Drawing.Size(114, 19);
@@ -190,6 +192,8 @@
             this.lblCartaoCredito.Appearance.Options.UseBackColor = true;
             this.lblCartaoCredito.Appearance.Options.UseFont = true;
             this.lblCartaoCredito.Appearance.Options.UseForeColor = true;
+            this.lblCartaoCredito.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblCartaoCredito.AppearanceDisabled.Options.UseBackColor = true;
             this.lblCartaoCredito.Location = new System.Drawing.Point(53, 55);
             this.lblCartaoCredito.Name = "lblCartaoCredito";
             this.lblCartaoCredito.Size = new System.Drawing.Size(120, 19);

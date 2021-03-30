@@ -20,6 +20,8 @@ namespace AdvanceShop.Views
     public partial class Vendas : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
+        ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
+        ConfiguracoesGeraisModel configGerais = new ConfiguracoesGeraisModel();
         DataHoraModel dataHora = new DataHoraModel();
         DataHoraController dataHoraController = new DataHoraController();
         ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
@@ -34,7 +36,7 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
-
+            configGerais = configGeraisController.ObterConfiguracoesGerais();
         }
         public void AtualizarGrid()
         {
@@ -195,7 +197,7 @@ namespace AdvanceShop.Views
 
 
                     //print
-                    Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora);
+                    Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora,configGerais);
                 }
                 
                 catch(Exception error)

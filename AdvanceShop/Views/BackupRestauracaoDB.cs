@@ -79,21 +79,31 @@ namespace AdvanceShop.Views
         }
         private void GerarBackup()
         {
-            if(MessageBoxQuestionYesNo.Show($"Deseja salvar o backup no caminho '{txtCaminhoBackup.Text}' ?") == DialogResult.Yes)
+            if (Directory.Exists(txtCaminhoBackup.Text))
             {
-                restaurar = false;
-                if (!Directory.Exists(txtCaminhoBackup.Text) && MessageBoxQuestionYesNo.Show($"O caminho informado não existe deseja criá-lo e continuar com o backup?") == DialogResult.Yes)
+                if (MessageBoxQuestionYesNo.Show($"Deseja salvar o backup no caminho '{txtCaminhoBackup.Text}' ?") == DialogResult.Yes)
                 {
-                    
-                    Directory.CreateDirectory(txtCaminhoBackup.Text);
-                    bgwProgresso.RunWorkerAsync();
+                    restaurar = false;
+                    if (!Directory.Exists(txtCaminhoBackup.Text) && MessageBoxQuestionYesNo.Show($"O caminho informado não existe deseja criá-lo e continuar com o backup?") == DialogResult.Yes)
+                    {
+
+                        Directory.CreateDirectory(txtCaminhoBackup.Text);
+                        bgwProgresso.RunWorkerAsync();
+                    }
+                    else if (Directory.Exists(txtCaminhoBackup.Text))
+                    {
+                        bgwProgresso.RunWorkerAsync();
+                    }
+
                 }
-                else if(Directory.Exists(txtCaminhoBackup.Text))
-                {
-                    bgwProgresso.RunWorkerAsync();
-                }
-                
             }
+            else
+            {
+                MessageBoxWarning.Show("Opa diretorio não existe!");
+
+            }
+            
+            
         }
 
         private void btnGerarBackup_Click(object sender, EventArgs e)
@@ -290,15 +300,23 @@ namespace AdvanceShop.Views
         }
         private void RestaurarBackup()
         {
-            if (MessageBoxQuestionYesNo.Show($"Deseja restaurar o banco de dados com o backup '{txtCaminhoArquivoRestaurar.Text}' ?") == DialogResult.Yes)
+            if (File.Exists(txtCaminhoArquivoRestaurar.Text))
             {
-                restaurar = true;
-                if (!bgwProgresso.IsBusy)
+                if (MessageBoxQuestionYesNo.Show($"Deseja restaurar o banco de dados com o backup '{txtCaminhoArquivoRestaurar.Text}' ?") == DialogResult.Yes)
                 {
-                    bgwProgresso.RunWorkerAsync();
+                    restaurar = true;
+                    if (!bgwProgresso.IsBusy)
+                    {
+                        bgwProgresso.RunWorkerAsync();
+                    }
+
                 }
-               
             }
+            else
+            {
+                MessageBoxWarning.Show("Opa arquivo não existe!");
+            }
+            
         }
         private void btnProcurarArquivo_Click(object sender, EventArgs e)
         {

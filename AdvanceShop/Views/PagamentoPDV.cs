@@ -1,4 +1,5 @@
 ﻿using AdvanceShop.Controllers;
+using AdvanceShop.JsonModels.FocusNFe.NFC_e;
 using AdvanceShop.Models;
 using AdvanceShop.Report.Devexpress;
 using AdvanceShop.Shared.CustomMessageBox;
@@ -21,6 +22,13 @@ namespace AdvanceShop.Views
     public partial class PagamentoPDV : DevExpress.XtraEditors.XtraForm
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
+
+        //fiscal
+        ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
+        ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
+        FocusNFe focusNFe = new FocusNFe();
+        //--
+
         ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
         ConfiguracoesGeraisModel configGerais = new ConfiguracoesGeraisModel();
         DataHoraModel dataHora = new DataHoraModel();
@@ -56,7 +64,14 @@ namespace AdvanceShop.Views
 
             cbxImprimirNFCe.Enabled = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
             cbxImprimirNFCe.Checked = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
-            
+
+            if (venda.Desconto > 0.00M)
+            {
+                txtCartaoCredito.Enabled = Convert.ToBoolean(configGerais.vendacartaopermitirdesconto);
+                lblCartaoCredito.Enabled = Convert.ToBoolean(configGerais.vendacartaopermitirdesconto);
+                txtCartaoDebito.Enabled = Convert.ToBoolean(configGerais.vendacartaopermitirdesconto);
+                lblCartaoDebito.Enabled = Convert.ToBoolean(configGerais.vendacartaopermitirdesconto); 
+            }
 
         }
         public PagamentoPDV(TransacoesCaixaModel TransacaoCaixa, UsuariosModel UsuarioLogado)//Editar Formas de pagamento
@@ -182,7 +197,19 @@ namespace AdvanceShop.Views
                         venda.IdVendas = vendaController.ObterUltimoIDVendaInserido();
                         dataHora.datahoracadastro = DateTime.Now;
                         caixa.Maquina = Environment.MachineName;
-                        Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora);
+                        if (cbxImprimirNFCe.Checked)
+                        {
+                            focusNFe.cnpj_emitente = "08160609000130";
+                            focusNFe.data_emissao = DateTime.Now;
+                            focusNFe.indicador_inscricao_estadual_destinatario = "1";
+                            focusNFe.modalidade_frete = "9";
+                            focusNFe.local_destino = "1";
+                            focusNFe.presenca_comprador = "1";
+                            focusNFe.natureza_operacao = "VENDA AO CONSUMIDOR";
+                            //focusNFe.items.Add()
+                        }
+                        Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora,configGerais);
+
                     }
                     //Iniciar nova venda no pdv
                     NovaVenda();
