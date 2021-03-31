@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,10 @@ namespace AdvanceShop.Views
         //fiscal
         ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
         ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
+        ClientesPessoasModel empresaEmitente = new ClientesPessoasModel();
         FocusNFe focusNFe = new FocusNFe();
+        IList<Item> focusItemNfe = new List<Item>();
+        List<FormasPagamento> focusFormasPagamentoNfe = new List<FormasPagamento>();
         //--
 
         ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
@@ -49,7 +53,29 @@ namespace AdvanceShop.Views
 
             usuarioLogado = UsuarioLogado;
             itensVenda.AddRange(ItensVenda);//Adicoonar lista de itens da tela PDV a lista de itens da tela de pagamento
-            
+
+            foreach (var item in itensVenda)
+            {
+                focusItemNfe.Add(new Item()
+                {
+                    codigo_produto = item.produtos_idprodutos.ToString(),
+                    codigo_ncm = item.codigo_ncm,
+                    cfop = item.cfop,
+                    icms_origem = item.icms_origem,
+                    icms_situacao_tributaria = item.icms_situacao_tributaria,
+                    quantidade_comercial = item.Quantidade.ToString(),
+                    quantidade_tributavel = item.Quantidade.ToString(),
+                    valor_unitario_comercial = item.ValorUnitario.ToString(),
+                    valor_unitario_tributavel = item.ValorUnitario.ToString(),
+                    descricao = item.DescricaoProduto,//descrição produto
+                    unidade_comercial = "UN",
+                    unidade_tributavel = "UN",
+                    valor_bruto = Convert.ToString(item.ValorUnitario * item.Quantidade)
+
+                }) ;
+            }
+
+
             venda = Venda;
             caixa = Caixa;
             venda.caixas_idcaixas = Caixa.IdCaixas;
@@ -61,6 +87,7 @@ namespace AdvanceShop.Views
             VendaOuEditarFormaPagamento = "Venda";
 
             configGerais = configGeraisController.ObterConfiguracoesGerais();
+            apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
 
             cbxImprimirNFCe.Enabled = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
             cbxImprimirNFCe.Checked = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
@@ -152,6 +179,13 @@ namespace AdvanceShop.Views
                             case 0:
                                 if (ValoresPagamento[0] > 0)
                                 {
+                                    focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
+                                    {
+                                        forma_pagamento = "1",
+                                        valor_pagamento = ValoresPagamento[0].ToString(),
+
+                                    });
+
                                     formasPagamento.Add(new FormasPagamentoModel()
                                     {
                                         Descricao = "DINHEIRO",
@@ -162,6 +196,12 @@ namespace AdvanceShop.Views
                             case 1:
                                 if (ValoresPagamento[1] > 0)
                                 {
+                                    focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
+                                    {
+                                        forma_pagamento = "3",
+                                        valor_pagamento = ValoresPagamento[0].ToString(),
+                                        bandeira_operadora = "99"
+                                    });
                                     formasPagamento.Add(new FormasPagamentoModel()
                                     {
                                         Descricao = "CARTÃO CRÉDITO",
@@ -172,6 +212,12 @@ namespace AdvanceShop.Views
                             case 2:
                                 if (ValoresPagamento[2] > 0)
                                 {
+                                    focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
+                                    {
+                                        forma_pagamento = "4",
+                                        valor_pagamento = ValoresPagamento[0].ToString(),
+                                        bandeira_operadora = "99"
+                                    });
                                     formasPagamento.Add(new FormasPagamentoModel()
                                     {
                                         Descricao = "CARTÃO DÉBITO",
@@ -197,17 +243,21 @@ namespace AdvanceShop.Views
                         venda.IdVendas = vendaController.ObterUltimoIDVendaInserido();
                         dataHora.datahoracadastro = DateTime.Now;
                         caixa.Maquina = Environment.MachineName;
-                        if (cbxImprimirNFCe.Checked)
+                        if (cbxImprimirNFCe.Checked)//focusNfe
                         {
-                            focusNFe.cnpj_emitente = "08160609000130";
+                            focusNFe.cnpj_emitente = empresaEmitente.CPFCNPJ;//puxar
                             focusNFe.data_emissao = DateTime.Now;
-                            focusNFe.indicador_inscricao_estadual_destinatario = "1";
-                            focusNFe.modalidade_frete = "9";
-                            focusNFe.local_destino = "1";
-                            focusNFe.presenca_comprador = "1";
+                            focusNFe.indicador_inscricao_estadual_destinatario = apiFocusNfe.indicadoriedestinatario;//puxar
+                            focusNFe.modalidade_frete = "9";//'1' – Por conta do destinatário
+                            focusNFe.local_destino = "1";//'1' – Operação interna;
+                            focusNFe.presenca_comprador = "1";//1 – Operação presencial
                             focusNFe.natureza_operacao = "VENDA AO CONSUMIDOR";
-                            //focusNFe.items.Add()
+                            focusNFe.items = focusItemNfe;
+                            focusNFe.formas_pagamento = focusFormasPagamentoNfe;
+                            apiFocusNfeController.EnviandoNFC_e(apiFocusNfe, focusNFe);
+                            
                         }
+                        //cupom não fiscal
                         Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora,configGerais);
 
                     }

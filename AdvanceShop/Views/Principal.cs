@@ -1,6 +1,7 @@
 ﻿using AdvanceShop.Controllers;
 using AdvanceShop.Models;
 using AdvanceShop.Shared.CustomMessageBox;
+using DevExpress.XtraLayout.HitInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace AdvanceShop.Views
         private void Principal_Load(object sender, EventArgs e)
         {
             this.Text = Text + " - " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
+            
             //Checa update
 
         }
@@ -169,6 +170,11 @@ namespace AdvanceShop.Views
         {
             Views.AtualizacaoSoftware FormAtualizarSoftware = new AtualizacaoSoftware();
             FormAtualizarSoftware.ShowDialog();
+        }
+
+        private void lblCaminhoSistema_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
         }
     }
 }

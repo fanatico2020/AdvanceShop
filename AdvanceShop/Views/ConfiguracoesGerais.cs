@@ -23,7 +23,7 @@ namespace AdvanceShop.Views
         EmailSistemaController emailSistemaController = new EmailSistemaController();
         ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
         ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
-        
+        ClientesPessoasController clientePessoaController = new ClientesPessoasController();
         public ConfiguracoesGerais(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
@@ -49,7 +49,8 @@ namespace AdvanceShop.Views
             tsAtivaApiFocusNfe.IsOn = Convert.ToBoolean(apiFocusNfe.usarapi);
             txtTokenHomologacao.Text = apiFocusNfe.tokenhomologacao;
             txtTokenProducao.Text = apiFocusNfe.tokenproducao;
-            
+            cbxIndicadorIEdestinatario.EditValue = apiFocusNfe.indicadoriedestinatario;
+            cbxEmpresaEmitente.EditValue = apiFocusNfe.clientespessoas_idclientespessoas;
             if (apiFocusNfe.ambiente =="homologacao")
             {
                 rgbAmbiente.SelectedIndex = 0;
@@ -61,6 +62,12 @@ namespace AdvanceShop.Views
                 
 
         }
+        private void AtualizarEmpresaEmitente()
+        {
+            cbxEmpresaEmitente.Properties.DataSource = clientePessoaController.ObterTodosClientesPessoas();
+            cbxEmpresaEmitente.Properties.DisplayMember = "nome";
+            cbxEmpresaEmitente.Properties.ValueMember = "idclientespessoas";
+        }
         private void AtualizarEmailSistema()
         {
             emailSistema = emailSistemaController.ObterConfiguracoesEmailSistema();
@@ -70,9 +77,11 @@ namespace AdvanceShop.Views
         }
         private void ConfiguracoesGerais_Load(object sender, EventArgs e)
         {
+            AtualizarEmpresaEmitente();
             AtualizarConfiguracoesGerais();
             AtualizarApiFocusNFe();
             AtualizarEmailSistema();
+            
         }
 
         private void ConfiguracoesGerais_KeyPress(object sender, KeyPressEventArgs e)
@@ -101,6 +110,8 @@ namespace AdvanceShop.Views
                 apiFocusNfe.tokenproducao = txtTokenProducao.Text;
                 apiFocusNfe.usarapi = Convert.ToInt32(tsAtivaApiFocusNfe.IsOn);
                 apiFocusNfe.ambiente = Convert.ToString(rgbAmbiente.EditValue);
+                apiFocusNfe.clientespessoas_idclientespessoas = Convert.ToInt32(cbxEmpresaEmitente.EditValue);
+                apiFocusNfe.indicadoriedestinatario = ValidacaoCamposCustom.ApenasNumeros(Convert.ToString(cbxIndicadorIEdestinatario.EditValue));
 
                 apiFocusNfeController.SalvarConfiguracao(apiFocusNfe);
 

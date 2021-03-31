@@ -81,6 +81,8 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenuPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -131,10 +133,12 @@
             this.bbiAcessoRemoto,
             this.bbiSuporteTelefone,
             this.bbiRelFechmanetoCaixa,
-            this.bbiAtualizacaoSoftware});
+            this.bbiAtualizacaoSoftware,
+            this.barStaticItem1,
+            this.barButtonItem1});
             this.ribbonControlPrincipal.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlPrincipal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControlPrincipal.MaxItemId = 59;
+            this.ribbonControlPrincipal.MaxItemId = 61;
             this.ribbonControlPrincipal.Name = "ribbonControlPrincipal";
             this.ribbonControlPrincipal.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPagePrincipal,
@@ -364,11 +368,15 @@
             // 
             // lblCaminhoSistema
             // 
+            this.lblCaminhoSistema.AccessibleDescription = "Click para ir até caminho onde o sistema estar instalado";
+            this.lblCaminhoSistema.AccessibleName = "Click para ir até caminho onde o sistema estar instalado";
             this.lblCaminhoSistema.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCaminhoSistema.Appearance.Options.UseFont = true;
             this.lblCaminhoSistema.Caption = "Caminhosistema";
+            this.lblCaminhoSistema.Description = "Click para ir até caminho onde o sistema estar instalado";
             this.lblCaminhoSistema.Id = 20;
             this.lblCaminhoSistema.Name = "lblCaminhoSistema";
+            this.lblCaminhoSistema.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.lblCaminhoSistema_ItemClick);
             this.lblCaminhoSistema.ItemDoubleClick += new DevExpress.XtraBars.ItemClickEventHandler(this.lblCaminhoSistema_ItemDoubleClick);
             // 
             // lblUsuarioLogado
@@ -453,6 +461,8 @@
             // 
             // lblNomePlano
             // 
+            this.lblNomePlano.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.lblNomePlano.Appearance.Options.UseForeColor = true;
             this.lblNomePlano.Caption = "Grátis";
             this.lblNomePlano.Id = 41;
             this.lblNomePlano.Name = "lblNomePlano";
@@ -612,6 +622,18 @@
             this.barHeaderItem1.Id = 32;
             this.barHeaderItem1.Name = "barHeaderItem1";
             // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "barStaticItem1";
+            this.barStaticItem1.Id = 59;
+            this.barStaticItem1.Name = "barStaticItem1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 60;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -692,5 +714,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSuporte;
         private DevExpress.XtraBars.BarButtonItem bbiRelFechmanetoCaixa;
         private DevExpress.XtraBars.BarButtonItem bbiAtualizacaoSoftware;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

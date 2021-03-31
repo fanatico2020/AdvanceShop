@@ -14,5 +14,9 @@ namespace AdvanceShop.Models
         public int quantidade { get; set; }
         public decimal precounitario { get; set; }
         public decimal subtotal { get; set; }
+        public string codigo_ncm { get; set; }
+        public string cfop { get; set; }
+        public string icms_origem { get; set; }
+        public string icms_situacao_tributaria { get; set; }
     }
 }

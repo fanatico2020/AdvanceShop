@@ -73,6 +73,10 @@ namespace AdvanceShop.Views
             dtItensVenda.Columns.Add("quantidade", typeof(int));
             dtItensVenda.Columns.Add("precounitario", typeof(decimal));
             dtItensVenda.Columns.Add("subtotal", typeof(decimal));
+            dtItensVenda.Columns.Add("codigo_ncm", typeof(string));
+            dtItensVenda.Columns.Add("cfop", typeof(string));
+            dtItensVenda.Columns.Add("icms_origem", typeof(string));
+            dtItensVenda.Columns.Add("icms_situacao_tributaria", typeof(string));
             gridControlItensVenda.DataSource = dtItensVenda;
         }
         private void CalcularTotalItensTotalSubTotal()
@@ -100,15 +104,25 @@ namespace AdvanceShop.Views
                 advBandedGridViewItensPDV.SetRowCellValue(rowHandle, advBandedGridViewItensPDV.Columns[3], Produto.quantidade);//Quantidade
                 advBandedGridViewItensPDV.SetRowCellValue(rowHandle, advBandedGridViewItensPDV.Columns[4], Produto.precounitario);//Preço
                 advBandedGridViewItensPDV.SetRowCellValue(rowHandle, advBandedGridViewItensPDV.Columns[5], Produto.subtotal);//Total
+                advBandedGridViewItensPDV.SetRowCellValue(rowHandle, advBandedGridViewItensPDV.Columns[6], Produto.subtotal);//codigo_ncm
+                advBandedGridViewItensPDV.SetRowCellValue(rowHandle, advBandedGridViewItensPDV.Columns[7], Produto.subtotal);//cfop
+                advBandedGridViewItensPDV.SetRowCellValue(rowHandle, advBandedGridViewItensPDV.Columns[8], Produto.subtotal);//icms_origem
+                advBandedGridViewItensPDV.SetRowCellValue(rowHandle, advBandedGridViewItensPDV.Columns[9], Produto.subtotal);//icms_situacao_tributaria
 
                 //adicionando o item a listas de itens 
                 itensVenda.Add(new ItensVendasModel()
                 {
                     produtos_idprodutos = Produto.codigoproduto,
+                    DescricaoProduto = Produto.descricaoproduto,
                     Quantidade = Produto.quantidade,
                     ValorUnitario = Produto.precounitario,
                     Subtotal = Produto.subtotal,
-                    Item = Produto.item
+                    Item = Produto.item,
+                    codigo_ncm = Produto.codigo_ncm,
+                    cfop = Produto.cfop,
+                    icms_origem = Produto.icms_origem,
+                    icms_situacao_tributaria = Produto.icms_situacao_tributaria
+
                 });
             }
         }
@@ -297,6 +311,10 @@ namespace AdvanceShop.Views
             produtosPDV.quantidade = Convert.ToInt32(txtQtd.Text);
             produtosPDV.precounitario = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[4]));
             produtosPDV.subtotal = produtosPDV.quantidade * produtosPDV.precounitario;
+            produtosPDV.codigo_ncm = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[10]).ToString();
+            produtosPDV.cfop = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[11]).ToString();
+            produtosPDV.icms_origem = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[12]).ToString();
+            produtosPDV.icms_situacao_tributaria = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[13]).ToString();
 
             AdicionarNovaRowItem(produtosPDV);
 

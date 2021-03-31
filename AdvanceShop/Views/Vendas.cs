@@ -74,13 +74,14 @@ namespace AdvanceShop.Views
         }
         private void TrocaDevolucao()
         {
-            venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
+            MessageBoxOK.Show("Ainda em desenvolvimento!");
+            //venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
 
-            if(advBandedGridViewVendas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Continuar para tela de Troca/Devolução de itens da venda selecionada?") == DialogResult.Yes)
-            {
-                Views.TrocaDevolucao FormDevolucao = new TrocaDevolucao(venda,usuarioLogado);
-                FormDevolucao.ShowDialog();
-            }
+            //if(advBandedGridViewVendas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Continuar para tela de Troca/Devolução de itens da venda selecionada?") == DialogResult.Yes)
+            //{
+            //    Views.TrocaDevolucao FormDevolucao = new TrocaDevolucao(venda,usuarioLogado);
+            //    FormDevolucao.ShowDialog();
+            //}
         }
         private void DeletarVenda()
         {

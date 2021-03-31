@@ -49,7 +49,7 @@
             this.txtEmailRecebimentoPrincipal = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtbpFocusNFE = new DevExpress.XtraTab.XtraTabPage();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.panelControlTokenApiFocusNfe = new DevExpress.XtraEditors.PanelControl();
             this.lblAmbiente = new DevExpress.XtraEditors.LabelControl();
             this.rgbAmbiente = new DevExpress.XtraEditors.RadioGroup();
             this.txtTokenProducao = new DevExpress.XtraEditors.TextEdit();
@@ -58,6 +58,11 @@
             this.lblTokenHomologacao = new DevExpress.XtraEditors.LabelControl();
             this.tsAtivaApiFocusNfe = new DevExpress.XtraEditors.ToggleSwitch();
             this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
+            this.panelControlConfEmpApiFocusNfe = new DevExpress.XtraEditors.PanelControl();
+            this.lblEmpresaEmitente = new DevExpress.XtraEditors.LabelControl();
+            this.cbxEmpresaEmitente = new DevExpress.XtraEditors.LookUpEdit();
+            this.lblIndicadorIEdestinatario = new DevExpress.XtraEditors.LabelControl();
+            this.cbxIndicadorIEdestinatario = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.xtbpcConfigGerais)).BeginInit();
             this.xtbpcConfigGerais.SuspendLayout();
             this.xtbpVenda.SuspendLayout();
@@ -76,12 +81,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailCopia1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailRecebimentoPrincipal.Properties)).BeginInit();
             this.xtbpFocusNFE.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
-            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlTokenApiFocusNfe)).BeginInit();
+            this.panelControlTokenApiFocusNfe.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgbAmbiente.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTokenProducao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTokenHomologacao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAtivaApiFocusNfe.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlConfEmpApiFocusNfe)).BeginInit();
+            this.panelControlConfEmpApiFocusNfe.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxEmpresaEmitente.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxIndicadorIEdestinatario.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // xtbpcConfigGerais
@@ -324,25 +333,26 @@
             // 
             // xtbpFocusNFE
             // 
-            this.xtbpFocusNFE.Controls.Add(this.panelControl1);
+            this.xtbpFocusNFE.Controls.Add(this.panelControlConfEmpApiFocusNfe);
+            this.xtbpFocusNFE.Controls.Add(this.panelControlTokenApiFocusNfe);
             this.xtbpFocusNFE.Controls.Add(this.tsAtivaApiFocusNfe);
             this.xtbpFocusNFE.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtbpFocusNFE.ImageOptions.Image")));
             this.xtbpFocusNFE.Name = "xtbpFocusNFE";
             this.xtbpFocusNFE.Size = new System.Drawing.Size(605, 366);
             this.xtbpFocusNFE.Text = "Api - FocusNFe";
             // 
-            // panelControl1
+            // panelControlTokenApiFocusNfe
             // 
-            this.panelControl1.Controls.Add(this.lblAmbiente);
-            this.panelControl1.Controls.Add(this.rgbAmbiente);
-            this.panelControl1.Controls.Add(this.txtTokenProducao);
-            this.panelControl1.Controls.Add(this.lblTokenProducao);
-            this.panelControl1.Controls.Add(this.txtTokenHomologacao);
-            this.panelControl1.Controls.Add(this.lblTokenHomologacao);
-            this.panelControl1.Location = new System.Drawing.Point(3, 33);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(599, 232);
-            this.panelControl1.TabIndex = 3;
+            this.panelControlTokenApiFocusNfe.Controls.Add(this.lblAmbiente);
+            this.panelControlTokenApiFocusNfe.Controls.Add(this.rgbAmbiente);
+            this.panelControlTokenApiFocusNfe.Controls.Add(this.txtTokenProducao);
+            this.panelControlTokenApiFocusNfe.Controls.Add(this.lblTokenProducao);
+            this.panelControlTokenApiFocusNfe.Controls.Add(this.txtTokenHomologacao);
+            this.panelControlTokenApiFocusNfe.Controls.Add(this.lblTokenHomologacao);
+            this.panelControlTokenApiFocusNfe.Location = new System.Drawing.Point(3, 33);
+            this.panelControlTokenApiFocusNfe.Name = "panelControlTokenApiFocusNfe";
+            this.panelControlTokenApiFocusNfe.Size = new System.Drawing.Size(599, 187);
+            this.panelControlTokenApiFocusNfe.TabIndex = 3;
             // 
             // lblAmbiente
             // 
@@ -361,7 +371,7 @@
             this.rgbAmbiente.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem("homologacao", "Homologação"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("producao", "Produção")});
-            this.rgbAmbiente.Size = new System.Drawing.Size(589, 51);
+            this.rgbAmbiente.Size = new System.Drawing.Size(589, 33);
             this.rgbAmbiente.TabIndex = 4;
             // 
             // txtTokenProducao
@@ -425,6 +435,70 @@
             this.btnSalvar.Text = "Salvar (F2)";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // panelControlConfEmpApiFocusNfe
+            // 
+            this.panelControlConfEmpApiFocusNfe.Controls.Add(this.lblIndicadorIEdestinatario);
+            this.panelControlConfEmpApiFocusNfe.Controls.Add(this.cbxEmpresaEmitente);
+            this.panelControlConfEmpApiFocusNfe.Controls.Add(this.lblEmpresaEmitente);
+            this.panelControlConfEmpApiFocusNfe.Controls.Add(this.cbxIndicadorIEdestinatario);
+            this.panelControlConfEmpApiFocusNfe.Location = new System.Drawing.Point(3, 226);
+            this.panelControlConfEmpApiFocusNfe.Name = "panelControlConfEmpApiFocusNfe";
+            this.panelControlConfEmpApiFocusNfe.Size = new System.Drawing.Size(599, 137);
+            this.panelControlConfEmpApiFocusNfe.TabIndex = 4;
+            // 
+            // lblEmpresaEmitente
+            // 
+            this.lblEmpresaEmitente.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmpresaEmitente.Appearance.Options.UseFont = true;
+            this.lblEmpresaEmitente.Location = new System.Drawing.Point(5, 5);
+            this.lblEmpresaEmitente.Name = "lblEmpresaEmitente";
+            this.lblEmpresaEmitente.Size = new System.Drawing.Size(134, 19);
+            this.lblEmpresaEmitente.TabIndex = 10;
+            this.lblEmpresaEmitente.Text = "Empresa Emitente:";
+            // 
+            // cbxEmpresaEmitente
+            // 
+            this.cbxEmpresaEmitente.Location = new System.Drawing.Point(5, 30);
+            this.cbxEmpresaEmitente.Name = "cbxEmpresaEmitente";
+            this.cbxEmpresaEmitente.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxEmpresaEmitente.Properties.Appearance.Options.UseFont = true;
+            this.cbxEmpresaEmitente.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbxEmpresaEmitente.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("idclientespessoas", "Código", 5, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("nome", "Nome Empresa"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("cpf_cnpj", "CPF_CNPJ")});
+            this.cbxEmpresaEmitente.Properties.NullText = "";
+            this.cbxEmpresaEmitente.Size = new System.Drawing.Size(589, 26);
+            this.cbxEmpresaEmitente.TabIndex = 5;
+            // 
+            // lblIndicadorIEdestinatario
+            // 
+            this.lblIndicadorIEdestinatario.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndicadorIEdestinatario.Appearance.Options.UseFont = true;
+            this.lblIndicadorIEdestinatario.Location = new System.Drawing.Point(5, 62);
+            this.lblIndicadorIEdestinatario.Name = "lblIndicadorIEdestinatario";
+            this.lblIndicadorIEdestinatario.Size = new System.Drawing.Size(203, 19);
+            this.lblIndicadorIEdestinatario.TabIndex = 12;
+            this.lblIndicadorIEdestinatario.Text = "Indicador IE do destinatario:";
+            // 
+            // cbxIndicadorIEdestinatario
+            // 
+            this.cbxIndicadorIEdestinatario.Location = new System.Drawing.Point(5, 87);
+            this.cbxIndicadorIEdestinatario.Name = "cbxIndicadorIEdestinatario";
+            this.cbxIndicadorIEdestinatario.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxIndicadorIEdestinatario.Properties.Appearance.Options.UseFont = true;
+            this.cbxIndicadorIEdestinatario.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbxIndicadorIEdestinatario.Properties.Items.AddRange(new object[] {
+            "1:Contribuinte ICMS (informar a IE do destinatário)",
+            "2:Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS",
+            "9:Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Con" +
+                "tribuintes do ICMS."});
+            this.cbxIndicadorIEdestinatario.Properties.PopupSizeable = true;
+            this.cbxIndicadorIEdestinatario.Size = new System.Drawing.Size(589, 26);
+            this.cbxIndicadorIEdestinatario.TabIndex = 6;
+            // 
             // ConfiguracoesGerais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -460,13 +534,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailCopia1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtEmailRecebimentoPrincipal.Properties)).EndInit();
             this.xtbpFocusNFE.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
-            this.panelControl1.ResumeLayout(false);
-            this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlTokenApiFocusNfe)).EndInit();
+            this.panelControlTokenApiFocusNfe.ResumeLayout(false);
+            this.panelControlTokenApiFocusNfe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgbAmbiente.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTokenProducao.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTokenHomologacao.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAtivaApiFocusNfe.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControlConfEmpApiFocusNfe)).EndInit();
+            this.panelControlConfEmpApiFocusNfe.ResumeLayout(false);
+            this.panelControlConfEmpApiFocusNfe.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxEmpresaEmitente.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbxIndicadorIEdestinatario.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -491,7 +570,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraTab.XtraTabPage xtbpFocusNFE;
         private DevExpress.XtraEditors.ToggleSwitch tsAtivaApiFocusNfe;
-        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.PanelControl panelControlTokenApiFocusNfe;
         private DevExpress.XtraEditors.TextEdit txtTokenProducao;
         private DevExpress.XtraEditors.LabelControl lblTokenProducao;
         private DevExpress.XtraEditors.TextEdit txtTokenHomologacao;
@@ -502,5 +581,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.RadioGroup rgbAmbiente;
         private DevExpress.XtraEditors.LabelControl lblAmbiente;
+        private DevExpress.XtraEditors.PanelControl panelControlConfEmpApiFocusNfe;
+        private DevExpress.XtraEditors.LabelControl lblEmpresaEmitente;
+        private DevExpress.XtraEditors.LookUpEdit cbxEmpresaEmitente;
+        private DevExpress.XtraEditors.LabelControl lblIndicadorIEdestinatario;
+        private DevExpress.XtraEditors.ComboBoxEdit cbxIndicadorIEdestinatario;
     }
 }

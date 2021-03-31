@@ -72,6 +72,14 @@
             this.gridColumnQtd = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnPrecoUnitario = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnTotal = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumnCodigo_ncm = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumnCfop = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumnIcms_origem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumnIcms_situacao_tributaria = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumnCodigoncm = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnCodigocfop = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnIcmsorigem = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnIcmssituacaotributaria = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelTarefas)).BeginInit();
             this.panelTarefas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl7)).BeginInit();
@@ -280,7 +288,11 @@
             this.gridColumnDescricaoCategoria,
             this.gridColumnDescricaoMarca,
             this.gridColumnUnidadeMedida,
-            this.gridColumnCodigoBarra});
+            this.gridColumnCodigoBarra,
+            this.gridColumnCodigoncm,
+            this.gridColumnCodigocfop,
+            this.gridColumnIcmsorigem,
+            this.gridColumnIcmssituacaotributaria});
             this.cbxPesquisarProduto.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.cbxPesquisarProduto.Name = "cbxPesquisarProduto";
             this.cbxPesquisarProduto.OptionsBehavior.Editable = false;
@@ -638,7 +650,11 @@
             this.gridColumnDescricao,
             this.gridColumnQtd,
             this.gridColumnPrecoUnitario,
-            this.gridColumnTotal});
+            this.gridColumnTotal,
+            this.gridColumnCodigo_ncm,
+            this.gridColumnCfop,
+            this.gridColumnIcms_origem,
+            this.gridColumnIcms_situacao_tributaria});
             this.advBandedGridViewItensPDV.GridControl = this.gridControlItensVenda;
             this.advBandedGridViewItensPDV.Name = "advBandedGridViewItensPDV";
             this.advBandedGridViewItensPDV.OptionsBehavior.Editable = false;
@@ -793,6 +809,54 @@
             this.gridColumnTotal.Visible = true;
             this.gridColumnTotal.Width = 174;
             // 
+            // gridColumnCodigo_ncm
+            // 
+            this.gridColumnCodigo_ncm.Caption = "codigo_ncm";
+            this.gridColumnCodigo_ncm.FieldName = "codigo_ncm";
+            this.gridColumnCodigo_ncm.Name = "gridColumnCodigo_ncm";
+            // 
+            // gridColumnCfop
+            // 
+            this.gridColumnCfop.Caption = "cfop";
+            this.gridColumnCfop.FieldName = "cfop";
+            this.gridColumnCfop.Name = "gridColumnCfop";
+            // 
+            // gridColumnIcms_origem
+            // 
+            this.gridColumnIcms_origem.Caption = "icms_origem";
+            this.gridColumnIcms_origem.FieldName = "icms_origem";
+            this.gridColumnIcms_origem.Name = "gridColumnIcms_origem";
+            // 
+            // gridColumnIcms_situacao_tributaria
+            // 
+            this.gridColumnIcms_situacao_tributaria.Caption = "icms_situacao_tributaria";
+            this.gridColumnIcms_situacao_tributaria.FieldName = "icms_situacao_tributaria";
+            this.gridColumnIcms_situacao_tributaria.Name = "gridColumnIcms_situacao_tributaria";
+            // 
+            // gridColumnCodigoncm
+            // 
+            this.gridColumnCodigoncm.Caption = "codigoncm";
+            this.gridColumnCodigoncm.FieldName = "codigoncm";
+            this.gridColumnCodigoncm.Name = "gridColumnCodigoncm";
+            // 
+            // gridColumnCodigocfop
+            // 
+            this.gridColumnCodigocfop.Caption = "codigocfop";
+            this.gridColumnCodigocfop.FieldName = "codigocfop";
+            this.gridColumnCodigocfop.Name = "gridColumnCodigocfop";
+            // 
+            // gridColumnIcmsorigem
+            // 
+            this.gridColumnIcmsorigem.Caption = "icmsorigem";
+            this.gridColumnIcmsorigem.FieldName = "icmsorigem";
+            this.gridColumnIcmsorigem.Name = "gridColumnIcmsorigem";
+            // 
+            // gridColumnIcmssituacaotributaria
+            // 
+            this.gridColumnIcmssituacaotributaria.Caption = "icmssituacaotributaria";
+            this.gridColumnIcmssituacaotributaria.FieldName = "icmssituacaotributaria";
+            this.gridColumnIcmssituacaotributaria.Name = "gridColumnIcmssituacaotributaria";
+            // 
             // VendaCaixaPDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -877,5 +941,13 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnPrecoUnitario;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnTotal;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBandItensPDV;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnCodigo_ncm;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnCfop;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnIcms_origem;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnIcms_situacao_tributaria;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnCodigoncm;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnCodigocfop;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnIcmsorigem;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnIcmssituacaotributaria;
     }
 }

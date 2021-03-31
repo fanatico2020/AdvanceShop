@@ -13,6 +13,7 @@ namespace AdvanceShop.Models
         public string tokenhomologacao { get; set; }
         public string tokenproducao { get; set; }
         public string ambiente { get; set; }
-
+        public string indicadoriedestinatario { get; set; }
+        public int clientespessoas_idclientespessoas { get; set; }
     }
 }
