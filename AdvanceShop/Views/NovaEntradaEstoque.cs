@@ -227,6 +227,7 @@ namespace AdvanceShop.Views
 
         private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
             if (e.KeyChar == (char)13)
             {
 
@@ -237,6 +238,7 @@ namespace AdvanceShop.Views
 
         private void txtPrecoCusto_KeyPress(object sender, KeyPressEventArgs e)
         {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
             if (e.KeyChar == (char)13)
             {
 
@@ -247,6 +249,7 @@ namespace AdvanceShop.Views
 
         private void txtMargemLucro_KeyPress(object sender, KeyPressEventArgs e)
         {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
             if (e.KeyChar == (char)13)
             {
 
@@ -257,6 +260,7 @@ namespace AdvanceShop.Views
 
         private void txtPrecoVenda_KeyPress(object sender, KeyPressEventArgs e)
         {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
             if (e.KeyChar == (char)13)
             {
 
@@ -410,6 +414,26 @@ namespace AdvanceShop.Views
         private void cbxFornecedor_DoubleClick(object sender, EventArgs e)
         {
             AtualizarFornecedores();
+        }
+
+        private void txtQuantidade_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtPrecoCusto_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtMargemLucro_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtPrecoVenda_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

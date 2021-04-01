@@ -361,9 +361,11 @@
     <Compile Include="Data\ConexaoMySql.cs" />
     <Compile Include="JsonModels\FocusNFe\CFOP\CFOP.cs" />
     <Compile Include="JsonModels\FocusNFe\NCM\NCM.cs" />
+    <Compile Include="JsonModels\FocusNFe\NFC_e\Duplicata.cs" />
     <Compile Include="JsonModels\FocusNFe\NFC_e\FocusNFe.cs" />
     <Compile Include="JsonModels\FocusNFe\NFC_e\FormasPagamento.cs" />
-    <Compile Include="JsonModels\FocusNFe\NFC_e\Item.cs" />
+    <Compile Include="JsonModels\FocusNFe\NFC_e\Iten.cs" />
+    <Compile Include="JsonModels\FocusNFe\NFC_e\Volume.cs" />
     <Compile Include="JsonModels\ReceitaWS\AtividadePrincipal.cs" />
     <Compile Include="JsonModels\ReceitaWS\AtividadesSecundaria.cs" />
     <Compile Include="JsonModels\ReceitaWS\Billing.cs" />

@@ -111,7 +111,7 @@ namespace AdvanceShop.Views
                 apiFocusNfe.usarapi = Convert.ToInt32(tsAtivaApiFocusNfe.IsOn);
                 apiFocusNfe.ambiente = Convert.ToString(rgbAmbiente.EditValue);
                 apiFocusNfe.clientespessoas_idclientespessoas = Convert.ToInt32(cbxEmpresaEmitente.EditValue);
-                apiFocusNfe.indicadoriedestinatario = ValidacaoCamposCustom.ApenasNumeros(Convert.ToString(cbxIndicadorIEdestinatario.EditValue));
+                apiFocusNfe.indicadoriedestinatario = ValidacaoCamposCustom.StringApenasNumeros(Convert.ToString(cbxIndicadorIEdestinatario.EditValue));
 
                 apiFocusNfeController.SalvarConfiguracao(apiFocusNfe);
 

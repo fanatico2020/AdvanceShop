@@ -174,6 +174,8 @@
             this.txtValorPago.Properties.MaxLength = 12;
             this.txtValorPago.Size = new System.Drawing.Size(161, 26);
             this.txtValorPago.TabIndex = 6;
+            this.txtValorPago.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtValorPago_Spin);
+            this.txtValorPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorPago_KeyPress);
             // 
             // lblVencimento
             // 

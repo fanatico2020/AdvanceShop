@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AdvanceShop.Shared.Validation
 {
@@ -102,10 +103,21 @@ namespace AdvanceShop.Shared.Validation
             }
             return false;
         }
-        public static string ApenasNumeros(string str)
+        public static string StringApenasNumeros(string str)
         {
             var apenasDigitos = new Regex(@"[^\d]");
             return apenasDigitos.Replace(str, "");
+        }
+        public static void StringKeyPressNumeroPontoVirgula (object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

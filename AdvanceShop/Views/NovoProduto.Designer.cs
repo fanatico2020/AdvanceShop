@@ -361,6 +361,8 @@
             this.txtPrecoVenda.Properties.ReadOnly = true;
             this.txtPrecoVenda.Size = new System.Drawing.Size(156, 26);
             this.txtPrecoVenda.TabIndex = 9;
+            this.txtPrecoVenda.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtPrecoVenda_Spin);
+            this.txtPrecoVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoVenda_KeyPress);
             // 
             // lblMaargemLucro
             // 
@@ -387,7 +389,9 @@
             this.txtMargemLucro.Properties.MaxLength = 12;
             this.txtMargemLucro.Size = new System.Drawing.Size(156, 26);
             this.txtMargemLucro.TabIndex = 8;
+            this.txtMargemLucro.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtMargemLucro_Spin);
             this.txtMargemLucro.EditValueChanged += new System.EventHandler(this.txtMargemLucro_EditValueChanged);
+            this.txtMargemLucro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMargemLucro_KeyPress);
             // 
             // txtPrecoCusto
             // 
@@ -404,7 +408,9 @@
             this.txtPrecoCusto.Properties.MaxLength = 12;
             this.txtPrecoCusto.Size = new System.Drawing.Size(156, 26);
             this.txtPrecoCusto.TabIndex = 7;
+            this.txtPrecoCusto.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtPrecoCusto_Spin);
             this.txtPrecoCusto.EditValueChanged += new System.EventHandler(this.txtPrecoCusto_EditValueChanged);
+            this.txtPrecoCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoCusto_KeyPress);
             // 
             // lblPrecoCusto
             // 

@@ -71,7 +71,9 @@
             this.txtSaldoFinal.Properties.MaxLength = 12;
             this.txtSaldoFinal.Size = new System.Drawing.Size(205, 26);
             this.txtSaldoFinal.TabIndex = 1;
+            this.txtSaldoFinal.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtSaldoFinal_Spin);
             this.txtSaldoFinal.EditValueChanged += new System.EventHandler(this.txtSaldoFinal_EditValueChanged);
+            this.txtSaldoFinal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaldoFinal_KeyPress);
             // 
             // lblSaldoFinal
             // 
@@ -110,6 +112,8 @@
             this.txtSaldoFinalSistema.Properties.UseReadOnlyAppearance = false;
             this.txtSaldoFinalSistema.Size = new System.Drawing.Size(205, 26);
             this.txtSaldoFinalSistema.TabIndex = 2;
+            this.txtSaldoFinalSistema.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtSaldoFinalSistema_Spin);
+            this.txtSaldoFinalSistema.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaldoFinalSistema_KeyPress);
             // 
             // lblQubraDeCaixa
             // 
@@ -141,6 +145,8 @@
             this.txtQuebraCaixa.Properties.ReadOnly = true;
             this.txtQuebraCaixa.Size = new System.Drawing.Size(205, 26);
             this.txtQuebraCaixa.TabIndex = 3;
+            this.txtQuebraCaixa.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtQuebraCaixa_Spin);
+            this.txtQuebraCaixa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuebraCaixa_KeyPress);
             // 
             // labelControl3
             // 

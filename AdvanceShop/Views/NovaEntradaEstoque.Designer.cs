@@ -29,12 +29,12 @@ namespace AdvanceShop.Views
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NovaEntradaEstoque));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.cbxFornecedor = new DevExpress.XtraEditors.LookUpEdit();
             this.lblFornecedor = new DevExpress.XtraEditors.LabelControl();
             this.lblProduto = new DevExpress.XtraEditors.LabelControl();
@@ -100,10 +100,10 @@ namespace AdvanceShop.Views
             this.cbxFornecedor.Name = "cbxFornecedor";
             this.cbxFornecedor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxFornecedor.Properties.Appearance.Options.UseFont = true;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.cbxFornecedor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.cbxFornecedor.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.cbxFornecedor.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("idclientespessoas", "Código", 5, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
@@ -467,6 +467,7 @@ namespace AdvanceShop.Views
             this.txtPrecoVenda.Properties.ReadOnly = true;
             this.txtPrecoVenda.Size = new System.Drawing.Size(156, 26);
             this.txtPrecoVenda.TabIndex = 6;
+            this.txtPrecoVenda.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtPrecoVenda_Spin);
             this.txtPrecoVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoVenda_KeyPress);
             // 
             // txtMargemLucro
@@ -484,6 +485,7 @@ namespace AdvanceShop.Views
             this.txtMargemLucro.Properties.MaxLength = 12;
             this.txtMargemLucro.Size = new System.Drawing.Size(156, 26);
             this.txtMargemLucro.TabIndex = 5;
+            this.txtMargemLucro.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtMargemLucro_Spin);
             this.txtMargemLucro.EditValueChanged += new System.EventHandler(this.txtMargemLucro_EditValueChanged);
             this.txtMargemLucro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMargemLucro_KeyPress);
             // 
@@ -502,6 +504,7 @@ namespace AdvanceShop.Views
             this.txtPrecoCusto.Properties.MaxLength = 12;
             this.txtPrecoCusto.Size = new System.Drawing.Size(156, 26);
             this.txtPrecoCusto.TabIndex = 4;
+            this.txtPrecoCusto.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtPrecoCusto_Spin);
             this.txtPrecoCusto.EditValueChanged += new System.EventHandler(this.txtPrecoCusto_EditValueChanged);
             this.txtPrecoCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoCusto_KeyPress);
             // 
@@ -520,6 +523,7 @@ namespace AdvanceShop.Views
             this.txtQuantidade.Properties.MaxLength = 15;
             this.txtQuantidade.Size = new System.Drawing.Size(156, 26);
             this.txtQuantidade.TabIndex = 3;
+            this.txtQuantidade.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtQuantidade_Spin);
             this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             // 
             // btnSalvar

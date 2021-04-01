@@ -54,6 +54,8 @@ namespace AdvanceShop.Views
             this.gridColumnUnidadeMedida = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnCodigoBarra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.txtObservacao = new DevExpress.XtraEditors.TextEdit();
             this.rgbMotivo = new DevExpress.XtraEditors.RadioGroup();
             this.btnAddProdLista = new DevExpress.XtraEditors.SimpleButton();
             this.txtQuantidade = new DevExpress.XtraEditors.TextEdit();
@@ -71,8 +73,6 @@ namespace AdvanceShop.Views
             this.bandedGridColumnPrecoVenda = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnFornecedor = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCodigoFornecedor = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.txtObservacao = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.cbxFornecedor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -80,13 +80,13 @@ namespace AdvanceShop.Views
             ((System.ComponentModel.ISupportInitialize)(this.cbxPesquisarProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtObservacao.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgbMotivo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewProdutos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtObservacao.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // cbxFornecedor
@@ -383,6 +383,25 @@ namespace AdvanceShop.Views
             this.panelControl2.Size = new System.Drawing.Size(644, 187);
             this.panelControl2.TabIndex = 18;
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Location = new System.Drawing.Point(6, 138);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(28, 19);
+            this.labelControl1.TabIndex = 16;
+            this.labelControl1.Text = "Obs";
+            // 
+            // txtObservacao
+            // 
+            this.txtObservacao.Location = new System.Drawing.Point(40, 135);
+            this.txtObservacao.Name = "txtObservacao";
+            this.txtObservacao.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtObservacao.Properties.Appearance.Options.UseFont = true;
+            this.txtObservacao.Size = new System.Drawing.Size(442, 26);
+            this.txtObservacao.TabIndex = 5;
+            // 
             // rgbMotivo
             // 
             this.rgbMotivo.Location = new System.Drawing.Point(6, 70);
@@ -422,6 +441,7 @@ namespace AdvanceShop.Views
             this.txtQuantidade.Properties.MaxLength = 15;
             this.txtQuantidade.Size = new System.Drawing.Size(156, 26);
             this.txtQuantidade.TabIndex = 3;
+            this.txtQuantidade.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtQuantidade_Spin);
             this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             // 
             // btnSalvar
@@ -613,25 +633,6 @@ namespace AdvanceShop.Views
             this.bandedGridColumnCodigoFornecedor.FieldName = "idclientespessoas";
             this.bandedGridColumnCodigoFornecedor.Name = "bandedGridColumnCodigoFornecedor";
             // 
-            // txtObservacao
-            // 
-            this.txtObservacao.Location = new System.Drawing.Point(40, 135);
-            this.txtObservacao.Name = "txtObservacao";
-            this.txtObservacao.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtObservacao.Properties.Appearance.Options.UseFont = true;
-            this.txtObservacao.Size = new System.Drawing.Size(442, 26);
-            this.txtObservacao.TabIndex = 5;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(6, 138);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(28, 19);
-            this.labelControl1.TabIndex = 16;
-            this.labelControl1.Text = "Obs";
-            // 
             // NovaSaidaEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,13 +660,13 @@ namespace AdvanceShop.Views
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtObservacao.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgbMotivo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewProdutos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtObservacao.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

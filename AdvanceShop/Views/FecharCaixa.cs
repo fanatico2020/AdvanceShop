@@ -100,5 +100,35 @@ namespace AdvanceShop.Views
             quebracaixa = saldofinalsistema - saldofinal;
             txtQuebraCaixa.Text = Convert.ToString(quebracaixa);
         }
+
+        private void txtSaldoFinal_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtSaldoFinalSistema_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtQuebraCaixa_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtSaldoFinal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
+
+        private void txtSaldoFinalSistema_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
+
+        private void txtQuebraCaixa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
     }
 }

@@ -37,6 +37,8 @@ namespace AdvanceShop.Models
         [Range(1, 1000000000000, ErrorMessage = "O campo Categoria é obrigatorio!")]
         public int categoriasprodutos_idcategoriasprodutos { get; set; }
         public int marcasprodutos_idmarcasprodutos { get; set; }
+        [Required(ErrorMessage = "O campo Unidade Medida é obrigatorio!")]
+        [Range(1, 1000000000000, ErrorMessage = "O campo Unidade Medida é obrigatorio!")]
         public int unidadesmedidasprodutos_idunidadesmedidasprodutos { get; set; }
         public int Item { get; set; }//entrada estoque
 

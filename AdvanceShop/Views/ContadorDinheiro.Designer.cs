@@ -68,6 +68,7 @@
             this.gridViewContadorDinheiro.OptionsView.ShowFooter = true;
             this.gridViewContadorDinheiro.OptionsView.ShowGroupPanel = false;
             this.gridViewContadorDinheiro.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridView1_CustomColumnDisplayText);
+            this.gridViewContadorDinheiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.gridViewContadorDinheiro_KeyPress);
             // 
             // gridColumnCedulaMoeda
             // 

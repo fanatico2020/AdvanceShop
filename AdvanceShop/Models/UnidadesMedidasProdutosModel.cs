@@ -11,7 +11,7 @@ namespace AdvanceShop.Models
     {
         public int IdUnidadesMedidasProdutos{ get; set; }
         [Required(ErrorMessage = "O campo Descrição é obrigatorio!")]
-        [StringLength(25, MinimumLength = 3, ErrorMessage = "O campo Descrição deve conter no máximo 25 e no mínimo 3 caracteres!")]
+        [StringLength(3, MinimumLength = 1, ErrorMessage = "O campo Descrição deve conter no máximo 3 e no mínimo 1 caracteres, Você pode utilizar valores como “KG”, “L”, “UN”, etc. Caso não se aplique utilize “UN”.")]
         public string DescricaoUnidadeMedida { get; set; }
 
     }

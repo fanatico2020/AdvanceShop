@@ -151,7 +151,7 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@clientespessoas_idclientespessoas", config.clientespessoas_idclientespessoas));
             comando.ExecuteNonQuery();
         }
-        public async void EnviandoNFC_e(ApiFocusNfeModel config,FocusNFe focusNFe)
+        public async void EnviandoNFC_e(ApiFocusNfeModel config,FocusNFe focusNFe,string REFERENCIA)
         {
 
             
@@ -174,13 +174,13 @@ namespace AdvanceShop.Controllers
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
-                using (var request = new HttpRequestMessage(new HttpMethod("POST"), $"https://{ambienteFocus}.focusnfe.com.br/v2/nfce?ref=12345"))
+                using (var request = new HttpRequestMessage(new HttpMethod("POST"), $"https://{ambienteFocus}.focusnfe.com.br/v2/nfce?ref={REFERENCIA}"))
                 {
                     var base64authorization = Convert.ToBase64String(Encoding.ASCII.GetBytes(focusToken));
                     request.Headers.TryAddWithoutValidation("Authorization", $"Basic {base64authorization}");
                     request.Content = new StringContent(json,Encoding.UTF8, "application/json");
                     var response = await httpClient.SendAsync(request);
-
+                    
                     
                     if (response.IsSuccessStatusCode)
                     {

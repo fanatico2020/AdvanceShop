@@ -18,6 +18,7 @@ namespace AdvanceShop.Models
         public int produtos_idprodutos { get; set; }
         public int Item { get; set; }
         public int transacoesestoque_idtransacoesestoque { get; set; }
+        public string UnidadeMedida { get; set; }
         public string codigo_ncm { get; set; }
         public string cfop { get; set; }
         public string icms_origem { get; set; }

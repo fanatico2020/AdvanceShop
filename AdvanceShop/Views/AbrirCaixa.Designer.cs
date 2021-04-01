@@ -71,6 +71,8 @@
             this.txtSaldoInicial.Properties.MaxLength = 12;
             this.txtSaldoInicial.Size = new System.Drawing.Size(205, 26);
             this.txtSaldoInicial.TabIndex = 1;
+            this.txtSaldoInicial.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtSaldoInicial_Spin);
+            this.txtSaldoInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaldoInicial_KeyPress);
             // 
             // btnAbrirCaixa
             // 

@@ -29,7 +29,7 @@ namespace AdvanceShop.Views
         ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
         ClientesPessoasModel empresaEmitente = new ClientesPessoasModel();
         FocusNFe focusNFe = new FocusNFe();
-        IList<Item> focusItemNfe = new List<Item>();
+        IList<Iten> focusItemNfe = new List<Iten>();
         List<FormasPagamento> focusFormasPagamentoNfe = new List<FormasPagamento>();
         //--
 
@@ -56,8 +56,9 @@ namespace AdvanceShop.Views
 
             foreach (var item in itensVenda)
             {
-                focusItemNfe.Add(new Item()
+                focusItemNfe.Add(new Iten()
                 {
+                    numero_item = item.Item.ToString(),
                     codigo_produto = item.produtos_idprodutos.ToString(),
                     codigo_ncm = item.codigo_ncm,
                     cfop = item.cfop,
@@ -65,14 +66,14 @@ namespace AdvanceShop.Views
                     icms_situacao_tributaria = item.icms_situacao_tributaria,
                     quantidade_comercial = item.Quantidade.ToString(),
                     quantidade_tributavel = item.Quantidade.ToString(),
-                    valor_unitario_comercial = item.ValorUnitario.ToString(),
-                    valor_unitario_tributavel = item.ValorUnitario.ToString(),
+                    valor_unitario_comercial = item.ValorUnitario.ToString().Replace(",", "."),
+                    valor_unitario_tributavel = item.ValorUnitario.ToString().Replace(",", "."),
                     descricao = item.DescricaoProduto,//descrição produto
-                    unidade_comercial = "UN",
-                    unidade_tributavel = "UN",
-                    valor_bruto = Convert.ToString(item.ValorUnitario * item.Quantidade)
+                    unidade_comercial = item.UnidadeMedida,
+                    unidade_tributavel = item.UnidadeMedida,
+                    valor_bruto = Convert.ToString(item.ValorUnitario * item.Quantidade).Replace(",", ".")
 
-                }) ;
+                });
             }
 
 
@@ -88,6 +89,7 @@ namespace AdvanceShop.Views
 
             configGerais = configGeraisController.ObterConfiguracoesGerais();
             apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
+            empresaEmitente = apiFocusNfeController.ObterEmpresaEmitenteApiFocusNfe(apiFocusNfe);
 
             cbxImprimirNFCe.Enabled = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
             cbxImprimirNFCe.Checked = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
@@ -159,7 +161,6 @@ namespace AdvanceShop.Views
         }
         private void FinalizarVenda()
         {
-            
             if (Troco >= 0 && lblTroco.Text == "Troco" && MessageBoxQuestionYesNo.Show($"Deseja finalizar a {VendaOuEditarFormaPagamento}?") == DialogResult.Yes)
             {
                 if (!editarformaspagamento)
@@ -182,7 +183,7 @@ namespace AdvanceShop.Views
                                     focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
                                     {
                                         forma_pagamento = "1",
-                                        valor_pagamento = ValoresPagamento[0].ToString(),
+                                        valor_pagamento = ValoresPagamento[0].ToString().Replace(",", "."),
 
                                     });
 
@@ -199,8 +200,7 @@ namespace AdvanceShop.Views
                                     focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
                                     {
                                         forma_pagamento = "3",
-                                        valor_pagamento = ValoresPagamento[0].ToString(),
-                                        bandeira_operadora = "99"
+                                        valor_pagamento = ValoresPagamento[0].ToString().Replace(",", ".")
                                     });
                                     formasPagamento.Add(new FormasPagamentoModel()
                                     {
@@ -215,8 +215,7 @@ namespace AdvanceShop.Views
                                     focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
                                     {
                                         forma_pagamento = "4",
-                                        valor_pagamento = ValoresPagamento[0].ToString(),
-                                        bandeira_operadora = "99"
+                                        valor_pagamento = ValoresPagamento[0].ToString().Replace(",", ".")
                                     });
                                     formasPagamento.Add(new FormasPagamentoModel()
                                     {
@@ -245,20 +244,58 @@ namespace AdvanceShop.Views
                         caixa.Maquina = Environment.MachineName;
                         if (cbxImprimirNFCe.Checked)//focusNfe
                         {
-                            focusNFe.cnpj_emitente = empresaEmitente.CPFCNPJ;//puxar
-                            focusNFe.data_emissao = DateTime.Now;
-                            focusNFe.indicador_inscricao_estadual_destinatario = apiFocusNfe.indicadoriedestinatario;//puxar
-                            focusNFe.modalidade_frete = "9";//'1' – Por conta do destinatário
-                            focusNFe.local_destino = "1";//'1' – Operação interna;
-                            focusNFe.presenca_comprador = "1";//1 – Operação presencial
-                            focusNFe.natureza_operacao = "VENDA AO CONSUMIDOR";
-                            focusNFe.items = focusItemNfe;
-                            focusNFe.formas_pagamento = focusFormasPagamentoNfe;
-                            apiFocusNfeController.EnviandoNFC_e(apiFocusNfe, focusNFe);
+                            try
+                            {
+                                //emitente
+                                focusNFe.nome_emitente = empresaEmitente.NomeClientePessoa;
+                                focusNFe.inscricao_estadual_emitente = empresaEmitente.RGIE;
+                                focusNFe.cnpj_emitente = empresaEmitente.CPFCNPJ;
+                                focusNFe.telefone_emitente = empresaEmitente.Contato1.Replace("-","").Trim();
+                                focusNFe.logradouro_emitente = empresaEmitente.Endereco;
+                                focusNFe.numero_emitente = empresaEmitente.NumeroCasa;
+                                focusNFe.bairro_emitente = empresaEmitente.Bairro;
+                                focusNFe.municipio_emitente = empresaEmitente.Cidade;
+                                focusNFe.uf_emitente = empresaEmitente.UF;
+                                focusNFe.cep_emitente = empresaEmitente.CEP.Replace("-", "").Trim();
+                                focusNFe.data_emissao = DateTime.Now;
+                                focusNFe.finalidade_emissao = "1";
+                                focusNFe.tipo_documento = "1";
+                                focusNFe.consumidor_final = "0";
+                                focusNFe.indicador_intermediario = "0";
+                                focusNFe.indicador_inscricao_estadual_destinatario = apiFocusNfe.indicadoriedestinatario;
+                                focusNFe.modalidade_frete = "9";//'1' – Por conta do destinatário
+                                focusNFe.local_destino = "1";//'1' – Operação interna;
+                                focusNFe.presenca_comprador = "1";//1 – Operação presencial
+                                focusNFe.natureza_operacao = "VENDA AO CONSUMIDOR";
+                                focusNFe.itens = focusItemNfe;
+                                focusNFe.formas_pagamento = focusFormasPagamentoNfe;
+                                //destinatario
+                                if(clientePessoa != null)
+                                {
+                                    focusNFe.nome_destinatario = clientePessoa.NomeClientePessoa;
+                                    if (clientePessoa.CPFCNPJ.Length == 11) focusNFe.cpf_destinatario = clientePessoa.CPFCNPJ;
+                                    if (clientePessoa.CPFCNPJ.Length == 14) focusNFe.cnpj_destinatario = clientePessoa.CPFCNPJ;
+                                    focusNFe.telefone_destinatario = clientePessoa.Contato1.Replace("-", "").Trim();
+                                    focusNFe.logradouro_destinatario = clientePessoa.Endereco;
+                                    focusNFe.numero_destinatario = clientePessoa.NumeroCasa;
+                                    focusNFe.bairro_destinatario = clientePessoa.Bairro;
+                                    focusNFe.municipio_destinatario = clientePessoa.Cidade;
+                                    focusNFe.uf_destinatario = clientePessoa.UF;
+                                    focusNFe.cep_destinatario = clientePessoa.CEP.Replace("-", "").Trim();
+                                }
+                                
+                            }
+                            catch (NullReferenceException)
+                            {
+
+                            }
                             
+
+                            apiFocusNfeController.EnviandoNFC_e(apiFocusNfe, focusNFe,venda.IdVendas.ToString());
+
                         }
                         //cupom não fiscal
-                        Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora,configGerais);
+                        Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora, configGerais);
 
                     }
                     //Iniciar nova venda no pdv
@@ -334,6 +371,7 @@ namespace AdvanceShop.Views
 
         private void txtDinheiro_EditValueChanged(object sender, EventArgs e)
         {
+            
             CalcularValorTroco();
         }
 
@@ -355,6 +393,28 @@ namespace AdvanceShop.Views
             }
         }
 
+        private void txtDinheiro_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtCartaoCredito_Properties_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtCartaoDebito_Properties_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtLinkPagamento_Properties_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        
+
         private void txtLinkPagamento_EditValueChanged(object sender, EventArgs e)
         {
             CalcularValorTroco();
@@ -368,6 +428,8 @@ namespace AdvanceShop.Views
 
         private void txtDinheiro_KeyPress(object sender, KeyPressEventArgs e)
         {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender,e);
+
             if (e.KeyChar == (char)13)
             {
                 e.Handled = true;
@@ -378,6 +440,8 @@ namespace AdvanceShop.Views
 
         private void txtCartaoCredito_KeyPress(object sender, KeyPressEventArgs e)
         {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+
             if (e.KeyChar == (char)13)
             {
                 e.Handled = true;
@@ -387,6 +451,8 @@ namespace AdvanceShop.Views
 
         private void txtCartaoDebito_KeyPress(object sender, KeyPressEventArgs e)
         {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+
             if (e.KeyChar == (char)13)
             {
                 e.Handled = true;
@@ -396,6 +462,8 @@ namespace AdvanceShop.Views
 
         private void txtLinkPagamento_KeyPress(object sender, KeyPressEventArgs e)
         {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+
             if (e.KeyChar == (char)13)
             {
                 e.Handled = true;

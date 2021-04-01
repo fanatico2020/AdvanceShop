@@ -87,5 +87,15 @@ namespace AdvanceShop.Views
                 Salvar();
             }
         }
+
+        private void txtSaldoInicial_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtSaldoInicial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
     }
 }

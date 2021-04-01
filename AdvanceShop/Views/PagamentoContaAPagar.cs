@@ -98,5 +98,15 @@ namespace AdvanceShop.Views
                 FormClientesPessoas.ShowDialog();
             }
         }
+
+        private void txtValorPago_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
     }
 }

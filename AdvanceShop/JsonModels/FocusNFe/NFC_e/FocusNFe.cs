@@ -8,14 +8,72 @@ namespace AdvanceShop.JsonModels.FocusNFe.NFC_e
 {
     public class FocusNFe
     {
-        public string cnpj_emitente { get; set; }//OBGT - CNPJ da empresa que está emitindo a NFCe.
-        public DateTime data_emissao { get; set; }//OBGT - Utilize o formato ISO, exemplo 2015-11-19T13:54:31-02:00. Diferença máxima permitida de 5 minutos do horário atual.
-        public string indicador_inscricao_estadual_destinatario { get; set; }//Não OBGT - Indicador da Inscrição Estadual do destinatário. Valores possíveis: '1' – Contribuinte ICMS (informar a IE do destinatário); '2' – Contribuinte isento de Inscrição no cadastro de Contribuintes do ICMS; '9' – Não Contribuinte, que pode ou não possuir Inscrição Estadual no Cadastro de Contribuintes do ICMS.
-        public string modalidade_frete { get; set; }//OBGT - Indica a modalidade do frete da operação. Valores possíveis: '0' – Por conta do emitente; '1' – Por conta do destinatário; '2' – Por conta de terceiros; '9' – Sem frete.
-        public string local_destino { get; set; }//OBGT - Local onde a operação irá acontecer. Valores possíveis: '1' – Operação interna; '2' – Operação interestadual; '3' – Operação com exterior.
-        public string presenca_comprador { get; set; }//OBGT - Presença do comprador.Valores possíveis:1 – Operação presencial.4 – Entrega a domicílio.
-        public string natureza_operacao { get; set; }//OBGT - "VENDA AO CONSUMIDOR"
-        public IList<Item> items { get; set; }
+
+        public string natureza_operacao { get; set; }
+        public DateTime data_emissao { get; set; }
+        public DateTime data_entrada_saida { get; set; }
+        public string tipo_documento { get; set; }
+        public string local_destino { get; set; }
+        public string finalidade_emissao { get; set; }
+        public string consumidor_final { get; set; }
+        public string presenca_comprador { get; set; }
+        public string indicador_intermediario { get; set; }
+        public string cnpj_emitente { get; set; }
+        public string telefone_emitente { get; set; }
+        public string nome_emitente { get; set; }
+        public string nome_fantasia_emitente { get; set; }
+        public string logradouro_emitente { get; set; }
+        public string numero_emitente { get; set; }
+        public string bairro_emitente { get; set; }
+        public string municipio_emitente { get; set; }
+        public string uf_emitente { get; set; }
+        public string cep_emitente { get; set; }
+        public string inscricao_estadual_emitente { get; set; }
+        public string regime_tributario_emitente { get; set; }
+        public string cnpj_destinatario { get; set; }
+        public string cpf_destinatario { get; set; }
+        public string telefone_destinatario { get; set; }
+        public string nome_destinatario { get; set; }
+        public string logradouro_destinatario { get; set; }
+        public string numero_destinatario { get; set; }
+        public string bairro_destinatario { get; set; }
+        public string municipio_destinatario { get; set; }
+        public string uf_destinatario { get; set; }
+        public string cep_destinatario { get; set; }
+        public string indicador_inscricao_estadual_destinatario { get; set; }
+        public string inscricao_estadual_destinatario { get; set; }
+        public IList<Iten> itens { get; set; }
+        public string icms_base_calculo { get; set; }
+        public string icms_valor_total { get; set; }
+        public string icms_valor_total_desonerado { get; set; }
+        public string fcp_valor_total { get; set; }
+        public string icms_base_calculo_st { get; set; }
+        public string icms_valor_total_st { get; set; }
+        public string fcp_valor_total_st { get; set; }
+        public string fcp_valor_total_retido_st { get; set; }
+        public string valor_produtos { get; set; }
+        public string valor_frete { get; set; }
+        public string valor_seguro { get; set; }
+        public string valor_desconto { get; set; }
+        public string valor_total_ii { get; set; }
+        public string valor_ipi { get; set; }
+        public string valor_ipi_devolvido { get; set; }
+        public string valor_pis { get; set; }
+        public string valor_cofins { get; set; }
+        public string valor_outras_despesas { get; set; }
+        public string valor_total { get; set; }
+        public string modalidade_frete { get; set; }
+        public IList<Volume> volumes { get; set; }
+        public string numero_fatura { get; set; }
+        public string valor_original_fatura { get; set; }
+        public string valor_desconto_fatura { get; set; }
+        public string valor_liquido_fatura { get; set; }
+        public IList<Duplicata> duplicatas { get; set; }
         public IList<FormasPagamento> formas_pagamento { get; set; }
+        public string informacoes_adicionais_contribuinte { get; set; }
+        public string cnpj_responsavel_tecnico { get; set; }
+        public string contato_responsavel_tecnico { get; set; }
+        public string email_responsavel_tecnico { get; set; }
+        public string telefone_responsavel_tecnico { get; set; }
     }
 }

@@ -52,6 +52,10 @@
             this.gridColumnDescricaoMarca = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnUnidadeMedida = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnCodigoBarra = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnCodigoncm = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnCodigocfop = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnIcmsorigem = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnIcmssituacaotributaria = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelProduto = new DevExpress.XtraEditors.PanelControl();
             this.btnAdicionarProduto = new DevExpress.XtraEditors.SimpleButton();
             this.separatorControl6 = new DevExpress.XtraEditors.SeparatorControl();
@@ -76,10 +80,7 @@
             this.gridColumnCfop = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnIcms_origem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnIcms_situacao_tributaria = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridColumnCodigoncm = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnCodigocfop = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnIcmsorigem = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnIcmssituacaotributaria = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnUndMedida = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelTarefas)).BeginInit();
             this.panelTarefas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl7)).BeginInit();
@@ -466,6 +467,30 @@
             this.gridColumnCodigoBarra.Visible = true;
             this.gridColumnCodigoBarra.VisibleIndex = 9;
             // 
+            // gridColumnCodigoncm
+            // 
+            this.gridColumnCodigoncm.Caption = "codigoncm";
+            this.gridColumnCodigoncm.FieldName = "codigoncm";
+            this.gridColumnCodigoncm.Name = "gridColumnCodigoncm";
+            // 
+            // gridColumnCodigocfop
+            // 
+            this.gridColumnCodigocfop.Caption = "codigocfop";
+            this.gridColumnCodigocfop.FieldName = "codigocfop";
+            this.gridColumnCodigocfop.Name = "gridColumnCodigocfop";
+            // 
+            // gridColumnIcmsorigem
+            // 
+            this.gridColumnIcmsorigem.Caption = "icmsorigem";
+            this.gridColumnIcmsorigem.FieldName = "icmsorigem";
+            this.gridColumnIcmsorigem.Name = "gridColumnIcmsorigem";
+            // 
+            // gridColumnIcmssituacaotributaria
+            // 
+            this.gridColumnIcmssituacaotributaria.Caption = "icmssituacaotributaria";
+            this.gridColumnIcmssituacaotributaria.FieldName = "icmssituacaotributaria";
+            this.gridColumnIcmssituacaotributaria.Name = "gridColumnIcmssituacaotributaria";
+            // 
             // panelProduto
             // 
             this.panelProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -654,7 +679,8 @@
             this.gridColumnCodigo_ncm,
             this.gridColumnCfop,
             this.gridColumnIcms_origem,
-            this.gridColumnIcms_situacao_tributaria});
+            this.gridColumnIcms_situacao_tributaria,
+            this.gridColumnUndMedida});
             this.advBandedGridViewItensPDV.GridControl = this.gridControlItensVenda;
             this.advBandedGridViewItensPDV.Name = "advBandedGridViewItensPDV";
             this.advBandedGridViewItensPDV.OptionsBehavior.Editable = false;
@@ -833,29 +859,11 @@
             this.gridColumnIcms_situacao_tributaria.FieldName = "icms_situacao_tributaria";
             this.gridColumnIcms_situacao_tributaria.Name = "gridColumnIcms_situacao_tributaria";
             // 
-            // gridColumnCodigoncm
+            // gridColumnUndMedida
             // 
-            this.gridColumnCodigoncm.Caption = "codigoncm";
-            this.gridColumnCodigoncm.FieldName = "codigoncm";
-            this.gridColumnCodigoncm.Name = "gridColumnCodigoncm";
-            // 
-            // gridColumnCodigocfop
-            // 
-            this.gridColumnCodigocfop.Caption = "codigocfop";
-            this.gridColumnCodigocfop.FieldName = "codigocfop";
-            this.gridColumnCodigocfop.Name = "gridColumnCodigocfop";
-            // 
-            // gridColumnIcmsorigem
-            // 
-            this.gridColumnIcmsorigem.Caption = "icmsorigem";
-            this.gridColumnIcmsorigem.FieldName = "icmsorigem";
-            this.gridColumnIcmsorigem.Name = "gridColumnIcmsorigem";
-            // 
-            // gridColumnIcmssituacaotributaria
-            // 
-            this.gridColumnIcmssituacaotributaria.Caption = "icmssituacaotributaria";
-            this.gridColumnIcmssituacaotributaria.FieldName = "icmssituacaotributaria";
-            this.gridColumnIcmssituacaotributaria.Name = "gridColumnIcmssituacaotributaria";
+            this.gridColumnUndMedida.Caption = "unidademedida";
+            this.gridColumnUndMedida.FieldName = "unidademedida";
+            this.gridColumnUndMedida.Name = "gridColumnUndMedida";
             // 
             // VendaCaixaPDV
             // 
@@ -949,5 +957,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCodigocfop;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnIcmsorigem;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnIcmssituacaotributaria;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnUndMedida;
     }
 }

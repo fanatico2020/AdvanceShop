@@ -96,7 +96,9 @@
             this.txtDescontoValor.Properties.MaxLength = 12;
             this.txtDescontoValor.Size = new System.Drawing.Size(148, 26);
             this.txtDescontoValor.TabIndex = 1;
+            this.txtDescontoValor.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtDescontoValor_Spin);
             this.txtDescontoValor.EditValueChanged += new System.EventHandler(this.txtDescontoValor_EditValueChanged);
+            this.txtDescontoValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescontoValor_KeyPress);
             // 
             // lblTotalAPagar
             // 
@@ -152,7 +154,9 @@
             this.txtDescontoPorcentagem.Properties.MaxLength = 6;
             this.txtDescontoPorcentagem.Size = new System.Drawing.Size(94, 26);
             this.txtDescontoPorcentagem.TabIndex = 2;
+            this.txtDescontoPorcentagem.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtDescontoPorcentagem_Spin);
             this.txtDescontoPorcentagem.EditValueChanged += new System.EventHandler(this.txtDescontoPorcentagem_EditValueChanged);
+            this.txtDescontoPorcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescontoPorcentagem_KeyPress);
             // 
             // btnSalvar
             // 

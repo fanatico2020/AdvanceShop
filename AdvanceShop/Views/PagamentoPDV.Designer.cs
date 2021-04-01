@@ -247,6 +247,7 @@
             this.txtLinkPagamento.EditValue = "";
             this.txtLinkPagamento.Location = new System.Drawing.Point(5, 131);
             this.txtLinkPagamento.Name = "txtLinkPagamento";
+            this.txtLinkPagamento.Properties.AllowMouseWheel = false;
             this.txtLinkPagamento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLinkPagamento.Properties.Appearance.Options.UseFont = true;
             this.txtLinkPagamento.Properties.Appearance.Options.UseTextOptions = true;
@@ -258,6 +259,7 @@
             this.txtLinkPagamento.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtLinkPagamento.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtLinkPagamento.Properties.MaxLength = 12;
+            this.txtLinkPagamento.Properties.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtLinkPagamento_Properties_Spin);
             this.txtLinkPagamento.Size = new System.Drawing.Size(506, 36);
             this.txtLinkPagamento.TabIndex = 4;
             this.txtLinkPagamento.EditValueChanged += new System.EventHandler(this.txtLinkPagamento_EditValueChanged);
@@ -268,6 +270,7 @@
             this.txtCartaoDebito.EditValue = "";
             this.txtCartaoDebito.Location = new System.Drawing.Point(5, 89);
             this.txtCartaoDebito.Name = "txtCartaoDebito";
+            this.txtCartaoDebito.Properties.AllowMouseWheel = false;
             this.txtCartaoDebito.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCartaoDebito.Properties.Appearance.Options.UseFont = true;
             this.txtCartaoDebito.Properties.Appearance.Options.UseTextOptions = true;
@@ -279,6 +282,7 @@
             this.txtCartaoDebito.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtCartaoDebito.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtCartaoDebito.Properties.MaxLength = 12;
+            this.txtCartaoDebito.Properties.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtCartaoDebito_Properties_Spin);
             this.txtCartaoDebito.Size = new System.Drawing.Size(506, 36);
             this.txtCartaoDebito.TabIndex = 3;
             this.txtCartaoDebito.EditValueChanged += new System.EventHandler(this.txtCartaoDebito_EditValueChanged);
@@ -289,6 +293,7 @@
             this.txtCartaoCredito.EditValue = "";
             this.txtCartaoCredito.Location = new System.Drawing.Point(5, 47);
             this.txtCartaoCredito.Name = "txtCartaoCredito";
+            this.txtCartaoCredito.Properties.AllowMouseWheel = false;
             this.txtCartaoCredito.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCartaoCredito.Properties.Appearance.Options.UseFont = true;
             this.txtCartaoCredito.Properties.Appearance.Options.UseTextOptions = true;
@@ -300,6 +305,7 @@
             this.txtCartaoCredito.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtCartaoCredito.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtCartaoCredito.Properties.MaxLength = 12;
+            this.txtCartaoCredito.Properties.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtCartaoCredito_Properties_Spin);
             this.txtCartaoCredito.Size = new System.Drawing.Size(506, 36);
             this.txtCartaoCredito.TabIndex = 2;
             this.txtCartaoCredito.EditValueChanged += new System.EventHandler(this.txtCartaoCredito_EditValueChanged);
@@ -310,6 +316,7 @@
             this.txtDinheiro.EditValue = "";
             this.txtDinheiro.Location = new System.Drawing.Point(5, 5);
             this.txtDinheiro.Name = "txtDinheiro";
+            this.txtDinheiro.Properties.AllowMouseWheel = false;
             this.txtDinheiro.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDinheiro.Properties.Appearance.Options.UseFont = true;
             this.txtDinheiro.Properties.Appearance.Options.UseTextOptions = true;
@@ -323,6 +330,7 @@
             this.txtDinheiro.Properties.MaxLength = 12;
             this.txtDinheiro.Size = new System.Drawing.Size(506, 36);
             this.txtDinheiro.TabIndex = 1;
+            this.txtDinheiro.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtDinheiro_Spin);
             this.txtDinheiro.EditValueChanged += new System.EventHandler(this.txtDinheiro_EditValueChanged);
             this.txtDinheiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDinheiro_KeyPress);
             // 

@@ -54,7 +54,9 @@
             this.txtValor.Properties.MaxLength = 12;
             this.txtValor.Size = new System.Drawing.Size(205, 26);
             this.txtValor.TabIndex = 1;
+            this.txtValor.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtValor_Spin);
             this.txtValor.EditValueChanged += new System.EventHandler(this.txtValor_EditValueChanged);
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // lblValor
             // 

@@ -172,6 +172,8 @@
             this.txtDescontoMaximoPorVenda.Properties.MaxLength = 6;
             this.txtDescontoMaximoPorVenda.Size = new System.Drawing.Size(100, 26);
             this.txtDescontoMaximoPorVenda.TabIndex = 8;
+            this.txtDescontoMaximoPorVenda.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtDescontoMaximoPorVenda_Spin);
+            this.txtDescontoMaximoPorVenda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescontoMaximoPorVenda_KeyPress);
             this.txtDescontoMaximoPorVenda.Leave += new System.EventHandler(this.txtDescontoMaximoPorVenda_Leave);
             // 
             // tsDescontoMaximoPorVenda

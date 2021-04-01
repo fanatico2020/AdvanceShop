@@ -386,5 +386,10 @@ namespace AdvanceShop.Views
         {
             AtualizarFornecedores();
         }
+
+        private void txtQuantidade_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

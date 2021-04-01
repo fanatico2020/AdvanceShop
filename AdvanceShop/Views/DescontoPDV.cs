@@ -1,4 +1,5 @@
 ﻿using AdvanceShop.Models;
+using AdvanceShop.Shared.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -99,6 +100,26 @@ namespace AdvanceShop.Views
         private void txtDescontoPorcentagem_EditValueChanged(object sender, EventArgs e)
         {
             CalcularPrecoDesconto(true);
+        }
+
+        private void txtDescontoValor_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtDescontoValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
+
+        private void txtDescontoPorcentagem_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtDescontoPorcentagem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
         }
     }
 }

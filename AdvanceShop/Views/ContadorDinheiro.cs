@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdvanceShop.Shared.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -128,6 +129,11 @@ namespace AdvanceShop.Views
         private void btnZerarContador_Click(object sender, EventArgs e)
         {
             AtualizarGrid();
+        }
+
+        private void gridViewContadorDinheiro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
         }
     }
 

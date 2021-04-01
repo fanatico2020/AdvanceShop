@@ -172,8 +172,8 @@ namespace AdvanceShop.Views
                 //fiscal
                 produto.Codigo_NCM = Convert.ToString(cbxCodigoNCM.EditValue);
                 produto.Codigo_CFOP = Convert.ToString(cbxCodigoCFOP.EditValue);
-                produto.ICMS_Origem = ValidacaoCamposCustom.ApenasNumeros(Convert.ToString(cbxICMSOrigem.EditValue));
-                produto.ICMS_Situacao_Tributaria = ValidacaoCamposCustom.ApenasNumeros(Convert.ToString(cbxICMSSituacaoTributaria.EditValue));
+                produto.ICMS_Origem = ValidacaoCamposCustom.StringApenasNumeros(Convert.ToString(cbxICMSOrigem.EditValue));
+                produto.ICMS_Situacao_Tributaria = ValidacaoCamposCustom.StringApenasNumeros(Convert.ToString(cbxICMSSituacaoTributaria.EditValue));
 
                 ValidacaoCampos.Validar(produto);
                 if (ValidacaoCampos.IsValid() && MessageBoxQuestionYesNo.Show($"Deseja salvar?") == DialogResult.Yes)
@@ -500,6 +500,36 @@ namespace AdvanceShop.Views
         private void cbxCodigoCFOP_EditValueChanged(object sender, EventArgs e)
         {
             AtualizarCFOP();
+        }
+
+        private void txtPrecoCusto_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtMargemLucro_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtPrecoVenda_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void txtPrecoCusto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
+
+        private void txtMargemLucro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
+
+        private void txtPrecoVenda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
         }
 
         

@@ -246,6 +246,8 @@
             this.txtValor.Properties.MaxLength = 12;
             this.txtValor.Size = new System.Drawing.Size(161, 26);
             this.txtValor.TabIndex = 5;
+            this.txtValor.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtValor_Spin);
+            this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
             // txtDocumento
             // 
