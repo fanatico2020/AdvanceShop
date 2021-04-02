@@ -44,7 +44,7 @@
             this.bbiApp = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelMeioDePagamento = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelMovimentacaoProdutos = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiRelProdutosRankingVendas = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRelProdutosMaisVendidos = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelVendasPorCategoriasProdutos = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelVendasPorProdutos = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelVendasPorVendedor = new DevExpress.XtraBars.BarButtonItem();
@@ -68,6 +68,8 @@
             this.bbiSuporteTelefone = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelFechmanetoCaixa = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAtualizacaoSoftware = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPagePrincipal = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupPrincipal = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageRelatorios = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -81,8 +83,6 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenuPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -107,7 +107,7 @@
             this.bbiApp,
             this.bbiRelMeioDePagamento,
             this.bbiRelMovimentacaoProdutos,
-            this.bbiRelProdutosRankingVendas,
+            this.bbiRelProdutosMaisVendidos,
             this.bbiRelVendasPorCategoriasProdutos,
             this.bbiRelVendasPorProdutos,
             this.bbiRelVendasPorVendedor,
@@ -296,20 +296,20 @@
             this.bbiRelMovimentacaoProdutos.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelMovimentacaoProdutos.Name = "bbiRelMovimentacaoProdutos";
             // 
-            // bbiRelProdutosRankingVendas
+            // bbiRelProdutosMaisVendidos
             // 
-            this.bbiRelProdutosRankingVendas.Caption = "Produtos Ranking Vendas";
-            this.bbiRelProdutosRankingVendas.Id = 11;
-            this.bbiRelProdutosRankingVendas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelProdutosRankingVendas.ImageOptions.LargeImage")));
-            this.bbiRelProdutosRankingVendas.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiRelProdutosRankingVendas.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRelProdutosRankingVendas.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.bbiRelProdutosRankingVendas.ItemAppearance.Normal.Options.UseFont = true;
-            this.bbiRelProdutosRankingVendas.Name = "bbiRelProdutosRankingVendas";
+            this.bbiRelProdutosMaisVendidos.Caption = "Produtos Mais Vendidos";
+            this.bbiRelProdutosMaisVendidos.Id = 11;
+            this.bbiRelProdutosMaisVendidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelProdutosMaisVendidos.ImageOptions.LargeImage")));
+            this.bbiRelProdutosMaisVendidos.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelProdutosMaisVendidos.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiRelProdutosMaisVendidos.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.bbiRelProdutosMaisVendidos.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiRelProdutosMaisVendidos.Name = "bbiRelProdutosMaisVendidos";
             // 
             // bbiRelVendasPorCategoriasProdutos
             // 
-            this.bbiRelVendasPorCategoriasProdutos.Caption = "Vendas por categorias Produtos";
+            this.bbiRelVendasPorCategoriasProdutos.Caption = "Produtos mais Vendidos por Categoria";
             this.bbiRelVendasPorCategoriasProdutos.Id = 12;
             this.bbiRelVendasPorCategoriasProdutos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelVendasPorCategoriasProdutos.ImageOptions.LargeImage")));
             this.bbiRelVendasPorCategoriasProdutos.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11F);
@@ -512,6 +512,18 @@
             this.bbiAtualizacaoSoftware.Name = "bbiAtualizacaoSoftware";
             this.bbiAtualizacaoSoftware.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtualizacaoSoftware_ItemClick);
             // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "barStaticItem1";
+            this.barStaticItem1.Id = 59;
+            this.barStaticItem1.Name = "barStaticItem1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 60;
+            this.barButtonItem1.Name = "barButtonItem1";
+            // 
             // ribbonPagePrincipal
             // 
             this.ribbonPagePrincipal.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -546,10 +558,7 @@
             // ribbonPageGroupRelatorios
             // 
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelMeioDePagamento);
-            this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelMovimentacaoProdutos);
-            this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelProdutosRankingVendas);
-            this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelVendasPorCategoriasProdutos);
-            this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelVendasPorProdutos);
+            this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelProdutosMaisVendidos);
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelVendasPorVendedor);
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelFechmanetoCaixa);
             this.ribbonPageGroupRelatorios.Name = "ribbonPageGroupRelatorios";
@@ -622,18 +631,6 @@
             this.barHeaderItem1.Id = 32;
             this.barHeaderItem1.Name = "barHeaderItem1";
             // 
-            // barStaticItem1
-            // 
-            this.barStaticItem1.Caption = "barStaticItem1";
-            this.barStaticItem1.Id = 59;
-            this.barStaticItem1.Name = "barStaticItem1";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 60;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -677,7 +674,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiApp;
         private DevExpress.XtraBars.BarButtonItem bbiRelMeioDePagamento;
         private DevExpress.XtraBars.BarButtonItem bbiRelMovimentacaoProdutos;
-        private DevExpress.XtraBars.BarButtonItem bbiRelProdutosRankingVendas;
+        private DevExpress.XtraBars.BarButtonItem bbiRelProdutosMaisVendidos;
         private DevExpress.XtraBars.BarButtonItem bbiRelVendasPorCategoriasProdutos;
         private DevExpress.XtraBars.BarButtonItem bbiRelVendasPorProdutos;
         private DevExpress.XtraBars.BarButtonItem bbiRelVendasPorVendedor;

@@ -97,21 +97,29 @@ namespace AdvanceShop.Views
                 usuario.DescontoMaximo = Convert.ToDecimal(txtDescontoMaximoPorVenda.Text.Replace("%", ""));
                 usuario.Status = 1;
                 ValidacaoCampos.Validar(usuario);
-                if (ValidacaoCampos.IsValid() && MessageBoxQuestionYesNo.Show($"Deseja salvar?") == DialogResult.Yes)
+                if (!usuarioController.VerificarSeUsuarioJaExiste(usuario) || usuarioController.VerificarSeUsuarioJaExiste(usuario) && edicao)
                 {
-                    if (!edicao)
+                    if (ValidacaoCampos.IsValid() && MessageBoxQuestionYesNo.Show($"Deseja salvar?") == DialogResult.Yes)
                     {
-                        usuarioController.Adicionar(usuario, usuarioLogado);
-                    }
-                    else
-                    {
-                        usuarioController.Editar(usuario, usuarioLogado);
-                    }
+                        if (!edicao)
+                        {
+                            usuarioController.Adicionar(usuario, usuarioLogado);
+                        }
+                        else
+                        {
+                            usuarioController.Editar(usuario, usuarioLogado);
+                        }
 
-                    MessageBoxOK.Show("Salvo com sucesso!");
-                    AtualizarGrid();
-                    Close();
+                        MessageBoxOK.Show("Salvo com sucesso!");
+                        AtualizarGrid();
+                        Close();
+                    }
                 }
+                else
+                {
+                    MessageBoxWarning.Show("Desculpe mais esse usuário já existe, escolha outro nome de usuário!");
+                }
+                
             }
             catch (Exception error)
             {

@@ -257,6 +257,31 @@ namespace AdvanceShop.Controllers
             }
 
         }
+        public bool VerificarSeUsuarioJaExiste(UsuariosModel usuario)
+        {
+            bool resultado;
+            UsuariosModel usuarioLogin = new UsuariosModel();
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText =
+                "select usuarioacesso from usuarios where usuarioacesso  ='" + usuario.UsuarioAcesso + "';";
+            comando.CommandType = CommandType.Text;
+            
+            //Lendo dt
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            resultado = reader.HasRows;
+            if (resultado)
+            {
+                
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         public void EditarUsuarioComoLogadoOnOff(UsuariosModel usuarioLogado)//Falta implementar
         {
             MySqlConnection conexao = ConexaoMySql.GetConexao();

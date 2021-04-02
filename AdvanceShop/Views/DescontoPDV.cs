@@ -1,4 +1,6 @@
-﻿using AdvanceShop.Models;
+﻿using AdvanceShop.Controllers;
+using AdvanceShop.Models;
+using AdvanceShop.Shared.CustomMessageBox;
 using AdvanceShop.Shared.Validation;
 using System;
 using System.Collections.Generic;
@@ -15,9 +17,14 @@ namespace AdvanceShop.Views
     public partial class DescontoPDV : DevExpress.XtraEditors.XtraForm
     {
         public VendasModel vendaPDV { get; set; }
-        public DescontoPDV(VendasModel Venda)
+        UsuariosModel usuarioLogado = new UsuariosModel();
+        UsuariosController usuarioController = new UsuariosController();
+        public DescontoPDV(VendasModel Venda,UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
+            usuarioLogado = UsuarioLogado;
+            usuarioLogado = usuarioController.ObterDadosUsuarioPorNomeUsuario(usuarioLogado);
+            
             vendaPDV = new VendasModel();
             vendaPDV.Desconto = Venda.Desconto;
             vendaPDV.Valor = Venda.Valor;
@@ -72,7 +79,7 @@ namespace AdvanceShop.Views
         }
         private void DescontoPDV_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)27)
+            if (e.KeyChar == (char)27 )
             {
                 Close();
             }
@@ -80,7 +87,7 @@ namespace AdvanceShop.Views
 
         private void DescontoPDV_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.F2)
+            if(e.KeyCode == Keys.F2 && btnSalvar.Enabled)
             {
                 AdicionarDescontoPDV();
 
@@ -91,14 +98,29 @@ namespace AdvanceShop.Views
         {
             AdicionarDescontoPDV();
         }
-
+        private void DescontoMaximoPermitido()
+        {
+            if (Convert.ToDecimal(txtDescontoPorcentagem.Text.Replace("%","")) > usuarioLogado.DescontoMaximo)
+            {
+                btnSalvar.Enabled = false;
+                MessageBoxWarning.Show($"Opa você só tem permissão pra da {usuarioLogado.DescontoMaximo}% de desconto!");
+                return;
+                
+            }
+            else
+            {
+                btnSalvar.Enabled = true;
+            }
+        }
         private void txtDescontoValor_EditValueChanged(object sender, EventArgs e)
         {
+            DescontoMaximoPermitido();
             CalcularPrecoDesconto(false);
         }
 
         private void txtDescontoPorcentagem_EditValueChanged(object sender, EventArgs e)
         {
+            DescontoMaximoPermitido();
             CalcularPrecoDesconto(true);
         }
 

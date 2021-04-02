@@ -405,6 +405,18 @@
     <Compile Include="Report\Devexpress\xrFechamentoCaixa.Designer.cs">
       <DependentUpon>xrFechamentoCaixa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\Devexpress\xrMeiosDePagamento.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Devexpress\xrMeiosDePagamento.Designer.cs">
+      <DependentUpon>xrMeiosDePagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\Devexpress\xrProdutosMaisVendidos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Devexpress\xrProdutosMaisVendidos.Designer.cs">
+      <DependentUpon>xrProdutosMaisVendidos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Shared\CustomInputBox\InputBoxTextEdit.cs" />
     <Compile Include="Shared\CustomMessageBox\MessageBoxWarning .cs" />
     <Compile Include="Shared\CustomMessageBox\MessageBoxError.cs" />
@@ -628,6 +640,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Devexpress\xrFechamentoCaixa.resx">
       <DependentUpon>xrFechamentoCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Devexpress\xrMeiosDePagamento.resx">
+      <DependentUpon>xrMeiosDePagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Devexpress\xrProdutosMaisVendidos.resx">
+      <DependentUpon>xrProdutosMaisVendidos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\AbrirCaixa.resx">
       <DependentUpon>AbrirCaixa.cs</DependentUpon>

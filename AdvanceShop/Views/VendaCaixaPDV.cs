@@ -20,6 +20,7 @@ namespace AdvanceShop.Views
     {
         
         UsuariosModel usuarioLogado = new UsuariosModel();
+        UsuariosController usuarioController = new UsuariosController();
         ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
         ConfiguracoesGeraisModel configGerais = new ConfiguracoesGeraisModel();
         CaixasModel caixa = new CaixasModel();
@@ -36,6 +37,7 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
+            usuarioLogado = usuarioController.ObterDadosUsuarioPorNomeUsuario(usuarioLogado);
             caixa = Caixa;
             venda.caixas_idcaixas = caixa.IdCaixas;
             transacaoCaixa.caixas_idcaixas = caixa.IdCaixas;
@@ -145,16 +147,25 @@ namespace AdvanceShop.Views
         }
         private void DescontoVenda()//Form de desconto sobre a venda
         {
-            decimal totalGeral = Convert.ToDecimal(advBandedGridViewItensPDV.Columns["subtotal"].SummaryItem.SummaryValue);
-            venda.Valor = totalGeral;
-            Views.DescontoPDV FormDesconto = new DescontoPDV(venda);
-            DialogResult ResultadoDescontoVenda = FormDesconto.ShowDialog();
-            if(ResultadoDescontoVenda == DialogResult.OK)
+            if (!Convert.ToBoolean(usuarioLogado.UsaDescontoMaximo))
             {
-                venda.Desconto = FormDesconto.vendaPDV.Desconto;
-                lblDesconto.Text = $"Desconto = {venda.Desconto.ToString("C")}";
-                CalcularTotalItensTotalSubTotal();
+                MessageBoxWarning.Show("Opa você não tem permissão para da desconto!");
+
             }
+            else
+            {
+                decimal totalGeral = Convert.ToDecimal(advBandedGridViewItensPDV.Columns["subtotal"].SummaryItem.SummaryValue);
+                venda.Valor = totalGeral;
+                Views.DescontoPDV FormDesconto = new DescontoPDV(venda, usuarioLogado);
+                DialogResult ResultadoDescontoVenda = FormDesconto.ShowDialog();
+                if (ResultadoDescontoVenda == DialogResult.OK)
+                {
+                    venda.Desconto = FormDesconto.vendaPDV.Desconto;
+                    lblDesconto.Text = $"Desconto = {venda.Desconto.ToString("C")}";
+                    CalcularTotalItensTotalSubTotal();
+                }
+            }
+            
         }
         private void RemoverItemGrid()
         {
