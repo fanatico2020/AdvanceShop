@@ -79,7 +79,7 @@ namespace AdvanceShop.Views
         }
         private void GerarBackup()
         {
-            if (Directory.Exists(txtCaminhoBackup.Text))
+            if (Directory.Exists(txtCaminhoBackup.Text) || !Directory.Exists(txtCaminhoBackup.Text))
             {
                 if (MessageBoxQuestionYesNo.Show($"Deseja salvar o backup no caminho '{txtCaminhoBackup.Text}' ?") == DialogResult.Yes)
                 {
@@ -97,13 +97,9 @@ namespace AdvanceShop.Views
 
                 }
             }
-            else
-            {
-                MessageBoxWarning.Show("Opa diretorio não existe!");
+            
 
-            }
-            
-            
+
         }
 
         private void btnGerarBackup_Click(object sender, EventArgs e)

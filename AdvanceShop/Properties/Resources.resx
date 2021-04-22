@@ -130,4 +130,13 @@
   <data name="Whatsapp_256x256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Whatsapp_256x256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GerenciaNet_128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GerenciaNet_128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GerenciaNet_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GerenciaNet_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="focusnfe32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\focusnfe32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

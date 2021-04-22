@@ -1,0 +1,3 @@
+Homologação
+Client_Id_e86adfafe99bbe23a579e73221d89c39e6775e80
+Client_Secret_2d904858b5cb5cd499b05512e6eb57477b362558

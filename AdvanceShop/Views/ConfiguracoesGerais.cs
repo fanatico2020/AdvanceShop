@@ -23,6 +23,8 @@ namespace AdvanceShop.Views
         EmailSistemaController emailSistemaController = new EmailSistemaController();
         ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
         ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
+        ApiGerenciaNetModel apiGerenciaNet = new ApiGerenciaNetModel();
+        ApiGerenciaNetController apiGerenciaNetController = new ApiGerenciaNetController();
         ClientesPessoasController clientePessoaController = new ClientesPessoasController();
         public ConfiguracoesGerais(UsuariosModel UsuarioLogado)
         {
@@ -46,21 +48,37 @@ namespace AdvanceShop.Views
         private void AtualizarApiFocusNFe()
         {
             apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
-            tsAtivaApiFocusNfe.IsOn = Convert.ToBoolean(apiFocusNfe.usarapi);
+            tsAtivarApiFocusNfe.IsOn = Convert.ToBoolean(apiFocusNfe.usarapi);
             txtTokenHomologacao.Text = apiFocusNfe.tokenhomologacao;
             txtTokenProducao.Text = apiFocusNfe.tokenproducao;
             cbxIndicadorIEdestinatario.EditValue = apiFocusNfe.indicadoriedestinatario;
             cbxEmpresaEmitente.EditValue = apiFocusNfe.clientespessoas_idclientespessoas;
             if (apiFocusNfe.ambiente =="homologacao")
             {
-                rgbAmbiente.SelectedIndex = 0;
+                rgbAmbienteFocusNfe.SelectedIndex = 0;
             }
             else if(apiFocusNfe.ambiente == "producao")
             {
-                rgbAmbiente.SelectedIndex = 1;
+                rgbAmbienteFocusNfe.SelectedIndex = 1;
             }
                 
 
+        }
+        private void AtualizarApiGerenciaNet()
+        {
+            apiGerenciaNet = apiGerenciaNetController.ObterConfiguracoesApiGerenciaNet();
+            tsAtivarApiGerenciaNet.IsOn = Convert.ToBoolean(apiGerenciaNet.usarapi);
+            txtClientIdHomologacao.Text = apiGerenciaNet.clientidhomologacao;
+            txtClientSecretHomologacao.Text = apiGerenciaNet.clientsecrethomologacao;
+            txtClienteIdProducao.Text = apiGerenciaNet.clientidproducao;
+            txtClientSecretProducao.Text = apiGerenciaNet.clientsecretproducao;
+            if(apiGerenciaNet.ambiente == "homologacao")
+            {
+                rgbAmbienteGerenciaNet.SelectedIndex = 0;
+            }else if(apiGerenciaNet.ambiente == "producao")
+            {
+                rgbAmbienteGerenciaNet.SelectedIndex = 1;
+            }
         }
         private void AtualizarEmpresaEmitente()
         {
@@ -80,6 +98,7 @@ namespace AdvanceShop.Views
             AtualizarEmpresaEmitente();
             AtualizarConfiguracoesGerais();
             AtualizarApiFocusNFe();
+            AtualizarApiGerenciaNet();
             AtualizarEmailSistema();
             
         }
@@ -106,15 +125,25 @@ namespace AdvanceShop.Views
                 configGeraisController.SalvarConfiguracao(configGerais);
 
                 //Api FocusNfe
+                apiFocusNfe.usarapi = Convert.ToInt32(tsAtivarApiFocusNfe.IsOn);
                 apiFocusNfe.tokenhomologacao = txtTokenHomologacao.Text;
                 apiFocusNfe.tokenproducao = txtTokenProducao.Text;
-                apiFocusNfe.usarapi = Convert.ToInt32(tsAtivaApiFocusNfe.IsOn);
-                apiFocusNfe.ambiente = Convert.ToString(rgbAmbiente.EditValue);
+                apiFocusNfe.ambiente = Convert.ToString(rgbAmbienteFocusNfe.EditValue);
                 apiFocusNfe.clientespessoas_idclientespessoas = Convert.ToInt32(cbxEmpresaEmitente.EditValue);
                 apiFocusNfe.indicadoriedestinatario = ValidacaoCamposCustom.StringApenasNumeros(Convert.ToString(cbxIndicadorIEdestinatario.EditValue));
 
                 apiFocusNfeController.SalvarConfiguracao(apiFocusNfe);
 
+                //Api GerenciaNet
+                apiGerenciaNet.usarapi = Convert.ToInt32(tsAtivarApiGerenciaNet.IsOn);
+                apiGerenciaNet.clientidhomologacao = txtClientIdHomologacao.Text;
+                apiGerenciaNet.clientsecrethomologacao = txtClientSecretHomologacao.Text;
+                apiGerenciaNet.clientidproducao = txtClienteIdProducao.Text;
+                apiGerenciaNet.clientsecretproducao = txtClientSecretProducao.Text;
+                apiGerenciaNet.ambiente = Convert.ToString(rgbAmbienteGerenciaNet.EditValue);
+
+                apiGerenciaNetController.SalvarConfiguracao(apiGerenciaNet);
+                
                 //Emails para envios automaticos
                 emailSistema.emailprincipal = txtEmailRecebimentoPrincipal.Text;
                 emailSistema.emailcopia1 = txtEmailCopia1.Text;
@@ -138,6 +167,16 @@ namespace AdvanceShop.Views
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Salvar();
+        }
+
+        private void lblLinkFocusNfe_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://focusnfe.com.br/");
+        }
+
+        private void lblLinkGerencianet_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://login.gerencianet.com.br/");
         }
     }
 }

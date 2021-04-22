@@ -18,7 +18,7 @@ namespace AdvanceShop
         {
             // Create a new object, representing the German culture. 
             CultureInfo culture = CultureInfo.CreateSpecificCulture("pt-br");
-
+            
             // The following line provides localization for the application's user interface. 
             Thread.CurrentThread.CurrentUICulture = culture;
 

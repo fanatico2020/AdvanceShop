@@ -90,6 +90,9 @@
     <Reference Include="DevExpress.XtraSpellChecker.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeMap.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Gerencianet.SDK, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gerencianet.SDK.1.0.9\lib\net45\Gerencianet.SDK.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>packages\Google.Protobuf.3.11.4\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -339,6 +342,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ApiFocusNFeController.cs" />
+    <Compile Include="Controllers\ApiGerenciaNetController.cs" />
     <Compile Include="Controllers\CaixasController.cs" />
     <Compile Include="Controllers\CategoriasContasAPagarController.cs" />
     <Compile Include="Controllers\CategoriasProdutosController.cs" />
@@ -366,6 +370,9 @@
     <Compile Include="JsonModels\FocusNFe\NFC_e\FormasPagamento.cs" />
     <Compile Include="JsonModels\FocusNFe\NFC_e\Iten.cs" />
     <Compile Include="JsonModels\FocusNFe\NFC_e\Volume.cs" />
+    <Compile Include="JsonModels\GerenciaNet\Data.cs" />
+    <Compile Include="JsonModels\GerenciaNet\GerenciaNet.cs" />
+    <Compile Include="JsonModels\GerenciaNet\Item.cs" />
     <Compile Include="JsonModels\ReceitaWS\AtividadePrincipal.cs" />
     <Compile Include="JsonModels\ReceitaWS\AtividadesSecundaria.cs" />
     <Compile Include="JsonModels\ReceitaWS\Billing.cs" />
@@ -373,6 +380,7 @@
     <Compile Include="JsonModels\ReceitaWS\Qsa.cs" />
     <Compile Include="JsonModels\ReceitaWS\ReceitaWS.cs" />
     <Compile Include="Models\ApiFocusNfeModel.cs" />
+    <Compile Include="Models\ApiGerenciaNetModel.cs" />
     <Compile Include="Models\CaixasModel.cs" />
     <Compile Include="Models\CategoriasContasAPagarModel.cs" />
     <Compile Include="Models\ClientesPessoasModel.cs" />
@@ -795,7 +803,15 @@
   <ItemGroup>
     <None Include="Resources\AnyDesk_128x128.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\GerenciaNet_128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GerenciaNet_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\focusnfe32x32.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

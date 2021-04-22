@@ -24,15 +24,22 @@ namespace AdvanceShop.Views
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
 
-        //fiscal
+        //Api FocusNfe - fiscal
         ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
         ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
         ClientesPessoasModel empresaEmitente = new ClientesPessoasModel();
         FocusNFe focusNFe = new FocusNFe();
         IList<Iten> focusItemNfe = new List<Iten>();
         List<FormasPagamento> focusFormasPagamentoNfe = new List<FormasPagamento>();
+        List<Duplicata> focusDuplicata = new List<Duplicata>();
+        List<Volume> focusVolume = new List<Volume>();
         //--
+        //Api gerencianet - Link Pagamento
+        ApiGerenciaNetModel apiGerenciaNet = new ApiGerenciaNetModel();
+        ApiGerenciaNetController apiGerenciaNetController = new ApiGerenciaNetController();
+        
 
+        //--
         ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
         ConfiguracoesGeraisModel configGerais = new ConfiguracoesGeraisModel();
         DataHoraModel dataHora = new DataHoraModel();
@@ -71,7 +78,8 @@ namespace AdvanceShop.Views
                     descricao = item.DescricaoProduto,//descrição produto
                     unidade_comercial = item.UnidadeMedida,
                     unidade_tributavel = item.UnidadeMedida,
-                    valor_bruto = Convert.ToString(item.ValorUnitario * item.Quantidade).Replace(",", ".")
+                    valor_bruto = Convert.ToString(item.ValorUnitario * item.Quantidade).Replace(",", "."),
+                    inclui_no_total = "1"//Valor do item (valor_bruto) compõe valor total da NFe (valor_produtos)?. Valores possíveis:0 – Não;1 – Sim.
 
                 });
             }
@@ -90,6 +98,10 @@ namespace AdvanceShop.Views
             configGerais = configGeraisController.ObterConfiguracoesGerais();
             apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
             empresaEmitente = apiFocusNfeController.ObterEmpresaEmitenteApiFocusNfe(apiFocusNfe);
+            apiGerenciaNet = apiGerenciaNetController.ObterConfiguracoesApiGerenciaNet();
+
+            txtLinkPagamento.Enabled = Convert.ToBoolean(apiGerenciaNet.usarapi);
+            lblLinkPagamento.Enabled = Convert.ToBoolean(apiGerenciaNet.usarapi);
 
             cbxImprimirNFCe.Enabled = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
             cbxImprimirNFCe.Checked = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
@@ -236,13 +248,17 @@ namespace AdvanceShop.Views
                     }
 
                     vendaController.Adicionar(venda, formasPagamento, itensVenda, transacaoCaixa, usuarioLogado);
+                    if (Convert.ToBoolean(apiGerenciaNet.usarapi))
+                    {
+                        apiGerenciaNetController.CriarTransacao(apiGerenciaNet, venda.IdVendas.ToString());
+                    }
                     if (Convert.ToBoolean(configGerais.imprimircupomfinalizarvenda))
                     {
                         //ImprimirCupom
                         venda.IdVendas = vendaController.ObterUltimoIDVendaInserido();
                         dataHora.datahoracadastro = DateTime.Now;
                         caixa.Maquina = Environment.MachineName;
-                        if (cbxImprimirNFCe.Checked)//focusNfe
+                        if (cbxImprimirNFCe.Checked && Convert.ToBoolean(apiFocusNfe.usarapi))//focusNfe
                         {
                             try
                             {
@@ -269,6 +285,22 @@ namespace AdvanceShop.Views
                                 focusNFe.natureza_operacao = "VENDA AO CONSUMIDOR";
                                 focusNFe.itens = focusItemNfe;
                                 focusNFe.formas_pagamento = focusFormasPagamentoNfe;
+                                focusDuplicata.Add(new Duplicata()
+                                {
+                                    data_vencimento = null,
+                                    numero = null,
+                                    valor = null
+                                });
+                                focusNFe.duplicatas = focusDuplicata;
+                                focusVolume.Add(new Volume()
+                                {
+                                    especie = null  ,
+                                    marca = null,
+                                    peso_bruto = null,
+                                    peso_liquido = null,
+                                    quantidade = null
+                                });
+                                focusNFe.volumes = focusVolume;
                                 //destinatario
                                 if(clientePessoa != null)
                                 {
@@ -294,6 +326,7 @@ namespace AdvanceShop.Views
                             apiFocusNfeController.EnviandoNFC_e(apiFocusNfe, focusNFe,venda.IdVendas.ToString());
 
                         }
+                        
                         //cupom não fiscal
                         Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora, configGerais);
 
@@ -333,9 +366,7 @@ namespace AdvanceShop.Views
         {
             CalcularValorTroco();
             txtDinheiro.Focus();
-            // remove quando implementar link pagamento via mercado pago ou outra api
-            txtLinkPagamento.Enabled = false;
-            lblLinkPagamento.Enabled = false;
+            
         }
         private void CalcularValorTroco()
         {

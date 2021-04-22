@@ -11,7 +11,6 @@ namespace AdvanceShop.JsonModels.FocusNFe.NFC_e
 
         public string natureza_operacao { get; set; }
         public DateTime data_emissao { get; set; }
-        public DateTime data_entrada_saida { get; set; }
         public string tipo_documento { get; set; }
         public string local_destino { get; set; }
         public string finalidade_emissao { get; set; }
