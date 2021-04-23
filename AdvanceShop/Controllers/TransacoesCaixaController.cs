@@ -70,6 +70,21 @@ namespace AdvanceShop.Controllers
             reader.Read();
             return reader.GetDecimal(0);
         }
+        public void EditarStatusGerenciaNet(TransacoesCaixaModel transacaoCaixa)
+        {
+            if(transacaoCaixa.charge_id != 0)
+            {
+                MySqlConnection conexao = ConexaoMySql.GetConexao();
+                MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+                comando.CommandType = System.Data.CommandType.Text;
+                comando.CommandText =
+                    "update transacoescaixa set status = @status where charge_id = @charge_id;";
+                comando.Parameters.Add(new MySqlParameter("@status", transacaoCaixa.Status));
+                comando.Parameters.Add(new MySqlParameter("@charge_id", transacaoCaixa.charge_id));
+                comando.ExecuteNonQuery();
+            }
+            
+        }
 
     }
 }

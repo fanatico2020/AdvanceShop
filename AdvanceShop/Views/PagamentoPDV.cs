@@ -181,6 +181,8 @@ namespace AdvanceShop.Views
             else
             {
                 FinalizarVenda();
+                
+                
             }
         }
         private void FinalizarVenda()
@@ -458,7 +460,7 @@ namespace AdvanceShop.Views
         {
             if(e.KeyCode == Keys.F2)
             {
-                ChecarConfigacoes();
+                VerificarPagamentoELink();
             }
         }
 
@@ -488,11 +490,25 @@ namespace AdvanceShop.Views
         {
             CalcularValorTroco();
         }
-
+        private void VerificarPagamentoELink()
+        {
+            if (Convert.ToDecimal(txtLinkPagamento.Text.Replace("R$", "")) >= 5.00M)
+            {
+                ChecarConfigacoes();
+            }
+            else if (Convert.ToDecimal(txtLinkPagamento.Text.Replace("R$", "")) == 0)
+            {
+                ChecarConfigacoes();
+            }
+            else
+            {
+                MessageBoxWarning.Show("O valor total da cobrança via link deve ser maior ou igual a R$ 5,00.");
+            }
+        }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            VerificarPagamentoELink();
 
-            ChecarConfigacoes();
         }
 
         private void txtDinheiro_KeyPress(object sender, KeyPressEventArgs e)

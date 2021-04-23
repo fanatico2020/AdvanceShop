@@ -1,3 +1,4 @@
+SET FOREIGN_KEY_CHECKS=0; -- to disable them
 insert into usuarios(usuarioacesso,senhaacesso,nomecompleto,email,contato,usadescontomaximo,descontomaximo,status,deletado)
 values('ADMIN',md5('admin'),'ADMINISTRADOR DO SISTEMA','admin@admin.com',99999999999,1,100,1,0);
 insert into datahora(datahoracadastro,usuariocadastro,usuarios_idusuarios) values(now(),'SUPORTE',last_insert_id());
