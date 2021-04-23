@@ -49,6 +49,7 @@ namespace AdvanceShop.Views
         public void NovaVenda()
         {
             itensVenda.Clear();
+            contagemItem = 1;
             gridControlItensVenda.DataSource = null;
             advBandedGridViewItensPDV.SelectAll();
             advBandedGridViewItensPDV.DeleteSelectedRows();
@@ -353,22 +354,30 @@ namespace AdvanceShop.Views
 
         private void txtQtd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //Verificar se produto estar com estoque baixo, caso a conf esteja marcado pra avisar usuario
-            produto.IdProdutos = Convert.ToInt32(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[0]));
-            if (Convert.ToBoolean(configGerais.avisarprodutoestoquebaixo) && Convert.ToBoolean(produtoController.VerificarProdutoEstoqueBaixo(produto)))
+            try
             {
-                MessageBoxWarning.Show($"Produto '{cbxProcurarProduto.Text}' com estoque baixo!");
-            }
-            if (e.KeyChar == (char)13)
-            {
-                decimal valorproduto = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[4]));
-                int quantidade = Convert.ToInt32(txtQtd.Text);
-                decimal subtotal = quantidade * valorproduto;
-                lblPrecoUniTotal.Text = $"Preço: {valorproduto.ToString("C")} Total: {subtotal.ToString("C")}";
+                //Verificar se produto estar com estoque baixo, caso a conf esteja marcado pra avisar usuario
+                produto.IdProdutos = Convert.ToInt32(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[0]));
+                if (Convert.ToBoolean(configGerais.avisarprodutoestoquebaixo) && Convert.ToBoolean(produtoController.VerificarProdutoEstoqueBaixo(produto)))
+                {
+                    MessageBoxWarning.Show($"Produto '{cbxProcurarProduto.Text}' com estoque baixo!");
+                }
+                if (e.KeyChar == (char)13)
+                {
+                    decimal valorproduto = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[4]));
+                    int quantidade = Convert.ToInt32(txtQtd.Text);
+                    decimal subtotal = quantidade * valorproduto;
+                    lblPrecoUniTotal.Text = $"Preço: {valorproduto.ToString("C")} Total: {subtotal.ToString("C")}";
 
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
+                    e.Handled = true;
+                    SendKeys.Send("{TAB}");
+                }
             }
+            catch (IndexOutOfRangeException)
+            {
+                cbxProcurarProduto.Focus();
+            }
+            
             
         }
 

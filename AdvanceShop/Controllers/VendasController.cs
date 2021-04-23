@@ -48,7 +48,7 @@ namespace AdvanceShop.Controllers
             "values(@valor,@desconto,@totalfinal,@valorpago,@troco,@clientespessoas_idclientespessoas,@caixas_idcaixas,0); " +
             "select last_insert_id() into @first_id ; " +
             "insert into datahora(datahoracadastro, usuariocadastro, vendas_idvendas) values(now(), @usuariocadastro, last_insert_id()); " +
-            "insert into transacoescaixa(tipo, descricaotransacao,observacaotransacao,valor,status,caixas_idcaixas,vendas_idvendas,deletado) values(1,CONCAT('VENDA PDV Código ',@first_id),@observacaotransacao,@totalfinal,1, @caixas_idcaixas,@first_id,0); " +
+            "insert into transacoescaixa(tipo, descricaotransacao,observacaotransacao,valor,status,caixas_idcaixas,vendas_idvendas,charge_id,payment_url,deletado) values(1,CONCAT('VENDA PDV Código ',@first_id),@observacaotransacao,@totalfinal,@status, @caixas_idcaixas,@first_id,@charge_id,@payment_url,0); " +
             "select last_insert_id() into @second_id ;" +
             "insert into datahora(datahoracadastro, usuariocadastro, transacoescaixa_idtransacoescaixa) values(now(), @usuariocadastro, last_insert_id()); " +
             "insert into transacoesestoque(tipo,tipodescricao,descricaotransacao,observacaotransacaoestoque,clientespessoas_idclientespessoas,vendas_idvendas,deletado) values (5,0,CONCAT('VENDA PDV Código ',@first_id),@observacaotransacao,@clientespessoas_idclientespessoas,@first_id,0); " +
@@ -61,6 +61,9 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@totalfinal", venda.TotalFinal));
             comando.Parameters.Add(new MySqlParameter("@troco", venda.Troco));
             comando.Parameters.Add(new MySqlParameter("@observacaotransacao", transacaoCaixa.ObservacaoTransacao));
+            comando.Parameters.Add(new MySqlParameter("@status", transacaoCaixa.Status));
+            if (transacaoCaixa.charge_id != 0) comando.Parameters.Add(new MySqlParameter("@charge_id", transacaoCaixa.charge_id));
+            comando.Parameters.Add(new MySqlParameter("@payment_url", transacaoCaixa.payment_url));
             comando.Parameters.Add(new MySqlParameter("@caixas_idcaixas", venda.caixas_idcaixas));
             if(venda.clientespessoas_idclientespessoas != 0) comando.Parameters.Add(new MySqlParameter("@clientespessoas_idclientespessoas", venda.clientespessoas_idclientespessoas));
             comando.Parameters.Add(new MySqlParameter("@usuariocadastro", usuarioLogado.UsuarioAcesso));

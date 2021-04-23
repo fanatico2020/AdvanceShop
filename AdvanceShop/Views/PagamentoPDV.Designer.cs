@@ -164,9 +164,9 @@
             this.lblLinkPagamento.AppearanceDisabled.Options.UseBackColor = true;
             this.lblLinkPagamento.Location = new System.Drawing.Point(53, 139);
             this.lblLinkPagamento.Name = "lblLinkPagamento";
-            this.lblLinkPagamento.Size = new System.Drawing.Size(228, 19);
+            this.lblLinkPagamento.Size = new System.Drawing.Size(132, 19);
             this.lblLinkPagamento.TabIndex = 0;
-            this.lblLinkPagamento.Text = "Link Pagamento (Em Breve)";
+            this.lblLinkPagamento.Text = "Link Pagamento";
             // 
             // lblCartaoDebito
             // 

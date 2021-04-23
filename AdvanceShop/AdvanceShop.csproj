@@ -372,7 +372,9 @@
     <Compile Include="JsonModels\FocusNFe\NFC_e\Volume.cs" />
     <Compile Include="JsonModels\GerenciaNet\Data.cs" />
     <Compile Include="JsonModels\GerenciaNet\GerenciaNet.cs" />
+    <Compile Include="JsonModels\GerenciaNet\History.cs" />
     <Compile Include="JsonModels\GerenciaNet\Item.cs" />
+    <Compile Include="JsonModels\GerenciaNet\Link.cs" />
     <Compile Include="JsonModels\ReceitaWS\AtividadePrincipal.cs" />
     <Compile Include="JsonModels\ReceitaWS\AtividadesSecundaria.cs" />
     <Compile Include="JsonModels\ReceitaWS\Billing.cs" />
@@ -496,6 +498,12 @@
     </Compile>
     <Compile Include="Views\EsqueceuSenha.Designer.cs">
       <DependentUpon>EsqueceuSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LinkPagamentoCompartilha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\LinkPagamentoCompartilha.Designer.cs">
+      <DependentUpon>LinkPagamentoCompartilha.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NovaSaidaEstoque.cs">
       <SubType>Form</SubType>
@@ -690,6 +698,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\EsqueceuSenha.resx">
       <DependentUpon>EsqueceuSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LinkPagamentoCompartilha.resx">
+      <DependentUpon>LinkPagamentoCompartilha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NovaSaidaEstoque.resx">
       <DependentUpon>NovaSaidaEstoque.cs</DependentUpon>

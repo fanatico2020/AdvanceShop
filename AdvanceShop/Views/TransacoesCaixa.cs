@@ -15,11 +15,17 @@ using AdvanceShop.Models;
 using AdvanceShop.Controllers;
 using AdvanceShop.Shared.CustomMessageBox;
 using DevExpress.Utils.Menu;
+using AdvanceShop.JsonModels.GerenciaNet;
 
 namespace AdvanceShop.Views
 {
     public partial class TransacoesCaixa : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        //api - GerenciaNet
+        ApiGerenciaNetModel apiGerenciaNet = new ApiGerenciaNetModel();
+        ApiGerenciaNetController apiGerenciaNetController = new ApiGerenciaNetController();
+        GerenciaNet gerenciaNet = new GerenciaNet();
+        //--
         UsuariosModel usuarioLogado = new UsuariosModel();
         TransacoesCaixaModel transacaoCaixa = new TransacoesCaixaModel();
         TransacoesCaixaController transacaoCaixaController = new TransacoesCaixaController();
@@ -31,7 +37,7 @@ namespace AdvanceShop.Views
         public TransacoesCaixa(UsuariosModel UsuarioLogado,CaixasModel Caixa,DataHoraModel DataHora)
         {
             InitializeComponent();
-
+            apiGerenciaNet = apiGerenciaNetController.ObterConfiguracoesApiGerenciaNet();
             usuarioLogado = UsuarioLogado;
             caixa = Caixa;
             transacaoCaixa.caixas_idcaixas = caixa.IdCaixas;
@@ -55,19 +61,21 @@ namespace AdvanceShop.Views
         private void SomarTotalSaldoCaixa()
         {
             //Entradas
-            decimal saldoinicial, saldovendasemdinheiro, saldovendasemcartaocredito, saldovendascartaodebito, saldosuplemento,saldoentradas;
+            decimal saldoinicial, saldovendasemdinheiro, saldovendasemcartaocredito, saldovendascartaodebito, saldosuplemento,saldoentradas,saldovendaslinkpagamento;
 
             saldoinicial = formaPagamentoController.SomarTotalDinheiroAberturaCaixa(transacaoCaixa);
             saldovendasemdinheiro = formaPagamentoController.SomarTotalDinheiroCaixa(transacaoCaixa);
             saldovendasemcartaocredito = formaPagamentoController.SomarTotalCartaoCreditoCaixa(transacaoCaixa);
             saldovendascartaodebito = formaPagamentoController.SomarTotalCartaoDebitoCaixa(transacaoCaixa);
             saldosuplemento = formaPagamentoController.SomarTotalDinheiroSuplementoCaixa(transacaoCaixa);
-            saldoentradas = saldoinicial + saldovendasemdinheiro + saldovendasemcartaocredito + saldovendascartaodebito + saldosuplemento;
+            saldovendaslinkpagamento = formaPagamentoController.SomarTotalLinkPagamentoCaixa(transacaoCaixa);
+            saldoentradas = saldoinicial + saldovendasemdinheiro + saldovendasemcartaocredito + saldovendascartaodebito + saldosuplemento + saldovendaslinkpagamento;
 
             txtSaldoInicial.Text = Convert.ToString(saldoinicial);
             txtDinheiro.Text = Convert.ToString(saldovendasemdinheiro);
             txtCartaoCredito.Text = Convert.ToString(saldovendasemcartaocredito);
             txtCartaoDebito.Text = Convert.ToString(saldovendascartaodebito);
+            txtLinkPagamento.Text = Convert.ToString(saldovendaslinkpagamento);
             txtTotalSuplemento.Text = Convert.ToString(saldosuplemento);
             txtSaldoEntradas.Text = Convert.ToString(saldoentradas);
 
@@ -86,9 +94,15 @@ namespace AdvanceShop.Views
             //Saldo em dinheiro, para não permitir retirar do caixa mais do que tem em dinheiro
             transacaoCaixa.SaldoEmDinheiro = (saldoinicial + saldovendasemdinheiro + saldosuplemento) - saldosaidas;
         }
+        private void AtualizarStatusPagamento()
+        {
+            
+            apiGerenciaNetController.RetornaInformacaoSobreTransacao(apiGerenciaNet);
+        }
         private void TranscoesCaixa_Load(object sender, EventArgs e)
         {
             AtualizarGrid();
+            AtualizarStatusPagamento();
         }
         private void FecharCaixa()
         {
@@ -107,6 +121,8 @@ namespace AdvanceShop.Views
         }
         private void EditarTransacao()//Editar forma de pagamento
         {
+            MessageBoxOK.Show("Ainda em desenvolvimento!");
+            /*
             transacaoCaixa.DescricaoTransacao = advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[2]).ToString();
             if (transacaoCaixa.DescricaoTransacao != "Abertura Caixa" && transacaoCaixa.DescricaoTransacao != "Suplemento, Dinheiro adicionado ao caixa" &&
                 transacaoCaixa.DescricaoTransacao != "Sangria, Dinheiro retirado do caixa")
@@ -120,21 +136,26 @@ namespace AdvanceShop.Views
             {
                 MessageBoxWarning.Show("Opa só e possível editar formas de pagamento das vendas!");
             }
-            
+            */
         }
         private void DeletarTransacao()
         {
             transacaoCaixa.IdTransacoesCaixa = Convert.ToInt32(advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[0]));
             transacaoCaixa.DescricaoTransacao = advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[2]).ToString();
-            if (transacaoCaixa.DescricaoTransacao != "Abertura Caixa" && advBandedGridViewTransacoesCaixa.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+            
+            if(transacaoCaixa.DescricaoTransacao == "Abertura Caixa")
+            {
+                MessageBoxWarning.Show("Opa a Abertura do caixa não pode ser deletada, você pode editar o valor da mesma na tela dos caixas!");
+            }
+            else if(transacaoCaixa.DescricaoTransacao.Substring(0,5) == "VENDA")
+            {
+                MessageBoxWarning.Show("Opa para deletar uma transação referente a uma venda, vá a tela vendas e delete a venda, assim a transação e deletada junto!");
+            }
+            else if(advBandedGridViewTransacoesCaixa.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
             {
                 transacaoCaixaController.Deletar(transacaoCaixa);
                 MessageBoxOK.Show("Deletado com sucesso!");
                 AtualizarGrid();
-            }
-            else
-            {
-                MessageBoxWarning.Show("Opa a Abertura do caixa não pode ser deletada, você pode editar o valor da mesma na tela dos caixas!");
             }
         }
         private void SuplementoSangria(int Tipo)
@@ -150,6 +171,18 @@ namespace AdvanceShop.Views
                 MessageBoxWarning.Show($"Opa esse caixa já foi fechado pelo usuário {caixa.UsuarioFechamento} no dia {caixa.DataHoraFechamento}, não tem como adicionar ou retirar dinheiro de um caixa fechado!");
             }
             
+        }
+        private void LinkPagamento()
+        {
+            string url = advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[13]).ToString();
+            if (!string.IsNullOrEmpty(url))
+            {
+                System.Diagnostics.Process.Start(url);
+            }
+            else
+            {
+                MessageBoxWarning.Show("Meio de pagamento dessa transação não foi LINK PAGAMENTO!");
+            }
         }
         private void bbiFecharCaixa_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -220,7 +253,9 @@ namespace AdvanceShop.Views
                     DXMenuItem item4 = new DXMenuItem("Atualizar Grid");
                     DXMenuItem item5 = new DXMenuItem("Adicionar Dinheiro");
                     DXMenuItem item6 = new DXMenuItem("Retirar Dinheiro");
-                    
+                    DXMenuItem item7 = new DXMenuItem("Contador Dinheiro");
+                    DXMenuItem item8 = new DXMenuItem("Link Pagamento");
+
                     item1.Click += (o, args) =>
                     {
                         FecharCaixa();
@@ -245,6 +280,14 @@ namespace AdvanceShop.Views
                     {
                         SuplementoSangria(0);
                     };
+                    item7.Click += (o, args) =>
+                    {
+                        ContadorDinheiro();
+                    };
+                    item8.Click += (o, args) =>
+                    {
+                        LinkPagamento();
+                    };
 
                     e.Menu.Items.Add(item1);
                     e.Menu.Items.Add(item2);
@@ -252,8 +295,8 @@ namespace AdvanceShop.Views
                     e.Menu.Items.Add(item4);
                     e.Menu.Items.Add(item5);
                     e.Menu.Items.Add(item6);
-
-
+                    e.Menu.Items.Add(item7);
+                    e.Menu.Items.Add(item8);
                 }
             }
         }
@@ -305,11 +348,19 @@ namespace AdvanceShop.Views
         {
             e.DefaultView = gridViewFormasPagamento;
         }
-
-        private void bbiContadorDinheiro_ItemClick(object sender, ItemClickEventArgs e)
+        private void ContadorDinheiro()
         {
             Views.ContadorDinheiro FormContadorDinheiro = new ContadorDinheiro();
             FormContadorDinheiro.Show();
+        }
+        private void bbiContadorDinheiro_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ContadorDinheiro();
+        }
+
+        private void bbiLinkPagamento_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            LinkPagamento();
         }
     }
 }

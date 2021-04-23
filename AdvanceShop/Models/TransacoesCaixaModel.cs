@@ -17,6 +17,7 @@ namespace AdvanceShop.Models
         public int caixas_idcaixas { get; set; }
         public int vendas_idvendas { get; set; }
         public decimal SaldoEmDinheiro { get; set; }
-
+        public int charge_id { get; set; }
+        public string payment_url { get; set; }
     }
 }

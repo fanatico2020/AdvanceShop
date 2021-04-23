@@ -44,6 +44,8 @@
             this.gridColumnValor = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnObservacao = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnStatus = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumncharge_id = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumnpayment_url = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnDataHoraCad = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnUsuarioCad = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnDataHoraEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -60,6 +62,7 @@
             this.bbiFecharCaixa = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAdicionarDinheiro = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRetirarDinheiro = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiContadorDinheiro = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -89,7 +92,7 @@
             this.lblCartaoCredito = new DevExpress.XtraEditors.LabelControl();
             this.lblCartaoDebito = new DevExpress.XtraEditors.LabelControl();
             this.lblSaldoInicial = new DevExpress.XtraEditors.LabelControl();
-            this.bbiContadorDinheiro = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiLinkPagamento = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFormasPagamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewTransacoesCaixa)).BeginInit();
@@ -226,7 +229,9 @@
             this.gridColumnUsuarioCad,
             this.gridColumnUsuarioEdi,
             this.gridColumncaixas_idcaixas,
-            this.gridColumnvendas_idvendas});
+            this.gridColumnvendas_idvendas,
+            this.gridColumncharge_id,
+            this.gridColumnpayment_url});
             this.advBandedGridViewTransacoesCaixa.GridControl = this.gridControl;
             this.advBandedGridViewTransacoesCaixa.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridViewTransacoesCaixa.Name = "advBandedGridViewTransacoesCaixa";
@@ -253,13 +258,15 @@
             this.gridBand1.Columns.Add(this.gridColumnValor);
             this.gridBand1.Columns.Add(this.gridColumnObservacao);
             this.gridBand1.Columns.Add(this.gridColumnStatus);
+            this.gridBand1.Columns.Add(this.gridColumncharge_id);
+            this.gridBand1.Columns.Add(this.gridColumnpayment_url);
             this.gridBand1.Columns.Add(this.gridColumnDataHoraCad);
             this.gridBand1.Columns.Add(this.gridColumnUsuarioCad);
             this.gridBand1.Columns.Add(this.gridColumnDataHoraEdi);
             this.gridBand1.Columns.Add(this.gridColumnUsuarioEdi);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 1169;
+            this.gridBand1.Width = 1319;
             // 
             // gridColumnCodigo
             // 
@@ -351,6 +358,32 @@
             this.gridColumnStatus.Name = "gridColumnStatus";
             this.gridColumnStatus.Visible = true;
             this.gridColumnStatus.Width = 142;
+            // 
+            // gridColumncharge_id
+            // 
+            this.gridColumncharge_id.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumncharge_id.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumncharge_id.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumncharge_id.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumncharge_id.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumncharge_id.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumncharge_id.Caption = "charge_id";
+            this.gridColumncharge_id.FieldName = "charge_id";
+            this.gridColumncharge_id.Name = "gridColumncharge_id";
+            this.gridColumncharge_id.Visible = true;
+            // 
+            // gridColumnpayment_url
+            // 
+            this.gridColumnpayment_url.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnpayment_url.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnpayment_url.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumnpayment_url.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumnpayment_url.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnpayment_url.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnpayment_url.Caption = "Payment_url";
+            this.gridColumnpayment_url.FieldName = "payment_url";
+            this.gridColumnpayment_url.Name = "gridColumnpayment_url";
+            this.gridColumnpayment_url.Visible = true;
             // 
             // gridColumnDataHoraCad
             // 
@@ -455,9 +488,10 @@
             this.bbiFecharCaixa,
             this.bbiAdicionarDinheiro,
             this.bbiRetirarDinheiro,
-            this.bbiContadorDinheiro});
+            this.bbiContadorDinheiro,
+            this.bbiLinkPagamento});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 24;
+            this.ribbonControl.MaxItemId = 25;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -567,6 +601,14 @@
             this.bbiRetirarDinheiro.Name = "bbiRetirarDinheiro";
             this.bbiRetirarDinheiro.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRetirarDinheiro_ItemClick);
             // 
+            // bbiContadorDinheiro
+            // 
+            this.bbiContadorDinheiro.Caption = "Contador Dinheiro";
+            this.bbiContadorDinheiro.Id = 23;
+            this.bbiContadorDinheiro.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiContadorDinheiro.ImageOptions.SvgImage")));
+            this.bbiContadorDinheiro.Name = "bbiContadorDinheiro";
+            this.bbiContadorDinheiro.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiContadorDinheiro_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -589,6 +631,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAdicionarDinheiro);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiRetirarDinheiro);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiContadorDinheiro);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiLinkPagamento);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tarefas";
             // 
@@ -970,13 +1013,13 @@
             this.lblSaldoInicial.TabIndex = 0;
             this.lblSaldoInicial.Text = "Saldo Inicial";
             // 
-            // bbiContadorDinheiro
+            // bbiLinkPagamento
             // 
-            this.bbiContadorDinheiro.Caption = "Contador Dinheiro";
-            this.bbiContadorDinheiro.Id = 23;
-            this.bbiContadorDinheiro.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.bbiContadorDinheiro.Name = "bbiContadorDinheiro";
-            this.bbiContadorDinheiro.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiContadorDinheiro_ItemClick);
+            this.bbiLinkPagamento.Caption = "Link Pagamento";
+            this.bbiLinkPagamento.Id = 24;
+            this.bbiLinkPagamento.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.bbiLinkPagamento.Name = "bbiLinkPagamento";
+            this.bbiLinkPagamento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLinkPagamento_ItemClick);
             // 
             // TransacoesCaixa
             // 
@@ -1067,7 +1110,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.TextEdit txtTotalSangria;
         private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView advBandedGridViewTransacoesCaixa;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnCodigo;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnTipo;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnDecricao;
@@ -1086,5 +1128,9 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumncaixas_idcaixas;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnvendas_idvendas;
         private DevExpress.XtraBars.BarButtonItem bbiContadorDinheiro;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumncharge_id;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnpayment_url;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraBars.BarButtonItem bbiLinkPagamento;
     }
 }

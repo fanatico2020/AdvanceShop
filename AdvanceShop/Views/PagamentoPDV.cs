@@ -1,5 +1,6 @@
 ﻿using AdvanceShop.Controllers;
 using AdvanceShop.JsonModels.FocusNFe.NFC_e;
+using AdvanceShop.JsonModels.GerenciaNet;
 using AdvanceShop.Models;
 using AdvanceShop.Report.Devexpress;
 using AdvanceShop.Shared.CustomMessageBox;
@@ -37,7 +38,7 @@ namespace AdvanceShop.Views
         //Api gerencianet - Link Pagamento
         ApiGerenciaNetModel apiGerenciaNet = new ApiGerenciaNetModel();
         ApiGerenciaNetController apiGerenciaNetController = new ApiGerenciaNetController();
-        
+        GerenciaNet gerenciaNet = new GerenciaNet();
 
         //--
         ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
@@ -51,15 +52,26 @@ namespace AdvanceShop.Views
         CaixasModel caixa = new CaixasModel();
         List<ItensVendasModel> itensVenda = new List<ItensVendasModel>();
         List<FormasPagamentoModel> formasPagamento = new List<FormasPagamentoModel>();
+        List<Item> GerenciaNetItem = new List<Item>();
         decimal Dinheiro, CartaoDeCredito, CartaoDeDebito, LinkPagamento, ValorRestante, ValorAPagar, Troco;
         bool editarformaspagamento = false;
-        string VendaOuEditarFormaPagamento = "";
+        string VendaOuEditarFormaPagamento = "", URL_LinkPagamento = "";
         public PagamentoPDV(VendasModel Venda,ClientesPessoasModel ClientePessoa,TransacoesCaixaModel TransacaoCaixa,List<ItensVendasModel> ItensVenda,CaixasModel Caixa,UsuariosModel UsuarioLogado)//Nova Venda
         {
             InitializeComponent();
 
             usuarioLogado = UsuarioLogado;
             itensVenda.AddRange(ItensVenda);//Adicoonar lista de itens da tela PDV a lista de itens da tela de pagamento
+
+            foreach (var item in itensVenda)
+            {
+                GerenciaNetItem.Add(new Item()
+                {
+                    name = item.DescricaoProduto,
+                    value = Convert.ToInt32(item.ValorUnitario.ToString().Replace(",","").Replace(".","")),
+                    amount = Convert.ToInt32(item.Quantidade)
+                });
+            }
 
             foreach (var item in itensVenda)
             {
@@ -181,10 +193,11 @@ namespace AdvanceShop.Views
                 {
                     decimal.Parse(txtDinheiro.Text.Replace("R$","")),
                     decimal.Parse(txtCartaoCredito.Text.Replace("R$","")),
-                    decimal.Parse(txtCartaoDebito.Text.Replace("R$",""))
+                    decimal.Parse(txtCartaoDebito.Text.Replace("R$","")),
+                    decimal.Parse(txtLinkPagamento.Text.Replace("R$",""))
                 };
                     venda.Troco = Troco;
-
+                    transacaoCaixa.Status = 1;
                     for (int i = 0; i <= ValoresPagamento.Length; i++)
                     {
                         switch (i)
@@ -192,6 +205,7 @@ namespace AdvanceShop.Views
                             case 0:
                                 if (ValoresPagamento[0] > 0)
                                 {
+                                    
                                     focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
                                     {
                                         forma_pagamento = "1",
@@ -236,6 +250,26 @@ namespace AdvanceShop.Views
                                     });
                                 }
                                 break;
+                            case 3:
+                                if(ValoresPagamento[3] > 0 && ValoresPagamento[0] == 0 && ValoresPagamento[1] == 0 && ValoresPagamento[2] == 0)
+                                {
+                                    focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
+                                    {
+                                        forma_pagamento = "4",
+                                        valor_pagamento = ValoresPagamento[0].ToString().Replace(",",".")
+                                    });
+                                    formasPagamento.Add(new FormasPagamentoModel()
+                                    {
+                                        Descricao = "LINK PAGAMENTO",
+                                        Valor = ValoresPagamento[3]
+                                    });
+                                    gerenciaNet = apiGerenciaNetController.CriarTransacaoLinkPagamento(apiGerenciaNet, GerenciaNetItem, venda.IdVendas.ToString(), $"CAIXA {caixa.IdCaixas} - Vendedor {usuarioLogado.UsuarioAcesso}");
+                                    URL_LinkPagamento = gerenciaNet.data.payment_url;
+                                    transacaoCaixa.payment_url = gerenciaNet.data.payment_url;
+                                    transacaoCaixa.charge_id = gerenciaNet.data.charge_id;
+                                    transacaoCaixa.Status = 0;
+                                }
+                                break;
                             default:
                                 break;
                         }
@@ -248,14 +282,12 @@ namespace AdvanceShop.Views
                     }
 
                     vendaController.Adicionar(venda, formasPagamento, itensVenda, transacaoCaixa, usuarioLogado);
-                    if (Convert.ToBoolean(apiGerenciaNet.usarapi))
-                    {
-                        apiGerenciaNetController.CriarTransacao(apiGerenciaNet, venda.IdVendas.ToString());
-                    }
+                    venda.IdVendas = vendaController.ObterUltimoIDVendaInserido();
+                    
                     if (Convert.ToBoolean(configGerais.imprimircupomfinalizarvenda))
                     {
                         //ImprimirCupom
-                        venda.IdVendas = vendaController.ObterUltimoIDVendaInserido();
+                        
                         dataHora.datahoracadastro = DateTime.Now;
                         caixa.Maquina = Environment.MachineName;
                         if (cbxImprimirNFCe.Checked && Convert.ToBoolean(apiFocusNfe.usarapi))//focusNfe
@@ -348,6 +380,12 @@ namespace AdvanceShop.Views
                 venda.ValorPago = 0;
 
                 MessageBoxOK.Show($"{VendaOuEditarFormaPagamento} finalizada com sucesso!");
+                if(URL_LinkPagamento != string.Empty)
+                {
+                    LinkPagamentoCompartilha FormLinkPagamento = new LinkPagamentoCompartilha(URL_LinkPagamento);
+                    FormLinkPagamento.ShowDialog();
+                }
+                
                 Close();
             }
             else

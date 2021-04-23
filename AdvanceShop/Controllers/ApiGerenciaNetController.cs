@@ -1,4 +1,5 @@
 ﻿using AdvanceShop.Data;
+using AdvanceShop.JsonModels.GerenciaNet;
 using AdvanceShop.Models;
 using Gerencianet.SDK;
 using MySql.Data.MySqlClient;
@@ -81,8 +82,11 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@ambiente", config.ambiente));
             comando.ExecuteNonQuery();
         }
-        public void CriarTransacao(ApiGerenciaNetModel config,string CustomID)
+        
+        public GerenciaNet CriarTransacaoLinkPagamento(ApiGerenciaNetModel config,List<Item> itemsTransacao,string CustomID,string Mensagem)
         {
+            
+
             bool ambienteGerencianet = false;
             string client_id = "";
             string client_secret = "";
@@ -100,31 +104,38 @@ namespace AdvanceShop.Controllers
             }
             dynamic endpoints = new Endpoints(client_id, client_secret, ambienteGerencianet);
 
-            var body = new
+            var bodyTransacao = new
             {
+                /*
                 items = new[] {
                 new {
                     name = "Product 1",// Nome do item, produto ou serviço.Mínimo de 1 caractere e máximo de 255 caracteres(String).
                     value = 1000,// Valor, em centavos. Ex: R$ 10,00 = 1000. Integer.
                     amount = 1
                 }
-            },
+                */
+
+                items = itemsTransacao,
                         
                 metadata = new
                 {
                     custom_id = CustomID
                 }
             };
+            /*
+            try
+            {
 
-            var responseTransacao = endpoints.CreateCharge(null, body);
+            }
+            catch (GnException error)
+            {
 
+                throw;
+            }
+            */
+            var responseTransacao = endpoints.CreateCharge(null, bodyTransacao);
             //dados do response transacao criada
             string jsonResponseTransacao = JsonConvert.SerializeObject(responseTransacao);
-            //Remover " " do inicio e do final
-            //int tamanhoString = jsonResponseTransacao.Length;
-            //jsonResponseTransacao.Remove(0, 1);
-            //jsonResponseTransacao.Remove(tamanhoString - 1, 1);
-            //string json = 
             JsonModels.GerenciaNet.GerenciaNet deserializeDataTransacao = JsonConvert.DeserializeObject<JsonModels.GerenciaNet.GerenciaNet>(jsonResponseTransacao);
 
             //Link Pagamento
@@ -136,18 +147,90 @@ namespace AdvanceShop.Controllers
 
             var bodyLinkPagamento = new
             {
-                billet_discount = 1,
-                card_discount = 1,
-                message = "Isso e um teste de link de pagamento",
-                expire_at = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"),
+                //billet_discount = 0,
+                //card_discount = 0,
+                message = Mensagem,
+                expire_at = DateTime.Now.ToString("yyyy-MM-dd"),
                 request_delivery_address = false,
-                payment_method = "all"
+                payment_method = "all"//banking_billet (boleto bancário); // credit_card (cartão de crédito) ou; // all (permitir pagamento via boleto e cartão).
             };
 
             var responseLinkPagemnto = endpoints.ChargeLink(param, bodyLinkPagamento);
 
-            int a = 1;
+            //dados do response link pagamento
+            string jsonResponseLinkPagamento = JsonConvert.SerializeObject(responseLinkPagemnto);
+            JsonModels.GerenciaNet.GerenciaNet deserializeDataLinkPagamento = JsonConvert.DeserializeObject<JsonModels.GerenciaNet.GerenciaNet>(jsonResponseLinkPagamento);
 
+            //return
+            GerenciaNet gerenciaNet = new GerenciaNet();
+            gerenciaNet.data = new JsonModels.GerenciaNet.Data();
+            gerenciaNet.data.charge_id = deserializeDataLinkPagamento.data.charge_id;
+            gerenciaNet.data.payment_url = deserializeDataLinkPagamento.data.payment_url;
+
+            return gerenciaNet;
+        }
+        public GerenciaNet RetornaInformacaoSobreTransacao(ApiGerenciaNetModel config,int Charge_id)
+        {
+            bool ambienteGerencianet = false;
+            string client_id = "";
+            string client_secret = "";
+            if (config.ambiente == "homologacao")
+            {
+                ambienteGerencianet = true;
+                client_id = config.clientidhomologacao;
+                client_secret = config.clientsecrethomologacao;
+            }
+            else if (config.ambiente == "producao")
+            {
+                ambienteGerencianet = false;
+                client_id = config.clientidproducao;
+                client_secret = config.clientsecretproducao;
+            }
+            dynamic endpoints = new Endpoints(client_id, client_secret, ambienteGerencianet);
+
+            var param = new
+            {
+                id = Charge_id
+            };
+
+            var response = endpoints.DetailCharge(param);
+
+            //dados do response Informação sobre transação
+            string jsonResponseInfoTransacao = JsonConvert.SerializeObject(response);
+            JsonModels.GerenciaNet.GerenciaNet deserializeDataInfoTransacao = JsonConvert.DeserializeObject<JsonModels.GerenciaNet.GerenciaNet>(jsonResponseInfoTransacao);
+
+            GerenciaNet gerenciaNet = new GerenciaNet();
+            gerenciaNet.data = new JsonModels.GerenciaNet.Data();
+            gerenciaNet.data.status = deserializeDataInfoTransacao.data.status;
+            gerenciaNet.data.charge_id = deserializeDataInfoTransacao.data.charge_id;
+            return gerenciaNet;
+        }
+        public void CancelarTransacao(ApiGerenciaNetModel config,int Charge_id)
+        {
+            bool ambienteGerencianet = false;
+            string client_id = "";
+            string client_secret = "";
+            if (config.ambiente == "homologacao")
+            {
+                ambienteGerencianet = true;
+                client_id = config.clientidhomologacao;
+                client_secret = config.clientsecrethomologacao;
+            }
+            else if (config.ambiente == "producao")
+            {
+                ambienteGerencianet = false;
+                client_id = config.clientidproducao;
+                client_secret = config.clientsecretproducao;
+            }
+            dynamic endpoints = new Endpoints(client_id, client_secret, ambienteGerencianet);
+
+            var param = new
+            {
+                id = Charge_id
+            };
+
+            var response = endpoints.CancelCharge(param);
+            
         }
     }
 }
