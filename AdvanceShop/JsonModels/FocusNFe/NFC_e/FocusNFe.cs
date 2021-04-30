@@ -60,6 +60,7 @@ namespace AdvanceShop.JsonModels.FocusNFe.NFC_e
         public string valor_pis { get; set; }
         public string valor_cofins { get; set; }
         public string valor_outras_despesas { get; set; }
+        public string valor_troco { get; set; }
         public string valor_total { get; set; }
         public string modalidade_frete { get; set; }
         public IList<Volume> volumes { get; set; }
@@ -67,12 +68,8 @@ namespace AdvanceShop.JsonModels.FocusNFe.NFC_e
         public string valor_original_fatura { get; set; }
         public string valor_desconto_fatura { get; set; }
         public string valor_liquido_fatura { get; set; }
-        public IList<Duplicata> duplicatas { get; set; }
+        //public IList<Duplicata> duplicatas { get; set; } somente NF-e
         public IList<FormasPagamento> formas_pagamento { get; set; }
         public string informacoes_adicionais_contribuinte { get; set; }
-        public string cnpj_responsavel_tecnico { get; set; }
-        public string contato_responsavel_tecnico { get; set; }
-        public string email_responsavel_tecnico { get; set; }
-        public string telefone_responsavel_tecnico { get; set; }
     }
 }

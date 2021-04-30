@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvanceShop", "AdvanceShop.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvShopGeradorKey", "..\AdvShopGeradorKey\AdvShopGeradorKey.csproj", "{CAA03CB8-26A5-4985-BE90-AB5F5F961298}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvShopInstall", "..\AdvShopInstall\AdvShopInstall.csproj", "{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{CAA03CB8-26A5-4985-BE90-AB5F5F961298}.Release|iPhone.Build.0 = Release|Any CPU
 		{CAA03CB8-26A5-4985-BE90-AB5F5F961298}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{CAA03CB8-26A5-4985-BE90-AB5F5F961298}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Release|iPhone.Build.0 = Release|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{08788A1B-CD31-47E6-8B22-AB3BB20FAA02}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

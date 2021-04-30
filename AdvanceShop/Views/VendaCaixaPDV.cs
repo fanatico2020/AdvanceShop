@@ -455,5 +455,10 @@ namespace AdvanceShop.Views
                     break;
             }
         }
+
+        private void txtQtd_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace AdvanceShop.JsonModels.FocusNFe.NFC_e
     public class FormasPagamento
     {
         public string forma_pagamento { get; set; }
+        
         public string valor_pagamento { get; set; }
         public object tipo_integracao { get; set; }
     }

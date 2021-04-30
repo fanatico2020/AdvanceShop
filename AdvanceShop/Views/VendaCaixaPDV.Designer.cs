@@ -563,6 +563,7 @@
             this.txtQtd.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtQtd.Size = new System.Drawing.Size(70, 26);
             this.txtQtd.TabIndex = 2;
+            this.txtQtd.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtQtd_Spin);
             this.txtQtd.EditValueChanged += new System.EventHandler(this.txtQtd_EditValueChanged);
             this.txtQtd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQtd_KeyPress);
             // 

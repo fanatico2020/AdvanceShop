@@ -63,46 +63,13 @@ namespace AdvanceShop.Views
             usuarioLogado = UsuarioLogado;
             itensVenda.AddRange(ItensVenda);//Adicoonar lista de itens da tela PDV a lista de itens da tela de pagamento
 
-            foreach (var item in itensVenda)
-            {
-                GerenciaNetItem.Add(new Item()
-                {
-                    name = item.DescricaoProduto,
-                    value = Convert.ToInt32(item.ValorUnitario.ToString().Replace(",","").Replace(".","")),
-                    amount = Convert.ToInt32(item.Quantidade)
-                });
-            }
-
-            foreach (var item in itensVenda)
-            {
-                focusItemNfe.Add(new Iten()
-                {
-                    numero_item = item.Item.ToString(),
-                    codigo_produto = item.produtos_idprodutos.ToString(),
-                    codigo_ncm = item.codigo_ncm,
-                    cfop = item.cfop,
-                    icms_origem = item.icms_origem,
-                    icms_situacao_tributaria = item.icms_situacao_tributaria,
-                    quantidade_comercial = item.Quantidade.ToString(),
-                    quantidade_tributavel = item.Quantidade.ToString(),
-                    valor_unitario_comercial = item.ValorUnitario.ToString().Replace(",", "."),
-                    valor_unitario_tributavel = item.ValorUnitario.ToString().Replace(",", "."),
-                    descricao = item.DescricaoProduto,//descrição produto
-                    unidade_comercial = item.UnidadeMedida,
-                    unidade_tributavel = item.UnidadeMedida,
-                    valor_bruto = Convert.ToString(item.ValorUnitario * item.Quantidade).Replace(",", "."),
-                    inclui_no_total = "1"//Valor do item (valor_bruto) compõe valor total da NFe (valor_produtos)?. Valores possíveis:0 – Não;1 – Sim.
-
-                });
-            }
-
-
             venda = Venda;
             caixa = Caixa;
             venda.caixas_idcaixas = Caixa.IdCaixas;
-            clientePessoa = ClientePessoa;
+            if(!string.IsNullOrEmpty(ClientePessoa.NomeClientePessoa)) clientePessoa = ClientePessoa;
             venda.clientespessoas_idclientespessoas = clientePessoa.IdClientesPessoas;
             transacaoCaixa = TransacaoCaixa;
+
             lblValorTotalAPagar.Text = $"{venda.TotalFinal.ToString("C")}";
             lblValorDesconto.Text = $"{venda.Desconto.ToString("C")}";
             VendaOuEditarFormaPagamento = "Venda";
@@ -117,6 +84,66 @@ namespace AdvanceShop.Views
 
             cbxImprimirNFCe.Enabled = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
             cbxImprimirNFCe.Checked = Convert.ToBoolean(configGerais.imprimircupomfiscalnfcefinalizarvenda);
+
+            foreach (var item in itensVenda)// api gerencia net
+            {
+                GerenciaNetItem.Add(new Item()
+                {
+                    name = item.DescricaoProduto,
+                    value = Convert.ToInt32(item.ValorUnitario.ToString().Replace(",", "").Replace(".", "")),
+                    amount = Convert.ToInt32(item.Quantidade)
+                });
+            }
+
+            foreach (var item in itensVenda)// api focus nfe
+            {
+                //NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL
+                if (apiFocusNfe.ambiente != "homologacao")
+                {
+                    focusItemNfe.Add(new Iten()
+                    {
+                        numero_item = item.Item.ToString(),
+                        codigo_produto = item.produtos_idprodutos.ToString(),
+                        codigo_ncm = item.codigo_ncm,
+                        cfop = item.cfop,
+                        icms_origem = item.icms_origem,
+                        icms_situacao_tributaria = item.icms_situacao_tributaria,
+                        quantidade_comercial = item.Quantidade.ToString(),
+                        quantidade_tributavel = item.Quantidade.ToString(),
+                        valor_unitario_comercial = item.ValorUnitario.ToString().Replace(",", "."),
+                        valor_unitario_tributavel = item.ValorUnitario.ToString().Replace(",", "."),
+                        descricao = item.DescricaoProduto,//descrição produto
+                        unidade_comercial = item.UnidadeMedida,
+                        unidade_tributavel = item.UnidadeMedida,
+                        valor_bruto = Convert.ToString(item.ValorUnitario * item.Quantidade).Replace(",", "."),
+                        inclui_no_total = "1"//Valor do item (valor_bruto) compõe valor total da NFe (valor_produtos)?. Valores possíveis:0 – Não;1 – Sim.
+
+                    });
+                }
+                else
+                {
+                    focusItemNfe.Add(new Iten()
+                    {
+                        numero_item = item.Item.ToString(),
+                        codigo_produto = item.produtos_idprodutos.ToString(),
+                        codigo_ncm = item.codigo_ncm,
+                        cfop = item.cfop,
+                        icms_origem = item.icms_origem,
+                        icms_situacao_tributaria = item.icms_situacao_tributaria,
+                        quantidade_comercial = item.Quantidade.ToString(),
+                        quantidade_tributavel = item.Quantidade.ToString(),
+                        valor_unitario_comercial = item.ValorUnitario.ToString().Replace(",", "."),
+                        valor_unitario_tributavel = item.ValorUnitario.ToString().Replace(",", "."),
+                        descricao = "NOTA FISCAL EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL",//descrição produto
+                        unidade_comercial = item.UnidadeMedida,
+                        unidade_tributavel = item.UnidadeMedida,
+                        valor_bruto = Convert.ToString(item.ValorUnitario * item.Quantidade).Replace(",", "."),
+                        inclui_no_total = "1"//Valor do item (valor_bruto) compõe valor total da NFe (valor_produtos)?. Valores possíveis:0 – Não;1 – Sim.
+
+                    });
+                }
+                
+            }
 
             if (venda.Desconto > 0.00M)
             {
@@ -317,6 +344,7 @@ namespace AdvanceShop.Views
                                 focusNFe.local_destino = "1";//'1' – Operação interna;
                                 focusNFe.presenca_comprador = "1";//1 – Operação presencial
                                 focusNFe.natureza_operacao = "VENDA AO CONSUMIDOR";
+                                focusNFe.valor_troco = venda.Troco.ToString().Replace(",",".");//troco da venda
                                 focusNFe.itens = focusItemNfe;
                                 focusNFe.formas_pagamento = focusFormasPagamentoNfe;
                                 focusDuplicata.Add(new Duplicata()
@@ -325,7 +353,7 @@ namespace AdvanceShop.Views
                                     numero = null,
                                     valor = null
                                 });
-                                focusNFe.duplicatas = focusDuplicata;
+                                //focusNFe.duplicatas = focusDuplicata; somente nf-e
                                 focusVolume.Add(new Volume()
                                 {
                                     especie = null  ,
@@ -336,9 +364,11 @@ namespace AdvanceShop.Views
                                 });
                                 focusNFe.volumes = focusVolume;
                                 //destinatario
-                                if(clientePessoa != null)
+                                if (!string.IsNullOrEmpty(clientePessoa.NomeClientePessoa))
                                 {
-                                    focusNFe.nome_destinatario = clientePessoa.NomeClientePessoa;
+                                    //NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL
+
+                                    focusNFe.nome_destinatario = apiFocusNfe.ambiente != "homologacao" ? clientePessoa.NomeClientePessoa : "NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL";
                                     if (clientePessoa.CPFCNPJ.Length == 11) focusNFe.cpf_destinatario = clientePessoa.CPFCNPJ;
                                     if (clientePessoa.CPFCNPJ.Length == 14) focusNFe.cnpj_destinatario = clientePessoa.CPFCNPJ;
                                     focusNFe.telefone_destinatario = clientePessoa.Contato1.Replace("-", "").Trim();
@@ -349,11 +379,12 @@ namespace AdvanceShop.Views
                                     focusNFe.uf_destinatario = clientePessoa.UF;
                                     focusNFe.cep_destinatario = clientePessoa.CEP.Replace("-", "").Trim();
                                 }
+                               
                                 
                             }
                             catch (NullReferenceException)
                             {
-
+                                
                             }
                             
 
