@@ -341,6 +341,7 @@ namespace AdvanceShop.Views
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 328);
             this.Controls.Add(this.xtraTabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "BackupRestauracaoDB";

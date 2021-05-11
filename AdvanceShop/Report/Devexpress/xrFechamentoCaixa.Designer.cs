@@ -29,48 +29,98 @@ namespace AdvanceShop.Report.Devexpress
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(xrFechamentoCaixa));
+            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo1 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo1 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo2 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo2 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo3 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo3 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo4 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo4 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo5 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo5 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo6 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo6 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo7 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo7 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo8 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo8 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo9 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo9 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo10 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo10 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo11 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo11 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo12 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo12 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo13 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo13 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo14 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo14 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo15 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo15 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
-            this.xrTable4 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrtSaldoCaixa = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow17 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcSaldoFinalSistema = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow18 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcSaldoInformado = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow19 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcQuebraCaixa = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow20 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcObservacao = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
             this.lnAssUsuarioCaixa = new DevExpress.XtraReports.UI.XRLine();
             this.lnAssUsuarioFechamento = new DevExpress.XtraReports.UI.XRLine();
             this.lblUsuarioCaixa = new DevExpress.XtraReports.UI.XRLabel();
             this.lblSaldoDeCaixa = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrtSaidas = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow9 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell9 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow10 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell10 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow11 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow12 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableCell15 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrtEntradas = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow8 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcEntradas = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow1 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcSaldoInicial = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcDinheiro = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcCartaoCredito = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcCartaoDebito = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow5 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcLinkPagamento = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow6 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcTotalSuplemento = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableRow7 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xtcSaldo = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblUsuarioFechamento = new DevExpress.XtraReports.UI.XRLabel();
             this.lblResumoFinanceiro = new DevExpress.XtraReports.UI.XRLabel();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
@@ -85,45 +135,16 @@ namespace AdvanceShop.Report.Devexpress
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.lblFechamentoCaixa = new DevExpress.XtraReports.UI.XRLabel();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
             this.lblsite = new DevExpress.XtraReports.UI.XRLabel();
             this.lblPag = new DevExpress.XtraReports.UI.XRLabel();
             this.lblEmissao = new DevExpress.XtraReports.UI.XRLabel();
             this.CodigoCaixa = new DevExpress.XtraReports.Parameters.Parameter();
-            this.DataHoraInicio = new DevExpress.XtraReports.Parameters.Parameter();
-            this.DataHoraTermino = new DevExpress.XtraReports.Parameters.Parameter();
-            this.EntradaSaldoInicial = new DevExpress.XtraReports.Parameters.Parameter();
-            this.EntradaDinheiro = new DevExpress.XtraReports.Parameters.Parameter();
-            this.EntradaCartaoCredito = new DevExpress.XtraReports.Parameters.Parameter();
-            this.EntradaCartaoDebito = new DevExpress.XtraReports.Parameters.Parameter();
-            this.EntradaLinkPagamento = new DevExpress.XtraReports.Parameters.Parameter();
-            this.EntradaTotalSuplemento = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SaidaDevolucoes = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SaidaTotalSangria = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SaldoFinalSistema = new DevExpress.XtraReports.Parameters.Parameter();
-            this.SaldoInformado = new DevExpress.XtraReports.Parameters.Parameter();
-            this.QuebraCaixa = new DevExpress.XtraReports.Parameters.Parameter();
-            this.Observacao = new DevExpress.XtraReports.Parameters.Parameter();
-            this.UsuarioFechamento = new DevExpress.XtraReports.Parameters.Parameter();
-            this.UsuarioCaixa = new DevExpress.XtraReports.Parameters.Parameter();
-            this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell7 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell15 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell17 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
             this.Emissao = new DevExpress.XtraReports.Parameters.Parameter();
-            this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
+            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.xrtSaldoCaixa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrtSaidas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrtEntradas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // TopMargin
@@ -139,33 +160,61 @@ namespace AdvanceShop.Report.Devexpress
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrTable4,
+            this.xrLabel6,
+            this.xrLabel5,
+            this.xrtSaldoCaixa,
             this.lnAssUsuarioCaixa,
             this.lnAssUsuarioFechamento,
             this.lblUsuarioCaixa,
             this.lblSaldoDeCaixa,
-            this.xrTable2,
-            this.xrTable1,
+            this.xrtSaidas,
+            this.xrtEntradas,
             this.lblUsuarioFechamento,
             this.lblResumoFinanceiro});
             this.Detail.HeightF = 1002.083F;
             this.Detail.Name = "Detail";
             // 
-            // xrTable4
+            // xrLabel6
             // 
-            this.xrTable4.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            this.xrLabel6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@usuariocaixa]")});
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(457.2084F, 726.8195F);
+            this.xrLabel6.Multiline = true;
+            this.xrLabel6.Name = "xrLabel6";
+            this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel6.SizeF = new System.Drawing.SizeF(169.7915F, 23F);
+            this.xrLabel6.StylePriority.UseTextAlignment = false;
+            this.xrLabel6.Text = "xrLabel6";
+            this.xrLabel6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrLabel5
+            // 
+            this.xrLabel5.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@usuariofechamento]")});
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(122.9167F, 726.8195F);
+            this.xrLabel5.Multiline = true;
+            this.xrLabel5.Name = "xrLabel5";
+            this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel5.SizeF = new System.Drawing.SizeF(169.79F, 23F);
+            this.xrLabel5.StylePriority.UseTextAlignment = false;
+            this.xrLabel5.Text = "xrLabel5";
+            this.xrLabel5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // xrtSaldoCaixa
+            // 
+            this.xrtSaldoCaixa.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTable4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 490.3611F);
-            this.xrTable4.Name = "xrTable4";
-            this.xrTable4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrTable4.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrtSaldoCaixa.LocationFloat = new DevExpress.Utils.PointFloat(0F, 490.3611F);
+            this.xrtSaldoCaixa.Name = "xrtSaldoCaixa";
+            this.xrtSaldoCaixa.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrtSaldoCaixa.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow17,
             this.xrTableRow18,
             this.xrTableRow19,
             this.xrTableRow20});
-            this.xrTable4.SizeF = new System.Drawing.SizeF(627F, 100F);
-            this.xrTable4.StylePriority.UseBorders = false;
+            this.xrtSaldoCaixa.SizeF = new System.Drawing.SizeF(627F, 100F);
+            this.xrtSaldoCaixa.StylePriority.UseBorders = false;
             // 
             // xrTableRow17
             // 
@@ -188,7 +237,25 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcSaldoFinalSistema.StylePriority.UseTextAlignment = false;
             this.xtcSaldoFinalSistema.Text = "Saldo final totalizado pelo sistema";
             this.xtcSaldoFinalSistema.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcSaldoFinalSistema.Weight = 1D;
+            this.xtcSaldoFinalSistema.Weight = 8D;
+            // 
+            // xrTableCell1
+            // 
+            this.xrTableCell1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@saldofinal]")});
+            this.xrTableCell1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell1.Multiline = true;
+            this.xrTableCell1.Name = "xrTableCell1";
+            this.xrTableCell1.StylePriority.UseBorders = false;
+            this.xrTableCell1.StylePriority.UseFont = false;
+            this.xrTableCell1.StylePriority.UseTextAlignment = false;
+            this.xrTableCell1.Text = "xrTableCell1";
+            this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell1.TextFormatString = "{0:c}";
+            this.xrTableCell1.Weight = 8D;
             // 
             // xrTableRow18
             // 
@@ -209,7 +276,23 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcSaldoInformado.StylePriority.UseTextAlignment = false;
             this.xtcSaldoInformado.Text = "Saldo informado";
             this.xtcSaldoInformado.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcSaldoInformado.Weight = 1D;
+            this.xtcSaldoInformado.Weight = 8D;
+            // 
+            // xrTableCell16
+            // 
+            this.xrTableCell16.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell16.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@valorinformado]")});
+            this.xrTableCell16.Multiline = true;
+            this.xrTableCell16.Name = "xrTableCell16";
+            this.xrTableCell16.StylePriority.UseBorders = false;
+            this.xrTableCell16.StylePriority.UseTextAlignment = false;
+            this.xrTableCell16.Text = "xrTableCell16";
+            this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell16.TextFormatString = "{0:c}";
+            this.xrTableCell16.Weight = 8D;
             // 
             // xrTableRow19
             // 
@@ -230,7 +313,23 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcQuebraCaixa.StylePriority.UseTextAlignment = false;
             this.xtcQuebraCaixa.Text = "Quebra caixa";
             this.xtcQuebraCaixa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcQuebraCaixa.Weight = 1D;
+            this.xtcQuebraCaixa.Weight = 8D;
+            // 
+            // xrTableCell17
+            // 
+            this.xrTableCell17.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell17.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@quebracaixa]")});
+            this.xrTableCell17.Multiline = true;
+            this.xrTableCell17.Name = "xrTableCell17";
+            this.xrTableCell17.StylePriority.UseBorders = false;
+            this.xrTableCell17.StylePriority.UseTextAlignment = false;
+            this.xrTableCell17.Text = "xrTableCell17";
+            this.xrTableCell17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell17.TextFormatString = "{0:c}";
+            this.xrTableCell17.Weight = 8D;
             // 
             // xrTableRow20
             // 
@@ -253,7 +352,24 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcObservacao.StylePriority.UseTextAlignment = false;
             this.xtcObservacao.Text = "Observação";
             this.xtcObservacao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcObservacao.Weight = 1D;
+            this.xtcObservacao.Weight = 8D;
+            // 
+            // xrTableCell18
+            // 
+            this.xrTableCell18.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@observacaocaixa]")});
+            this.xrTableCell18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell18.Multiline = true;
+            this.xrTableCell18.Name = "xrTableCell18";
+            this.xrTableCell18.StylePriority.UseBorders = false;
+            this.xrTableCell18.StylePriority.UseFont = false;
+            this.xrTableCell18.StylePriority.UseTextAlignment = false;
+            this.xrTableCell18.Text = "xrTableCell18";
+            this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell18.Weight = 8D;
             // 
             // lnAssUsuarioCaixa
             // 
@@ -278,7 +394,7 @@ namespace AdvanceShop.Report.Devexpress
             this.lblUsuarioCaixa.StylePriority.UseFont = false;
             this.lblUsuarioCaixa.StylePriority.UseTextAlignment = false;
             this.lblUsuarioCaixa.Text = "Usuário do Caixa:";
-            this.lblUsuarioCaixa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.lblUsuarioCaixa.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // lblSaldoDeCaixa
             // 
@@ -291,21 +407,21 @@ namespace AdvanceShop.Report.Devexpress
             this.lblSaldoDeCaixa.StylePriority.UseFont = false;
             this.lblSaldoDeCaixa.Text = "SALDO DE CAIXA";
             // 
-            // xrTable2
+            // xrtSaidas
             // 
-            this.xrTable2.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            this.xrtSaidas.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 305.9029F);
-            this.xrTable2.Name = "xrTable2";
-            this.xrTable2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrtSaidas.LocationFloat = new DevExpress.Utils.PointFloat(0F, 305.9029F);
+            this.xrtSaidas.Name = "xrtSaidas";
+            this.xrtSaidas.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrtSaidas.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow9,
             this.xrTableRow10,
             this.xrTableRow11,
             this.xrTableRow12});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(627F, 100F);
-            this.xrTable2.StylePriority.UseBorders = false;
+            this.xrtSaidas.SizeF = new System.Drawing.SizeF(627F, 100F);
+            this.xrtSaidas.StylePriority.UseBorders = false;
             // 
             // xrTableRow9
             // 
@@ -327,7 +443,7 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableCell9.StylePriority.UseTextAlignment = false;
             this.xrTableCell9.Text = "Saídas ( - )";
             this.xrTableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell9.Weight = 2D;
+            this.xrTableCell9.Weight = 8D;
             // 
             // xrTableRow10
             // 
@@ -348,7 +464,23 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableCell10.StylePriority.UseTextAlignment = false;
             this.xrTableCell10.Text = "Devoluções";
             this.xrTableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell10.Weight = 1D;
+            this.xrTableCell10.Weight = 4D;
+            // 
+            // xrTableCell13
+            // 
+            this.xrTableCell13.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell13.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@saidadevolucoes]")});
+            this.xrTableCell13.Multiline = true;
+            this.xrTableCell13.Name = "xrTableCell13";
+            this.xrTableCell13.StylePriority.UseBorders = false;
+            this.xrTableCell13.StylePriority.UseTextAlignment = false;
+            this.xrTableCell13.Text = "xrTableCell13";
+            this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell13.TextFormatString = "{0:c}";
+            this.xrTableCell13.Weight = 4D;
             // 
             // xrTableRow11
             // 
@@ -369,7 +501,23 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableCell11.StylePriority.UseTextAlignment = false;
             this.xrTableCell11.Text = "Total Sangria";
             this.xrTableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell11.Weight = 1D;
+            this.xrTableCell11.Weight = 4D;
+            // 
+            // xrTableCell14
+            // 
+            this.xrTableCell14.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTableCell14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@saidasangria]")});
+            this.xrTableCell14.Multiline = true;
+            this.xrTableCell14.Name = "xrTableCell14";
+            this.xrTableCell14.StylePriority.UseBorders = false;
+            this.xrTableCell14.StylePriority.UseTextAlignment = false;
+            this.xrTableCell14.Text = "xrTableCell14";
+            this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell14.TextFormatString = "{0:c}";
+            this.xrTableCell14.Weight = 4D;
             // 
             // xrTableRow12
             // 
@@ -392,17 +540,36 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableCell12.StylePriority.UseTextAlignment = false;
             this.xrTableCell12.Text = "Saldo";
             this.xrTableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrTableCell12.Weight = 1D;
+            this.xrTableCell12.Weight = 4D;
             // 
-            // xrTable1
+            // xrTableCell15
             // 
-            this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            this.xrTableCell15.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(1.589457E-05F, 85.76387F);
-            this.xrTable1.Name = "xrTable1";
-            this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableCell15.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@saidasangria]+[advanceshopdb_Relatorio" +
+                    "FechamentoCaixa].[@saidadevolucoes]")});
+            this.xrTableCell15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell15.Multiline = true;
+            this.xrTableCell15.Name = "xrTableCell15";
+            this.xrTableCell15.StylePriority.UseBorders = false;
+            this.xrTableCell15.StylePriority.UseFont = false;
+            this.xrTableCell15.StylePriority.UseTextAlignment = false;
+            this.xrTableCell15.Text = "Saldo Saidas";
+            this.xrTableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell15.TextFormatString = "{0:c}";
+            this.xrTableCell15.Weight = 4D;
+            // 
+            // xrtEntradas
+            // 
+            this.xrtEntradas.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrtEntradas.LocationFloat = new DevExpress.Utils.PointFloat(1.589457E-05F, 85.76387F);
+            this.xrtEntradas.Name = "xrtEntradas";
+            this.xrtEntradas.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrtEntradas.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow8,
             this.xrTableRow1,
             this.xrTableRow2,
@@ -411,8 +578,8 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableRow5,
             this.xrTableRow6,
             this.xrTableRow7});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(627F, 205.5556F);
-            this.xrTable1.StylePriority.UseBorders = false;
+            this.xrtEntradas.SizeF = new System.Drawing.SizeF(627F, 205.5556F);
+            this.xrtEntradas.StylePriority.UseBorders = false;
             // 
             // xrTableRow8
             // 
@@ -430,7 +597,7 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcEntradas.StylePriority.UseTextAlignment = false;
             this.xtcEntradas.Text = "Entradas ( + )";
             this.xtcEntradas.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xtcEntradas.Weight = 2D;
+            this.xtcEntradas.Weight = 16D;
             // 
             // xrTableRow1
             // 
@@ -447,7 +614,19 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcSaldoInicial.StylePriority.UseTextAlignment = false;
             this.xtcSaldoInicial.Text = "Saldo Incial";
             this.xtcSaldoInicial.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcSaldoInicial.Weight = 1D;
+            this.xtcSaldoInicial.Weight = 8D;
+            // 
+            // xrTableCell2
+            // 
+            this.xrTableCell2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@saldoinicial]")});
+            this.xrTableCell2.Multiline = true;
+            this.xrTableCell2.Name = "xrTableCell2";
+            this.xrTableCell2.StylePriority.UseTextAlignment = false;
+            this.xrTableCell2.Text = "xrTableCell2";
+            this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell2.TextFormatString = "{0:c}";
+            this.xrTableCell2.Weight = 8D;
             // 
             // xrTableRow2
             // 
@@ -464,7 +643,19 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcDinheiro.StylePriority.UseTextAlignment = false;
             this.xtcDinheiro.Text = "Dinheiro";
             this.xtcDinheiro.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcDinheiro.Weight = 1D;
+            this.xtcDinheiro.Weight = 8D;
+            // 
+            // xrTableCell3
+            // 
+            this.xrTableCell3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@entradadinheiro]")});
+            this.xrTableCell3.Multiline = true;
+            this.xrTableCell3.Name = "xrTableCell3";
+            this.xrTableCell3.StylePriority.UseTextAlignment = false;
+            this.xrTableCell3.Text = "xrTableCell3";
+            this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell3.TextFormatString = "{0:c}";
+            this.xrTableCell3.Weight = 8D;
             // 
             // xrTableRow3
             // 
@@ -481,7 +672,19 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcCartaoCredito.StylePriority.UseTextAlignment = false;
             this.xtcCartaoCredito.Text = "Cartão Crédito";
             this.xtcCartaoCredito.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcCartaoCredito.Weight = 1D;
+            this.xtcCartaoCredito.Weight = 8D;
+            // 
+            // xrTableCell4
+            // 
+            this.xrTableCell4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@entradacartaocredito]")});
+            this.xrTableCell4.Multiline = true;
+            this.xrTableCell4.Name = "xrTableCell4";
+            this.xrTableCell4.StylePriority.UseTextAlignment = false;
+            this.xrTableCell4.Text = "xrTableCell4";
+            this.xrTableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell4.TextFormatString = "{0:c}";
+            this.xrTableCell4.Weight = 8D;
             // 
             // xrTableRow4
             // 
@@ -498,7 +701,19 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcCartaoDebito.StylePriority.UseTextAlignment = false;
             this.xtcCartaoDebito.Text = "Cartão Débito";
             this.xtcCartaoDebito.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcCartaoDebito.Weight = 1D;
+            this.xtcCartaoDebito.Weight = 8D;
+            // 
+            // xrTableCell5
+            // 
+            this.xrTableCell5.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@entradacartaodebito]")});
+            this.xrTableCell5.Multiline = true;
+            this.xrTableCell5.Name = "xrTableCell5";
+            this.xrTableCell5.StylePriority.UseTextAlignment = false;
+            this.xrTableCell5.Text = "xrTableCell5";
+            this.xrTableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell5.TextFormatString = "{0:c}";
+            this.xrTableCell5.Weight = 8D;
             // 
             // xrTableRow5
             // 
@@ -515,7 +730,19 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcLinkPagamento.StylePriority.UseTextAlignment = false;
             this.xtcLinkPagamento.Text = "Link Pagamento";
             this.xtcLinkPagamento.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcLinkPagamento.Weight = 1D;
+            this.xtcLinkPagamento.Weight = 8D;
+            // 
+            // xrTableCell6
+            // 
+            this.xrTableCell6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@entradalinkpagamento]")});
+            this.xrTableCell6.Multiline = true;
+            this.xrTableCell6.Name = "xrTableCell6";
+            this.xrTableCell6.StylePriority.UseTextAlignment = false;
+            this.xrTableCell6.Text = "xrTableCell6";
+            this.xrTableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell6.TextFormatString = "{0:c}";
+            this.xrTableCell6.Weight = 8D;
             // 
             // xrTableRow6
             // 
@@ -532,7 +759,19 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcTotalSuplemento.StylePriority.UseTextAlignment = false;
             this.xtcTotalSuplemento.Text = "Total Suplemento";
             this.xtcTotalSuplemento.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcTotalSuplemento.Weight = 1D;
+            this.xtcTotalSuplemento.Weight = 8D;
+            // 
+            // xrTableCell7
+            // 
+            this.xrTableCell7.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@entradasuplemento]")});
+            this.xrTableCell7.Multiline = true;
+            this.xrTableCell7.Name = "xrTableCell7";
+            this.xrTableCell7.StylePriority.UseTextAlignment = false;
+            this.xrTableCell7.Text = "xrTableCell7";
+            this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell7.TextFormatString = "{0:c}";
+            this.xrTableCell7.Weight = 8D;
             // 
             // xrTableRow7
             // 
@@ -551,7 +790,21 @@ namespace AdvanceShop.Report.Devexpress
             this.xtcSaldo.StylePriority.UseTextAlignment = false;
             this.xtcSaldo.Text = "Saldo";
             this.xtcSaldo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xtcSaldo.Weight = 1D;
+            this.xtcSaldo.Weight = 8D;
+            // 
+            // xrTableCell8
+            // 
+            this.xrTableCell8.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("xrTableCell8.ExpressionBindings"))});
+            this.xrTableCell8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xrTableCell8.Multiline = true;
+            this.xrTableCell8.Name = "xrTableCell8";
+            this.xrTableCell8.StylePriority.UseFont = false;
+            this.xrTableCell8.StylePriority.UseTextAlignment = false;
+            this.xrTableCell8.Text = "SaldoEntradas";
+            this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell8.TextFormatString = "{0:c}";
+            this.xrTableCell8.Weight = 8D;
             // 
             // lblUsuarioFechamento
             // 
@@ -562,7 +815,9 @@ namespace AdvanceShop.Report.Devexpress
             this.lblUsuarioFechamento.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblUsuarioFechamento.SizeF = new System.Drawing.SizeF(122.9167F, 23F);
             this.lblUsuarioFechamento.StylePriority.UseFont = false;
+            this.lblUsuarioFechamento.StylePriority.UseTextAlignment = false;
             this.lblUsuarioFechamento.Text = "Usuário Fechamento:";
+            this.lblUsuarioFechamento.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // lblResumoFinanceiro
             // 
@@ -594,30 +849,30 @@ namespace AdvanceShop.Report.Devexpress
             // xrLabel3
             // 
             this.xrLabel3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?DataHoraTermino")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@datahoraterminocaixa]")});
             this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(457.2084F, 72.12499F);
             this.xrLabel3.Multiline = true;
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel3.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.xrLabel3.SizeF = new System.Drawing.SizeF(146.87F, 23F);
             this.xrLabel3.StylePriority.UseTextAlignment = false;
             this.xrLabel3.Text = "xrLabel3";
             this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrLabel3.TextFormatString = "{0:d}";
+            this.xrLabel3.TextFormatString = "{0:yyyy-MM-dd HH:mm}";
             // 
             // xrLabel2
             // 
             this.xrLabel2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?DataHoraInicio")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[advanceshopdb_RelatorioFechamentoCaixa].[@datahorainiciocaixa]")});
             this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(229.1668F, 72.12499F);
             this.xrLabel2.Multiline = true;
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel2.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.xrLabel2.SizeF = new System.Drawing.SizeF(146.87F, 23F);
             this.xrLabel2.StylePriority.UseTextAlignment = false;
             this.xrLabel2.Text = "xrLabel2";
             this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrLabel2.TextFormatString = "{0:d}";
+            this.xrLabel2.TextFormatString = "{0:dd/MM/yyyy HH:mm}";
             // 
             // xrLabel1
             // 
@@ -709,8 +964,22 @@ namespace AdvanceShop.Report.Devexpress
             this.lblsite,
             this.lblPag,
             this.lblEmissao});
-            this.ReportFooter.HeightF = 25F;
+            this.ReportFooter.HeightF = 25.00001F;
             this.ReportFooter.Name = "ReportFooter";
+            // 
+            // xrLabel4
+            // 
+            this.xrLabel4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?Emissao")});
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(480.1299F, 0F);
+            this.xrLabel4.Multiline = true;
+            this.xrLabel4.Name = "xrLabel4";
+            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel4.SizeF = new System.Drawing.SizeF(146.87F, 23F);
+            this.xrLabel4.StylePriority.UseTextAlignment = false;
+            this.xrLabel4.Text = "xrLabel4";
+            this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrLabel4.TextFormatString = "{0:g}";
             // 
             // lblsite
             // 
@@ -740,14 +1009,14 @@ namespace AdvanceShop.Report.Devexpress
             // 
             // lblEmissao
             // 
-            this.lblEmissao.LocationFloat = new DevExpress.Utils.PointFloat(470.8333F, 0F);
+            this.lblEmissao.LocationFloat = new DevExpress.Utils.PointFloat(415.5465F, 2.000014F);
             this.lblEmissao.Multiline = true;
             this.lblEmissao.Name = "lblEmissao";
             this.lblEmissao.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.lblEmissao.SizeF = new System.Drawing.SizeF(64.58331F, 23F);
             this.lblEmissao.StylePriority.UseTextAlignment = false;
             this.lblEmissao.Text = "Emissão:";
-            this.lblEmissao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.lblEmissao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // CodigoCaixa
             // 
@@ -755,314 +1024,7 @@ namespace AdvanceShop.Report.Devexpress
             this.CodigoCaixa.Description = "CodigoCaixa";
             this.CodigoCaixa.Name = "CodigoCaixa";
             this.CodigoCaixa.Type = typeof(int);
-            // 
-            // DataHoraInicio
-            // 
-            this.DataHoraInicio.AllowNull = true;
-            this.DataHoraInicio.Description = "DataHoraInicio";
-            this.DataHoraInicio.Name = "DataHoraInicio";
-            this.DataHoraInicio.Type = typeof(System.DateTime);
-            // 
-            // DataHoraTermino
-            // 
-            this.DataHoraTermino.AllowNull = true;
-            this.DataHoraTermino.Description = "DataHoraTermino";
-            this.DataHoraTermino.Name = "DataHoraTermino";
-            this.DataHoraTermino.Type = typeof(System.DateTime);
-            // 
-            // EntradaSaldoInicial
-            // 
-            this.EntradaSaldoInicial.AllowNull = true;
-            this.EntradaSaldoInicial.Description = "EntradaSaldoInicial";
-            this.EntradaSaldoInicial.Name = "EntradaSaldoInicial";
-            this.EntradaSaldoInicial.Type = typeof(decimal);
-            // 
-            // EntradaDinheiro
-            // 
-            this.EntradaDinheiro.AllowNull = true;
-            this.EntradaDinheiro.Description = "EntradaDinheiro";
-            this.EntradaDinheiro.Name = "EntradaDinheiro";
-            this.EntradaDinheiro.Type = typeof(decimal);
-            // 
-            // EntradaCartaoCredito
-            // 
-            this.EntradaCartaoCredito.AllowNull = true;
-            this.EntradaCartaoCredito.Description = "EntradaCartaoCredito";
-            this.EntradaCartaoCredito.Name = "EntradaCartaoCredito";
-            this.EntradaCartaoCredito.Type = typeof(decimal);
-            // 
-            // EntradaCartaoDebito
-            // 
-            this.EntradaCartaoDebito.AllowNull = true;
-            this.EntradaCartaoDebito.Description = "EntradaCartaoDebito";
-            this.EntradaCartaoDebito.Name = "EntradaCartaoDebito";
-            this.EntradaCartaoDebito.Type = typeof(decimal);
-            // 
-            // EntradaLinkPagamento
-            // 
-            this.EntradaLinkPagamento.AllowNull = true;
-            this.EntradaLinkPagamento.Description = "EntradaLinkPagamento";
-            this.EntradaLinkPagamento.Name = "EntradaLinkPagamento";
-            this.EntradaLinkPagamento.Type = typeof(decimal);
-            // 
-            // EntradaTotalSuplemento
-            // 
-            this.EntradaTotalSuplemento.AllowNull = true;
-            this.EntradaTotalSuplemento.Description = "EntradaTotalSuplemento";
-            this.EntradaTotalSuplemento.Name = "EntradaTotalSuplemento";
-            this.EntradaTotalSuplemento.Type = typeof(decimal);
-            // 
-            // SaidaDevolucoes
-            // 
-            this.SaidaDevolucoes.AllowNull = true;
-            this.SaidaDevolucoes.Description = "SaidaDevolucoes";
-            this.SaidaDevolucoes.Name = "SaidaDevolucoes";
-            this.SaidaDevolucoes.Type = typeof(decimal);
-            // 
-            // SaidaTotalSangria
-            // 
-            this.SaidaTotalSangria.AllowNull = true;
-            this.SaidaTotalSangria.Description = "SaidaTotalSangria";
-            this.SaidaTotalSangria.Name = "SaidaTotalSangria";
-            this.SaidaTotalSangria.Type = typeof(decimal);
-            // 
-            // SaldoFinalSistema
-            // 
-            this.SaldoFinalSistema.AllowNull = true;
-            this.SaldoFinalSistema.Description = "SaldoFinalSistema";
-            this.SaldoFinalSistema.Name = "SaldoFinalSistema";
-            this.SaldoFinalSistema.Type = typeof(decimal);
-            // 
-            // SaldoInformado
-            // 
-            this.SaldoInformado.AllowNull = true;
-            this.SaldoInformado.Description = "SaldoInformado";
-            this.SaldoInformado.Name = "SaldoInformado";
-            this.SaldoInformado.Type = typeof(decimal);
-            // 
-            // QuebraCaixa
-            // 
-            this.QuebraCaixa.AllowNull = true;
-            this.QuebraCaixa.Description = "QuebraCaixa";
-            this.QuebraCaixa.Name = "QuebraCaixa";
-            this.QuebraCaixa.Type = typeof(decimal);
-            // 
-            // Observacao
-            // 
-            this.Observacao.AllowNull = true;
-            this.Observacao.Description = "Observacao";
-            this.Observacao.Name = "Observacao";
-            // 
-            // UsuarioFechamento
-            // 
-            this.UsuarioFechamento.AllowNull = true;
-            this.UsuarioFechamento.Description = "UsuarioFechamento";
-            this.UsuarioFechamento.Name = "UsuarioFechamento";
-            // 
-            // UsuarioCaixa
-            // 
-            this.UsuarioCaixa.AllowNull = true;
-            this.UsuarioCaixa.Description = "UsuarioCaixa";
-            this.UsuarioCaixa.Name = "UsuarioCaixa";
-            // 
-            // xrTableCell2
-            // 
-            this.xrTableCell2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?EntradaSaldoInicial")});
-            this.xrTableCell2.Multiline = true;
-            this.xrTableCell2.Name = "xrTableCell2";
-            this.xrTableCell2.StylePriority.UseTextAlignment = false;
-            this.xrTableCell2.Text = "xrTableCell2";
-            this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell2.TextFormatString = "{0:c}";
-            this.xrTableCell2.Weight = 1D;
-            // 
-            // xrTableCell3
-            // 
-            this.xrTableCell3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?EntradaDinheiro")});
-            this.xrTableCell3.Multiline = true;
-            this.xrTableCell3.Name = "xrTableCell3";
-            this.xrTableCell3.StylePriority.UseTextAlignment = false;
-            this.xrTableCell3.Text = "xrTableCell3";
-            this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell3.TextFormatString = "{0:c}";
-            this.xrTableCell3.Weight = 1D;
-            // 
-            // xrTableCell4
-            // 
-            this.xrTableCell4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?EntradaCartaoCredito")});
-            this.xrTableCell4.Multiline = true;
-            this.xrTableCell4.Name = "xrTableCell4";
-            this.xrTableCell4.StylePriority.UseTextAlignment = false;
-            this.xrTableCell4.Text = "xrTableCell4";
-            this.xrTableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell4.TextFormatString = "{0:c}";
-            this.xrTableCell4.Weight = 1D;
-            // 
-            // xrTableCell5
-            // 
-            this.xrTableCell5.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?EntradaCartaoDebito")});
-            this.xrTableCell5.Multiline = true;
-            this.xrTableCell5.Name = "xrTableCell5";
-            this.xrTableCell5.StylePriority.UseTextAlignment = false;
-            this.xrTableCell5.Text = "xrTableCell5";
-            this.xrTableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell5.TextFormatString = "{0:c}";
-            this.xrTableCell5.Weight = 1D;
-            // 
-            // xrTableCell6
-            // 
-            this.xrTableCell6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?EntradaLinkPagamento")});
-            this.xrTableCell6.Multiline = true;
-            this.xrTableCell6.Name = "xrTableCell6";
-            this.xrTableCell6.StylePriority.UseTextAlignment = false;
-            this.xrTableCell6.Text = "xrTableCell6";
-            this.xrTableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell6.TextFormatString = "{0:c}";
-            this.xrTableCell6.Weight = 1D;
-            // 
-            // xrTableCell7
-            // 
-            this.xrTableCell7.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?EntradaTotalSuplemento")});
-            this.xrTableCell7.Multiline = true;
-            this.xrTableCell7.Name = "xrTableCell7";
-            this.xrTableCell7.StylePriority.UseTextAlignment = false;
-            this.xrTableCell7.Text = "xrTableCell7";
-            this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell7.TextFormatString = "{0:c}";
-            this.xrTableCell7.Weight = 1D;
-            // 
-            // xrTableCell8
-            // 
-            this.xrTableCell8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell8.Multiline = true;
-            this.xrTableCell8.Name = "xrTableCell8";
-            this.xrTableCell8.StylePriority.UseFont = false;
-            this.xrTableCell8.StylePriority.UseTextAlignment = false;
-            this.xrTableCell8.Text = "Saldo Entradas";
-            this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell8.TextFormatString = "{0:c}";
-            this.xrTableCell8.Weight = 1D;
-            // 
-            // xrTableCell13
-            // 
-            this.xrTableCell13.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell13.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?SaidaDevolucoes")});
-            this.xrTableCell13.Multiline = true;
-            this.xrTableCell13.Name = "xrTableCell13";
-            this.xrTableCell13.StylePriority.UseBorders = false;
-            this.xrTableCell13.StylePriority.UseTextAlignment = false;
-            this.xrTableCell13.Text = "xrTableCell13";
-            this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell13.TextFormatString = "{0:c}";
-            this.xrTableCell13.Weight = 1D;
-            // 
-            // xrTableCell14
-            // 
-            this.xrTableCell14.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?SaidaTotalSangria")});
-            this.xrTableCell14.Multiline = true;
-            this.xrTableCell14.Name = "xrTableCell14";
-            this.xrTableCell14.StylePriority.UseBorders = false;
-            this.xrTableCell14.StylePriority.UseTextAlignment = false;
-            this.xrTableCell14.Text = "xrTableCell14";
-            this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell14.TextFormatString = "{0:c}";
-            this.xrTableCell14.Weight = 1D;
-            // 
-            // xrTableCell15
-            // 
-            this.xrTableCell15.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell15.Multiline = true;
-            this.xrTableCell15.Name = "xrTableCell15";
-            this.xrTableCell15.StylePriority.UseBorders = false;
-            this.xrTableCell15.StylePriority.UseFont = false;
-            this.xrTableCell15.StylePriority.UseTextAlignment = false;
-            this.xrTableCell15.Text = "Saldo Saidas";
-            this.xrTableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell15.TextFormatString = "{0:c}";
-            this.xrTableCell15.Weight = 1D;
-            // 
-            // xrTableCell1
-            // 
-            this.xrTableCell1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?SaldoFinalSistema")});
-            this.xrTableCell1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell1.Multiline = true;
-            this.xrTableCell1.Name = "xrTableCell1";
-            this.xrTableCell1.StylePriority.UseBorders = false;
-            this.xrTableCell1.StylePriority.UseFont = false;
-            this.xrTableCell1.StylePriority.UseTextAlignment = false;
-            this.xrTableCell1.Text = "xrTableCell1";
-            this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell1.TextFormatString = "{0:c}";
-            this.xrTableCell1.Weight = 1D;
-            // 
-            // xrTableCell16
-            // 
-            this.xrTableCell16.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell16.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?SaldoInformado")});
-            this.xrTableCell16.Multiline = true;
-            this.xrTableCell16.Name = "xrTableCell16";
-            this.xrTableCell16.StylePriority.UseBorders = false;
-            this.xrTableCell16.StylePriority.UseTextAlignment = false;
-            this.xrTableCell16.Text = "xrTableCell16";
-            this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell16.TextFormatString = "{0:c}";
-            this.xrTableCell16.Weight = 1D;
-            // 
-            // xrTableCell17
-            // 
-            this.xrTableCell17.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell17.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?QuebraCaixa")});
-            this.xrTableCell17.Multiline = true;
-            this.xrTableCell17.Name = "xrTableCell17";
-            this.xrTableCell17.StylePriority.UseBorders = false;
-            this.xrTableCell17.StylePriority.UseTextAlignment = false;
-            this.xrTableCell17.Text = "xrTableCell17";
-            this.xrTableCell17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell17.TextFormatString = "{0:c}";
-            this.xrTableCell17.Weight = 1D;
-            // 
-            // xrTableCell18
-            // 
-            this.xrTableCell18.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrTableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?Observacao")});
-            this.xrTableCell18.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTableCell18.Multiline = true;
-            this.xrTableCell18.Name = "xrTableCell18";
-            this.xrTableCell18.StylePriority.UseBorders = false;
-            this.xrTableCell18.StylePriority.UseFont = false;
-            this.xrTableCell18.StylePriority.UseTextAlignment = false;
-            this.xrTableCell18.Text = "xrTableCell18";
-            this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
-            this.xrTableCell18.Weight = 1D;
+            this.CodigoCaixa.Visible = false;
             // 
             // Emissao
             // 
@@ -1070,20 +1032,112 @@ namespace AdvanceShop.Report.Devexpress
             this.Emissao.Description = "Emissao";
             this.Emissao.Name = "Emissao";
             this.Emissao.Type = typeof(System.DateTime);
+            this.Emissao.Visible = false;
             // 
-            // xrLabel4
+            // sqlDataSource1
             // 
-            this.xrLabel4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?Emissao")});
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(535.4166F, 0F);
-            this.xrLabel4.Multiline = true;
-            this.xrLabel4.Name = "xrLabel4";
-            this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel4.SizeF = new System.Drawing.SizeF(91.58331F, 23F);
-            this.xrLabel4.StylePriority.UseTextAlignment = false;
-            this.xrLabel4.Text = "xrLabel4";
-            this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrLabel4.TextFormatString = "{0:g}";
+            this.sqlDataSource1.ConnectionName = "localhost_advanceshopdb_Connection";
+            this.sqlDataSource1.Name = "sqlDataSource1";
+            storedProcQuery1.Name = "advanceshopdb_RelatorioFechamentoCaixa";
+            queryParameter1.Name = "@id_caixa";
+            queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
+            queryParameter1.Value = new DevExpress.DataAccess.Expression("?CodigoCaixa", typeof(int));
+            storedProcQuery1.Parameters.Add(queryParameter1);
+            storedProcQuery1.StoredProcName = "advanceshopdb.RelatorioFechamentoCaixa";
+            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            storedProcQuery1});
+            masterDetailInfo1.DetailQueryName = "EntradaDinheiro";
+            relationColumnInfo1.NestedKeyColumn = "caixas_idcaixas";
+            relationColumnInfo1.ParentKeyColumn = "caixas_idcaixas";
+            masterDetailInfo1.KeyColumns.Add(relationColumnInfo1);
+            masterDetailInfo1.MasterQueryName = "SaldoInicial";
+            masterDetailInfo2.DetailQueryName = "EntradaSuplemento";
+            relationColumnInfo2.NestedKeyColumn = "caixas_idcaixas";
+            relationColumnInfo2.ParentKeyColumn = "caixas_idcaixas";
+            masterDetailInfo2.KeyColumns.Add(relationColumnInfo2);
+            masterDetailInfo2.MasterQueryName = "EntradaDinheiro";
+            masterDetailInfo3.DetailQueryName = "EntradaCartaoCredito";
+            relationColumnInfo3.NestedKeyColumn = "caixas_idcaixas";
+            relationColumnInfo3.ParentKeyColumn = "caixas_idcaixas";
+            masterDetailInfo3.KeyColumns.Add(relationColumnInfo3);
+            masterDetailInfo3.MasterQueryName = "EntradaSuplemento";
+            masterDetailInfo4.DetailQueryName = "EntradaCartaoDebito";
+            relationColumnInfo4.NestedKeyColumn = "caixas_idcaixas";
+            relationColumnInfo4.ParentKeyColumn = "caixas_idcaixas";
+            masterDetailInfo4.KeyColumns.Add(relationColumnInfo4);
+            masterDetailInfo4.MasterQueryName = "EntradaCartaoCredito";
+            masterDetailInfo5.DetailQueryName = "EntradaLinkPagamento";
+            relationColumnInfo5.NestedKeyColumn = "caixas_idcaixas";
+            relationColumnInfo5.ParentKeyColumn = "caixas_idcaixas";
+            masterDetailInfo5.KeyColumns.Add(relationColumnInfo5);
+            masterDetailInfo5.MasterQueryName = "EntradaCartaoDebito";
+            masterDetailInfo6.DetailQueryName = "SaidaSangria";
+            relationColumnInfo6.NestedKeyColumn = "caixas_idcaixas";
+            relationColumnInfo6.ParentKeyColumn = "caixas_idcaixas";
+            masterDetailInfo6.KeyColumns.Add(relationColumnInfo6);
+            masterDetailInfo6.MasterQueryName = "EntradaLinkPagamento";
+            masterDetailInfo7.DetailQueryName = "SaidaDevolucao";
+            relationColumnInfo7.NestedKeyColumn = "caixas_idcaixas";
+            relationColumnInfo7.ParentKeyColumn = "caixas_idcaixas";
+            masterDetailInfo7.KeyColumns.Add(relationColumnInfo7);
+            masterDetailInfo7.MasterQueryName = "SaidaSangria";
+            masterDetailInfo8.DetailQueryName = "SaldoFinal";
+            relationColumnInfo8.NestedKeyColumn = "idcaixas";
+            relationColumnInfo8.ParentKeyColumn = "caixas_idcaixas";
+            masterDetailInfo8.KeyColumns.Add(relationColumnInfo8);
+            masterDetailInfo8.MasterQueryName = "SaidaDevolucao";
+            masterDetailInfo9.DetailQueryName = "ValorInformado";
+            relationColumnInfo9.NestedKeyColumn = "idcaixas";
+            relationColumnInfo9.ParentKeyColumn = "idcaixas";
+            masterDetailInfo9.KeyColumns.Add(relationColumnInfo9);
+            masterDetailInfo9.MasterQueryName = "SaldoFinal";
+            masterDetailInfo10.DetailQueryName = "QuebraCaixa";
+            relationColumnInfo10.NestedKeyColumn = "idcaixas";
+            relationColumnInfo10.ParentKeyColumn = "idcaixas";
+            masterDetailInfo10.KeyColumns.Add(relationColumnInfo10);
+            masterDetailInfo10.MasterQueryName = "ValorInformado";
+            masterDetailInfo11.DetailQueryName = "DataHoraTerminoCaixa";
+            relationColumnInfo11.NestedKeyColumn = "idcaixas";
+            relationColumnInfo11.ParentKeyColumn = "idcaixas";
+            masterDetailInfo11.KeyColumns.Add(relationColumnInfo11);
+            masterDetailInfo11.MasterQueryName = "QuebraCaixa";
+            masterDetailInfo12.DetailQueryName = "UsuarioCaixa";
+            relationColumnInfo12.NestedKeyColumn = "idcaixas";
+            relationColumnInfo12.ParentKeyColumn = "idcaixas";
+            masterDetailInfo12.KeyColumns.Add(relationColumnInfo12);
+            masterDetailInfo12.MasterQueryName = "DataHoraTerminoCaixa";
+            masterDetailInfo13.DetailQueryName = "UsuarioFechamento";
+            relationColumnInfo13.NestedKeyColumn = "idcaixas";
+            relationColumnInfo13.ParentKeyColumn = "idcaixas";
+            masterDetailInfo13.KeyColumns.Add(relationColumnInfo13);
+            masterDetailInfo13.MasterQueryName = "UsuarioCaixa";
+            masterDetailInfo14.DetailQueryName = "ObservacaoCaixa";
+            relationColumnInfo14.NestedKeyColumn = "idcaixas";
+            relationColumnInfo14.ParentKeyColumn = "idcaixas";
+            masterDetailInfo14.KeyColumns.Add(relationColumnInfo14);
+            masterDetailInfo14.MasterQueryName = "UsuarioFechamento";
+            masterDetailInfo15.DetailQueryName = "DataHoraInicioCaixa";
+            relationColumnInfo15.NestedKeyColumn = "caixas_idcaixas";
+            relationColumnInfo15.ParentKeyColumn = "idcaixas";
+            masterDetailInfo15.KeyColumns.Add(relationColumnInfo15);
+            masterDetailInfo15.MasterQueryName = "ObservacaoCaixa";
+            this.sqlDataSource1.Relations.AddRange(new DevExpress.DataAccess.Sql.MasterDetailInfo[] {
+            masterDetailInfo1,
+            masterDetailInfo2,
+            masterDetailInfo3,
+            masterDetailInfo4,
+            masterDetailInfo5,
+            masterDetailInfo6,
+            masterDetailInfo7,
+            masterDetailInfo8,
+            masterDetailInfo9,
+            masterDetailInfo10,
+            masterDetailInfo11,
+            masterDetailInfo12,
+            masterDetailInfo13,
+            masterDetailInfo14,
+            masterDetailInfo15});
+            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // xrFechamentoCaixa
             // 
@@ -1093,34 +1147,22 @@ namespace AdvanceShop.Report.Devexpress
             this.Detail,
             this.ReportHeader,
             this.ReportFooter});
+            this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
+            this.sqlDataSource1});
+            this.DataMember = "advanceshopdb_RelatorioFechamentoCaixa";
+            this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(100, 100, 2, 2);
+            this.Margins = new System.Drawing.Printing.Margins(100, 98, 2, 2);
             this.PageHeight = 1169;
             this.PageWidth = 827;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.CodigoCaixa,
-            this.DataHoraInicio,
-            this.DataHoraTermino,
-            this.EntradaSaldoInicial,
-            this.EntradaDinheiro,
-            this.EntradaCartaoCredito,
-            this.EntradaCartaoDebito,
-            this.EntradaLinkPagamento,
-            this.EntradaTotalSuplemento,
-            this.SaidaDevolucoes,
-            this.SaidaTotalSangria,
-            this.SaldoFinalSistema,
-            this.SaldoInformado,
-            this.QuebraCaixa,
-            this.Observacao,
-            this.UsuarioFechamento,
-            this.UsuarioCaixa,
             this.Emissao});
             this.Version = "19.2";
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrtSaldoCaixa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrtSaidas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrtEntradas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1144,7 +1186,7 @@ namespace AdvanceShop.Report.Devexpress
         private DevExpress.XtraReports.UI.XRLabel lblInicio;
         private DevExpress.XtraReports.UI.XRLabel lblPag;
         private DevExpress.XtraReports.UI.XRLine xrLine3;
-        private DevExpress.XtraReports.UI.XRTable xrTable1;
+        private DevExpress.XtraReports.UI.XRTable xrtEntradas;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow8;
         private DevExpress.XtraReports.UI.XRTableCell xtcEntradas;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
@@ -1159,7 +1201,7 @@ namespace AdvanceShop.Report.Devexpress
         private DevExpress.XtraReports.UI.XRTableCell xtcTotalSuplemento;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow7;
         private DevExpress.XtraReports.UI.XRTableCell xtcSaldo;
-        private DevExpress.XtraReports.UI.XRTable xrTable2;
+        private DevExpress.XtraReports.UI.XRTable xrtSaidas;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow9;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow10;
@@ -1172,7 +1214,7 @@ namespace AdvanceShop.Report.Devexpress
         private DevExpress.XtraReports.UI.XRLine lnAssUsuarioCaixa;
         private DevExpress.XtraReports.UI.XRLine lnAssUsuarioFechamento;
         private DevExpress.XtraReports.UI.XRLabel lblsite;
-        private DevExpress.XtraReports.UI.XRTable xrTable4;
+        private DevExpress.XtraReports.UI.XRTable xrtSaldoCaixa;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow17;
         private DevExpress.XtraReports.UI.XRTableCell xtcSaldoFinalSistema;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow18;
@@ -1182,34 +1224,12 @@ namespace AdvanceShop.Report.Devexpress
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow20;
         private DevExpress.XtraReports.UI.XRTableCell xtcObservacao;
         private DevExpress.XtraReports.Parameters.Parameter CodigoCaixa;
-        private DevExpress.XtraReports.Parameters.Parameter DataHoraInicio;
-        private DevExpress.XtraReports.Parameters.Parameter DataHoraTermino;
-        private DevExpress.XtraReports.Parameters.Parameter EntradaSaldoInicial;
-        private DevExpress.XtraReports.Parameters.Parameter EntradaDinheiro;
-        private DevExpress.XtraReports.Parameters.Parameter EntradaCartaoCredito;
-        private DevExpress.XtraReports.Parameters.Parameter EntradaCartaoDebito;
-        private DevExpress.XtraReports.Parameters.Parameter EntradaLinkPagamento;
-        private DevExpress.XtraReports.Parameters.Parameter EntradaTotalSuplemento;
-        private DevExpress.XtraReports.Parameters.Parameter SaidaDevolucoes;
-        private DevExpress.XtraReports.Parameters.Parameter SaidaTotalSangria;
-        private DevExpress.XtraReports.Parameters.Parameter SaldoFinalSistema;
-        private DevExpress.XtraReports.Parameters.Parameter SaldoInformado;
-        private DevExpress.XtraReports.Parameters.Parameter QuebraCaixa;
-        private DevExpress.XtraReports.Parameters.Parameter Observacao;
-        private DevExpress.XtraReports.Parameters.Parameter UsuarioFechamento;
-        private DevExpress.XtraReports.Parameters.Parameter UsuarioCaixa;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel3;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel2;
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow1;
         private DevExpress.XtraReports.UI.XRTableCell xtcSaldoInicial;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell1;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell16;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell17;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell18;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell13;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell14;
-        private DevExpress.XtraReports.UI.XRTableCell xrTableCell15;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel4;
+        private DevExpress.XtraReports.Parameters.Parameter Emissao;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell2;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell3;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell4;
@@ -1217,7 +1237,16 @@ namespace AdvanceShop.Report.Devexpress
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell6;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell7;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel4;
-        private DevExpress.XtraReports.Parameters.Parameter Emissao;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel3;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel2;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell13;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell14;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell15;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell1;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell16;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell17;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell18;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel6;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel5;
     }
 }

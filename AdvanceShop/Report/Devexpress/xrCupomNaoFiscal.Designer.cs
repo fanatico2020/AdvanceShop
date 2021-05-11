@@ -677,36 +677,42 @@ namespace AdvanceShop.Report.Devexpress
             this.DataHoraVenda.Description = "DataHoraVenda";
             this.DataHoraVenda.Name = "DataHoraVenda";
             this.DataHoraVenda.Type = typeof(System.DateTime);
+            this.DataHoraVenda.Visible = false;
             // 
             // UsuarioCaixa
             // 
             this.UsuarioCaixa.AllowNull = true;
             this.UsuarioCaixa.Description = "UsuarioCaixa";
             this.UsuarioCaixa.Name = "UsuarioCaixa";
+            this.UsuarioCaixa.Visible = false;
             // 
             // Maquina
             // 
             this.Maquina.AllowNull = true;
             this.Maquina.Description = "Maquina";
             this.Maquina.Name = "Maquina";
+            this.Maquina.Visible = false;
             // 
             // ClienteVenda
             // 
             this.ClienteVenda.AllowNull = true;
             this.ClienteVenda.Description = "ClienteVenda";
             this.ClienteVenda.Name = "ClienteVenda";
+            this.ClienteVenda.Visible = false;
             // 
             // CPFCNPJClienteVenda
             // 
             this.CPFCNPJClienteVenda.AllowNull = true;
             this.CPFCNPJClienteVenda.Description = "CPFCNPJClienteVenda";
             this.CPFCNPJClienteVenda.Name = "CPFCNPJClienteVenda";
+            this.CPFCNPJClienteVenda.Visible = false;
             // 
             // TelefonesClienteVenda
             // 
             this.TelefonesClienteVenda.AllowNull = true;
             this.TelefonesClienteVenda.Description = "TelefonesClienteVenda";
             this.TelefonesClienteVenda.Name = "TelefonesClienteVenda";
+            this.TelefonesClienteVenda.Visible = false;
             // 
             // ValorTotalVenda
             // 
@@ -714,6 +720,7 @@ namespace AdvanceShop.Report.Devexpress
             this.ValorTotalVenda.Description = "ValorTotalVenda";
             this.ValorTotalVenda.Name = "ValorTotalVenda";
             this.ValorTotalVenda.Type = typeof(decimal);
+            this.ValorTotalVenda.Visible = false;
             // 
             // DescontoVenda
             // 
@@ -721,6 +728,7 @@ namespace AdvanceShop.Report.Devexpress
             this.DescontoVenda.Description = "DescontoVenda";
             this.DescontoVenda.Name = "DescontoVenda";
             this.DescontoVenda.Type = typeof(decimal);
+            this.DescontoVenda.Visible = false;
             // 
             // TotalAPagar
             // 
@@ -728,6 +736,7 @@ namespace AdvanceShop.Report.Devexpress
             this.TotalAPagar.Description = "TotalAPagar";
             this.TotalAPagar.Name = "TotalAPagar";
             this.TotalAPagar.Type = typeof(decimal);
+            this.TotalAPagar.Visible = false;
             // 
             // Troco
             // 
@@ -735,6 +744,7 @@ namespace AdvanceShop.Report.Devexpress
             this.Troco.Description = "Troco";
             this.Troco.Name = "Troco";
             this.Troco.Type = typeof(decimal);
+            this.Troco.Visible = false;
             // 
             // NumeroVenda
             // 
@@ -743,6 +753,7 @@ namespace AdvanceShop.Report.Devexpress
             this.NumeroVenda.MultiValue = true;
             this.NumeroVenda.Name = "NumeroVenda";
             this.NumeroVenda.Type = typeof(int);
+            this.NumeroVenda.Visible = false;
             // 
             // sqlDataSource1
             // 

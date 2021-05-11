@@ -434,6 +434,7 @@
     <Compile Include="Shared\CustomMessageBox\MessageBoxOK.cs" />
     <Compile Include="Shared\CustomPrint\CupomFiscal.cs" />
     <Compile Include="Shared\CustomPrint\CupomNaoFiscal.cs" />
+    <Compile Include="Shared\CustomPrint\FechamentoCaixa.cs" />
     <Compile Include="Shared\Email\EmailSistema.cs" />
     <Compile Include="Shared\Library\EncryptorDecrypt.cs" />
     <Compile Include="Shared\Library\HashMd5.cs" />

@@ -1,5 +1,6 @@
 ﻿using AdvanceShop.Controllers;
 using AdvanceShop.Models;
+using AdvanceShop.Shared.CustomInputBox;
 using AdvanceShop.Shared.CustomMessageBox;
 using DevExpress.XtraLayout.HitInfo;
 using System;
@@ -18,6 +19,9 @@ namespace AdvanceShop.Views
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
         UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
+
+        CaixasModel caixa = new CaixasModel();
+        CaixasController caixaController = new CaixasController();
         public Principal(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
@@ -175,6 +179,20 @@ namespace AdvanceShop.Views
         private void lblCaminhoSistema_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
+        }
+
+        private void bbiRelFechmanetoCaixa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            caixa.IdCaixas = Convert.ToInt32(InputBoxTextEdit.Show("Número do caixa", "Relatório Fechamento de Caixa"));
+            caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
+            if (caixa.status == 1)
+            {
+                Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
+            }
+            else
+            {
+                MessageBoxWarning.Show("Caixa inexistente ou não foi fechado ainda, favor verifique!");
+            }
         }
     }
 }

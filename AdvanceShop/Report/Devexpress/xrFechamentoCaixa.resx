@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="xrTableCell8.ExpressionBindings" xml:space="preserve">
+    <value>[advanceshopdb_RelatorioFechamentoCaixa].[@saldoinicial]+[advanceshopdb_RelatorioFechamentoCaixa].[@entradadinheiro]+[advanceshopdb_RelatorioFechamentoCaixa].[@entradacartaocredito]+[advanceshopdb_RelatorioFechamentoCaixa].[@entradacartaodebito]+[advanceshopdb_RelatorioFechamentoCaixa].[@entradalinkpagamento]+[advanceshopdb_RelatorioFechamentoCaixa].[@entradasuplemento]</value>
+  </data>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9ImFkdmFuY2VzaG9wZGJfUmVsYXRvcmlvRmVjaGFtZW50b0NhaXhhIj48RmllbGQgTmFtZT0iQHNhbGRvaW5pY2lhbCIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iQGVudHJhZGFkaW5oZWlybyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iQGVudHJhZGFzdXBsZW1lbnRvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJAZW50cmFkYWNhcnRhb2NyZWRpdG8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkBlbnRyYWRhY2FydGFvZGViaXRvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJAZW50cmFkYWxpbmtwYWdhbWVudG8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkBzYWlkYXNhbmdyaWEiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkBzYWlkYWRldm9sdWNvZXMiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkBzYWxkb2ZpbmFsIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJAdmFsb3JpbmZvcm1hZG8iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkBxdWVicmFjYWl4YSIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0iQGRhdGFob3JhdGVybWlub2NhaXhhIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkBkYXRhaG9yYWluaWNpb2NhaXhhIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkB1c3VhcmlvY2FpeGEiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQHVzdWFyaW9mZWNoYW1lbnRvIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkBvYnNlcnZhY2FvY2FpeGEiIFR5cGU9IlN0cmluZyIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
+  </data>
 </root>

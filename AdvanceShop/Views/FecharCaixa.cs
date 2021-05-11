@@ -44,11 +44,12 @@ namespace AdvanceShop.Views
         }
         private void Salvar()
         {
+
             try
             {
                 caixa.SaldoFinal = Convert.ToDecimal(txtSaldoFinalSistema.Text.Replace("R$", ""));
                 caixa.ValorInformado = Convert.ToDecimal(txtSaldoFinal.Text.Replace("R$", ""));
-                caixa.QuebraCaixa = Convert.ToDecimal(txtQuebraCaixa.Text.Replace("-R$", ""));
+                caixa.QuebraCaixa = Convert.ToDecimal(txtQuebraCaixa.Text.Replace("R$", ""));
                 caixa.ObservacaoCaixa = txtObservacao.Text;
                 caixa.status = 1;
                 caixa.UsuarioFechamento = usuarioLogado.UsuarioAcesso;
@@ -58,7 +59,10 @@ namespace AdvanceShop.Views
                 {
                     caixaController.FecharCaixa(caixa);
                     MessageBoxOK.Show("Fechado com sucesso!");
+                    Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
+                    
                     AtualizarGrid();
+                    
                     Close();
                 }
             }
@@ -66,7 +70,7 @@ namespace AdvanceShop.Views
             {
                 MessageBoxError.Show(error.Message);
             }
-            
+
         }
         private void FecharCaixa_KeyPress(object sender, KeyPressEventArgs e)
         {

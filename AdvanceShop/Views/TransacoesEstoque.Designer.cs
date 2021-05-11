@@ -582,6 +582,7 @@
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonControl);
+            this.KeyPreview = true;
             this.Name = "TransacoesEstoque";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;

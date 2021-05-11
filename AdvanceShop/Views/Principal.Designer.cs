@@ -499,6 +499,7 @@
             this.bbiRelFechmanetoCaixa.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelFechmanetoCaixa.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelFechmanetoCaixa.Name = "bbiRelFechmanetoCaixa";
+            this.bbiRelFechmanetoCaixa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelFechmanetoCaixa_ItemClick);
             // 
             // bbiAtualizacaoSoftware
             // 
