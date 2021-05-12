@@ -182,15 +182,11 @@ namespace AdvanceShop.Controllers
                     var response = await httpClient.SendAsync(request);
                     
                     
-                    if (response.IsSuccessStatusCode)
+                    if (!response.IsSuccessStatusCode)
                     {
-                        MessageBoxOK.Show("NFC-e enviada!");
-                    }
-                    else
-                    {
-
                         MessageBoxError.Show($"Algo deu errado ao tenta enviar NFC-e {response.StatusCode}");
                     }
+                    
                 }
             }
            

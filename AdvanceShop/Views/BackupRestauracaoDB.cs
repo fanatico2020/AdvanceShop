@@ -37,7 +37,7 @@ namespace AdvanceShop.Views
 
         private void BackupRestauracaoDB_Load(object sender, EventArgs e)
         {
-            txtCaminhoBackup.Text = $@"{System.AppDomain.CurrentDomain.BaseDirectory.ToString()}Backup";
+            //txtCaminhoBackup.Text = $@"{System.AppDomain.CurrentDomain.BaseDirectory.ToString()}Backup";
 
             //barra backup
             pgbProgressoBackup.Properties.ProgressViewStyle = DevExpress.XtraEditors.Controls.ProgressViewStyle.Solid;
@@ -318,7 +318,7 @@ namespace AdvanceShop.Views
         {
             OpenFileDialog ofDialog = new OpenFileDialog();
             ofDialog.Title = "Procurar arquivo de backup";
-            ofDialog.InitialDirectory = $@"{System.AppDomain.CurrentDomain.BaseDirectory.ToString()}Backup";
+            ofDialog.InitialDirectory = @"C:\AdvanceShop\DB\backup";//$@"{System.AppDomain.CurrentDomain.BaseDirectory.ToString()}Backup";
             ofDialog.Filter = "SQL Backup(*.sql)|*.sql";
             ofDialog.RestoreDirectory = true;
             ofDialog.CheckFileExists = true;

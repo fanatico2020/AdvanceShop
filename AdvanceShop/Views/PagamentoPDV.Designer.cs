@@ -350,7 +350,7 @@
             this.cbxImprimirNFCe.Name = "cbxImprimirNFCe";
             this.cbxImprimirNFCe.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxImprimirNFCe.Properties.Appearance.Options.UseFont = true;
-            this.cbxImprimirNFCe.Properties.Caption = "Imprimir NFC-e (Venda Fiscal)";
+            this.cbxImprimirNFCe.Properties.Caption = "NFC-e (Venda Fiscal)";
             this.cbxImprimirNFCe.Size = new System.Drawing.Size(244, 23);
             this.cbxImprimirNFCe.TabIndex = 7;
             // 

@@ -194,5 +194,11 @@ namespace AdvanceShop.Views
                 MessageBoxWarning.Show("Caixa inexistente ou não foi fechado ainda, favor verifique!");
             }
         }
+
+        private void bbiRelMeioDePagamento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RelParPeriodo FormPeriodoRelatorio = new RelParPeriodo("Informe o período de pagamentos", "RelatorioMeiosDePagamento");
+            FormPeriodoRelatorio.ShowDialog();
+        }
     }
 }

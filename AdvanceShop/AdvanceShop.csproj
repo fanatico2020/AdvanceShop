@@ -365,6 +365,7 @@
     <Compile Include="Data\ConexaoMySql.cs" />
     <Compile Include="JsonModels\FocusNFe\CFOP\CFOP.cs" />
     <Compile Include="JsonModels\FocusNFe\NCM\NCM.cs" />
+    <Compile Include="JsonModels\FocusNFe\NFC_e\Consulta.cs" />
     <Compile Include="JsonModels\FocusNFe\NFC_e\Duplicata.cs" />
     <Compile Include="JsonModels\FocusNFe\NFC_e\FocusNFe.cs" />
     <Compile Include="JsonModels\FocusNFe\NFC_e\FormasPagamento.cs" />
@@ -435,6 +436,7 @@
     <Compile Include="Shared\CustomPrint\CupomFiscal.cs" />
     <Compile Include="Shared\CustomPrint\CupomNaoFiscal.cs" />
     <Compile Include="Shared\CustomPrint\FechamentoCaixa.cs" />
+    <Compile Include="Shared\CustomPrint\MeiosDePagamento.cs" />
     <Compile Include="Shared\Email\EmailSistema.cs" />
     <Compile Include="Shared\Library\EncryptorDecrypt.cs" />
     <Compile Include="Shared\Library\HashMd5.cs" />
@@ -586,6 +588,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\RelParPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RelParPeriodo.Designer.cs">
+      <DependentUpon>RelParPeriodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SuplementoSangria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -755,6 +763,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RelParPeriodo.resx">
+      <DependentUpon>RelParPeriodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SuplementoSangria.resx">
       <DependentUpon>SuplementoSangria.cs</DependentUpon>

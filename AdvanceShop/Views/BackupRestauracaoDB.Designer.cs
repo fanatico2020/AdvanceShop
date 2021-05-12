@@ -197,6 +197,7 @@ namespace AdvanceShop.Views
             // 
             // txtCaminhoBackup
             // 
+            this.txtCaminhoBackup.EditValue = "C:\\AdvanceShop\\DB\\backup";
             this.txtCaminhoBackup.Location = new System.Drawing.Point(5, 30);
             this.txtCaminhoBackup.Name = "txtCaminhoBackup";
             this.txtCaminhoBackup.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -317,6 +318,7 @@ namespace AdvanceShop.Views
             // 
             // txtCaminhoArquivoRestaurar
             // 
+            this.txtCaminhoArquivoRestaurar.EditValue = "";
             this.txtCaminhoArquivoRestaurar.Location = new System.Drawing.Point(5, 30);
             this.txtCaminhoArquivoRestaurar.Name = "txtCaminhoArquivoRestaurar";
             this.txtCaminhoArquivoRestaurar.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

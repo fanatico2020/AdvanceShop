@@ -14,6 +14,9 @@ using AdvanceShop.Models;
 using AdvanceShop.Shared.Validation;
 using AdvanceShop.Controllers;
 using AdvanceShop.Shared.CustomMessageBox;
+using System.Net.Http;
+using Newtonsoft.Json;
+using AdvanceShop.JsonModels.FocusNFe.NFC_e;
 
 namespace AdvanceShop.Views
 {
@@ -32,6 +35,12 @@ namespace AdvanceShop.Views
         VendasController vendaController = new VendasController();
         ItensVendasModel itensVenda = new ItensVendasModel();
         ItensVendasController itensVendaController = new ItensVendasController();
+
+        //fiscal
+        string focusToken = "";//"RDEwh6XXtOLPUpkQckVePDwh7JPhT4aN";
+        string ambienteFocus = "";//homologacao ou producao
+        ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
+        ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
         public Vendas(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
@@ -53,6 +62,46 @@ namespace AdvanceShop.Views
         private void Vendas_Load(object sender, EventArgs e)
         {
             AtualizarGrid();
+            apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
+            if (apiFocusNfe.ambiente == "homologacao")
+            {
+                ambienteFocus = "homologacao";
+                focusToken = apiFocusNfe.tokenhomologacao;
+            }
+            else
+            {
+                ambienteFocus = "producao";
+                focusToken = apiFocusNfe.tokenproducao;
+            }
+            AtualizarStatusNotasFiscais();
+        }
+        private async void AtualizarStatusNotasFiscais()
+        {
+            
+
+            //$@"https://{ambienteFocus}.focusnfe.com.br/v2/ncms?token={focusToken}&capitulo=90";
+            
+            if (ambienteFocus != string.Empty && focusToken != string.Empty)
+            {
+                using (var httpClient = new HttpClient())
+                {
+
+                    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+                    using (var request = new HttpRequestMessage(new HttpMethod("GET"), $@"https://homologacao.focusnfe.com.br/v2/nfce/81"))
+                    {
+
+                        var base64authorization = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{focusToken}"));
+                        request.Headers.TryAddWithoutValidation("Authorization", $"Basic {base64authorization}");
+
+                        var response = await httpClient.SendAsync(request);
+                        string json = response.Content.ReadAsStringAsync().Result;
+
+                        Consulta deserializeNFC_e = JsonConvert.DeserializeObject<Consulta>(json);
+                        
+                    }
+                }
+                
+            }
         }
         private void NovaVenda()
         {

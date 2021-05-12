@@ -284,6 +284,7 @@
             this.bbiRelMeioDePagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelMeioDePagamento.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelMeioDePagamento.Name = "bbiRelMeioDePagamento";
+            this.bbiRelMeioDePagamento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelMeioDePagamento_ItemClick);
             // 
             // bbiRelMovimentacaoProdutos
             // 
@@ -543,7 +544,6 @@
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiContasApagar);
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiCaixas);
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiUsuarios);
-            this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiFiscal);
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiApp);
             this.ribbonPageGroupPrincipal.Name = "ribbonPageGroupPrincipal";
             // 
