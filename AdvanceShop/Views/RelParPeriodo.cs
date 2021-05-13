@@ -33,6 +33,9 @@ namespace AdvanceShop.Views
                     Shared.CustomPrint.MeiosDePagamento.ImprimirMeiosPagamentoPorPeriodo(txtPeriodoInicial.DateTime,txtPeriodoFinal.DateTime);
                     Close();
                     break;
+                case "RelatorioProdutosMaisVendidos":
+                    Shared.CustomPrint.ProdutosMaisVendidos.ImprimirProdutosMaisVendidos(txtPeriodoInicial.DateTime, txtPeriodoFinal.DateTime);
+                    break;
                 default:
                     break;
             }

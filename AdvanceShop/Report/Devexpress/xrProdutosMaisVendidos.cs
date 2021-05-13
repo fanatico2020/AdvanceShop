@@ -13,5 +13,23 @@ namespace AdvanceShop.Report.Devexpress
             InitializeComponent();
         }
 
+        private void tclPorcLucro_AfterPrint(object sender, EventArgs e)
+        {
+            //if (Convert.ToDecimal(tclLucro.Text.Replace("R$","")) > 0.00m)
+            //{
+            //    decimal lucro = Convert.ToDecimal(tclLucro.Text.Replace("R$", ""));
+            //    decimal totalvenda = Convert.ToDecimal(tclTotalVenda.Text.Replace("R$", ""));
+            //    tclPorcLucro.Text = Convert.ToString((lucro / totalvenda) / 100);
+            //}
+            //else
+            //{
+            //    tclPorcLucro.Text = "0";
+            //}
+        }
+
+        private void tclPorcLucro_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            
+        }
     }
 }

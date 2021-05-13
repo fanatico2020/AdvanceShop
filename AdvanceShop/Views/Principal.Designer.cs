@@ -307,6 +307,7 @@
             this.bbiRelProdutosMaisVendidos.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
             this.bbiRelProdutosMaisVendidos.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelProdutosMaisVendidos.Name = "bbiRelProdutosMaisVendidos";
+            this.bbiRelProdutosMaisVendidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelProdutosMaisVendidos_ItemClick);
             // 
             // bbiRelVendasPorCategoriasProdutos
             // 

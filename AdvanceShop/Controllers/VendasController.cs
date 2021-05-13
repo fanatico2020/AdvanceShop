@@ -84,8 +84,8 @@ namespace AdvanceShop.Controllers
             {
                 comando.CommandText =
 
-                "insert into itensvendas(quantidade,valorunitario,subtotal,item,vendas_idvendas,produtos_idprodutos,transacoesestoque_idtransacoesestoque) " +
-                "values(@quantidade,@valorunitario,@subtotal,@item,@first_id,@produtos_idprodutos,@id_transacaoestoque); " +
+                "insert into itensvendas(quantidade,valorunitario,subtotal,item,precocusto,margemlucro,vendas_idvendas,produtos_idprodutos,transacoesestoque_idtransacoesestoque) " +
+                "values(@quantidade,@valorunitario,@subtotal,@item,@precocusto,@margemlucro,@first_id,@produtos_idprodutos,@id_transacaoestoque); " +
                 //verifica se produto estar marcado pra controlar estoque, caso contrario não da baixa no estoque do produto
                 "select @controlarestoqueproduto; " +
                 "select controlarestoque from produtos where idprodutos = @produtos_idprodutos into @controlarestoqueproduto; " +
@@ -94,6 +94,8 @@ namespace AdvanceShop.Controllers
                 comando.Parameters.Add(new MySqlParameter("@valorunitario", item.ValorUnitario));
                 comando.Parameters.Add(new MySqlParameter("@subtotal", item.Subtotal));
                 comando.Parameters.Add(new MySqlParameter("@item", item.Item));
+                comando.Parameters.Add(new MySqlParameter("@precocusto", item.Precocusto));
+                comando.Parameters.Add(new MySqlParameter("@margemlucro", item.Margemlucro));
                 comando.Parameters.Add(new MySqlParameter("@produtos_idprodutos", item.produtos_idprodutos));
                 comando.ExecuteNonQuery();
                 comando.Parameters.Clear();

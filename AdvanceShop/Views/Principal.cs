@@ -200,5 +200,11 @@ namespace AdvanceShop.Views
             RelParPeriodo FormPeriodoRelatorio = new RelParPeriodo("Informe o período de pagamentos", "RelatorioMeiosDePagamento");
             FormPeriodoRelatorio.ShowDialog();
         }
+
+        private void bbiRelProdutosMaisVendidos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RelParPeriodo FormPeriodoRelatorio = new RelParPeriodo("Informe o período de vendas", "RelatorioProdutosMaisVendidos");
+            FormPeriodoRelatorio.ShowDialog();
+        }
     }
 }

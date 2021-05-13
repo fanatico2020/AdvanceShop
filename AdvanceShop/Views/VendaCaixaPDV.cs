@@ -122,6 +122,8 @@ namespace AdvanceShop.Views
                     Quantidade = Produto.quantidade,
                     ValorUnitario = Produto.precounitario,
                     Subtotal = Produto.subtotal,
+                    Precocusto = Produto.precocusto,
+                    Margemlucro = Produto.margemlucro,
                     Item = Produto.item,
                     UnidadeMedida = Produto.unidademedida,
                     codigo_ncm = Produto.codigo_ncm,
@@ -326,6 +328,8 @@ namespace AdvanceShop.Views
             produtosPDV.quantidade = Convert.ToInt32(txtQtd.Text);
             produtosPDV.precounitario = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[4]));
             produtosPDV.subtotal = produtosPDV.quantidade * produtosPDV.precounitario;
+            produtosPDV.margemlucro = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[3]));
+            produtosPDV.precocusto = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[2]));
             produtosPDV.unidademedida = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[8]).ToString();
             produtosPDV.codigo_ncm = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[10]).ToString();
             produtosPDV.cfop = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[11]).ToString();

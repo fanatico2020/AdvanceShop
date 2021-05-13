@@ -73,20 +73,23 @@ namespace AdvanceShop.Views
         {
             ConfirmacaoForm.Fechar(e, this);
         }
-
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private void Salvar()
         {
             try
             {
                 transacaoCaixa.Valor = Convert.ToDecimal(txtValor.Text.Replace("R$", ""));
                 transacaoCaixa.ObservacaoTransacao = txtObservacao.Text;
                 transacaoCaixa.Status = 1;
-                if (transacaoCaixa.Valor > 0 && MessageBoxQuestionYesNo.Show($"Deseja salvar?") == DialogResult.Yes)
+                if (Convert.ToDecimal(txtValor.Text.Replace("R$","")) > 0.00m)
                 {
-                    transacaoCaixaController.Adicionar_SuplementoSangria(transacaoCaixa, usuarioLogado);
-                    MessageBoxOK.Show("Salvo com sucesso!");
-                    AtualizarGrid();
-                    Close();
+                    if (MessageBoxQuestionYesNo.Show($"Deseja salvar?") == DialogResult.Yes)
+                    {
+                        transacaoCaixaController.Adicionar_SuplementoSangria(transacaoCaixa, usuarioLogado);
+                        MessageBoxOK.Show("Salvo com sucesso!");
+                        AtualizarGrid();
+                        Close();
+                    }
+                    
                 }
                 else
                 {
@@ -97,7 +100,11 @@ namespace AdvanceShop.Views
             {
 
             }
-            
+        }
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Salvar();
+
         }
 
         private void txtValor_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
@@ -108,6 +115,14 @@ namespace AdvanceShop.Views
         private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
             ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
+
+        private void SuplementoSangria_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.F2)
+            {
+                Salvar();
+            }
         }
     }
 }

@@ -258,5 +258,13 @@ namespace AdvanceShop.Views
             }
             
         }
+
+        private void gridViewItensVenda_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
+        {
+            if (e.Column.FieldName == "margemlucro")
+            {
+                e.DisplayText = $"{e.Value}%";
+            }
+        }
     }
 }

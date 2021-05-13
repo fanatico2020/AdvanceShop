@@ -1,6 +1,6 @@
 DROP PROCEDURE IF EXISTS RelatorioMeiosDePagamento;
 DELIMITER 
-CREATE PROCEDURE RelatorioMeiosDePagamento(in DataInicial DATE,in DataFinal DATE)
+CREATE PROCEDURE RelatorioMeiosDePagamento(in DataInicial DATETIME,in DataFinal DATETIME)
 BEGIN
 
 
@@ -41,4 +41,4 @@ END;
 DELIMITER;
 
 
-call RelatorioMeiosDePagamento('2021/04/19','2021/05/12');
+call RelatorioMeiosDePagamento('2021/05/13 00:00:00','2021/05/13 23:59:59');

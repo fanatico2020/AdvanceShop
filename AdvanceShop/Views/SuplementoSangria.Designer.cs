@@ -127,6 +127,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Suplemento / Sangria";
             this.Load += new System.EventHandler(this.SuplementoSangria_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SuplementoSangria_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SuplementoSangria_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.txtValor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservacao.Properties)).EndInit();

@@ -14,6 +14,9 @@ namespace AdvanceShop.Models
         public int Quantidade { get; set; }
         public decimal ValorUnitario { get; set; }
         public decimal Subtotal { get; set; }
+        public decimal Precocusto { get; set; }
+        public decimal Margemlucro { get; set; }
+
         public int vendas_idvendas { get; set; }
         public int produtos_idprodutos { get; set; }
         public int Item { get; set; }

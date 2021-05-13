@@ -38,6 +38,9 @@
             this.gridColumnSubtotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnValorProdutoHoje = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnQuantidadeEstoque = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnItem = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnMargemLucro = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumnPrecoCusto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.advBandedGridViewVendas = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
@@ -67,7 +70,6 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.gridColumnItem = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItensVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewVendas)).BeginInit();
@@ -84,7 +86,9 @@
             this.gridColumnSubtotal,
             this.gridColumnValorProdutoHoje,
             this.gridColumnQuantidadeEstoque,
-            this.gridColumnItem});
+            this.gridColumnItem,
+            this.gridColumnMargemLucro,
+            this.gridColumnPrecoCusto});
             this.gridViewItensVenda.GridControl = this.gridControl;
             this.gridViewItensVenda.Name = "gridViewItensVenda";
             this.gridViewItensVenda.OptionsBehavior.Editable = false;
@@ -92,6 +96,7 @@
             this.gridViewItensVenda.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridViewItensVenda.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.gridViewItensVenda.OptionsView.ShowGroupPanel = false;
+            this.gridViewItensVenda.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridViewItensVenda_CustomColumnDisplayText);
             // 
             // gridColumnCodigoproduto
             // 
@@ -129,11 +134,11 @@
             this.gridColumnQuantidade.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumnQuantidade.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumnQuantidade.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumnQuantidade.Caption = "Quantidade";
+            this.gridColumnQuantidade.Caption = "Qtd Vendido";
             this.gridColumnQuantidade.FieldName = "quantidade";
             this.gridColumnQuantidade.Name = "gridColumnQuantidade";
             this.gridColumnQuantidade.Visible = true;
-            this.gridColumnQuantidade.VisibleIndex = 3;
+            this.gridColumnQuantidade.VisibleIndex = 5;
             this.gridColumnQuantidade.Width = 67;
             // 
             // gridColumnValorUnitario
@@ -148,7 +153,7 @@
             this.gridColumnValorUnitario.FieldName = "valorunitario";
             this.gridColumnValorUnitario.Name = "gridColumnValorUnitario";
             this.gridColumnValorUnitario.Visible = true;
-            this.gridColumnValorUnitario.VisibleIndex = 4;
+            this.gridColumnValorUnitario.VisibleIndex = 6;
             this.gridColumnValorUnitario.Width = 79;
             // 
             // gridColumnSubtotal
@@ -163,7 +168,7 @@
             this.gridColumnSubtotal.FieldName = "subtotal";
             this.gridColumnSubtotal.Name = "gridColumnSubtotal";
             this.gridColumnSubtotal.Visible = true;
-            this.gridColumnSubtotal.VisibleIndex = 5;
+            this.gridColumnSubtotal.VisibleIndex = 7;
             this.gridColumnSubtotal.Width = 88;
             // 
             // gridColumnValorProdutoHoje
@@ -178,7 +183,7 @@
             this.gridColumnValorProdutoHoje.FieldName = "precovenda";
             this.gridColumnValorProdutoHoje.Name = "gridColumnValorProdutoHoje";
             this.gridColumnValorProdutoHoje.Visible = true;
-            this.gridColumnValorProdutoHoje.VisibleIndex = 6;
+            this.gridColumnValorProdutoHoje.VisibleIndex = 8;
             this.gridColumnValorProdutoHoje.Width = 91;
             // 
             // gridColumnQuantidadeEstoque
@@ -189,12 +194,55 @@
             this.gridColumnQuantidadeEstoque.AppearanceHeader.Options.UseForeColor = true;
             this.gridColumnQuantidadeEstoque.AppearanceHeader.Options.UseTextOptions = true;
             this.gridColumnQuantidadeEstoque.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumnQuantidadeEstoque.Caption = "Quantidade Estoque";
+            this.gridColumnQuantidadeEstoque.Caption = "Qtd Estoque Hoje";
             this.gridColumnQuantidadeEstoque.FieldName = "estoqueatual";
             this.gridColumnQuantidadeEstoque.Name = "gridColumnQuantidadeEstoque";
             this.gridColumnQuantidadeEstoque.Visible = true;
-            this.gridColumnQuantidadeEstoque.VisibleIndex = 7;
+            this.gridColumnQuantidadeEstoque.VisibleIndex = 9;
             this.gridColumnQuantidadeEstoque.Width = 105;
+            // 
+            // gridColumnItem
+            // 
+            this.gridColumnItem.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnItem.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnItem.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumnItem.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumnItem.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnItem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnItem.Caption = "Item";
+            this.gridColumnItem.FieldName = "item";
+            this.gridColumnItem.Name = "gridColumnItem";
+            this.gridColumnItem.Visible = true;
+            this.gridColumnItem.VisibleIndex = 1;
+            this.gridColumnItem.Width = 65;
+            // 
+            // gridColumnMargemLucro
+            // 
+            this.gridColumnMargemLucro.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumnMargemLucro.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumnMargemLucro.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnMargemLucro.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnMargemLucro.Caption = "Margem Lucro";
+            this.gridColumnMargemLucro.DisplayFormat.FormatString = "d";
+            this.gridColumnMargemLucro.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumnMargemLucro.FieldName = "margemlucro";
+            this.gridColumnMargemLucro.Name = "gridColumnMargemLucro";
+            this.gridColumnMargemLucro.Visible = true;
+            this.gridColumnMargemLucro.VisibleIndex = 3;
+            // 
+            // gridColumnPrecoCusto
+            // 
+            this.gridColumnPrecoCusto.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumnPrecoCusto.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumnPrecoCusto.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnPrecoCusto.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnPrecoCusto.Caption = "Preço Custo";
+            this.gridColumnPrecoCusto.DisplayFormat.FormatString = "c";
+            this.gridColumnPrecoCusto.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumnPrecoCusto.FieldName = "precocusto";
+            this.gridColumnPrecoCusto.Name = "gridColumnPrecoCusto";
+            this.gridColumnPrecoCusto.Visible = true;
+            this.gridColumnPrecoCusto.VisibleIndex = 4;
             // 
             // gridControl
             // 
@@ -602,21 +650,6 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(978, 24);
             // 
-            // gridColumnItem
-            // 
-            this.gridColumnItem.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnItem.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumnItem.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridColumnItem.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumnItem.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumnItem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumnItem.Caption = "Item";
-            this.gridColumnItem.FieldName = "item";
-            this.gridColumnItem.Name = "gridColumnItem";
-            this.gridColumnItem.Visible = true;
-            this.gridColumnItem.VisibleIndex = 1;
-            this.gridColumnItem.Width = 65;
-            // 
             // Vendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -680,5 +713,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnclientespessoas_idclientespessoas;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumncaixas_idcaixas;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnItem;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnMargemLucro;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumnPrecoCusto;
     }
 }

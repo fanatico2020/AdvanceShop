@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace AdvanceShop.Shared.CustomPrint
 {
-    public class CupomFiscal
+    public static class CupomFiscal
     {
+
 
     }
 }
