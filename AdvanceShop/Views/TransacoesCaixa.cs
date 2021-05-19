@@ -50,6 +50,7 @@ namespace AdvanceShop.Views
         }
         public void AtualizarGrid()
         {
+            splashScreenManager1.ShowWaitForm();
             SomarTotalSaldoCaixa();
 
             DataTable dataSource = transacaoCaixaController.ObterTodosTransacoes(transacaoCaixa);
@@ -57,52 +58,56 @@ namespace AdvanceShop.Views
             gridControl.Refresh();
             bsiRecordsCount.Caption = "Registros : " + dataSource.Rows.Count;
 
-            //atualizar status pagamento
-            //int id = Convert.ToInt32(advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[12]));
-            foreach (DataRow row in dataSource.Rows)
+            if (ValidacaoConexaoInternet.EstarConectado())
             {
-                if (row[9] != DBNull.Value)
+                //atualizar status pagamento
+                //int id = Convert.ToInt32(advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[12]));
+                foreach (DataRow row in dataSource.Rows)
                 {
-                    int charge_id = int.Parse(row[9].ToString());
-                    gerenciaNet = apiGerenciaNetController.RetornaInformacaoSobreTransacao(apiGerenciaNet, charge_id);
-                    transacaoCaixa.charge_id = gerenciaNet.data.charge_id;
-                    switch (gerenciaNet.data.status)
+                    if (row[9] != DBNull.Value)
                     {
-                        case "waiting"://Forma de pagamento selecionada, aguardando a confirmação do pagamento. O termo "waiting" equivale a "aguardando".
-                            transacaoCaixa.Status = 0;
-                            break;
-                        case "paid": //Pagamento confirmado. O termo "paid" equivale a "pago".
-                            transacaoCaixa.Status = 1;
-                            break;
-                        case "unpaid": //Não foi possível confirmar o pagamento da cobrança. O termo "unpaid" equivale a "não pago".
-                            transacaoCaixa.Status = 2;
-                            break;
-                        case "refunded"://Pagamento devolvido pelo lojista ou pelo intermediador Gerencianet. O termo "refunded" equivale a "devolvido".
-                            transacaoCaixa.Status = 3;
-                            break;
-                        case "contested"://Pagamento em processo de contestação. O termo "contested" equivale a "contestado".
-                            transacaoCaixa.Status = 4;
-                            break;
-                        case "canceled": //Cobrança cancelada pelo vendedor ou pelo pagador. O termo "canceled" equivale a "cancelado".
-                            transacaoCaixa.Status = 5;
-                            break;
-                        case "settled"://Cobrança foi confirmada manualmente. O termo "settled" equivale a "marcar como pago".
-                            transacaoCaixa.Status = 6;
-                            break;
-                        case "link"://Status aplicável a Link de Pagamento. Este status indica que trata-se de uma cobrança que está associada a um link de pagamento. O termo "link" equivale a "link".
-                            transacaoCaixa.Status = 7;
-                            break;
-                        case "expired"://Um link de pagamento receberá este status ao atingir a data de vencimento. O termo "expired" equivale a "expirado".
-                            transacaoCaixa.Status = 8;
-                            break;
-                        default:
-                            break;
+                        int charge_id = int.Parse(row[9].ToString());
+                        gerenciaNet = apiGerenciaNetController.RetornaInformacaoSobreTransacao(apiGerenciaNet, charge_id);
+                        transacaoCaixa.charge_id = gerenciaNet.data.charge_id;
+                        switch (gerenciaNet.data.status)
+                        {
+                            case "waiting"://Forma de pagamento selecionada, aguardando a confirmação do pagamento. O termo "waiting" equivale a "aguardando".
+                                transacaoCaixa.Status = 0;
+                                break;
+                            case "paid": //Pagamento confirmado. O termo "paid" equivale a "pago".
+                                transacaoCaixa.Status = 1;
+                                break;
+                            case "unpaid": //Não foi possível confirmar o pagamento da cobrança. O termo "unpaid" equivale a "não pago".
+                                transacaoCaixa.Status = 2;
+                                break;
+                            case "refunded"://Pagamento devolvido pelo lojista ou pelo intermediador Gerencianet. O termo "refunded" equivale a "devolvido".
+                                transacaoCaixa.Status = 3;
+                                break;
+                            case "contested"://Pagamento em processo de contestação. O termo "contested" equivale a "contestado".
+                                transacaoCaixa.Status = 4;
+                                break;
+                            case "canceled": //Cobrança cancelada pelo vendedor ou pelo pagador. O termo "canceled" equivale a "cancelado".
+                                transacaoCaixa.Status = 5;
+                                break;
+                            case "settled"://Cobrança foi confirmada manualmente. O termo "settled" equivale a "marcar como pago".
+                                transacaoCaixa.Status = 6;
+                                break;
+                            case "link"://Status aplicável a Link de Pagamento. Este status indica que trata-se de uma cobrança que está associada a um link de pagamento. O termo "link" equivale a "link".
+                                transacaoCaixa.Status = 7;
+                                break;
+                            case "expired"://Um link de pagamento receberá este status ao atingir a data de vencimento. O termo "expired" equivale a "expirado".
+                                transacaoCaixa.Status = 8;
+                                break;
+                            default:
+                                break;
 
+                        }
+                        transacaoCaixaController.EditarStatusGerenciaNet(transacaoCaixa);
                     }
-                    transacaoCaixaController.EditarStatusGerenciaNet(transacaoCaixa);
                 }
             }
             
+            splashScreenManager1.CloseWaitForm();
         }
         private void SomarTotalSaldoCaixa()
         {

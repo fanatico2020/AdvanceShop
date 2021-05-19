@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AdvanceShop.Shared.Validation;
 
 namespace AdvanceShop.Views
 {
@@ -20,6 +21,10 @@ namespace AdvanceShop.Views
         CaixasModel caixa = new CaixasModel();
         CaixasController caixaController = new CaixasController();
         DataHoraModel dataHora = new DataHoraModel();
+        EmailSistemaController emailController = new EmailSistemaController();
+        EmailSistemaModel emailenvio = new EmailSistemaModel();
+        UsuariosModel usuarioCaixa = new UsuariosModel();
+        UsuariosController usuarioController = new UsuariosController();
         public FecharCaixa(UsuariosModel UsuarioLogado,DataHoraModel DataHora, CaixasModel Caixa)
         {
             InitializeComponent();
@@ -28,6 +33,9 @@ namespace AdvanceShop.Views
             dataHora = DataHora;
             txtSaldoFinalSistema.Text = Convert.ToString(caixa.SaldoFinal);
             Text = $"Fechar Caixa Código {caixa.IdCaixas} usuário do caixa {dataHora.usuariocadastro}";
+            emailenvio = emailController.ObterConfiguracoesEmailSistema();
+            usuarioCaixa.IdUsuarios = caixa.usuarios_idusuarios;
+            usuarioCaixa = usuarioController.ObterDadosUsuarioPorNomeUsuario(usuarioCaixa);
         }
         
         private void FecharCaixa_Load(object sender, EventArgs e)
@@ -44,32 +52,39 @@ namespace AdvanceShop.Views
         }
         private void Salvar()
         {
+            caixa.SaldoFinal = Convert.ToDecimal(txtSaldoFinalSistema.Text.Replace("R$", ""));
+            caixa.ValorInformado = Convert.ToDecimal(txtSaldoFinal.Text.Replace("R$", ""));
+            caixa.QuebraCaixa = Convert.ToDecimal(txtQuebraCaixa.Text.Replace("R$", ""));
+            caixa.ObservacaoCaixa = txtObservacao.Text;
+            caixa.status = 1;
+            caixa.UsuarioFechamento = usuarioLogado.UsuarioAcesso;
+            caixa.DataHoraFechamento = DateTime.Now;
 
-            try
+            if (MessageBoxQuestionYesNo.Show($"Deseja salvar fechamento do caixa com valor informado {txtSaldoFinal.Text} é a quebra de caixa {txtQuebraCaixa.Text} ?") == DialogResult.Yes)
             {
-                caixa.SaldoFinal = Convert.ToDecimal(txtSaldoFinalSistema.Text.Replace("R$", ""));
-                caixa.ValorInformado = Convert.ToDecimal(txtSaldoFinal.Text.Replace("R$", ""));
-                caixa.QuebraCaixa = Convert.ToDecimal(txtQuebraCaixa.Text.Replace("R$", ""));
-                caixa.ObservacaoCaixa = txtObservacao.Text;
-                caixa.status = 1;
-                caixa.UsuarioFechamento = usuarioLogado.UsuarioAcesso;
-                caixa.DataHoraFechamento = DateTime.Now;
-
-                if (MessageBoxQuestionYesNo.Show($"Deseja salvar fechamento do caixa com valor informado {txtSaldoFinal.Text} é a quebra de caixa {txtQuebraCaixa.Text} ?") == DialogResult.Yes)
+                caixaController.FecharCaixa(caixa);
+                MessageBoxOK.Show("Fechado com sucesso!");
+                if (ValidacaoConexaoInternet.EstarConectado())
                 {
-                    caixaController.FecharCaixa(caixa);
-                    MessageBoxOK.Show("Fechado com sucesso!");
-                    Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
-                    
-                    AtualizarGrid();
-                    
-                    Close();
+                    Shared.CustomPrint.FechamentoCaixa.EnviarFechamentoCaixa(caixa,usuarioCaixa, emailenvio);
                 }
+                else
+                {
+                    Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
+                }
+
+                AtualizarGrid();
+
+                Close();
             }
-            catch (Exception error)
-            {
-                MessageBoxError.Show(error.Message);
-            }
+            //try
+            //{
+                
+            //}
+            //catch (Exception error)
+            //{
+            //    MessageBoxError.Show(error.Message);
+            //}
 
         }
         private void FecharCaixa_KeyPress(object sender, KeyPressEventArgs e)

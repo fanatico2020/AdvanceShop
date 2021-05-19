@@ -37,8 +37,7 @@ namespace AdvanceShop.Views
         ItensVendasController itensVendaController = new ItensVendasController();
 
         //fiscal
-        string focusToken = "";//"RDEwh6XXtOLPUpkQckVePDwh7JPhT4aN";
-        string ambienteFocus = "";//homologacao ou producao
+        Consulta consultaNFC_e = new Consulta();
         ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
         ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
         public Vendas(UsuariosModel UsuarioLogado)
@@ -46,13 +45,34 @@ namespace AdvanceShop.Views
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
             configGerais = configGeraisController.ObterConfiguracoesGerais();
+            apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
         }
         public void AtualizarGrid()
         {
+            splashScreenManager1.ShowWaitForm();
+
             DataTable dataSource = vendaController.ObterTodasVendas();
             gridControl.DataSource = dataSource;
             gridControl.Refresh();
             bsiRecordsCount.Caption = "Registros : " + dataSource.Rows.Count;
+
+
+            if (ValidacaoConexaoInternet.EstarConectado())
+            {
+                foreach (DataRow row in dataSource.Rows)
+                {
+                    string referencia = row[0].ToString();
+                    consultaNFC_e = apiFocusNfeController.RetornaInformacaoSobreNFC_e(apiFocusNfe, referencia).GetAwaiter().GetResult().;
+                    venda.IdVendas = Convert.ToInt32(referencia);
+                    venda.nfcstatus = consultaNFC_e.status;
+                    venda.nfcnumero = consultaNFC_e.numero;
+                    venda.nfcmensagem_sefaz = consultaNFC_e.mensagem_sefaz;
+                    venda.nfccaminho_xml_nota_fiscal = consultaNFC_e.caminho_xml_nota_fiscal;
+                    venda.nfccaminho_danfe = consultaNFC_e.caminho_danfe;
+                    vendaController.EditarVendaStatusFocusNFC_e(venda);
+                }
+            }
+            splashScreenManager1.CloseWaitForm();
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -62,47 +82,10 @@ namespace AdvanceShop.Views
         private void Vendas_Load(object sender, EventArgs e)
         {
             AtualizarGrid();
-            apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
-            if (apiFocusNfe.ambiente == "homologacao")
-            {
-                ambienteFocus = "homologacao";
-                focusToken = apiFocusNfe.tokenhomologacao;
-            }
-            else
-            {
-                ambienteFocus = "producao";
-                focusToken = apiFocusNfe.tokenproducao;
-            }
-            AtualizarStatusNotasFiscais();
-        }
-        private async void AtualizarStatusNotasFiscais()
-        {
             
-
-            //$@"https://{ambienteFocus}.focusnfe.com.br/v2/ncms?token={focusToken}&capitulo=90";
             
-            if (ambienteFocus != string.Empty && focusToken != string.Empty)
-            {
-                using (var httpClient = new HttpClient())
-                {
-
-                    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
-                    using (var request = new HttpRequestMessage(new HttpMethod("GET"), $@"https://homologacao.focusnfe.com.br/v2/nfce/81"))
-                    {
-
-                        var base64authorization = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{focusToken}"));
-                        request.Headers.TryAddWithoutValidation("Authorization", $"Basic {base64authorization}");
-
-                        var response = await httpClient.SendAsync(request);
-                        string json = response.Content.ReadAsStringAsync().Result;
-
-                        Consulta deserializeNFC_e = JsonConvert.DeserializeObject<Consulta>(json);
-                        
-                    }
-                }
-                
-            }
         }
+        
         private void NovaVenda()
         {
             caixa.usuarios_idusuarios = usuarioLogado.IdUsuarios;
@@ -265,6 +248,18 @@ namespace AdvanceShop.Views
             {
                 e.DisplayText = $"{e.Value}%";
             }
+        }
+
+        private void bbiReimprimirNFC_e_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string caminhoDanfe = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[17]).ToString();
+            System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoDanfe}");
+        }
+
+        private void bbiXML_NFC_e_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            string caminhoXML = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[16]).ToString();
+            System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoXML}");
         }
     }
 }

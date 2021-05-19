@@ -55,6 +55,12 @@
             this.bandedGridColumnUsuarioCad = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnDataHoraEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnUsuarioEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumnNfcStatus = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnNfcNumero = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnNfcMensagem_Sefaz = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnNfcCaminho_xml = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnNfcCaminho_Danfe = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnclientespessoas_idclientespessoas = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumncaixas_idcaixas = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -66,10 +72,13 @@
             this.bbiAtualizarGrid = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTrocaDevolucao = new DevExpress.XtraBars.BarButtonItem();
             this.bbiReimprimirCupomNaoFiscal = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiReimprimirNFC_e = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiXML_NFC_e = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::AdvanceShop.Views.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItensVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewVendas)).BeginInit();
@@ -266,7 +275,8 @@
             // advBandedGridViewVendas
             // 
             this.advBandedGridViewVendas.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
-            this.gridBand1});
+            this.gridBand1,
+            this.gridBand2});
             this.advBandedGridViewVendas.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.advBandedGridViewVendas.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.bandedGridColumnCodigo,
@@ -281,7 +291,12 @@
             this.bandedGridColumnUsuarioCad,
             this.bandedGridColumnUsuarioEdi,
             this.bandedGridColumnclientespessoas_idclientespessoas,
-            this.bandedGridColumncaixas_idcaixas});
+            this.bandedGridColumncaixas_idcaixas,
+            this.bandedGridColumnNfcStatus,
+            this.bandedGridColumnNfcNumero,
+            this.bandedGridColumnNfcMensagem_Sefaz,
+            this.bandedGridColumnNfcCaminho_xml,
+            this.bandedGridColumnNfcCaminho_Danfe});
             this.advBandedGridViewVendas.GridControl = this.gridControl;
             this.advBandedGridViewVendas.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridViewVendas.Name = "advBandedGridViewVendas";
@@ -480,6 +495,73 @@
             this.bandedGridColumnUsuarioEdi.Visible = true;
             this.bandedGridColumnUsuarioEdi.Width = 133;
             // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "NFC";
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcStatus);
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcNumero);
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcMensagem_Sefaz);
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcCaminho_xml);
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcCaminho_Danfe);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 375;
+            // 
+            // bandedGridColumnNfcStatus
+            // 
+            this.bandedGridColumnNfcStatus.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnNfcStatus.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnNfcStatus.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnNfcStatus.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnNfcStatus.Caption = "NFC Status";
+            this.bandedGridColumnNfcStatus.FieldName = "nfcstatus";
+            this.bandedGridColumnNfcStatus.Name = "bandedGridColumnNfcStatus";
+            this.bandedGridColumnNfcStatus.Visible = true;
+            // 
+            // bandedGridColumnNfcNumero
+            // 
+            this.bandedGridColumnNfcNumero.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnNfcNumero.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnNfcNumero.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnNfcNumero.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnNfcNumero.Caption = "NFC Número";
+            this.bandedGridColumnNfcNumero.FieldName = "nfcnumero";
+            this.bandedGridColumnNfcNumero.Name = "bandedGridColumnNfcNumero";
+            this.bandedGridColumnNfcNumero.Visible = true;
+            // 
+            // bandedGridColumnNfcMensagem_Sefaz
+            // 
+            this.bandedGridColumnNfcMensagem_Sefaz.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnNfcMensagem_Sefaz.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnNfcMensagem_Sefaz.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnNfcMensagem_Sefaz.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnNfcMensagem_Sefaz.Caption = "NFC Mensagem Sefa";
+            this.bandedGridColumnNfcMensagem_Sefaz.FieldName = "nfcmensagem_sefaz";
+            this.bandedGridColumnNfcMensagem_Sefaz.Name = "bandedGridColumnNfcMensagem_Sefaz";
+            this.bandedGridColumnNfcMensagem_Sefaz.Visible = true;
+            // 
+            // bandedGridColumnNfcCaminho_xml
+            // 
+            this.bandedGridColumnNfcCaminho_xml.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnNfcCaminho_xml.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnNfcCaminho_xml.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnNfcCaminho_xml.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnNfcCaminho_xml.Caption = "NFC Caminho XML";
+            this.bandedGridColumnNfcCaminho_xml.FieldName = "nfccaminho_xml_nota_fiscal";
+            this.bandedGridColumnNfcCaminho_xml.Name = "bandedGridColumnNfcCaminho_xml";
+            this.bandedGridColumnNfcCaminho_xml.Visible = true;
+            // 
+            // bandedGridColumnNfcCaminho_Danfe
+            // 
+            this.bandedGridColumnNfcCaminho_Danfe.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnNfcCaminho_Danfe.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnNfcCaminho_Danfe.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnNfcCaminho_Danfe.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnNfcCaminho_Danfe.Caption = "NFC Caminho Danfe";
+            this.bandedGridColumnNfcCaminho_Danfe.FieldName = "nfccaminho_danfe";
+            this.bandedGridColumnNfcCaminho_Danfe.Name = "bandedGridColumnNfcCaminho_Danfe";
+            this.bandedGridColumnNfcCaminho_Danfe.Visible = true;
+            // 
             // bandedGridColumnclientespessoas_idclientespessoas
             // 
             this.bandedGridColumnclientespessoas_idclientespessoas.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
@@ -513,9 +595,11 @@
             this.bbiDeletarVenda,
             this.bbiAtualizarGrid,
             this.bbiTrocaDevolucao,
-            this.bbiReimprimirCupomNaoFiscal});
+            this.bbiReimprimirCupomNaoFiscal,
+            this.bbiReimprimirNFC_e,
+            this.bbiXML_NFC_e});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 22;
+            this.ribbonControl.MaxItemId = 24;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -611,6 +695,24 @@
             this.bbiReimprimirCupomNaoFiscal.Name = "bbiReimprimirCupomNaoFiscal";
             this.bbiReimprimirCupomNaoFiscal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReimprimirCupomNaoFiscal_ItemClick);
             // 
+            // bbiReimprimirNFC_e
+            // 
+            this.bbiReimprimirNFC_e.Caption = "Reimprimir Cupom NFC-e";
+            this.bbiReimprimirNFC_e.Id = 22;
+            this.bbiReimprimirNFC_e.ImageOptions.Image = global::AdvanceShop.Properties.Resources.NFC_e_64x64;
+            this.bbiReimprimirNFC_e.ImageOptions.LargeImage = global::AdvanceShop.Properties.Resources.NFC_e_64x64;
+            this.bbiReimprimirNFC_e.Name = "bbiReimprimirNFC_e";
+            this.bbiReimprimirNFC_e.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReimprimirNFC_e_ItemClick);
+            // 
+            // bbiXML_NFC_e
+            // 
+            this.bbiXML_NFC_e.Caption = "XML NFC-e";
+            this.bbiXML_NFC_e.Id = 23;
+            this.bbiXML_NFC_e.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiXML_NFC_e.ImageOptions.Image")));
+            this.bbiXML_NFC_e.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiXML_NFC_e.ImageOptions.LargeImage")));
+            this.bbiXML_NFC_e.Name = "bbiXML_NFC_e";
+            this.bbiXML_NFC_e.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiXML_NFC_e_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -632,6 +734,8 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDeletarVenda);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAtualizarGrid);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiReimprimirCupomNaoFiscal);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiReimprimirNFC_e);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiXML_NFC_e);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Tarefas";
             // 
@@ -649,6 +753,10 @@
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(978, 24);
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // Vendas
             // 
@@ -701,7 +809,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnDataHoraEdi;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnUsuarioCad;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnUsuarioEdi;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnCodigoproduto;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnDescricaoProduto;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnQuantidade;
@@ -715,5 +822,15 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnItem;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnMargemLucro;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnPrecoCusto;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnNfcStatus;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnNfcNumero;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnNfcMensagem_Sefaz;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnNfcCaminho_xml;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnNfcCaminho_Danfe;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraBars.BarButtonItem bbiReimprimirNFC_e;
+        private DevExpress.XtraBars.BarButtonItem bbiXML_NFC_e;
     }
 }

@@ -102,6 +102,21 @@ namespace AdvanceShop.Controllers
             }
             
         }
+        public void EditarVendaStatusFocusNFC_e(VendasModel venda)//Api-FOCUSNFE
+        {
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText =
+                "update vendas set nfcstatus = @nfcstatus,nfcnumero = @nfcnumero,nfcmensagem_sefaz = @nfcmensagem_sefaz,nfccaminho_danfe = @nfccaminho_danfe,nfccaminho_xml_nota_fiscal = @nfccaminho_xml_nota_fiscal where idvendas = @idvendas";
+            comando.Parameters.Add(new MySqlParameter("@idvendas", venda.IdVendas));
+            comando.Parameters.Add(new MySqlParameter("@nfcstatus", venda.nfcstatus));
+            comando.Parameters.Add(new MySqlParameter("@nfcnumero", venda.nfcnumero));
+            comando.Parameters.Add(new MySqlParameter("@nfcmensagem_sefaz", venda.nfcmensagem_sefaz));
+            comando.Parameters.Add(new MySqlParameter("@nfccaminho_danfe", venda.nfccaminho_danfe));
+            comando.Parameters.Add(new MySqlParameter("@nfccaminho_xml_nota_fiscal", venda.nfccaminho_xml_nota_fiscal));
+            comando.ExecuteNonQuery();
+        }
         public void Deletar(VendasModel venda)
         {
             List<ItensVendasModel> itensVenda = new List<ItensVendasModel>();

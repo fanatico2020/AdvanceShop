@@ -113,6 +113,36 @@ namespace AdvanceShop.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NFC_e_128x128 {
+            get {
+                object obj = ResourceManager.GetObject("NFC_e_128x128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NFC_e_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("NFC_e_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NFC_e_64x64 {
+            get {
+                object obj = ResourceManager.GetObject("NFC_e_64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap show_16x16 {
             get {
                 object obj = ResourceManager.GetObject("show_16x16", resourceCulture);

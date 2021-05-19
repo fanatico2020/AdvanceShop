@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransacoesCaixa));
             this.gridViewFormasPagamento = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnCodigoFormaPagamento = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -63,6 +63,7 @@
             this.bbiAdicionarDinheiro = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRetirarDinheiro = new DevExpress.XtraBars.BarButtonItem();
             this.bbiContadorDinheiro = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiLinkPagamento = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -92,7 +93,7 @@
             this.lblCartaoCredito = new DevExpress.XtraEditors.LabelControl();
             this.lblCartaoDebito = new DevExpress.XtraEditors.LabelControl();
             this.lblSaldoInicial = new DevExpress.XtraEditors.LabelControl();
-            this.bbiLinkPagamento = new DevExpress.XtraBars.BarButtonItem();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::AdvanceShop.Views.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFormasPagamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewTransacoesCaixa)).BeginInit();
@@ -198,10 +199,10 @@
             this.gridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode1.LevelTemplate = this.gridViewFormasPagamento;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.LevelTemplate = this.gridViewFormasPagamento;
+            gridLevelNode2.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl.Location = new System.Drawing.Point(0, 170);
             this.gridControl.MainView = this.advBandedGridViewTransacoesCaixa;
             this.gridControl.MenuManager = this.ribbonControl;
@@ -609,6 +610,14 @@
             this.bbiContadorDinheiro.Name = "bbiContadorDinheiro";
             this.bbiContadorDinheiro.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiContadorDinheiro_ItemClick);
             // 
+            // bbiLinkPagamento
+            // 
+            this.bbiLinkPagamento.Caption = "Link Pagamento";
+            this.bbiLinkPagamento.Id = 24;
+            this.bbiLinkPagamento.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiLinkPagamento.ImageOptions.SvgImage")));
+            this.bbiLinkPagamento.Name = "bbiLinkPagamento";
+            this.bbiLinkPagamento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLinkPagamento_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1013,13 +1022,9 @@
             this.lblSaldoInicial.TabIndex = 0;
             this.lblSaldoInicial.Text = "Saldo Inicial";
             // 
-            // bbiLinkPagamento
+            // splashScreenManager1
             // 
-            this.bbiLinkPagamento.Caption = "Link Pagamento";
-            this.bbiLinkPagamento.Id = 24;
-            this.bbiLinkPagamento.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.bbiLinkPagamento.Name = "bbiLinkPagamento";
-            this.bbiLinkPagamento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLinkPagamento_ItemClick);
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // TransacoesCaixa
             // 
@@ -1132,5 +1137,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnpayment_url;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraBars.BarButtonItem bbiLinkPagamento;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

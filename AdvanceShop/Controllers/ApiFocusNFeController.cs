@@ -191,5 +191,52 @@ namespace AdvanceShop.Controllers
             }
            
         }
+        public async Task<Consulta> RetornaInformacaoSobreNFC_e(ApiFocusNfeModel config, string REFERENCIA)
+        {
+
+            string ambienteFocus = "";
+            string focusToken = "";
+            
+            if (config.ambiente == "homologacao")
+            {
+                ambienteFocus = "homologacao";
+                focusToken = config.tokenhomologacao;
+            }
+            else
+            {
+                ambienteFocus = "producao";
+                focusToken = config.tokenproducao;
+            }
+            Consulta ConsultaNFC_e = new Consulta();
+            if (ambienteFocus != string.Empty && focusToken != string.Empty)
+            {
+                using (var httpClient = new HttpClient())
+                {
+
+                    httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json; charset=utf-8");
+                    using (var request = new HttpRequestMessage(new HttpMethod("GET"), $@"https://{ambienteFocus}.focusnfe.com.br/v2/nfce/{REFERENCIA}"))
+                    {
+
+                        var base64authorization = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{focusToken}"));
+                        request.Headers.TryAddWithoutValidation("Authorization", $"Basic {base64authorization}");
+
+                        var response = await httpClient.SendAsync(request);
+                        string json = response.Content.ReadAsStringAsync().Result;
+
+                        Consulta deserializeNFC_e = JsonConvert.DeserializeObject<Consulta>(json);
+                        
+                        ConsultaNFC_e.status = deserializeNFC_e.status;
+                        ConsultaNFC_e.numero = deserializeNFC_e.numero;
+                        ConsultaNFC_e.mensagem_sefaz = deserializeNFC_e.mensagem_sefaz;
+                        ConsultaNFC_e.caminho_xml_nota_fiscal = deserializeNFC_e.caminho_xml_nota_fiscal;
+                        ConsultaNFC_e.caminho_danfe = deserializeNFC_e.caminho_danfe;
+
+                        
+                    }
+                }
+
+            }
+            return ConsultaNFC_e;
+        }
     }
 }
