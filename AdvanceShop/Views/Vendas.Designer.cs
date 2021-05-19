@@ -29,6 +29,13 @@
         private void InitializeComponent()
         {
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon4 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vendas));
             this.gridViewItensVenda = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnCodigoproduto = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -43,7 +50,6 @@
             this.gridColumnPrecoCusto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.advBandedGridViewVendas = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCodigo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCliente = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnValor = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -55,7 +61,6 @@
             this.bandedGridColumnUsuarioCad = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnDataHoraEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnUsuarioEdi = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnNfcStatus = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnNfcNumero = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnNfcMensagem_Sefaz = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -79,6 +84,8 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::AdvanceShop.Views.WaitForm1), true, true);
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewItensVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewVendas)).BeginInit();
@@ -297,6 +304,42 @@
             this.bandedGridColumnNfcMensagem_Sefaz,
             this.bandedGridColumnNfcCaminho_xml,
             this.bandedGridColumnNfcCaminho_Danfe});
+            gridFormatRule1.Column = this.bandedGridColumnNfcStatus;
+            gridFormatRule1.ColumnApplyTo = this.bandedGridColumnCodigo;
+            gridFormatRule1.Name = "FormatStatusNFC";
+            formatConditionIconSet1.CategoryName = "Symbols";
+            formatConditionIconSetIcon1.PredefinedName = "Symbols3_1.png";
+            formatConditionIconSetIcon1.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon2.PredefinedName = "Symbols3_3.png";
+            formatConditionIconSetIcon2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            formatConditionIconSetIcon2.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon3.PredefinedName = "Symbols3_2.png";
+            formatConditionIconSetIcon3.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            formatConditionIconSetIcon3.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon4.PredefinedName = "Symbols3_2.png";
+            formatConditionIconSetIcon4.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            formatConditionIconSetIcon4.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon1);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon2);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon3);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon4);
+            formatConditionIconSet1.Name = "Symbols3Uncircled";
+            formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
+            gridFormatRule1.Rule = formatConditionRuleIconSet1;
+            this.advBandedGridViewVendas.FormatRules.Add(gridFormatRule1);
             this.advBandedGridViewVendas.GridControl = this.gridControl;
             this.advBandedGridViewVendas.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridViewVendas.Name = "advBandedGridViewVendas";
@@ -311,26 +354,6 @@
             this.advBandedGridViewVendas.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.advBandedGridViewVendas_MasterRowGetRelationName);
             this.advBandedGridViewVendas.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.advBandedGridViewVendas_MasterRowGetRelationCount);
             this.advBandedGridViewVendas.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.advBandedGridViewVendas_CustomColumnDisplayText);
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand1.Caption = "Vendas";
-            this.gridBand1.Columns.Add(this.bandedGridColumnCodigo);
-            this.gridBand1.Columns.Add(this.bandedGridColumnCliente);
-            this.gridBand1.Columns.Add(this.bandedGridColumnValor);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDesconto);
-            this.gridBand1.Columns.Add(this.bandedGridColumnTotalFinal);
-            this.gridBand1.Columns.Add(this.bandedGridColumnValorPago);
-            this.gridBand1.Columns.Add(this.bandedGridColumnTroco);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraCad);
-            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioCad);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraEdi);
-            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioEdi);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 1452;
             // 
             // bandedGridColumnCodigo
             // 
@@ -495,20 +518,10 @@
             this.bandedGridColumnUsuarioEdi.Visible = true;
             this.bandedGridColumnUsuarioEdi.Width = 133;
             // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "NFC";
-            this.gridBand2.Columns.Add(this.bandedGridColumnNfcStatus);
-            this.gridBand2.Columns.Add(this.bandedGridColumnNfcNumero);
-            this.gridBand2.Columns.Add(this.bandedGridColumnNfcMensagem_Sefaz);
-            this.gridBand2.Columns.Add(this.bandedGridColumnNfcCaminho_xml);
-            this.gridBand2.Columns.Add(this.bandedGridColumnNfcCaminho_Danfe);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 375;
-            // 
             // bandedGridColumnNfcStatus
             // 
+            this.bandedGridColumnNfcStatus.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumnNfcStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.bandedGridColumnNfcStatus.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.bandedGridColumnNfcStatus.AppearanceHeader.Options.UseForeColor = true;
             this.bandedGridColumnNfcStatus.AppearanceHeader.Options.UseTextOptions = true;
@@ -517,17 +530,21 @@
             this.bandedGridColumnNfcStatus.FieldName = "nfcstatus";
             this.bandedGridColumnNfcStatus.Name = "bandedGridColumnNfcStatus";
             this.bandedGridColumnNfcStatus.Visible = true;
+            this.bandedGridColumnNfcStatus.Width = 122;
             // 
             // bandedGridColumnNfcNumero
             // 
+            this.bandedGridColumnNfcNumero.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumnNfcNumero.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.bandedGridColumnNfcNumero.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
             this.bandedGridColumnNfcNumero.AppearanceHeader.Options.UseForeColor = true;
             this.bandedGridColumnNfcNumero.AppearanceHeader.Options.UseTextOptions = true;
             this.bandedGridColumnNfcNumero.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumnNfcNumero.Caption = "NFC Número";
+            this.bandedGridColumnNfcNumero.Caption = "Número Nota";
             this.bandedGridColumnNfcNumero.FieldName = "nfcnumero";
             this.bandedGridColumnNfcNumero.Name = "bandedGridColumnNfcNumero";
             this.bandedGridColumnNfcNumero.Visible = true;
+            this.bandedGridColumnNfcNumero.Width = 93;
             // 
             // bandedGridColumnNfcMensagem_Sefaz
             // 
@@ -535,10 +552,11 @@
             this.bandedGridColumnNfcMensagem_Sefaz.AppearanceHeader.Options.UseForeColor = true;
             this.bandedGridColumnNfcMensagem_Sefaz.AppearanceHeader.Options.UseTextOptions = true;
             this.bandedGridColumnNfcMensagem_Sefaz.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumnNfcMensagem_Sefaz.Caption = "NFC Mensagem Sefa";
+            this.bandedGridColumnNfcMensagem_Sefaz.Caption = "Mensagem Sefa";
             this.bandedGridColumnNfcMensagem_Sefaz.FieldName = "nfcmensagem_sefaz";
             this.bandedGridColumnNfcMensagem_Sefaz.Name = "bandedGridColumnNfcMensagem_Sefaz";
             this.bandedGridColumnNfcMensagem_Sefaz.Visible = true;
+            this.bandedGridColumnNfcMensagem_Sefaz.Width = 299;
             // 
             // bandedGridColumnNfcCaminho_xml
             // 
@@ -549,7 +567,6 @@
             this.bandedGridColumnNfcCaminho_xml.Caption = "NFC Caminho XML";
             this.bandedGridColumnNfcCaminho_xml.FieldName = "nfccaminho_xml_nota_fiscal";
             this.bandedGridColumnNfcCaminho_xml.Name = "bandedGridColumnNfcCaminho_xml";
-            this.bandedGridColumnNfcCaminho_xml.Visible = true;
             // 
             // bandedGridColumnNfcCaminho_Danfe
             // 
@@ -560,7 +577,6 @@
             this.bandedGridColumnNfcCaminho_Danfe.Caption = "NFC Caminho Danfe";
             this.bandedGridColumnNfcCaminho_Danfe.FieldName = "nfccaminho_danfe";
             this.bandedGridColumnNfcCaminho_Danfe.Name = "bandedGridColumnNfcCaminho_Danfe";
-            this.bandedGridColumnNfcCaminho_Danfe.Visible = true;
             // 
             // bandedGridColumnclientespessoas_idclientespessoas
             // 
@@ -758,6 +774,40 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand1.Caption = "Vendas";
+            this.gridBand1.Columns.Add(this.bandedGridColumnCodigo);
+            this.gridBand1.Columns.Add(this.bandedGridColumnCliente);
+            this.gridBand1.Columns.Add(this.bandedGridColumnValor);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDesconto);
+            this.gridBand1.Columns.Add(this.bandedGridColumnTotalFinal);
+            this.gridBand1.Columns.Add(this.bandedGridColumnValorPago);
+            this.gridBand1.Columns.Add(this.bandedGridColumnTroco);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraCad);
+            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioCad);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraEdi);
+            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioEdi);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 1452;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand2.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand2.Caption = "NFC";
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcStatus);
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcNumero);
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcMensagem_Sefaz);
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcCaminho_xml);
+            this.gridBand2.Columns.Add(this.bandedGridColumnNfcCaminho_Danfe);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 514;
+            // 
             // Vendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -828,9 +878,9 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnNfcMensagem_Sefaz;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnNfcCaminho_xml;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnNfcCaminho_Danfe;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraBars.BarButtonItem bbiReimprimirNFC_e;
         private DevExpress.XtraBars.BarButtonItem bbiXML_NFC_e;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
     }
 }

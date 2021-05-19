@@ -9,7 +9,7 @@ namespace AdvanceShop.JsonModels.FocusNFe.NFC_e
     public class Consulta
     {
         public string cnpj_emitente { get; set; }
-        //public string ref { get; set; }
+        public string @ref { get; set; }
         public string status { get; set; }
         public string status_sefaz { get; set; }
         public string mensagem_sefaz { get; set; }
@@ -20,6 +20,9 @@ namespace AdvanceShop.JsonModels.FocusNFe.NFC_e
         public string caminho_danfe { get; set; }
         public string qrcode_url { get; set; }
         public string url_consulta_nf { get; set; }
+        //quando não encontrar return
+        public string codigo { get; set; }
+        public string mensagem { get; set; }
 
     }
 }

@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -221,22 +222,53 @@ namespace AdvanceShop.Controllers
                         request.Headers.TryAddWithoutValidation("Authorization", $"Basic {base64authorization}");
 
                         var response = await httpClient.SendAsync(request);
-                        string json = response.Content.ReadAsStringAsync().Result;
-
-                        Consulta deserializeNFC_e = JsonConvert.DeserializeObject<Consulta>(json);
+                        string jsonSerialize = response.Content.ReadAsStringAsync().Result;
+                        Consulta deserializeNFC_e = JsonConvert.DeserializeObject<Consulta>(jsonSerialize);
                         
                         ConsultaNFC_e.status = deserializeNFC_e.status;
                         ConsultaNFC_e.numero = deserializeNFC_e.numero;
                         ConsultaNFC_e.mensagem_sefaz = deserializeNFC_e.mensagem_sefaz;
                         ConsultaNFC_e.caminho_xml_nota_fiscal = deserializeNFC_e.caminho_xml_nota_fiscal;
                         ConsultaNFC_e.caminho_danfe = deserializeNFC_e.caminho_danfe;
-
+                        ConsultaNFC_e.codigo = deserializeNFC_e.codigo;
+                        
                         
                     }
                 }
 
             }
             return ConsultaNFC_e;
+        }
+        public async void CancelandoNFC_e(ApiFocusNfeModel config, FocusNFe focusNFe, string REFERENCIA)
+        {
+
+
+            string ambienteFocus = "";
+            string focusToken = "";
+            if (config.ambiente == "homologacao")
+            {
+                ambienteFocus = "homologacao";
+                focusToken = config.tokenhomologacao;
+            }
+            else
+            {
+                ambienteFocus = "producao";
+                focusToken = config.tokenproducao;
+            }
+            using (var httpClient = new HttpClient())
+            {
+                using (var request = new HttpRequestMessage(new HttpMethod("DELETE"), $"https://{ambienteFocus}.focusnfe.com.br/v2/nfce/12345"))
+                {
+                    var base64authorization = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{focusToken}"));
+                    request.Headers.TryAddWithoutValidation("Authorization", $"Basic {base64authorization}");
+
+                    request.Content = new StringContent("{\"justificativa\":\"Teste de cancelamento de nota\"}");
+                    request.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
+
+                    var response = await httpClient.SendAsync(request);
+                }
+            }
+
         }
     }
 }

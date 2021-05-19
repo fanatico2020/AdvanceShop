@@ -20,7 +20,7 @@ namespace AdvanceShop.Models
         public int clientespessoas_idclientespessoas { get; set; }
         public int caixas_idcaixas { get; set; }
         //api focus
-        public string nfcstatus { get; set; }
+        public int nfcstatus { get; set; }
         public string nfcnumero { get; set; }
         public string nfcmensagem_sefaz { get; set; }
         public string nfccaminho_xml_nota_fiscal { get; set; }

@@ -47,7 +47,7 @@ namespace AdvanceShop.Views
             configGerais = configGeraisController.ObterConfiguracoesGerais();
             apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
         }
-        public void AtualizarGrid()
+        public async void AtualizarGrid()
         {
             splashScreenManager1.ShowWaitForm();
 
@@ -56,23 +56,44 @@ namespace AdvanceShop.Views
             gridControl.Refresh();
             bsiRecordsCount.Caption = "Registros : " + dataSource.Rows.Count;
 
-
+            splashScreenManager1.CloseWaitForm();
             if (ValidacaoConexaoInternet.EstarConectado())
             {
                 foreach (DataRow row in dataSource.Rows)
                 {
                     string referencia = row[0].ToString();
-                    consultaNFC_e = apiFocusNfeController.RetornaInformacaoSobreNFC_e(apiFocusNfe, referencia).GetAwaiter().GetResult().;
-                    venda.IdVendas = Convert.ToInt32(referencia);
-                    venda.nfcstatus = consultaNFC_e.status;
-                    venda.nfcnumero = consultaNFC_e.numero;
-                    venda.nfcmensagem_sefaz = consultaNFC_e.mensagem_sefaz;
-                    venda.nfccaminho_xml_nota_fiscal = consultaNFC_e.caminho_xml_nota_fiscal;
-                    venda.nfccaminho_danfe = consultaNFC_e.caminho_danfe;
-                    vendaController.EditarVendaStatusFocusNFC_e(venda);
+                    consultaNFC_e = await apiFocusNfeController.RetornaInformacaoSobreNFC_e(apiFocusNfe, referencia);
+                    if(consultaNFC_e.codigo != "nao_encontrado")
+                    {
+                        venda.IdVendas = Convert.ToInt32(referencia);
+                        switch (consultaNFC_e.status)
+                        {
+                            case "autorizado":
+                                venda.nfcstatus = 0;
+                                break;
+                            case "cancelado":
+                                venda.nfcstatus = 1;
+                                break;
+                            case "erro_autorizacao":
+                                venda.nfcstatus = 2;
+                                break;
+                            case "denegado":
+                                venda.nfcstatus = 3;
+                                break;
+                            default:
+                                break;
+                        }
+                        
+                        venda.nfcnumero = consultaNFC_e.numero;
+                        venda.nfcmensagem_sefaz = consultaNFC_e.mensagem_sefaz;
+                        venda.nfccaminho_xml_nota_fiscal = consultaNFC_e.caminho_xml_nota_fiscal;
+                        venda.nfccaminho_danfe = consultaNFC_e.caminho_danfe;
+                        vendaController.EditarVendaStatusFocusNFC_e(venda);
+                    }
+                    
                 }
             }
-            splashScreenManager1.CloseWaitForm();
+            
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -163,6 +184,18 @@ namespace AdvanceShop.Views
             {
                 if (Convert.ToString(e.Value) == "") e.DisplayText = "CONSUMIDOR";
             }
+            if(e.Column.FieldName == "nfcstatus")
+            {
+                if (e.Value == DBNull.Value) e.DisplayText = "Venda não fiscal";
+                if (e.Value != DBNull.Value)
+                {
+                    if (Convert.ToInt32(e.Value) == 0) e.DisplayText = "0 - Autorizado";
+                    if (Convert.ToInt32(e.Value) == 1) e.DisplayText = "1 - Cancelado";
+                    if (Convert.ToInt32(e.Value) == 2) e.DisplayText = "2 - Error Autorização";
+                    if (Convert.ToInt32(e.Value) == 3) e.DisplayText = "3 - Denegado";
+                }
+                
+            }
         }
 
         private void advBandedGridViewVendas_MasterRowGetRelationCount(object sender, DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventArgs e)
@@ -252,14 +285,33 @@ namespace AdvanceShop.Views
 
         private void bbiReimprimirNFC_e_ItemClick(object sender, ItemClickEventArgs e)
         {
-            string caminhoDanfe = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[17]).ToString();
-            System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoDanfe}");
+            string statusnfc = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[13]).ToString();
+            if (statusnfc == "0" && statusnfc != "")
+            {
+                string caminhoDanfe = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[17]).ToString();
+                System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoDanfe}");
+            }
+            else
+            {
+                MessageBoxWarning.Show("Não foi encontrado nenhuma NFC-e autorizada nessa venda!");
+            }
+            
+            
         }
 
         private void bbiXML_NFC_e_ItemClick(object sender, ItemClickEventArgs e)
         {
-            string caminhoXML = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[16]).ToString();
-            System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoXML}");
+            string statusnfc = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[13]).ToString();
+            if (statusnfc == "0" && statusnfc != "")
+            {
+                string caminhoXML = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[16]).ToString();
+                System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoXML}");
+            }
+            else
+            {
+                MessageBoxWarning.Show("Não foi encontrado nenhuma NFC-e autorizada nessa venda!");
+            }
+            
         }
     }
 }
