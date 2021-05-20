@@ -17,6 +17,11 @@ using AdvanceShop.Shared.CustomMessageBox;
 using System.Net.Http;
 using Newtonsoft.Json;
 using AdvanceShop.JsonModels.FocusNFe.NFC_e;
+using System.IO;
+using DevExpress.XtraReports.UI;
+using System.Net;
+using SelectPdf;
+using DevExpress.XtraPdfViewer;
 
 namespace AdvanceShop.Views
 {
@@ -286,10 +291,34 @@ namespace AdvanceShop.Views
         private void bbiReimprimirNFC_e_ItemClick(object sender, ItemClickEventArgs e)
         {
             string statusnfc = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[13]).ToString();
+            string referencia = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]).ToString();
             if (statusnfc == "0" && statusnfc != "")
             {
                 string caminhoDanfe = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[17]).ToString();
-                System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoDanfe}");
+
+                
+                WebClient wc = new WebClient();
+                wc.Encoding = Encoding.UTF8;
+                string pagehtml = $"https://api.focusnfe.com.br{caminhoDanfe}";
+                string html = wc.DownloadString(pagehtml);
+                string arquivoPdf = $@"C:\AdvanceShop\NFC-e\NFC-e-Venda{referencia}.pdf";
+                // instancia de HtmlToPdf
+                HtmlToPdf converter = new HtmlToPdf();
+                System.Text.Encoding.UTF8.GetBytes(html);
+                // crear documento pdf convertendo html para pdf
+                PdfDocument doc = converter.ConvertHtmlString(html);
+                // salva documento em pdf
+                doc.Save(arquivoPdf);
+                // close pdf document
+                doc.Close();
+                FileInfo info = new FileInfo(arquivoPdf);
+                if (info.Length > 50)
+                {
+                    VisualizarPDF FormVisualizarPDF = new VisualizarPDF(arquivoPdf);
+                    FormVisualizarPDF.ShowDialog();
+                }
+                
+
             }
             else
             {
@@ -298,6 +327,8 @@ namespace AdvanceShop.Views
             
             
         }
+        
+        
 
         private void bbiXML_NFC_e_ItemClick(object sender, ItemClickEventArgs e)
         {
