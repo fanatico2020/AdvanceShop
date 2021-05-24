@@ -38,11 +38,17 @@ namespace AdvanceShop.Views
             {
                 double precocusto = Convert.ToDouble(txtPrecoCusto.Text.Replace("R$", ""));
                 double margemlucro = Convert.ToDouble(txtMargemLucro.Text.Replace("%", ""));
+                double precovenda = Convert.ToDouble(txtPrecoVenda.Text.Replace("R$", ""));
                 if (calc && precocusto > 0 && margemlucro > 0)
                 {
                     double valorlucro = precocusto * margemlucro / 100;
 
                     txtPrecoVenda.Text = Convert.ToString(precocusto + valorlucro);
+                }
+                else if (!calc && precocusto > 0 && precovenda > 0)
+                {
+                    margemlucro = (precovenda - precocusto) / precocusto;
+                    txtMargemLucro.Text = Convert.ToString(margemlucro.ToString("P"));
                 }
             }
             catch (System.FormatException)
@@ -393,11 +399,13 @@ namespace AdvanceShop.Views
             if (tsCalcularPrecoProdutoAut.IsOn)
             {
                 txtPrecoVenda.ReadOnly = true;
+                txtMargemLucro.ReadOnly = false;
 
             }
             else
             {
                 txtPrecoVenda.ReadOnly = false;
+                txtMargemLucro.ReadOnly = true;
             }
         }
 
@@ -410,7 +418,10 @@ namespace AdvanceShop.Views
         {
             CalcularAutomaticoPrecoVenda(tsCalcularPrecoProdutoAut.IsOn);
         }
-
+        private void txtPrecoVenda_EditValueChanged(object sender, EventArgs e)
+        {
+            CalcularAutomaticoPrecoVenda(tsCalcularPrecoProdutoAut.IsOn);
+        }
         private void cbxFornecedor_DoubleClick(object sender, EventArgs e)
         {
             AtualizarFornecedores();
@@ -435,5 +446,7 @@ namespace AdvanceShop.Views
         {
             e.Handled = true;
         }
+
+       
     }
 }

@@ -22,6 +22,7 @@ using DevExpress.XtraReports.UI;
 using System.Net;
 using SelectPdf;
 using DevExpress.XtraPdfViewer;
+using DevExpress.Utils.Menu;
 
 namespace AdvanceShop.Views
 {
@@ -152,6 +153,85 @@ namespace AdvanceShop.Views
                 AtualizarGrid();
             }
         }
+        private void ReimprimirCupomNaoFiscal()
+        {
+            if (advBandedGridViewVendas.SelectedRowsCount == 1)
+            {
+                try
+                {
+                    //Dados para cupom
+                    venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
+                    if (advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[11]) != DBNull.Value) clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[11]));
+                    caixa.IdCaixas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[12]));
+                    dataHora.vendas_idvendas = venda.IdVendas;
+
+                    venda = vendaController.ObterDadosDaVendaPorID(venda);
+                    clientePessoa = clientePessoaController.ObterDadosDoClientePessoaPorID(clientePessoa);
+                    caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
+                    dataHora = dataHoraController.ObterDadosDataHoraPorIDVenda(dataHora);
+
+
+                    //print
+                    Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora, configGerais);
+                }
+
+                catch (Exception error)
+                {
+                    MessageBoxError.Show(error.Message);
+                }
+
+            }
+        }
+        private void ReimprimirCupomNFC_e()
+        {
+            string statusnfc = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[13]).ToString();
+            string referencia = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]).ToString();
+            if (statusnfc == "0" && statusnfc != "")
+            {
+                string caminhoDanfe = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[17]).ToString();
+
+
+                WebClient wc = new WebClient();
+                wc.Encoding = Encoding.UTF8;
+                string pagehtml = $"https://api.focusnfe.com.br{caminhoDanfe}";
+                string html = wc.DownloadString(pagehtml);
+                string arquivoPdf = $@"C:\AdvanceShop\NFC-e\NFC-e-Venda{referencia}.pdf";
+                // instancia de HtmlToPdf
+                HtmlToPdf converter = new HtmlToPdf();
+                System.Text.Encoding.UTF8.GetBytes(html);
+                // crear documento pdf convertendo html para pdf
+                PdfDocument doc = converter.ConvertHtmlString(html);
+                // salva documento em pdf
+                doc.Save(arquivoPdf);
+                // close pdf document
+                doc.Close();
+                FileInfo info = new FileInfo(arquivoPdf);
+                if (info.Length > 50)
+                {
+                    VisualizarPDF FormVisualizarPDF = new VisualizarPDF(arquivoPdf);
+                    FormVisualizarPDF.ShowDialog();
+                }
+
+
+            }
+            else
+            {
+                MessageBoxWarning.Show("Não foi encontrado nenhuma NFC-e autorizada nessa venda!");
+            }
+        }
+        private void VisualizarXML_NFC_e()
+        {
+            string statusnfc = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[13]).ToString();
+            if (statusnfc == "0" && statusnfc != "")
+            {
+                string caminhoXML = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[16]).ToString();
+                System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoXML}");
+            }
+            else
+            {
+                MessageBoxWarning.Show("Não foi encontrado nenhuma NFC-e autorizada nessa venda!");
+            }
+        }
         private void Vendas_KeyPress(object sender, KeyPressEventArgs e)
         {
             ConfirmacaoForm.Fechar(e, this);
@@ -251,32 +331,7 @@ namespace AdvanceShop.Views
 
         private void bbiReimprimirCupomNaoFiscal_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if(advBandedGridViewVendas.SelectedRowsCount == 1)
-            {
-                try
-                {
-                    //Dados para cupom
-                    venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
-                    if(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[11]) != DBNull.Value) clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[11]));
-                    caixa.IdCaixas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[12]));
-                    dataHora.vendas_idvendas = venda.IdVendas;
-
-                    venda = vendaController.ObterDadosDaVendaPorID(venda);
-                    clientePessoa = clientePessoaController.ObterDadosDoClientePessoaPorID(clientePessoa);
-                    caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
-                    dataHora = dataHoraController.ObterDadosDataHoraPorIDVenda(dataHora);
-
-
-                    //print
-                    Shared.CustomPrint.CupomNaoFiscal.ImprimirCupom(venda, clientePessoa, usuarioLogado, caixa, dataHora,configGerais);
-                }
-                
-                catch(Exception error)
-                {
-                    MessageBoxError.Show(error.Message);
-                }
-                
-            }
+            ReimprimirCupomNaoFiscal();
             
         }
 
@@ -290,59 +345,66 @@ namespace AdvanceShop.Views
 
         private void bbiReimprimirNFC_e_ItemClick(object sender, ItemClickEventArgs e)
         {
-            string statusnfc = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[13]).ToString();
-            string referencia = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]).ToString();
-            if (statusnfc == "0" && statusnfc != "")
-            {
-                string caminhoDanfe = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[17]).ToString();
-
-                
-                WebClient wc = new WebClient();
-                wc.Encoding = Encoding.UTF8;
-                string pagehtml = $"https://api.focusnfe.com.br{caminhoDanfe}";
-                string html = wc.DownloadString(pagehtml);
-                string arquivoPdf = $@"C:\AdvanceShop\NFC-e\NFC-e-Venda{referencia}.pdf";
-                // instancia de HtmlToPdf
-                HtmlToPdf converter = new HtmlToPdf();
-                System.Text.Encoding.UTF8.GetBytes(html);
-                // crear documento pdf convertendo html para pdf
-                PdfDocument doc = converter.ConvertHtmlString(html);
-                // salva documento em pdf
-                doc.Save(arquivoPdf);
-                // close pdf document
-                doc.Close();
-                FileInfo info = new FileInfo(arquivoPdf);
-                if (info.Length > 50)
-                {
-                    VisualizarPDF FormVisualizarPDF = new VisualizarPDF(arquivoPdf);
-                    FormVisualizarPDF.ShowDialog();
-                }
-                
-
-            }
-            else
-            {
-                MessageBoxWarning.Show("Não foi encontrado nenhuma NFC-e autorizada nessa venda!");
-            }
-            
-            
+            ReimprimirCupomNFC_e();
         }
-        
         
 
         private void bbiXML_NFC_e_ItemClick(object sender, ItemClickEventArgs e)
         {
-            string statusnfc = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[13]).ToString();
-            if (statusnfc == "0" && statusnfc != "")
-            {
-                string caminhoXML = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[16]).ToString();
-                System.Diagnostics.Process.Start($@"https://api.focusnfe.com.br{caminhoXML}");
-            }
-            else
-            {
-                MessageBoxWarning.Show("Não foi encontrado nenhuma NFC-e autorizada nessa venda!");
-            }
-            
+            VisualizarXML_NFC_e();
+
         }
+
+        private void advBandedGridViewVendas_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (advBandedGridViewVendas.SelectedRowsCount == 1)
+            {
+                if (e.MenuType == DevExpress.XtraGrid.Views.Grid.GridMenuType.Row)
+                {
+                    DXMenuItem item1 = new DXMenuItem("Venda Caixa - PDV");
+                    DXMenuItem item2 = new DXMenuItem("Troca / Devolução");
+                    DXMenuItem item3 = new DXMenuItem("Deletar Venda");
+                    DXMenuItem item4 = new DXMenuItem("Atualizar Grid");
+                    DXMenuItem item5 = new DXMenuItem("Reimprimir Cupom Não Fiscal");
+                    DXMenuItem item6 = new DXMenuItem("Reimprimir Cupom NFC-e");
+                    DXMenuItem item7 = new DXMenuItem("Visualizar XML NFC-e");
+                    item1.Click += (o, args) =>
+                    {
+                        NovaVenda();
+                    };
+                    item2.Click += (o, args) =>
+                    {
+                        TrocaDevolucao();
+                    };
+                    item3.Click += (o, args) =>
+                    {
+                        DeletarVenda();
+                    };
+                    item4.Click += (o, args) =>
+                    {
+                        AtualizarGrid();
+                    };
+                    item5.Click += (o, args) => {
+                        ReimprimirCupomNaoFiscal();
+                    };
+                    item6.Click += (o, args) => {
+                        ReimprimirCupomNFC_e();
+                    };
+                    item7.Click += (o, args) =>
+                    {
+                        VisualizarXML_NFC_e();
+                    };
+                    e.Menu.Items.Add(item1);
+                    e.Menu.Items.Add(item2);
+                    e.Menu.Items.Add(item3);
+                    e.Menu.Items.Add(item4);
+                    e.Menu.Items.Add(item5);
+                    e.Menu.Items.Add(item6);
+                    e.Menu.Items.Add(item7);
+                }
+            }
+        }
+
+        
     }
 }

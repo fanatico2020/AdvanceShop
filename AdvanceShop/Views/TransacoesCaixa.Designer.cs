@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransacoesCaixa));
             this.gridViewFormasPagamento = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnCodigoFormaPagamento = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,7 +56,7 @@
             this.bbiVisualizarImprimir = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
             this.bbiNew = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiEditar = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiEditarFormasPagamento = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDeletar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAtualizar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFecharCaixa = new DevExpress.XtraBars.BarButtonItem();
@@ -71,6 +71,8 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.txtSaldoCaixa = new DevExpress.XtraEditors.TextEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.txtTotalTroco = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txtTotalSangria = new DevExpress.XtraEditors.TextEdit();
             this.txtSaldoSaidas = new DevExpress.XtraEditors.TextEdit();
@@ -103,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoCaixa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalTroco.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalSangria.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoSaidas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDevolucoes.Properties)).BeginInit();
@@ -199,15 +202,15 @@
             this.gridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode2.LevelTemplate = this.gridViewFormasPagamento;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.gridViewFormasPagamento;
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl.Location = new System.Drawing.Point(0, 170);
             this.gridControl.MainView = this.advBandedGridViewTransacoesCaixa;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(476, 482);
+            this.gridControl.Size = new System.Drawing.Size(476, 528);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridViewTransacoesCaixa,
@@ -483,7 +486,7 @@
             this.bbiVisualizarImprimir,
             this.bsiRecordsCount,
             this.bbiNew,
-            this.bbiEditar,
+            this.bbiEditarFormasPagamento,
             this.bbiDeletar,
             this.bbiAtualizar,
             this.bbiFecharCaixa,
@@ -529,17 +532,20 @@
             this.bbiNew.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNew.ImageOptions.LargeImage")));
             this.bbiNew.Name = "bbiNew";
             // 
-            // bbiEditar
+            // bbiEditarFormasPagamento
             // 
-            this.bbiEditar.Caption = "Editar Formas Pagamento";
-            this.bbiEditar.Id = 17;
-            this.bbiEditar.ImageOptions.ImageUri.Uri = "Edit";
-            this.bbiEditar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiEditar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiEditar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiEditar.ItemAppearance.Normal.Options.UseFont = true;
-            this.bbiEditar.Name = "bbiEditar";
-            this.bbiEditar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditar_ItemClick);
+            this.bbiEditarFormasPagamento.Caption = "Editar Formas Pagamento";
+            this.bbiEditarFormasPagamento.Enabled = false;
+            this.bbiEditarFormasPagamento.Id = 17;
+            this.bbiEditarFormasPagamento.ImageOptions.ImageUri.Uri = "Edit";
+            this.bbiEditarFormasPagamento.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiEditarFormasPagamento.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiEditarFormasPagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiEditarFormasPagamento.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiEditarFormasPagamento.Name = "bbiEditarFormasPagamento";
+            this.bbiEditarFormasPagamento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bbiEditarFormasPagamento.VisibleInSearchMenu = false;
+            this.bbiEditarFormasPagamento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditar_ItemClick);
             // 
             // bbiDeletar
             // 
@@ -607,6 +613,10 @@
             this.bbiContadorDinheiro.Caption = "Contador Dinheiro";
             this.bbiContadorDinheiro.Id = 23;
             this.bbiContadorDinheiro.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiContadorDinheiro.ImageOptions.SvgImage")));
+            this.bbiContadorDinheiro.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiContadorDinheiro.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiContadorDinheiro.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiContadorDinheiro.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiContadorDinheiro.Name = "bbiContadorDinheiro";
             this.bbiContadorDinheiro.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiContadorDinheiro_ItemClick);
             // 
@@ -615,6 +625,10 @@
             this.bbiLinkPagamento.Caption = "Link Pagamento";
             this.bbiLinkPagamento.Id = 24;
             this.bbiLinkPagamento.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiLinkPagamento.ImageOptions.SvgImage")));
+            this.bbiLinkPagamento.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiLinkPagamento.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiLinkPagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiLinkPagamento.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiLinkPagamento.Name = "bbiLinkPagamento";
             this.bbiLinkPagamento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLinkPagamento_ItemClick);
             // 
@@ -634,7 +648,7 @@
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiFecharCaixa);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiEditar);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiEditarFormasPagamento);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDeletar);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAtualizar);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAdicionarDinheiro);
@@ -654,7 +668,7 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 658);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 704);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(876, 24);
@@ -671,13 +685,13 @@
             this.panelControl1.Controls.Add(this.lblSaldoInicial);
             this.panelControl1.Location = new System.Drawing.Point(482, 170);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(394, 482);
+            this.panelControl1.Size = new System.Drawing.Size(394, 528);
             this.panelControl1.TabIndex = 4;
             // 
             // txtSaldoCaixa
             // 
             this.txtSaldoCaixa.EditValue = "0";
-            this.txtSaldoCaixa.Location = new System.Drawing.Point(173, 440);
+            this.txtSaldoCaixa.Location = new System.Drawing.Point(173, 465);
             this.txtSaldoCaixa.MenuManager = this.ribbonControl;
             this.txtSaldoCaixa.Name = "txtSaldoCaixa";
             this.txtSaldoCaixa.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -690,10 +704,12 @@
             this.txtSaldoCaixa.Properties.ReadOnly = true;
             this.txtSaldoCaixa.Properties.UseReadOnlyAppearance = false;
             this.txtSaldoCaixa.Size = new System.Drawing.Size(204, 26);
-            this.txtSaldoCaixa.TabIndex = 17;
+            this.txtSaldoCaixa.TabIndex = 18;
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.txtTotalTroco);
+            this.groupControl2.Controls.Add(this.labelControl2);
             this.groupControl2.Controls.Add(this.labelControl1);
             this.groupControl2.Controls.Add(this.txtTotalSangria);
             this.groupControl2.Controls.Add(this.txtSaldoSaidas);
@@ -702,15 +718,43 @@
             this.groupControl2.Controls.Add(this.lblTotalSangria);
             this.groupControl2.Location = new System.Drawing.Point(19, 283);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(363, 151);
+            this.groupControl2.Size = new System.Drawing.Size(363, 176);
             this.groupControl2.TabIndex = 11;
             this.groupControl2.Text = "Saídas ( - )";
+            // 
+            // txtTotalTroco
+            // 
+            this.txtTotalTroco.EditValue = "0";
+            this.txtTotalTroco.Location = new System.Drawing.Point(154, 32);
+            this.txtTotalTroco.MenuManager = this.ribbonControl;
+            this.txtTotalTroco.Name = "txtTotalTroco";
+            this.txtTotalTroco.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalTroco.Properties.Appearance.Options.UseFont = true;
+            this.txtTotalTroco.Properties.DisplayFormat.FormatString = "c";
+            this.txtTotalTroco.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTotalTroco.Properties.Mask.EditMask = "c";
+            this.txtTotalTroco.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTotalTroco.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtTotalTroco.Properties.ReadOnly = true;
+            this.txtTotalTroco.Properties.UseReadOnlyAppearance = false;
+            this.txtTotalTroco.Size = new System.Drawing.Size(204, 26);
+            this.txtTotalTroco.TabIndex = 14;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Location = new System.Drawing.Point(5, 35);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(118, 19);
+            this.labelControl2.TabIndex = 18;
+            this.labelControl2.Text = "Dinheiro (Troco)";
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(5, 37);
+            this.labelControl1.Location = new System.Drawing.Point(5, 67);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(80, 19);
             this.labelControl1.TabIndex = 17;
@@ -719,7 +763,7 @@
             // txtTotalSangria
             // 
             this.txtTotalSangria.EditValue = "0";
-            this.txtTotalSangria.Location = new System.Drawing.Point(154, 66);
+            this.txtTotalSangria.Location = new System.Drawing.Point(154, 96);
             this.txtTotalSangria.MenuManager = this.ribbonControl;
             this.txtTotalSangria.Name = "txtTotalSangria";
             this.txtTotalSangria.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -732,12 +776,12 @@
             this.txtTotalSangria.Properties.ReadOnly = true;
             this.txtTotalSangria.Properties.UseReadOnlyAppearance = false;
             this.txtTotalSangria.Size = new System.Drawing.Size(204, 26);
-            this.txtTotalSangria.TabIndex = 15;
+            this.txtTotalSangria.TabIndex = 16;
             // 
             // txtSaldoSaidas
             // 
             this.txtSaldoSaidas.EditValue = "0";
-            this.txtSaldoSaidas.Location = new System.Drawing.Point(154, 98);
+            this.txtSaldoSaidas.Location = new System.Drawing.Point(154, 128);
             this.txtSaldoSaidas.MenuManager = this.ribbonControl;
             this.txtSaldoSaidas.Name = "txtSaldoSaidas";
             this.txtSaldoSaidas.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -750,7 +794,7 @@
             this.txtSaldoSaidas.Properties.ReadOnly = true;
             this.txtSaldoSaidas.Properties.UseReadOnlyAppearance = false;
             this.txtSaldoSaidas.Size = new System.Drawing.Size(204, 26);
-            this.txtSaldoSaidas.TabIndex = 16;
+            this.txtSaldoSaidas.TabIndex = 17;
             // 
             // lblSaldoSaidas
             // 
@@ -758,7 +802,7 @@
             this.lblSaldoSaidas.Appearance.ForeColor = System.Drawing.Color.Red;
             this.lblSaldoSaidas.Appearance.Options.UseFont = true;
             this.lblSaldoSaidas.Appearance.Options.UseForeColor = true;
-            this.lblSaldoSaidas.Location = new System.Drawing.Point(5, 101);
+            this.lblSaldoSaidas.Location = new System.Drawing.Point(5, 131);
             this.lblSaldoSaidas.Name = "lblSaldoSaidas";
             this.lblSaldoSaidas.Size = new System.Drawing.Size(45, 19);
             this.lblSaldoSaidas.TabIndex = 14;
@@ -767,7 +811,7 @@
             // txtDevolucoes
             // 
             this.txtDevolucoes.EditValue = "0";
-            this.txtDevolucoes.Location = new System.Drawing.Point(154, 34);
+            this.txtDevolucoes.Location = new System.Drawing.Point(154, 64);
             this.txtDevolucoes.MenuManager = this.ribbonControl;
             this.txtDevolucoes.Name = "txtDevolucoes";
             this.txtDevolucoes.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -780,13 +824,13 @@
             this.txtDevolucoes.Properties.ReadOnly = true;
             this.txtDevolucoes.Properties.UseReadOnlyAppearance = false;
             this.txtDevolucoes.Size = new System.Drawing.Size(204, 26);
-            this.txtDevolucoes.TabIndex = 14;
+            this.txtDevolucoes.TabIndex = 15;
             // 
             // lblTotalSangria
             // 
             this.lblTotalSangria.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalSangria.Appearance.Options.UseFont = true;
-            this.lblTotalSangria.Location = new System.Drawing.Point(5, 69);
+            this.lblTotalSangria.Location = new System.Drawing.Point(5, 99);
             this.lblTotalSangria.Name = "lblTotalSangria";
             this.lblTotalSangria.Size = new System.Drawing.Size(94, 19);
             this.lblTotalSangria.TabIndex = 3;
@@ -798,7 +842,7 @@
             this.lblSaldoCaixa.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.lblSaldoCaixa.Appearance.Options.UseFont = true;
             this.lblSaldoCaixa.Appearance.Options.UseForeColor = true;
-            this.lblSaldoCaixa.Location = new System.Drawing.Point(19, 443);
+            this.lblSaldoCaixa.Location = new System.Drawing.Point(24, 468);
             this.lblSaldoCaixa.Name = "lblSaldoCaixa";
             this.lblSaldoCaixa.Size = new System.Drawing.Size(126, 19);
             this.lblSaldoCaixa.TabIndex = 5;
@@ -1030,7 +1074,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 682);
+            this.ClientSize = new System.Drawing.Size(876, 728);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.gridControl);
@@ -1054,6 +1098,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotalTroco.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalSangria.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoSaidas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDevolucoes.Properties)).EndInit();
@@ -1083,7 +1128,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
         private DevExpress.XtraBars.BarButtonItem bbiNew;
-        private DevExpress.XtraBars.BarButtonItem bbiEditar;
+        private DevExpress.XtraBars.BarButtonItem bbiEditarFormasPagamento;
         private DevExpress.XtraBars.BarButtonItem bbiDeletar;
         private DevExpress.XtraBars.BarButtonItem bbiAtualizar;
         private DevExpress.XtraEditors.PanelControl panelControl1;
@@ -1138,5 +1183,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraBars.BarButtonItem bbiLinkPagamento;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraEditors.TextEdit txtTotalTroco;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
     }
 }

@@ -16,7 +16,7 @@ namespace AdvanceShop.Controllers
         {
             MySqlConnection conexao = ConexaoMySql.GetConexao();
             MySqlCommand comando = ConexaoMySql.GetComando(conexao);
-            comando.CommandText = "select * from caixas inner join datahora on datahora.caixas_idcaixas = caixas.idcaixas where deletado = 0 order by caixas.status = 0 desc;";
+            comando.CommandText = "select * from caixas inner join datahora on datahora.caixas_idcaixas = caixas.idcaixas where deletado = 0 order by caixas.status = 0 desc, idcaixas desc;";
             comando.CommandType = CommandType.Text;
             MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
             DataTable dataTable = new DataTable();

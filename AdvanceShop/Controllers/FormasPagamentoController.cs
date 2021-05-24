@@ -135,6 +135,19 @@ namespace AdvanceShop.Controllers
             return reader.GetDecimal(0);
         }
         //Saidas
+        public decimal SomarTotalDinheiroTrocoCaixa(TransacoesCaixaModel transacaoCaixa)
+        {
+
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText =
+                "select ifnull(sum(vendas.troco), 0) from vendas where caixas_idcaixas = @caixas_idcaixas and deletado = 0;";
+            comando.CommandType = CommandType.Text;
+            comando.Parameters.Add(new MySqlParameter("@caixas_idcaixas", transacaoCaixa.caixas_idcaixas));
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            reader.Read();
+            return reader.GetDecimal(0);
+        }
         public decimal SomarTotalDinheiroSangriaCaixa(TransacoesCaixaModel transacaoCaixa)
         {
 

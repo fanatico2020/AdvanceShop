@@ -23,7 +23,6 @@ namespace AdvanceShop.Views
         UsuariosModel usuarioLogado = new UsuariosModel();
         CaixasModel caixa = new CaixasModel();
         CaixasController caixaController = new CaixasController();
-        DataHoraModel dataHora = new DataHoraModel();
         public Caixas(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
@@ -93,11 +92,8 @@ namespace AdvanceShop.Views
         private void TransacoesCaixa()
         {
             caixa.IdCaixas = Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[0]));
-            caixa.status = Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[12]));
-            if(caixa.UsuarioFechamento != DBNull.Value.ToString()) caixa.UsuarioFechamento = advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[7]).ToString();
-            if(caixa.DataHoraFechamento.ToString() != "01/01/0001 00:00:00") caixa.DataHoraFechamento = Convert.ToDateTime(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[13]));
-            dataHora.usuariocadastro = advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[10]).ToString();
-            Views.TransacoesCaixa FormTransacoesCaixa = new TransacoesCaixa(usuarioLogado,caixa,dataHora);
+            
+            Views.TransacoesCaixa FormTransacoesCaixa = new TransacoesCaixa(usuarioLogado,caixa);
             FormTransacoesCaixa.ShowDialog();
         }
         private void bbiAbrirCaixa_ItemClick(object sender, ItemClickEventArgs e)

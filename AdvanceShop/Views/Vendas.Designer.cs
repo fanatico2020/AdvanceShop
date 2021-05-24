@@ -353,6 +353,7 @@
             this.advBandedGridViewVendas.MasterRowGetChildList += new DevExpress.XtraGrid.Views.Grid.MasterRowGetChildListEventHandler(this.advBandedGridViewVendas_MasterRowGetChildList);
             this.advBandedGridViewVendas.MasterRowGetRelationName += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationNameEventHandler(this.advBandedGridViewVendas_MasterRowGetRelationName);
             this.advBandedGridViewVendas.MasterRowGetRelationCount += new DevExpress.XtraGrid.Views.Grid.MasterRowGetRelationCountEventHandler(this.advBandedGridViewVendas_MasterRowGetRelationCount);
+            this.advBandedGridViewVendas.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.advBandedGridViewVendas_PopupMenuShowing);
             this.advBandedGridViewVendas.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.advBandedGridViewVendas_CustomColumnDisplayText);
             // 
             // gridBand1

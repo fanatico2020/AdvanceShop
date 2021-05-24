@@ -50,6 +50,10 @@ on formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransac
 where transacoescaixa.tipo = 0 and transacoescaixa.descricaotransacao = 'Sangria, Dinheiro retirado do caixa' 
 and formaspagamento.descricao = 'DINHEIRO' and transacoescaixa.deletado = 0 and transacoescaixa.caixas_idcaixas = id_caixa);
 
+-- saida troco
+set @saidatroco = 
+(select ifnull(sum(vendas.troco), 0) from vendas where deletado = 0 and caixas_idcaixas = id_caixa);
+
 -- saida troca / devolução
 set @saidadevolucoes =
 (select ifnull(sum(formaspagamento.valor),0) from formaspagamento left join transacoescaixa 
@@ -89,7 +93,7 @@ set @usuariofechamento =
 set @observacaocaixa = 
 (select observacaocaixa from caixas where idcaixas = id_caixa);
 
-select @saldoinicial,@entradadinheiro,@entradasuplemento,@entradacartaocredito,@entradacartaodebito,@entradalinkpagamento,@saidasangria,@saidadevolucoes,@saldofinal,@valorinformado,@quebracaixa,@datahoraterminocaixa,@datahorainiciocaixa,@usuariocaixa,@usuariofechamento,@observacaocaixa;
+select @saldoinicial,@entradadinheiro,@entradasuplemento,@entradacartaocredito,@entradacartaodebito,@entradalinkpagamento,@saidatroco,@saidasangria,@saidadevolucoes,@saldofinal,@valorinformado,@quebracaixa,@datahoraterminocaixa,@datahorainiciocaixa,@usuariocaixa,@usuariofechamento,@observacaocaixa;
 
 END;
 DELIMITER;

@@ -24,6 +24,8 @@ namespace AdvanceShop.Views
         ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
         ConfiguracoesGeraisModel configGerais = new ConfiguracoesGeraisModel();
         CaixasModel caixa = new CaixasModel();
+        CaixasController caixaController = new CaixasController();
+        DataHoraModel dataHora = new DataHoraModel();
         ProdutosModel produto = new ProdutosModel();
         ProdutosController produtoController = new ProdutosController();
         ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
@@ -41,11 +43,14 @@ namespace AdvanceShop.Views
             caixa = Caixa;
             venda.caixas_idcaixas = caixa.IdCaixas;
             transacaoCaixa.caixas_idcaixas = caixa.IdCaixas;
-
+            
             configGerais = configGeraisController.ObterConfiguracoesGerais();
 
         }
-        
+        public void FecharPDV()
+        {
+            Close();
+        }
         public void NovaVenda()
         {
             itensVenda.Clear();
@@ -224,6 +229,13 @@ namespace AdvanceShop.Views
                 transacaoCaixa.ObservacaoTransacao = FormObservacao.transacaoVendaPDV.ObservacaoTransacao;
             }
         }
+        private void FecharCaixa()
+        {
+            
+            caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
+            Views.TransacoesCaixa FormTransacoesCaixa = new TransacoesCaixa(usuarioLogado, caixa);
+            FormTransacoesCaixa.ShowDialog();
+        }
         private void btnCalculadora_Click(object sender, EventArgs e)//Abrir a calculadora do windows
         {
             System.Diagnostics.Process.Start("calc.exe");
@@ -314,6 +326,9 @@ namespace AdvanceShop.Views
                 case Keys.F7:
                     //Cancelar Venda
                     CancelarVenda();
+                    break;
+                case Keys.F8: //Fechar caixa
+                    FecharCaixa();
                     break;
                 default:
                     break;
@@ -407,7 +422,7 @@ namespace AdvanceShop.Views
                     DXMenuItem item4 = new DXMenuItem("Selecionar Cliente Venda (F5)");
                     DXMenuItem item5 = new DXMenuItem("Remover Item da Venda (F6)");
                     DXMenuItem item6 = new DXMenuItem("Cancelar Venda (F7)");
-
+                    DXMenuItem item7 = new DXMenuItem("Fechar Caixa (F8)");
                     item1.Click += (o, args) =>
                     {
                         FinalizarVenda();
@@ -432,13 +447,17 @@ namespace AdvanceShop.Views
                     {
                         CancelarVenda();
                     };
+                    item7.Click += (o, args) =>
+                    {
+                        FecharCaixa();
+                    };
                     e.Menu.Items.Add(item1);
                     e.Menu.Items.Add(item2);
                     e.Menu.Items.Add(item3);
                     e.Menu.Items.Add(item4);
                     e.Menu.Items.Add(item5);
                     e.Menu.Items.Add(item6);
-
+                    e.Menu.Items.Add(item7);
                 }
             }
         }

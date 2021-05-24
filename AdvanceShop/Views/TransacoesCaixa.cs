@@ -34,14 +34,16 @@ namespace AdvanceShop.Views
         FormasPagamentoModel formaPagamento = new FormasPagamentoModel();
         FormasPagamentoController formaPagamentoController = new FormasPagamentoController();
         DataHoraModel dataHora = new DataHoraModel();
-        public TransacoesCaixa(UsuariosModel UsuarioLogado,CaixasModel Caixa,DataHoraModel DataHora)
+        DataHoraController dataHoraController = new DataHoraController();
+        public TransacoesCaixa(UsuariosModel UsuarioLogado,CaixasModel Caixa)
         {
             InitializeComponent();
             apiGerenciaNet = apiGerenciaNetController.ObterConfiguracoesApiGerenciaNet();
             usuarioLogado = UsuarioLogado;
-            caixa = Caixa;
+            caixa.IdCaixas = Caixa.IdCaixas;
+            caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
             transacaoCaixa.caixas_idcaixas = caixa.IdCaixas;
-            dataHora.usuariocadastro = DataHora.usuariocadastro;
+            dataHora = dataHoraController.ObterDadosDataHoraPorIDCaixa(caixa);
             Text = Text + $" Caixa Código {caixa.IdCaixas} usuário do caixa {dataHora.usuariocadastro}";
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
@@ -131,11 +133,13 @@ namespace AdvanceShop.Views
             txtSaldoEntradas.Text = Convert.ToString(saldoentradas);
 
             //Saidas
-            decimal saldosangria,saldosaidas;
+            decimal saldosangria,saldosaidas,saldotroco;
 
             saldosangria = formaPagamentoController.SomarTotalDinheiroSangriaCaixa(transacaoCaixa);
-            saldosaidas = saldosangria;
+            saldotroco = formaPagamentoController.SomarTotalDinheiroTrocoCaixa(transacaoCaixa);
 
+            saldosaidas = saldosangria + saldotroco;
+            txtTotalTroco.Text = Convert.ToString(saldotroco);
             txtTotalSangria.Text = Convert.ToString(saldosangria);
             txtSaldoSaidas.Text = Convert.ToString(saldosaidas);
 
@@ -149,6 +153,7 @@ namespace AdvanceShop.Views
         private void TranscoesCaixa_Load(object sender, EventArgs e)
         {
             AtualizarGrid();
+            
         }
         private void FecharCaixa()
         {
@@ -301,7 +306,7 @@ namespace AdvanceShop.Views
                 if (e.MenuType == DevExpress.XtraGrid.Views.Grid.GridMenuType.Row)
                 {
                     DXMenuItem item1 = new DXMenuItem("Fechar Caixa");
-                    DXMenuItem item2 = new DXMenuItem("Editar Formas Pagamento");
+                    //DXMenuItem item2 = new DXMenuItem("Editar Formas Pagamento");
                     DXMenuItem item3 = new DXMenuItem("Deletar");
                     DXMenuItem item4 = new DXMenuItem("Atualizar Grid");
                     DXMenuItem item5 = new DXMenuItem("Adicionar Dinheiro");
@@ -313,10 +318,10 @@ namespace AdvanceShop.Views
                     {
                         FecharCaixa();
                     };
-                    item2.Click += (o, args) =>
-                    {
-                        EditarTransacao();
-                    };
+                    //item2.Click += (o, args) =>
+                    //{
+                    //    EditarTransacao();
+                    //};
                     item3.Click += (o, args) =>
                     {
                         DeletarTransacao();
@@ -343,7 +348,7 @@ namespace AdvanceShop.Views
                     };
 
                     e.Menu.Items.Add(item1);
-                    e.Menu.Items.Add(item2);
+                    //e.Menu.Items.Add(item2);
                     e.Menu.Items.Add(item3);
                     e.Menu.Items.Add(item4);
                     e.Menu.Items.Add(item5);

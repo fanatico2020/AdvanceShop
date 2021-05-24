@@ -81,6 +81,7 @@
             this.gridColumnIcms_origem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnIcms_situacao_tributaria = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnUndMedida = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.lblDemaisComandos = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelTarefas)).BeginInit();
             this.panelTarefas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl7)).BeginInit();
@@ -590,6 +591,7 @@
             // 
             this.panelQtdValores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelQtdValores.Controls.Add(this.lblDemaisComandos);
             this.panelQtdValores.Controls.Add(this.lblSubtotal);
             this.panelQtdValores.Controls.Add(this.lblDesconto);
             this.panelQtdValores.Controls.Add(this.lblQtditensValorTotal);
@@ -866,6 +868,16 @@
             this.gridColumnUndMedida.FieldName = "unidademedida";
             this.gridColumnUndMedida.Name = "gridColumnUndMedida";
             // 
+            // lblDemaisComandos
+            // 
+            this.lblDemaisComandos.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDemaisComandos.Appearance.Options.UseFont = true;
+            this.lblDemaisComandos.Location = new System.Drawing.Point(5, 72);
+            this.lblDemaisComandos.Name = "lblDemaisComandos";
+            this.lblDemaisComandos.Size = new System.Drawing.Size(495, 19);
+            this.lblDemaisComandos.TabIndex = 16;
+            this.lblDemaisComandos.Text = "Remover item da venda (F6) - Cancelar venda (F7) - Fechar caixa (F8)";
+            // 
             // VendaCaixaPDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -899,6 +911,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelQtdValores)).EndInit();
             this.panelQtdValores.ResumeLayout(false);
+            this.panelQtdValores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlItensVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewItensPDV)).EndInit();
             this.ResumeLayout(false);
@@ -959,5 +972,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnIcmsorigem;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumnIcmssituacaotributaria;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnUndMedida;
+        private DevExpress.XtraEditors.LabelControl lblDemaisComandos;
     }
 }

@@ -44,47 +44,57 @@ namespace AdvanceShop.Views
         }
         private void AtualizarGrid()
         {
-            Views.Caixas view = Application.OpenForms["Caixas"] as Views.Caixas;
-            if (view != null)
+            Views.Caixas viewCaixas = Application.OpenForms["Caixas"] as Views.Caixas;
+            Views.Vendas viewVendas = Application.OpenForms["Vendas"] as Views.Vendas;
+            Views.VendaCaixaPDV viewPDV = Application.OpenForms["VendaCaixaPDV"] as Views.VendaCaixaPDV;
+            if (viewCaixas != null)
             {
-                view.AtualizarGrid();
+                viewCaixas.AtualizarGrid();
+            }
+            if(viewPDV != null)
+            {
+                viewPDV.FecharPDV();
+            }
+            if(viewVendas != null)
+            {
+                viewVendas.AtualizarGrid();
             }
         }
         private void Salvar()
         {
-            caixa.SaldoFinal = Convert.ToDecimal(txtSaldoFinalSistema.Text.Replace("R$", ""));
-            caixa.ValorInformado = Convert.ToDecimal(txtSaldoFinal.Text.Replace("R$", ""));
-            caixa.QuebraCaixa = Convert.ToDecimal(txtQuebraCaixa.Text.Replace("R$", ""));
-            caixa.ObservacaoCaixa = txtObservacao.Text;
-            caixa.status = 1;
-            caixa.UsuarioFechamento = usuarioLogado.UsuarioAcesso;
-            caixa.DataHoraFechamento = DateTime.Now;
-
-            if (MessageBoxQuestionYesNo.Show($"Deseja salvar fechamento do caixa com valor informado {txtSaldoFinal.Text} é a quebra de caixa {txtQuebraCaixa.Text} ?") == DialogResult.Yes)
+            
+            try
             {
-                caixaController.FecharCaixa(caixa);
-                MessageBoxOK.Show("Fechado com sucesso!");
-                if (ValidacaoConexaoInternet.EstarConectado())
-                {
-                    Shared.CustomPrint.FechamentoCaixa.EnviarFechamentoCaixa(caixa,usuarioCaixa, emailenvio);
-                }
-                else
-                {
-                    Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
-                }
+                caixa.SaldoFinal = Convert.ToDecimal(txtSaldoFinalSistema.Text.Replace("R$", ""));
+                caixa.ValorInformado = Convert.ToDecimal(txtSaldoFinal.Text.Replace("R$", ""));
+                caixa.QuebraCaixa = Convert.ToDecimal(txtQuebraCaixa.Text.Replace("R$", ""));
+                caixa.ObservacaoCaixa = txtObservacao.Text;
+                caixa.status = 1;
+                caixa.UsuarioFechamento = usuarioLogado.UsuarioAcesso;
+                caixa.DataHoraFechamento = DateTime.Now;
 
-                AtualizarGrid();
+                if (MessageBoxQuestionYesNo.Show($"Deseja salvar fechamento do caixa com valor informado {txtSaldoFinal.Text} é a quebra de caixa {txtQuebraCaixa.Text} ?") == DialogResult.Yes)
+                {
+                    caixaController.FecharCaixa(caixa);
+                    MessageBoxOK.Show("Fechado com sucesso!");
+                    if (ValidacaoConexaoInternet.EstarConectado())
+                    {
+                        Shared.CustomPrint.FechamentoCaixa.EnviarFechamentoCaixa(caixa, usuarioCaixa, emailenvio);
+                    }
+                    else
+                    {
+                        Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
+                    }
 
-                Close();
+                    AtualizarGrid();
+
+                    Close();
+                }
             }
-            //try
-            //{
-                
-            //}
-            //catch (Exception error)
-            //{
-            //    MessageBoxError.Show(error.Message);
-            //}
+            catch (Exception error)
+            {
+                MessageBoxError.Show(error.Message);
+            }
 
         }
         private void FecharCaixa_KeyPress(object sender, KeyPressEventArgs e)
