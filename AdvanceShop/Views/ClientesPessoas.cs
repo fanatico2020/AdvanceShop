@@ -103,7 +103,7 @@ namespace AdvanceShop.Views
             clientePessoa.TipoPessoa = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[17]));
 
             Views.NovoClientePessoa FormEditarClientePessoa = new NovoClientePessoa(usuarioLogado,clientePessoa);
-            FormEditarClientePessoa.ShowDialog();
+            FormEditarClientePessoa.Show();
         }
         private void DeletarClientePessoa()
         {

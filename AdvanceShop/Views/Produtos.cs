@@ -86,7 +86,7 @@ namespace AdvanceShop.Views
             produto.ICMS_Situacao_Tributaria = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[23]).ToString();
 
             Views.NovoProduto FormEditarProduto = new NovoProduto(usuarioLogado, produto);
-            FormEditarProduto.ShowDialog();
+            FormEditarProduto.Show();
         }
         private void DeletarProduto()
         {

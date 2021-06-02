@@ -36,9 +36,11 @@ namespace AdvanceShop.Views
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
             edicao = true;
+            tsEmpresa.IsOn = Convert.ToBoolean(ClientePessoaEdicao.TipoPessoa);
+            MascaraCpfCnpj();
             clientePessoa.IdClientesPessoas = ClientePessoaEdicao.IdClientesPessoas;
             txtNome.Text = ClientePessoaEdicao.NomeClientePessoa;
-            txtCpfCnpj.Text = ClientePessoaEdicao.CPFCNPJ;
+            
             txtDataNascimento.DateTime = Convert.ToDateTime(ClientePessoaEdicao.DataNascimento);
             txtRGIE.Text = ClientePessoaEdicao.RGIE;
             txtContato1.Text = ClientePessoaEdicao.Contato1;
@@ -53,10 +55,18 @@ namespace AdvanceShop.Views
             txtComplemento.Text = ClientePessoaEdicao.Complemento;
             txtNumero.Text = ClientePessoaEdicao.NumeroCasa;
             txtUF.Text = ClientePessoaEdicao.UF;
-
-            tsEmpresa.IsOn = Convert.ToBoolean(ClientePessoaEdicao.TipoPessoa);
             tsStatus.IsOn = Convert.ToBoolean(ClientePessoaEdicao.StatusClientePessoa);
-
+            if (ClientePessoaEdicao.CPFCNPJ.Length == 14)
+            {
+                txtCpfCnpj.Properties.Mask.BeepOnError = true;
+                txtCpfCnpj.Properties.Mask.EditMask = "00.000.000/0000-00";
+            }
+            else if (ClientePessoaEdicao.CPFCNPJ.Length == 11)
+            {
+                txtCpfCnpj.Properties.Mask.BeepOnError = true;
+                txtCpfCnpj.Properties.Mask.EditMask = "000.000.000-00";
+            }
+            txtCpfCnpj.Text = ClientePessoaEdicao.CPFCNPJ;
         }
 
         private void cbxEmpresa_CheckedChanged(object sender, EventArgs e)
@@ -71,8 +81,7 @@ namespace AdvanceShop.Views
             txtNome.Focus();
 
         }
-
-        private void tsEmpresa_Toggled(object sender, EventArgs e)
+        private void MascaraCpfCnpj()
         {
             if (tsEmpresa.IsOn)
             {
@@ -95,6 +104,10 @@ namespace AdvanceShop.Views
                 this.txtCpfCnpj.Properties.Mask.EditMask = "000.000.000-00";
             }
         }
+        private void tsEmpresa_Toggled(object sender, EventArgs e)
+        {
+            MascaraCpfCnpj();
+        }
 
         private void NovoClientePessoa_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -103,56 +116,66 @@ namespace AdvanceShop.Views
 
         private void txtCpfCnpj_Leave(object sender, EventArgs e)
         {
-            var CpfCnpj = txtCpfCnpj.Text.Replace(".", "").Replace("-", "").Replace("/", "").Replace("_", "");
-            if (CpfCnpj != string.Empty)
+            clientePessoa.CPFCNPJ = txtCpfCnpj.Text.Replace(".", "").Replace("-", "").Replace("/", "").Replace("_", "");
+            if (!clientePessoaController.VerificarSer_CPF_CNPJ_JaCadastrado(clientePessoa))
             {
-                if (!ValidacaoCamposCustom.Validar_CPF_CNPJ(CpfCnpj))
+                var CpfCnpj = txtCpfCnpj.Text.Replace(".", "").Replace("-", "").Replace("/", "").Replace("_", "");
+                if (CpfCnpj != string.Empty)
                 {
-                    MessageBoxError.Show($"{lblCpfCnpj.Text} invalido!");
-                }
-                else
-                {
-                    try
+                    if (!ValidacaoCamposCustom.Validar_CPF_CNPJ(CpfCnpj))
                     {
-                        //Usando api da receitaws poucas consulta por dia e gratis
-                        if (CpfCnpj.Length == 14 &&
-                            MessageBoxQuestionYesNo.Show("Deseja buscar dados da Receita Federal?") == DialogResult.Yes)
+                        MessageBoxError.Show($"{lblCpfCnpj.Text} invalido!");
+                    }
+                    else
+                    {
+                        try
                         {
-                            var cnpj = txtCpfCnpj.Text.Replace(".", "").Replace("-", "").Replace("/", "");
-
-                            string endpoint = "https://www.receitaws.com.br/v1/cnpj/" + cnpj;
-                            string method = "GET";
-
-                            HttpWebRequest request = WebRequest.CreateHttp(endpoint);
-                            request.Method = method;
-
-                            using (StreamReader responseStream = new StreamReader(request.GetResponse().GetResponseStream()))
+                            //Usando api da receitaws poucas consulta por dia e gratis
+                            if (CpfCnpj.Length == 14 &&
+                                MessageBoxQuestionYesNo.Show("Deseja buscar dados da Receita Federal?") == DialogResult.Yes)
                             {
-                                string dadosRecuperados = responseStream.ReadToEnd();
-                                ReceitaWS receitaWS = JsonConvert.DeserializeObject<ReceitaWS>(dadosRecuperados);
-                                txtNome.Text = receitaWS.nome;
-                                txtCEP.Text = receitaWS.cep.Replace(".", "");
-                                txtEndereco.Text = receitaWS.logradouro;
-                                txtNumero.Text = receitaWS.numero;
-                                txtBairro.Text = receitaWS.bairro;
-                                txtCidade.Text = receitaWS.municipio.ToLower();
-                                txtUF.Text = receitaWS.uf;
-                                txtEmail.Text = receitaWS.email;
-                                txtContato1.Text = receitaWS.telefone.Replace("(", "").Replace(")", "").Replace("/", "").Substring(0, 12);
-                                txtComplemento.Text = receitaWS.complemento;
-                                txtDataNascimento.DateTime = Convert.ToDateTime(receitaWS.abertura);
+                                var cnpj = txtCpfCnpj.Text.Replace(".", "").Replace("-", "").Replace("/", "");
+
+                                string endpoint = "https://www.receitaws.com.br/v1/cnpj/" + cnpj;
+                                string method = "GET";
+
+                                HttpWebRequest request = WebRequest.CreateHttp(endpoint);
+                                request.Method = method;
+
+                                using (StreamReader responseStream = new StreamReader(request.GetResponse().GetResponseStream()))
+                                {
+                                    string dadosRecuperados = responseStream.ReadToEnd();
+                                    ReceitaWS receitaWS = JsonConvert.DeserializeObject<ReceitaWS>(dadosRecuperados);
+                                    txtNome.Text = receitaWS.nome;
+                                    txtCEP.Text = receitaWS.cep.Replace(".", "");
+                                    txtEndereco.Text = receitaWS.logradouro;
+                                    txtNumero.Text = receitaWS.numero;
+                                    txtBairro.Text = receitaWS.bairro;
+                                    txtCidade.Text = receitaWS.municipio.ToLower();
+                                    txtUF.Text = receitaWS.uf;
+                                    txtEmail.Text = receitaWS.email;
+                                    txtContato1.Text = receitaWS.telefone.Replace("(", "").Replace(")", "").Replace("/", "").Substring(0, 12);
+                                    txtComplemento.Text = receitaWS.complemento;
+                                    txtDataNascimento.DateTime = Convert.ToDateTime(receitaWS.abertura);
+
+                                }
 
                             }
-
                         }
+                        catch (Exception error)
+                        {
+                            MessageBoxError.Show(error.Message);
+                        }
+
                     }
-                    catch (Exception error)
-                    {
-                        MessageBoxError.Show(error.Message);
-                    }
-                    
                 }
             }
+            else
+            {
+                MessageBoxError.Show("Cliente/Pessoa já cadastrado(a)!");
+            }
+
+            
         }
         private void AtualizarGrid()
         {
@@ -253,5 +276,11 @@ namespace AdvanceShop.Views
             }
 
         }
+
+        private void txtContato1_Leave(object sender, EventArgs e)
+        {
+            
+        }
+        
     }
 }

@@ -16,11 +16,11 @@ namespace AdvanceShop.Models
         
         public string DescricaoProduto { get; set; }
         public string CodigoBarra { get; set; }
-        [Range(0.1, 1000000000000, ErrorMessage = "O campo Preço Custo é obrigatorio e deve ser maior que R$0,00!")]
+        [Range(0.01d, 1000000000000, ErrorMessage = "O campo Preço Custo é obrigatorio e deve ser maior que R$0,00!")]
         [Required(ErrorMessage = "O campo Preço Custo é obrigatorio!")]
         public decimal PrecoCusto { get; set; }
         public decimal MargemLucro { get; set; }
-        [Range(0.1, 1000000000000, ErrorMessage = "O campo Preço Venda é obrigatorio e deve ser maior que R$0,00!")]
+        [Range(0.01d, 1000000000000, ErrorMessage = "O campo Preço Venda é obrigatorio e deve ser maior que R$0,00!")]
         [Required(ErrorMessage = "O campo Preço Venda é obrigatorio!")]
         public decimal PrecoVenda { get; set; }
         public int CalcularAutomatico { get; set; }

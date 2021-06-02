@@ -237,7 +237,7 @@
             this.txtContato2.Name = "txtContato2";
             this.txtContato2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContato2.Properties.Appearance.Options.UseFont = true;
-            this.txtContato2.Properties.Mask.EditMask = "([1-9]{2}) 9[7-9]{1}[0-9]{3}-[0-9]{4}";
+            this.txtContato2.Properties.Mask.EditMask = "\\(\\d{2}\\)[0-9A-Z]{4}-[0-9A-Z]{4}";
             this.txtContato2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtContato2.Size = new System.Drawing.Size(161, 26);
             this.txtContato2.TabIndex = 5;
@@ -258,10 +258,11 @@
             this.txtContato1.Name = "txtContato1";
             this.txtContato1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContato1.Properties.Appearance.Options.UseFont = true;
-            this.txtContato1.Properties.Mask.EditMask = "([1-9]{2}) 9[7-9]{1}[0-9]{3}-[0-9]{4}";
+            this.txtContato1.Properties.Mask.EditMask = "\\(\\d{2}\\)[0-9A-Z]{4}-[0-9A-Z]{4}";
             this.txtContato1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtContato1.Size = new System.Drawing.Size(161, 26);
             this.txtContato1.TabIndex = 4;
+            this.txtContato1.Leave += new System.EventHandler(this.txtContato1_Leave);
             // 
             // lblContato1
             // 
@@ -532,7 +533,7 @@
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.panelControlEndereco);
             this.Controls.Add(this.panelControlNovoClientePessoa);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "NovoClientePessoa";

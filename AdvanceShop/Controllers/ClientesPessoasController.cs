@@ -97,6 +97,29 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@idclientespessoas", clientePessoa.IdClientesPessoas));
             comando.ExecuteNonQuery();
         }
+        public bool VerificarSer_CPF_CNPJ_JaCadastrado(ClientesPessoasModel ClientePessoa)
+        {
+            bool resultado;
+            ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText =
+                "select * from clientespessoas where cpf_cnpj = @cpf_cnpj;";
+            comando.CommandType = CommandType.Text;
+            comando.Parameters.Add(new MySqlParameter("@cpf_cnpj", ClientePessoa.CPFCNPJ));
+            
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            resultado = reader.HasRows;
+            if (resultado)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
         //Cupom não fiscal
         public ClientesPessoasModel ObterDadosDoClientePessoaPorID(ClientesPessoasModel ClientePessoa)
         {

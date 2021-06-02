@@ -142,7 +142,7 @@
             this.txtNumeroContato.Name = "txtNumeroContato";
             this.txtNumeroContato.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumeroContato.Properties.Appearance.Options.UseFont = true;
-            this.txtNumeroContato.Properties.Mask.EditMask = "([1-9]{2}) 9[7-9]{1}[0-9]{3}-[0-9]{4}";
+            this.txtNumeroContato.Properties.Mask.EditMask = "\\(\\d{2}\\)[0-9A-Z]{4}-[0-9A-Z]{4}";
             this.txtNumeroContato.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtNumeroContato.Size = new System.Drawing.Size(171, 26);
             this.txtNumeroContato.TabIndex = 7;
