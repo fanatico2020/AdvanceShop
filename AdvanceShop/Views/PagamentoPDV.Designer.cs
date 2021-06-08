@@ -36,6 +36,8 @@
             this.lblValorDesconto = new DevExpress.XtraEditors.LabelControl();
             this.lblDescontoF3 = new DevExpress.XtraEditors.LabelControl();
             this.panelControlFormasPagamento = new DevExpress.XtraEditors.PanelControl();
+            this.lblTransferenciaBancaria = new DevExpress.XtraEditors.LabelControl();
+            this.txtTransferenciaBancaria = new DevExpress.XtraEditors.TextEdit();
             this.lblLinkPagamento = new DevExpress.XtraEditors.LabelControl();
             this.lblCartaoDebito = new DevExpress.XtraEditors.LabelControl();
             this.lblCartaoCredito = new DevExpress.XtraEditors.LabelControl();
@@ -54,6 +56,7 @@
             this.panelControlDesconto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlFormasPagamento)).BeginInit();
             this.panelControlFormasPagamento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTransferenciaBancaria.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLinkPagamento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoDebito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoCredito.Properties)).BeginInit();
@@ -137,6 +140,8 @@
             // 
             // panelControlFormasPagamento
             // 
+            this.panelControlFormasPagamento.Controls.Add(this.lblTransferenciaBancaria);
+            this.panelControlFormasPagamento.Controls.Add(this.txtTransferenciaBancaria);
             this.panelControlFormasPagamento.Controls.Add(this.lblLinkPagamento);
             this.panelControlFormasPagamento.Controls.Add(this.lblCartaoDebito);
             this.panelControlFormasPagamento.Controls.Add(this.lblCartaoCredito);
@@ -149,8 +154,46 @@
             this.panelControlFormasPagamento.Controls.Add(this.txtDinheiro);
             this.panelControlFormasPagamento.Location = new System.Drawing.Point(12, 98);
             this.panelControlFormasPagamento.Name = "panelControlFormasPagamento";
-            this.panelControlFormasPagamento.Size = new System.Drawing.Size(516, 216);
+            this.panelControlFormasPagamento.Size = new System.Drawing.Size(516, 244);
             this.panelControlFormasPagamento.TabIndex = 2;
+            // 
+            // lblTransferenciaBancaria
+            // 
+            this.lblTransferenciaBancaria.Appearance.BackColor = System.Drawing.Color.White;
+            this.lblTransferenciaBancaria.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransferenciaBancaria.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.lblTransferenciaBancaria.Appearance.Options.UseBackColor = true;
+            this.lblTransferenciaBancaria.Appearance.Options.UseFont = true;
+            this.lblTransferenciaBancaria.Appearance.Options.UseForeColor = true;
+            this.lblTransferenciaBancaria.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblTransferenciaBancaria.AppearanceDisabled.Options.UseBackColor = true;
+            this.lblTransferenciaBancaria.Location = new System.Drawing.Point(53, 139);
+            this.lblTransferenciaBancaria.Name = "lblTransferenciaBancaria";
+            this.lblTransferenciaBancaria.Size = new System.Drawing.Size(188, 19);
+            this.lblTransferenciaBancaria.TabIndex = 6;
+            this.lblTransferenciaBancaria.Text = "Transferência Bancária";
+            // 
+            // txtTransferenciaBancaria
+            // 
+            this.txtTransferenciaBancaria.EditValue = "";
+            this.txtTransferenciaBancaria.Location = new System.Drawing.Point(5, 131);
+            this.txtTransferenciaBancaria.Name = "txtTransferenciaBancaria";
+            this.txtTransferenciaBancaria.Properties.AllowMouseWheel = false;
+            this.txtTransferenciaBancaria.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTransferenciaBancaria.Properties.Appearance.Options.UseFont = true;
+            this.txtTransferenciaBancaria.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtTransferenciaBancaria.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtTransferenciaBancaria.Properties.ContextImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("txtTransferenciaBancaria.Properties.ContextImageOptions.SvgImage")));
+            this.txtTransferenciaBancaria.Properties.DisplayFormat.FormatString = "c";
+            this.txtTransferenciaBancaria.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTransferenciaBancaria.Properties.Mask.EditMask = "c";
+            this.txtTransferenciaBancaria.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTransferenciaBancaria.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtTransferenciaBancaria.Properties.MaxLength = 12;
+            this.txtTransferenciaBancaria.Properties.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtCartaoDebito_Properties_Spin);
+            this.txtTransferenciaBancaria.Size = new System.Drawing.Size(506, 36);
+            this.txtTransferenciaBancaria.TabIndex = 4;
+            this.txtTransferenciaBancaria.EditValueChanged += new System.EventHandler(this.txtTransferenciaBancaria_EditValueChanged);
             // 
             // lblLinkPagamento
             // 
@@ -162,7 +205,7 @@
             this.lblLinkPagamento.Appearance.Options.UseForeColor = true;
             this.lblLinkPagamento.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.lblLinkPagamento.AppearanceDisabled.Options.UseBackColor = true;
-            this.lblLinkPagamento.Location = new System.Drawing.Point(53, 139);
+            this.lblLinkPagamento.Location = new System.Drawing.Point(53, 181);
             this.lblLinkPagamento.Name = "lblLinkPagamento";
             this.lblLinkPagamento.Size = new System.Drawing.Size(132, 19);
             this.lblLinkPagamento.TabIndex = 0;
@@ -224,7 +267,7 @@
             this.lblValorTroco.Appearance.Options.UseTextOptions = true;
             this.lblValorTroco.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.lblValorTroco.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblValorTroco.Location = new System.Drawing.Point(253, 181);
+            this.lblValorTroco.Location = new System.Drawing.Point(253, 215);
             this.lblValorTroco.Name = "lblValorTroco";
             this.lblValorTroco.Size = new System.Drawing.Size(254, 19);
             this.lblValorTroco.TabIndex = 0;
@@ -236,7 +279,7 @@
             this.lblTroco.Appearance.ForeColor = System.Drawing.Color.Green;
             this.lblTroco.Appearance.Options.UseFont = true;
             this.lblTroco.Appearance.Options.UseForeColor = true;
-            this.lblTroco.Location = new System.Drawing.Point(5, 181);
+            this.lblTroco.Location = new System.Drawing.Point(5, 215);
             this.lblTroco.Name = "lblTroco";
             this.lblTroco.Size = new System.Drawing.Size(46, 19);
             this.lblTroco.TabIndex = 0;
@@ -245,7 +288,7 @@
             // txtLinkPagamento
             // 
             this.txtLinkPagamento.EditValue = "";
-            this.txtLinkPagamento.Location = new System.Drawing.Point(5, 131);
+            this.txtLinkPagamento.Location = new System.Drawing.Point(5, 173);
             this.txtLinkPagamento.Name = "txtLinkPagamento";
             this.txtLinkPagamento.Properties.AllowMouseWheel = false;
             this.txtLinkPagamento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -261,7 +304,7 @@
             this.txtLinkPagamento.Properties.MaxLength = 12;
             this.txtLinkPagamento.Properties.Spin += new DevExpress.XtraEditors.Controls.SpinEventHandler(this.txtLinkPagamento_Properties_Spin);
             this.txtLinkPagamento.Size = new System.Drawing.Size(506, 36);
-            this.txtLinkPagamento.TabIndex = 4;
+            this.txtLinkPagamento.TabIndex = 5;
             this.txtLinkPagamento.EditValueChanged += new System.EventHandler(this.txtLinkPagamento_EditValueChanged);
             this.txtLinkPagamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLinkPagamento_KeyPress);
             // 
@@ -337,16 +380,16 @@
             // btnSalvar
             // 
             this.btnSalvar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.ImageOptions.Image")));
-            this.btnSalvar.Location = new System.Drawing.Point(430, 336);
+            this.btnSalvar.Location = new System.Drawing.Point(430, 350);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(98, 41);
-            this.btnSalvar.TabIndex = 5;
+            this.btnSalvar.TabIndex = 6;
             this.btnSalvar.Text = "Salvar (F2)";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // cbxImprimirNFCe
             // 
-            this.cbxImprimirNFCe.Location = new System.Drawing.Point(12, 343);
+            this.cbxImprimirNFCe.Location = new System.Drawing.Point(12, 357);
             this.cbxImprimirNFCe.Name = "cbxImprimirNFCe";
             this.cbxImprimirNFCe.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxImprimirNFCe.Properties.Appearance.Options.UseFont = true;
@@ -358,7 +401,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 393);
+            this.ClientSize = new System.Drawing.Size(540, 403);
             this.Controls.Add(this.cbxImprimirNFCe);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.panelControlFormasPagamento);
@@ -382,6 +425,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControlFormasPagamento)).EndInit();
             this.panelControlFormasPagamento.ResumeLayout(false);
             this.panelControlFormasPagamento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTransferenciaBancaria.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLinkPagamento.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoDebito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoCredito.Properties)).EndInit();
@@ -412,5 +456,7 @@
         private DevExpress.XtraEditors.LabelControl lblLinkPagamento;
         private DevExpress.XtraEditors.LabelControl lblCartaoDebito;
         private DevExpress.XtraEditors.LabelControl lblCartaoCredito;
+        private DevExpress.XtraEditors.LabelControl lblTransferenciaBancaria;
+        private DevExpress.XtraEditors.TextEdit txtTransferenciaBancaria;
     }
 }

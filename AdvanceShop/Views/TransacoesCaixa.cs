@@ -114,20 +114,22 @@ namespace AdvanceShop.Views
         private void SomarTotalSaldoCaixa()
         {
             //Entradas
-            decimal saldoinicial, saldovendasemdinheiro, saldovendasemcartaocredito, saldovendascartaodebito, saldosuplemento,saldoentradas,saldovendaslinkpagamento;
+            decimal saldoinicial, saldovendasemdinheiro, saldovendasemcartaocredito, saldovendascartaodebito,saldotransferenciabancaria, saldosuplemento,saldoentradas,saldovendaslinkpagamento;
 
             saldoinicial = formaPagamentoController.SomarTotalDinheiroAberturaCaixa(transacaoCaixa);
             saldovendasemdinheiro = formaPagamentoController.SomarTotalDinheiroCaixa(transacaoCaixa);
             saldovendasemcartaocredito = formaPagamentoController.SomarTotalCartaoCreditoCaixa(transacaoCaixa);
             saldovendascartaodebito = formaPagamentoController.SomarTotalCartaoDebitoCaixa(transacaoCaixa);
+            saldotransferenciabancaria = formaPagamentoController.SomarTotalTransferenciaBancariaCaixa(transacaoCaixa);
             saldosuplemento = formaPagamentoController.SomarTotalDinheiroSuplementoCaixa(transacaoCaixa);
             saldovendaslinkpagamento = formaPagamentoController.SomarTotalLinkPagamentoCaixa(transacaoCaixa);
-            saldoentradas = saldoinicial + saldovendasemdinheiro + saldovendasemcartaocredito + saldovendascartaodebito + saldosuplemento + saldovendaslinkpagamento;
+            saldoentradas = saldoinicial + saldovendasemdinheiro + saldovendasemcartaocredito + saldovendascartaodebito + saldotransferenciabancaria + saldosuplemento + saldovendaslinkpagamento;
 
             txtSaldoInicial.Text = Convert.ToString(saldoinicial);
             txtDinheiro.Text = Convert.ToString(saldovendasemdinheiro);
             txtCartaoCredito.Text = Convert.ToString(saldovendasemcartaocredito);
             txtCartaoDebito.Text = Convert.ToString(saldovendascartaodebito);
+            txtTransferenciaBancaria.Text = Convert.ToString(saldotransferenciabancaria);
             txtLinkPagamento.Text = Convert.ToString(saldovendaslinkpagamento);
             txtTotalSuplemento.Text = Convert.ToString(saldosuplemento);
             txtSaldoEntradas.Text = Convert.ToString(saldoentradas);

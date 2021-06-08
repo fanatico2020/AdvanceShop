@@ -119,6 +119,21 @@ namespace AdvanceShop.Controllers
             reader.Read();
             return reader.GetDecimal(0);
         }
+        public decimal SomarTotalTransferenciaBancariaCaixa(TransacoesCaixaModel transacaoCaixa)
+        {
+
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText =
+                "select ifnull(sum(formaspagamento.valor),0) from formaspagamento left join transacoescaixa " +
+                "on formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa " +
+                "where transacoescaixa.tipo = 1 and transacoescaixa.caixas_idcaixas = @caixas_idcaixas and formaspagamento.descricao = 'TRANSFERÊNCIA BANCÁRIA' and transacoescaixa.deletado = 0;";
+            comando.CommandType = CommandType.Text;
+            comando.Parameters.Add(new MySqlParameter("@caixas_idcaixas", transacaoCaixa.caixas_idcaixas));
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            reader.Read();
+            return reader.GetDecimal(0);
+        }
         public decimal SomarTotalLinkPagamentoCaixa(TransacoesCaixaModel transacaoCaixa)
         {
 

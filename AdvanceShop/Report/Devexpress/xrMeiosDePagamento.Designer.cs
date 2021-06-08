@@ -73,6 +73,9 @@ namespace AdvanceShop.Report.Devexpress
             this.PeriodoFinal = new DevExpress.XtraReports.Parameters.Parameter();
             this.Emissao = new DevExpress.XtraReports.Parameters.Parameter();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.xrTableRow6 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrtTiposPagamentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -107,8 +110,9 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableRow1,
             this.xrTableRow2,
             this.xrTableRow3,
-            this.xrTableRow4});
-            this.xrtTiposPagamentos.SizeF = new System.Drawing.SizeF(627F, 125F);
+            this.xrTableRow4,
+            this.xrTableRow6});
+            this.xrtTiposPagamentos.SizeF = new System.Drawing.SizeF(627F, 150F);
             this.xrtTiposPagamentos.StylePriority.UseBorders = false;
             // 
             // xrTableRow5
@@ -234,13 +238,13 @@ namespace AdvanceShop.Report.Devexpress
             // 
             this.xrTableCell7.Multiline = true;
             this.xrTableCell7.Name = "xrTableCell7";
-            this.xrTableCell7.Text = "Link Pagamento";
+            this.xrTableCell7.Text = "Transferência Bancária";
             this.xrTableCell7.Weight = 6.270000305175782D;
             // 
             // xrTableCell10
             // 
             this.xrTableCell10.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[@totallinkpagamento]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[@totaltransferenciabancaria]")});
             this.xrTableCell10.Multiline = true;
             this.xrTableCell10.Name = "xrTableCell10";
             this.xrTableCell10.StylePriority.UseTextAlignment = false;
@@ -462,6 +466,33 @@ namespace AdvanceShop.Report.Devexpress
             storedProcQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
+            // xrTableRow6
+            // 
+            this.xrTableRow6.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell11,
+            this.xrTableCell12});
+            this.xrTableRow6.Name = "xrTableRow6";
+            this.xrTableRow6.Weight = 1D;
+            // 
+            // xrTableCell11
+            // 
+            this.xrTableCell11.Multiline = true;
+            this.xrTableCell11.Name = "xrTableCell11";
+            this.xrTableCell11.Text = "Link Pagamento";
+            this.xrTableCell11.Weight = 6.270000305175782D;
+            // 
+            // xrTableCell12
+            // 
+            this.xrTableCell12.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[@totallinkpagamento]")});
+            this.xrTableCell12.Multiline = true;
+            this.xrTableCell12.Name = "xrTableCell12";
+            this.xrTableCell12.StylePriority.UseTextAlignment = false;
+            this.xrTableCell12.Text = "xrTableCell12";
+            this.xrTableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell12.TextFormatString = "{0:c}";
+            this.xrTableCell12.Weight = 6.270000305175782D;
+            // 
             // xrMeiosDePagamento
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -530,5 +561,8 @@ namespace AdvanceShop.Report.Devexpress
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell10;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+        private DevExpress.XtraReports.UI.XRTableRow xrTableRow6;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell11;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell12;
     }
 }

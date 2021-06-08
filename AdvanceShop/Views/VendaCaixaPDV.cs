@@ -255,7 +255,7 @@ namespace AdvanceShop.Views
         {
             FinalizarVenda();
         }
-        private void AtualizarProdutos()
+        public void AtualizarProdutos()
         {
             cbxProcurarProduto.Properties.DataSource = produtoController.ObterTodosProdutos_PDV();
             cbxProcurarProduto.Properties.DisplayMember = "descricaoproduto";
@@ -482,6 +482,15 @@ namespace AdvanceShop.Views
         private void txtQtd_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void cbxProcurarProduto_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
+            {
+                Views.Produtos FormProdutos = new Produtos(usuarioLogado);
+                FormProdutos.ShowDialog();
+            }
         }
     }
 }

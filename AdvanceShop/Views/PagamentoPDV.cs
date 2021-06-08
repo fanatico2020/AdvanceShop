@@ -53,7 +53,7 @@ namespace AdvanceShop.Views
         List<ItensVendasModel> itensVenda = new List<ItensVendasModel>();
         List<FormasPagamentoModel> formasPagamento = new List<FormasPagamentoModel>();
         List<Item> GerenciaNetItem = new List<Item>();
-        decimal Dinheiro, CartaoDeCredito, CartaoDeDebito, LinkPagamento, ValorRestante, ValorAPagar, Troco;
+        decimal Dinheiro, CartaoDeCredito, CartaoDeDebito,TransferenciaBancaria, LinkPagamento, ValorRestante, ValorAPagar, Troco;
         bool editarformaspagamento = false;
         string VendaOuEditarFormaPagamento = "", URL_LinkPagamento = "";
         public PagamentoPDV(VendasModel Venda,ClientesPessoasModel ClientePessoa,TransacoesCaixaModel TransacaoCaixa,List<ItensVendasModel> ItensVenda,CaixasModel Caixa,UsuariosModel UsuarioLogado)//Nova Venda
@@ -223,6 +223,7 @@ namespace AdvanceShop.Views
                     decimal.Parse(txtDinheiro.Text.Replace("R$","")),
                     decimal.Parse(txtCartaoCredito.Text.Replace("R$","")),
                     decimal.Parse(txtCartaoDebito.Text.Replace("R$","")),
+                    decimal.Parse(txtTransferenciaBancaria.Text.Replace("R$","")),
                     decimal.Parse(txtLinkPagamento.Text.Replace("R$",""))
                 };
                     if(Convert.ToDecimal(Troco) > 0.00m)venda.Troco = Troco;
@@ -285,18 +286,35 @@ namespace AdvanceShop.Views
                                 }
                                 break;
                             case 3:
-                                if(ValoresPagamento[3] > 0 && ValoresPagamento[0] == 0 && ValoresPagamento[1] == 0 && ValoresPagamento[2] == 0)
+                                if (ValoresPagamento[3] > 0)
+                                {
+                                    focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
+                                    {
+                                        forma_pagamento = "1",
+                                        valor_pagamento = ValoresPagamento[3].ToString().Replace(",", "."),
+                                        tipo_integracao = "2"
+
+                                    });
+                                    formasPagamento.Add(new FormasPagamentoModel()
+                                    {
+                                        Descricao = "TRANSFERÊNCIA BANCÁRIA",
+                                        Valor = ValoresPagamento[3]
+                                    });
+                                }
+                                break;
+                            case 4:
+                                if(ValoresPagamento[4] > 0 && ValoresPagamento[0] == 0 && ValoresPagamento[1] == 0 && ValoresPagamento[2] == 0 && ValoresPagamento[3] == 0)
                                 {
                                     focusFormasPagamentoNfe.Add(new FormasPagamento()//FocusNfe
                                     {
                                         forma_pagamento = "5",
-                                        valor_pagamento = ValoresPagamento[3].ToString().Replace(",","."),
+                                        valor_pagamento = ValoresPagamento[4].ToString().Replace(",","."),
                                         tipo_integracao = "2"
                                     });
                                     formasPagamento.Add(new FormasPagamentoModel()
                                     {
                                         Descricao = "LINK PAGAMENTO",
-                                        Valor = ValoresPagamento[3]
+                                        Valor = ValoresPagamento[4]
                                     });
                                     gerenciaNet = apiGerenciaNetController.CriarTransacaoLinkPagamento(apiGerenciaNet, GerenciaNetItem, venda.IdVendas.ToString(), $"CAIXA {caixa.IdCaixas} - Vendedor {usuarioLogado.UsuarioAcesso}");
                                     URL_LinkPagamento = gerenciaNet.data.payment_url;
@@ -448,12 +466,14 @@ namespace AdvanceShop.Views
             Dinheiro = Convert.ToDecimal(txtDinheiro.Text.Replace("R$", ""));
             CartaoDeCredito = Convert.ToDecimal(txtCartaoCredito.Text.Replace("R$", ""));
             CartaoDeDebito = Convert.ToDecimal(txtCartaoDebito.Text.Replace("R$", ""));
+            TransferenciaBancaria = Convert.ToDecimal(txtTransferenciaBancaria.Text.Replace("R$", ""));
             LinkPagamento = Convert.ToDecimal(txtLinkPagamento.Text.Replace("R$", ""));
+            
             ValorRestante = 0;
             ValorAPagar = venda.TotalFinal;
             Troco = 0;
 
-            ValorRestante = ValorAPagar - Dinheiro - CartaoDeCredito - CartaoDeDebito - LinkPagamento;
+            ValorRestante = ValorAPagar - Dinheiro - CartaoDeCredito - CartaoDeDebito - TransferenciaBancaria - LinkPagamento;
 
             if (ValorRestante <= 0)
             {
@@ -511,6 +531,11 @@ namespace AdvanceShop.Views
         private void txtCartaoDebito_Properties_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void txtTransferenciaBancaria_EditValueChanged(object sender, EventArgs e)
+        {
+            CalcularValorTroco();
         }
 
         private void txtLinkPagamento_Properties_Spin(object sender, DevExpress.XtraEditors.Controls.SpinEventArgs e)

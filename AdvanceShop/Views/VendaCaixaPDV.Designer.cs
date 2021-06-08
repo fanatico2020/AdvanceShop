@@ -64,6 +64,7 @@
             this.separatorControl3 = new DevExpress.XtraEditors.SeparatorControl();
             this.lblQtd = new DevExpress.XtraEditors.LabelControl();
             this.panelQtdValores = new DevExpress.XtraEditors.PanelControl();
+            this.lblDemaisComandos = new DevExpress.XtraEditors.LabelControl();
             this.lblSubtotal = new DevExpress.XtraEditors.LabelControl();
             this.lblDesconto = new DevExpress.XtraEditors.LabelControl();
             this.lblQtditensValorTotal = new DevExpress.XtraEditors.LabelControl();
@@ -81,7 +82,6 @@
             this.gridColumnIcms_origem = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnIcms_situacao_tributaria = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumnUndMedida = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.lblDemaisComandos = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelTarefas)).BeginInit();
             this.panelTarefas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.separatorControl7)).BeginInit();
@@ -264,13 +264,15 @@
             this.cbxProcurarProduto.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxProcurarProduto.Properties.Appearance.Options.UseFont = true;
             this.cbxProcurarProduto.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton()});
             this.cbxProcurarProduto.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.cbxProcurarProduto.Properties.CloseUpKey = new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F1);
             this.cbxProcurarProduto.Properties.NullText = "Código,Nome ou use o leitor de código de barras";
             this.cbxProcurarProduto.Properties.PopupView = this.cbxPesquisarProduto;
             this.cbxProcurarProduto.Size = new System.Drawing.Size(593, 26);
             this.cbxProcurarProduto.TabIndex = 1;
+            this.cbxProcurarProduto.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.cbxProcurarProduto_ButtonClick);
             this.cbxProcurarProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbxProcurarProduto_KeyDown);
             this.cbxProcurarProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbxProcurarProduto_KeyPress);
             // 
@@ -600,6 +602,16 @@
             this.panelQtdValores.Size = new System.Drawing.Size(1234, 99);
             this.panelQtdValores.TabIndex = 3;
             // 
+            // lblDemaisComandos
+            // 
+            this.lblDemaisComandos.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDemaisComandos.Appearance.Options.UseFont = true;
+            this.lblDemaisComandos.Location = new System.Drawing.Point(5, 72);
+            this.lblDemaisComandos.Name = "lblDemaisComandos";
+            this.lblDemaisComandos.Size = new System.Drawing.Size(495, 19);
+            this.lblDemaisComandos.TabIndex = 16;
+            this.lblDemaisComandos.Text = "Remover item da venda (F6) - Cancelar venda (F7) - Fechar caixa (F8)";
+            // 
             // lblSubtotal
             // 
             this.lblSubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -867,16 +879,6 @@
             this.gridColumnUndMedida.Caption = "unidademedida";
             this.gridColumnUndMedida.FieldName = "unidademedida";
             this.gridColumnUndMedida.Name = "gridColumnUndMedida";
-            // 
-            // lblDemaisComandos
-            // 
-            this.lblDemaisComandos.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDemaisComandos.Appearance.Options.UseFont = true;
-            this.lblDemaisComandos.Location = new System.Drawing.Point(5, 72);
-            this.lblDemaisComandos.Name = "lblDemaisComandos";
-            this.lblDemaisComandos.Size = new System.Drawing.Size(495, 19);
-            this.lblDemaisComandos.TabIndex = 16;
-            this.lblDemaisComandos.Text = "Remover item da venda (F6) - Cancelar venda (F7) - Fechar caixa (F8)";
             // 
             // VendaCaixaPDV
             // 

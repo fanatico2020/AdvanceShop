@@ -28,6 +28,14 @@ formaspagamento.descricao = 'CARTÃO DÉBITO' and transacoescaixa.deletado = 0 a
 and datahora.datahoracadastro between 
 cast(DataInicial as datetime) and cast(DataFinal as datetime));
 
+set @totaltransferenciabancaria =
+(select ifnull(sum(formaspagamento.valor),0) from formaspagamento left join transacoescaixa on 
+formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa inner join 
+datahora on datahora.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa where 
+formaspagamento.descricao = 'TRANSFERÊNCIA BANCÁRIA' and transacoescaixa.deletado = 0 and transacoescaixa.tipo = 1 
+and datahora.datahoracadastro between 
+cast(DataInicial as datetime) and cast(DataFinal as datetime));
+
 set @totallinkpagamento = 
 (select ifnull(sum(formaspagamento.valor),0) from formaspagamento left join transacoescaixa on 
 formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa inner join 
@@ -36,7 +44,7 @@ formaspagamento.descricao = 'LINK PAGAMENTO' and transacoescaixa.deletado = 0 an
 and datahora.datahoracadastro between 
 cast(DataInicial as datetime) and cast(DataFinal as datetime));
 
-select @totaldinheiro,@totalcartaocredito,@totalcartaodebito,@totallinkpagamento;
+select @totaldinheiro,@totalcartaocredito,@totalcartaodebito,@totaltransferenciabancaria,@totallinkpagamento;
 END;
 DELIMITER;
 

@@ -178,5 +178,14 @@ namespace AdvanceShop.Views
         {
             ConfirmacaoForm.Fechar(e, this);
         }
+
+        private void Produtos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            VendaCaixaPDV view = Application.OpenForms["VendaCaixaPDV"] as VendaCaixaPDV;
+            if (view != null)
+            {
+                view.AtualizarProdutos();
+            }
+        }
     }
 }

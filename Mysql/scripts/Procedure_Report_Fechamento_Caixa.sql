@@ -37,6 +37,13 @@ set @entradacartaodebito =
 on formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa 
 where transacoescaixa.tipo = 1 and formaspagamento.descricao = 'CARTÃO DÉBITO' and transacoescaixa.deletado = 0 and transacoescaixa.caixas_idcaixas = id_caixa);
 
+-- entrada transferencia bancária
+set @entradatransferenciabancaria = 
+(select ifnull(sum(formaspagamento.valor),0) from formaspagamento left join transacoescaixa 
+on formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa 
+where transacoescaixa.tipo = 1 and formaspagamento.descricao = 'TRANSFERÊNCIA BANCÁRIA' and transacoescaixa.deletado = 0 and transacoescaixa.caixas_idcaixas = id_caixa);
+
+
 -- entrada link pagamento
 set @entradalinkpagamento = 
 (select ifnull(sum(formaspagamento.valor),0) from formaspagamento left join transacoescaixa 
@@ -93,7 +100,7 @@ set @usuariofechamento =
 set @observacaocaixa = 
 (select observacaocaixa from caixas where idcaixas = id_caixa);
 
-select @saldoinicial,@entradadinheiro,@entradasuplemento,@entradacartaocredito,@entradacartaodebito,@entradalinkpagamento,@saidatroco,@saidasangria,@saidadevolucoes,@saldofinal,@valorinformado,@quebracaixa,@datahoraterminocaixa,@datahorainiciocaixa,@usuariocaixa,@usuariofechamento,@observacaocaixa;
+select @saldoinicial,@entradadinheiro,@entradasuplemento,@entradacartaocredito,@entradacartaodebito,@entradatransferenciabancaria,@entradalinkpagamento,@saidatroco,@saidasangria,@saidadevolucoes,@saldofinal,@valorinformado,@quebracaixa,@datahoraterminocaixa,@datahorainiciocaixa,@usuariocaixa,@usuariofechamento,@observacaocaixa;
 
 END;
 DELIMITER;
