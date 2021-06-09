@@ -87,7 +87,7 @@ namespace AdvanceShop.Views
 
         private void bbiContasApagar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Views.ContasAPagar FormContasAPagar = new ContasAPagar(usuarioLogado);
+            Views.ContasAPagarPagas FormContasAPagar = new ContasAPagarPagas(usuarioLogado);
             FormContasAPagar.Show();
         }
 
@@ -197,14 +197,20 @@ namespace AdvanceShop.Views
 
         private void bbiRelMeioDePagamento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            RelParPeriodo FormPeriodoRelatorio = new RelParPeriodo("Informe o período de pagamentos", "RelatorioMeiosDePagamento");
-            FormPeriodoRelatorio.ShowDialog();
+            RelParPeriodo FormParametros = new RelParPeriodo("Informe o período de pagamentos", "RelatorioMeiosDePagamento");
+            FormParametros.ShowDialog();
         }
 
         private void bbiRelProdutosMaisVendidos_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            RelParPeriodo FormPeriodoRelatorio = new RelParPeriodo("Informe o período de vendas", "RelatorioProdutosMaisVendidos");
-            FormPeriodoRelatorio.ShowDialog();
+            RelParPeriodo FormParametros = new RelParPeriodo("Informe o período de vendas", "RelatorioProdutosMaisVendidos");
+            FormParametros.ShowDialog();
+        }
+
+        private void bbiRelComissaoPorVendedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RelParPeriodoComissaoPorVendedor FormParametros = new RelParPeriodoComissaoPorVendedor("Informe o período de vendas/vendedor/% Comissão", "RelatorioComissaoPorVendedor");
+            FormParametros.ShowDialog();
         }
     }
 }

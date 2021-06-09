@@ -65,7 +65,7 @@ namespace AdvanceShop.Views
             }
             else
             {
-                MessageBoxOK.Show("Usuário de acesso ou senha de acesso incorreto!");
+                MessageBoxError.Show("Usuário de acesso ou senha de acesso incorreto!");
             }
         }
 

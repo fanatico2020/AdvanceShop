@@ -19,6 +19,8 @@ namespace AdvanceShop.Views
         UsuariosModel usuarioLogado = new UsuariosModel();
         ContasAPagarModel contaAPagar = new ContasAPagarModel();
         ContasAPagarController contaAPagarController = new ContasAPagarController();
+        TransacoesCaixaModel transacoescaixa = new TransacoesCaixaModel();
+        TransacoesCaixaController transacoescaixaController = new TransacoesCaixaController();
         //ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
         ClientesPessoasController clientePessoaController = new ClientesPessoasController();
 
@@ -44,7 +46,7 @@ namespace AdvanceShop.Views
         }
         private void AtualizarGrid()
         {
-            Views.ContasAPagar view = Application.OpenForms["ContasAPagar"] as Views.ContasAPagar;
+            Views.ContasAPagarPagas view = Application.OpenForms["ContasAPagar"] as Views.ContasAPagarPagas;
             if (view != null)
             {
                 view.AtualizarGrid();

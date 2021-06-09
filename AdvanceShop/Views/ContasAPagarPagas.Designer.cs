@@ -1,6 +1,6 @@
 ﻿namespace AdvanceShop.Views
 {
-    partial class ContasAPagar
+    partial class ContasAPagarPagas
     {
         /// <summary>
         /// Required designer variable.
@@ -36,13 +36,12 @@
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon3 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContasAPagar));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ContasAPagarPagas));
             this.bandedGridColumnDataVencimento = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumnStatus = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.advBandedGridViewContasAPagar = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCodigo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumnStatus = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnReferentea = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnValor = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnCategoria = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -69,6 +68,7 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewContasAPagar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -91,6 +91,22 @@
             this.bandedGridColumnDataVencimento.Name = "bandedGridColumnDataVencimento";
             this.bandedGridColumnDataVencimento.Visible = true;
             this.bandedGridColumnDataVencimento.Width = 96;
+            // 
+            // bandedGridColumnStatus
+            // 
+            this.bandedGridColumnStatus.AppearanceCell.Options.UseTextOptions = true;
+            this.bandedGridColumnStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnStatus.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.bandedGridColumnStatus.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.bandedGridColumnStatus.AppearanceHeader.Options.UseForeColor = true;
+            this.bandedGridColumnStatus.AppearanceHeader.Options.UseTextOptions = true;
+            this.bandedGridColumnStatus.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.bandedGridColumnStatus.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.bandedGridColumnStatus.Caption = "Status";
+            this.bandedGridColumnStatus.FieldName = "status";
+            this.bandedGridColumnStatus.Name = "bandedGridColumnStatus";
+            this.bandedGridColumnStatus.Visible = true;
+            this.bandedGridColumnStatus.Width = 85;
             // 
             // gridControl
             // 
@@ -184,27 +200,6 @@
             this.advBandedGridViewContasAPagar.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.advBandedGridViewContasAPagar_CustomColumnDisplayText);
             this.advBandedGridViewContasAPagar.DoubleClick += new System.EventHandler(this.advBandedGridViewContasAPagar_DoubleClick);
             // 
-            // gridBand1
-            // 
-            this.gridBand1.Columns.Add(this.bandedGridColumnCodigo);
-            this.gridBand1.Columns.Add(this.bandedGridColumnStatus);
-            this.gridBand1.Columns.Add(this.bandedGridColumnReferentea);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDataVencimento);
-            this.gridBand1.Columns.Add(this.bandedGridColumnValor);
-            this.gridBand1.Columns.Add(this.bandedGridColumnCategoria);
-            this.gridBand1.Columns.Add(this.bandedGridColumnFornecedor);
-            this.gridBand1.Columns.Add(this.bandedGridColumnValorPago);
-            this.gridBand1.Columns.Add(this.bandedGridColumnPagoEm);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDocumento);
-            this.gridBand1.Columns.Add(this.bandedGridColumnObservacao);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraCad);
-            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioCad);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraEdi);
-            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioEdi);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 1999;
-            // 
             // bandedGridColumnCodigo
             // 
             this.bandedGridColumnCodigo.AppearanceCell.Options.UseTextOptions = true;
@@ -220,22 +215,6 @@
             this.bandedGridColumnCodigo.Name = "bandedGridColumnCodigo";
             this.bandedGridColumnCodigo.Visible = true;
             this.bandedGridColumnCodigo.Width = 69;
-            // 
-            // bandedGridColumnStatus
-            // 
-            this.bandedGridColumnStatus.AppearanceCell.Options.UseTextOptions = true;
-            this.bandedGridColumnStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumnStatus.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.bandedGridColumnStatus.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.bandedGridColumnStatus.AppearanceHeader.Options.UseForeColor = true;
-            this.bandedGridColumnStatus.AppearanceHeader.Options.UseTextOptions = true;
-            this.bandedGridColumnStatus.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.bandedGridColumnStatus.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.bandedGridColumnStatus.Caption = "Status";
-            this.bandedGridColumnStatus.FieldName = "status";
-            this.bandedGridColumnStatus.Name = "bandedGridColumnStatus";
-            this.bandedGridColumnStatus.Visible = true;
-            this.bandedGridColumnStatus.Width = 85;
             // 
             // bandedGridColumnReferentea
             // 
@@ -549,7 +528,7 @@
             this.ribbonPageGroup2});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Contas a Pagar";
+            this.ribbonPage1.Text = "Contas a Pagar/Pagas";
             // 
             // ribbonPageGroup1
             // 
@@ -578,7 +557,33 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(809, 24);
             // 
-            // ContasAPagar
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand1.Caption = "Contas A Pagar / Contas Pagas";
+            this.gridBand1.Columns.Add(this.bandedGridColumnCodigo);
+            this.gridBand1.Columns.Add(this.bandedGridColumnStatus);
+            this.gridBand1.Columns.Add(this.bandedGridColumnReferentea);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDataVencimento);
+            this.gridBand1.Columns.Add(this.bandedGridColumnValor);
+            this.gridBand1.Columns.Add(this.bandedGridColumnCategoria);
+            this.gridBand1.Columns.Add(this.bandedGridColumnFornecedor);
+            this.gridBand1.Columns.Add(this.bandedGridColumnValorPago);
+            this.gridBand1.Columns.Add(this.bandedGridColumnPagoEm);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDocumento);
+            this.gridBand1.Columns.Add(this.bandedGridColumnObservacao);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraCad);
+            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioCad);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraEdi);
+            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioEdi);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 1999;
+            // 
+            // ContasAPagarPagas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -587,10 +592,10 @@
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonControl);
             this.KeyPreview = true;
-            this.Name = "ContasAPagar";
+            this.Name = "ContasAPagarPagas";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
-            this.Text = "Contas a Pagar";
+            this.Text = "Contas a Pagar/Pagas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ContasAPagar_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContasAPagar_KeyPress);
@@ -631,10 +636,10 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnCategoria;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnFornecedor;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumncategoriascontasapagar_idcategoriascontasapagar;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnDataHoraCad;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnUsuarioCad;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnDataHoraEdi;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnUsuarioEdi;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
     }
 }

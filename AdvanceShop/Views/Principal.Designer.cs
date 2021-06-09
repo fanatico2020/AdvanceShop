@@ -83,6 +83,7 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
+            this.bbiRelComissaoPorVendedor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenuPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -135,10 +136,11 @@
             this.bbiRelFechmanetoCaixa,
             this.bbiAtualizacaoSoftware,
             this.barStaticItem1,
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.bbiRelComissaoPorVendedor});
             this.ribbonControlPrincipal.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlPrincipal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControlPrincipal.MaxItemId = 61;
+            this.ribbonControlPrincipal.MaxItemId = 62;
             this.ribbonControlPrincipal.Name = "ribbonControlPrincipal";
             this.ribbonControlPrincipal.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPagePrincipal,
@@ -225,7 +227,7 @@
             // 
             // bbiContasApagar
             // 
-            this.bbiContasApagar.Caption = "Contas a Pagar";
+            this.bbiContasApagar.Caption = "Contas a Pagar/Pagas";
             this.bbiContasApagar.Id = 4;
             this.bbiContasApagar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiContasApagar.ImageOptions.Image")));
             this.bbiContasApagar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiContasApagar.ImageOptions.LargeImage")));
@@ -563,6 +565,7 @@
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelProdutosMaisVendidos);
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelVendasPorVendedor);
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelFechmanetoCaixa);
+            this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelComissaoPorVendedor);
             this.ribbonPageGroupRelatorios.Name = "ribbonPageGroupRelatorios";
             // 
             // ribbonPage1
@@ -632,6 +635,18 @@
             this.barHeaderItem1.Caption = "|";
             this.barHeaderItem1.Id = 32;
             this.barHeaderItem1.Name = "barHeaderItem1";
+            // 
+            // bbiRelComissaoPorVendedor
+            // 
+            this.bbiRelComissaoPorVendedor.Caption = "Comissão Por Vendedor";
+            this.bbiRelComissaoPorVendedor.Id = 61;
+            this.bbiRelComissaoPorVendedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelComissaoPorVendedor.ImageOptions.LargeImage")));
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiRelComissaoPorVendedor.Name = "bbiRelComissaoPorVendedor";
+            this.bbiRelComissaoPorVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelComissaoPorVendedor_ItemClick);
             // 
             // Principal
             // 
@@ -715,5 +730,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiAtualizacaoSoftware;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem bbiRelComissaoPorVendedor;
     }
 }

@@ -318,7 +318,7 @@
             this.ClientSize = new System.Drawing.Size(669, 359);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.panelControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "PagamentoContaAPagar";

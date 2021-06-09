@@ -50,7 +50,7 @@ namespace AdvanceShop.Views
         }
         private void AtualizarGrid()
         {
-            Views.ContasAPagar view = Application.OpenForms["ContasAPagar"] as Views.ContasAPagar;
+            Views.ContasAPagarPagas view = Application.OpenForms["ContasAPagar"] as Views.ContasAPagarPagas;
             if (view != null)
             {
                 view.AtualizarGrid();

@@ -18,13 +18,13 @@ using AdvanceShop.Shared.Validation;
 
 namespace AdvanceShop.Views
 {
-    public partial class ContasAPagar : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class ContasAPagarPagas : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
         ContasAPagarModel contaAPagar = new ContasAPagarModel();
         ContasAPagarController contaAPagarController = new ContasAPagarController();
         ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
-        public ContasAPagar(UsuariosModel UsuarioLogado)
+        public ContasAPagarPagas(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
