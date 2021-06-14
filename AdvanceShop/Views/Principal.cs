@@ -69,7 +69,7 @@ namespace AdvanceShop.Views
 
         private void bbiClientesPessoas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Views.ClientesPessoas FormClientesPessoas = new ClientesPessoas(usuarioLogado);
+            Views.ClientesFornecedores FormClientesPessoas = new ClientesFornecedores(usuarioLogado);
             FormClientesPessoas.Show();
         }
 

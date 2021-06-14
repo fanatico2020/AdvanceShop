@@ -114,34 +114,37 @@ namespace AdvanceShop.Views
         private void SomarTotalSaldoCaixa()
         {
             //Entradas
-            decimal saldoinicial, saldovendasemdinheiro, saldovendasemcartaocredito, saldovendascartaodebito,saldotransferenciabancaria, saldosuplemento,saldoentradas,saldovendaslinkpagamento;
+            decimal saldoinicial, saldovendasemdinheiro, saldovendasemcartaocredito, saldovendascartaodebito,saldotransferenciabancaria,saldocontaspagas, saldosuplemento,saldoentradas,saldovendaslinkpagamento;
 
             saldoinicial = formaPagamentoController.SomarTotalDinheiroAberturaCaixa(transacaoCaixa);
             saldovendasemdinheiro = formaPagamentoController.SomarTotalDinheiroCaixa(transacaoCaixa);
             saldovendasemcartaocredito = formaPagamentoController.SomarTotalCartaoCreditoCaixa(transacaoCaixa);
             saldovendascartaodebito = formaPagamentoController.SomarTotalCartaoDebitoCaixa(transacaoCaixa);
             saldotransferenciabancaria = formaPagamentoController.SomarTotalTransferenciaBancariaCaixa(transacaoCaixa);
+            
             saldosuplemento = formaPagamentoController.SomarTotalDinheiroSuplementoCaixa(transacaoCaixa);
             saldovendaslinkpagamento = formaPagamentoController.SomarTotalLinkPagamentoCaixa(transacaoCaixa);
-            saldoentradas = saldoinicial + saldovendasemdinheiro + saldovendasemcartaocredito + saldovendascartaodebito + saldotransferenciabancaria + saldosuplemento + saldovendaslinkpagamento;
+            saldoentradas = saldoinicial + saldovendasemdinheiro + saldovendasemcartaocredito + saldovendascartaodebito + saldotransferenciabancaria  + saldosuplemento + saldovendaslinkpagamento;
 
             txtSaldoInicial.Text = Convert.ToString(saldoinicial);
             txtDinheiro.Text = Convert.ToString(saldovendasemdinheiro);
             txtCartaoCredito.Text = Convert.ToString(saldovendasemcartaocredito);
             txtCartaoDebito.Text = Convert.ToString(saldovendascartaodebito);
             txtTransferenciaBancaria.Text = Convert.ToString(saldotransferenciabancaria);
+            
             txtLinkPagamento.Text = Convert.ToString(saldovendaslinkpagamento);
             txtTotalSuplemento.Text = Convert.ToString(saldosuplemento);
             txtSaldoEntradas.Text = Convert.ToString(saldoentradas);
 
             //Saidas
             decimal saldosangria,saldosaidas,saldotroco;
-
+            saldocontaspagas = formaPagamentoController.SomarTotalContasPagasCaixa(transacaoCaixa);
             saldosangria = formaPagamentoController.SomarTotalDinheiroSangriaCaixa(transacaoCaixa);
             saldotroco = formaPagamentoController.SomarTotalDinheiroTrocoCaixa(transacaoCaixa);
 
-            saldosaidas = saldosangria + saldotroco;
+            saldosaidas = saldosangria + saldotroco + saldocontaspagas;
             txtTotalTroco.Text = Convert.ToString(saldotroco);
+            txtContasPagas.Text = Convert.ToString(saldocontaspagas);
             txtTotalSangria.Text = Convert.ToString(saldosangria);
             txtSaldoSaidas.Text = Convert.ToString(saldosaidas);
 

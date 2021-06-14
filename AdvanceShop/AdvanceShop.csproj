@@ -591,11 +591,11 @@
     <Compile Include="Views\NovaContaAPagar.Designer.cs">
       <DependentUpon>NovaContaAPagar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\NovoClientePessoa.cs">
+    <Compile Include="Views\NovoClienteFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\NovoClientePessoa.Designer.cs">
-      <DependentUpon>NovoClientePessoa.cs</DependentUpon>
+    <Compile Include="Views\NovoClienteFornecedor.Designer.cs">
+      <DependentUpon>NovoClienteFornecedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\NovoProduto.cs">
       <SubType>Form</SubType>
@@ -677,11 +677,11 @@
     <Compile Include="Views\Vendas.Designer.cs">
       <DependentUpon>Vendas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ClientesPessoas.cs">
+    <Compile Include="Views\ClientesFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ClientesPessoas.Designer.cs">
-      <DependentUpon>ClientesPessoas.cs</DependentUpon>
+    <Compile Include="Views\ClientesFornecedores.Designer.cs">
+      <DependentUpon>ClientesFornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Produtos.cs">
       <SubType>Form</SubType>
@@ -773,8 +773,8 @@
     <EmbeddedResource Include="Views\Caixas.resx">
       <DependentUpon>Caixas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ClientesPessoas.resx">
-      <DependentUpon>ClientesPessoas.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ClientesFornecedores.resx">
+      <DependentUpon>ClientesFornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ConferenciaInventario.resx">
       <DependentUpon>ConferenciaInventario.cs</DependentUpon>
@@ -812,8 +812,8 @@
     <EmbeddedResource Include="Views\NovaContaAPagar.resx">
       <DependentUpon>NovaContaAPagar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\NovoClientePessoa.resx">
-      <DependentUpon>NovoClientePessoa.cs</DependentUpon>
+    <EmbeddedResource Include="Views\NovoClienteFornecedor.resx">
+      <DependentUpon>NovoClienteFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\NovoProduto.resx">
       <DependentUpon>NovoProduto.cs</DependentUpon>

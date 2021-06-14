@@ -1,6 +1,6 @@
 ﻿namespace AdvanceShop.Views
 {
-    partial class NovoClientePessoa
+    partial class NovoClienteFornecedor
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NovoClientePessoa));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NovoClienteFornecedor));
             this.panelControlNovoClientePessoa = new DevExpress.XtraEditors.PanelControl();
             this.tsEmpresa = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsStatus = new DevExpress.XtraEditors.ToggleSwitch();
@@ -525,7 +525,7 @@
             this.btnSalvar.Text = "Salvar (F2)";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // NovoClientePessoa
+            // NovoClienteFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -536,9 +536,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.Name = "NovoClientePessoa";
+            this.Name = "NovoClienteFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Novo Cliente / Pessoa";
+            this.Text = "Novo Cliente / Fornecedor";
             this.Load += new System.EventHandler(this.NovoClientePessoa_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NovoClientePessoa_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NovoClientePessoa_KeyPress);

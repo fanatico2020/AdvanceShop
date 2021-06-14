@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransacoesCaixa));
             this.gridViewFormasPagamento = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnCodigoFormaPagamento = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,9 +71,11 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.txtSaldoCaixa = new DevExpress.XtraEditors.TextEdit();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.lblContasPagas = new DevExpress.XtraEditors.LabelControl();
+            this.txtContasPagas = new DevExpress.XtraEditors.TextEdit();
             this.txtTotalTroco = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblDinheiroTroco = new DevExpress.XtraEditors.LabelControl();
+            this.lblDevolucoes = new DevExpress.XtraEditors.LabelControl();
             this.txtTotalSangria = new DevExpress.XtraEditors.TextEdit();
             this.txtSaldoSaidas = new DevExpress.XtraEditors.TextEdit();
             this.lblSaldoSaidas = new DevExpress.XtraEditors.LabelControl();
@@ -82,6 +84,8 @@
             this.lblSaldoCaixa = new DevExpress.XtraEditors.LabelControl();
             this.txtSaldoInicial = new DevExpress.XtraEditors.TextEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.lblTransferenciaBancaria = new DevExpress.XtraEditors.LabelControl();
+            this.txtTransferenciaBancaria = new DevExpress.XtraEditors.TextEdit();
             this.lblSaldoEntradas = new DevExpress.XtraEditors.LabelControl();
             this.txtSaldoEntradas = new DevExpress.XtraEditors.TextEdit();
             this.txtTotalSuplemento = new DevExpress.XtraEditors.TextEdit();
@@ -96,8 +100,6 @@
             this.lblCartaoDebito = new DevExpress.XtraEditors.LabelControl();
             this.lblSaldoInicial = new DevExpress.XtraEditors.LabelControl();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::AdvanceShop.Views.WaitForm1), true, true);
-            this.txtTransferenciaBancaria = new DevExpress.XtraEditors.TextEdit();
-            this.lblTransferenciaBancaria = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFormasPagamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewTransacoesCaixa)).BeginInit();
@@ -107,6 +109,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoCaixa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContasPagas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalTroco.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalSangria.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoSaidas.Properties)).BeginInit();
@@ -114,13 +117,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoInicial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTransferenciaBancaria.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoEntradas.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalSuplemento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLinkPagamento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoDebito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoCredito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDinheiro.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTransferenciaBancaria.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // gridViewFormasPagamento
@@ -205,15 +208,15 @@
             this.gridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode2.LevelTemplate = this.gridViewFormasPagamento;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.LevelTemplate = this.gridViewFormasPagamento;
+            gridLevelNode1.RelationName = "Level1";
             this.gridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.gridControl.Location = new System.Drawing.Point(0, 170);
             this.gridControl.MainView = this.advBandedGridViewTransacoesCaixa;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(476, 528);
+            this.gridControl.Size = new System.Drawing.Size(476, 542);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridViewTransacoesCaixa,
@@ -588,7 +591,7 @@
             // 
             // bbiAdicionarDinheiro
             // 
-            this.bbiAdicionarDinheiro.Caption = "Adicionar Dinheiro";
+            this.bbiAdicionarDinheiro.Caption = "Adicionar Dinheiro/Suplemento";
             this.bbiAdicionarDinheiro.Id = 21;
             this.bbiAdicionarDinheiro.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiAdicionarDinheiro.ImageOptions.Image")));
             this.bbiAdicionarDinheiro.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdicionarDinheiro.ImageOptions.LargeImage")));
@@ -601,7 +604,7 @@
             // 
             // bbiRetirarDinheiro
             // 
-            this.bbiRetirarDinheiro.Caption = "Retirar Dinheiro";
+            this.bbiRetirarDinheiro.Caption = "Retirar Dinheiro/Sangria";
             this.bbiRetirarDinheiro.Id = 22;
             this.bbiRetirarDinheiro.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiRetirarDinheiro.ImageOptions.SvgImage")));
             this.bbiRetirarDinheiro.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -671,7 +674,7 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 704);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 718);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(876, 24);
@@ -688,13 +691,13 @@
             this.panelControl1.Controls.Add(this.lblSaldoInicial);
             this.panelControl1.Location = new System.Drawing.Point(482, 170);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(394, 528);
+            this.panelControl1.Size = new System.Drawing.Size(394, 530);
             this.panelControl1.TabIndex = 4;
             // 
             // txtSaldoCaixa
             // 
             this.txtSaldoCaixa.EditValue = "0";
-            this.txtSaldoCaixa.Location = new System.Drawing.Point(173, 497);
+            this.txtSaldoCaixa.Location = new System.Drawing.Point(173, 490);
             this.txtSaldoCaixa.MenuManager = this.ribbonControl;
             this.txtSaldoCaixa.Name = "txtSaldoCaixa";
             this.txtSaldoCaixa.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -707,28 +710,58 @@
             this.txtSaldoCaixa.Properties.ReadOnly = true;
             this.txtSaldoCaixa.Properties.UseReadOnlyAppearance = false;
             this.txtSaldoCaixa.Size = new System.Drawing.Size(204, 26);
-            this.txtSaldoCaixa.TabIndex = 19;
+            this.txtSaldoCaixa.TabIndex = 20;
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.lblContasPagas);
+            this.groupControl2.Controls.Add(this.txtContasPagas);
             this.groupControl2.Controls.Add(this.txtTotalTroco);
-            this.groupControl2.Controls.Add(this.labelControl2);
-            this.groupControl2.Controls.Add(this.labelControl1);
+            this.groupControl2.Controls.Add(this.lblDinheiroTroco);
+            this.groupControl2.Controls.Add(this.lblDevolucoes);
             this.groupControl2.Controls.Add(this.txtTotalSangria);
             this.groupControl2.Controls.Add(this.txtSaldoSaidas);
             this.groupControl2.Controls.Add(this.lblSaldoSaidas);
             this.groupControl2.Controls.Add(this.txtDevolucoes);
             this.groupControl2.Controls.Add(this.lblTotalSangria);
-            this.groupControl2.Location = new System.Drawing.Point(19, 315);
+            this.groupControl2.Location = new System.Drawing.Point(19, 298);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(363, 176);
+            this.groupControl2.Size = new System.Drawing.Size(363, 186);
             this.groupControl2.TabIndex = 11;
             this.groupControl2.Text = "Saídas ( - )";
+            // 
+            // lblContasPagas
+            // 
+            this.lblContasPagas.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContasPagas.Appearance.Options.UseFont = true;
+            this.lblContasPagas.Location = new System.Drawing.Point(5, 61);
+            this.lblContasPagas.Name = "lblContasPagas";
+            this.lblContasPagas.Size = new System.Drawing.Size(94, 19);
+            this.lblContasPagas.TabIndex = 20;
+            this.lblContasPagas.Text = "Contas Pagas";
+            // 
+            // txtContasPagas
+            // 
+            this.txtContasPagas.EditValue = "0";
+            this.txtContasPagas.Location = new System.Drawing.Point(154, 58);
+            this.txtContasPagas.MenuManager = this.ribbonControl;
+            this.txtContasPagas.Name = "txtContasPagas";
+            this.txtContasPagas.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContasPagas.Properties.Appearance.Options.UseFont = true;
+            this.txtContasPagas.Properties.DisplayFormat.FormatString = "c";
+            this.txtContasPagas.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtContasPagas.Properties.Mask.EditMask = "c";
+            this.txtContasPagas.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtContasPagas.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtContasPagas.Properties.ReadOnly = true;
+            this.txtContasPagas.Properties.UseReadOnlyAppearance = false;
+            this.txtContasPagas.Size = new System.Drawing.Size(204, 26);
+            this.txtContasPagas.TabIndex = 16;
             // 
             // txtTotalTroco
             // 
             this.txtTotalTroco.EditValue = "0";
-            this.txtTotalTroco.Location = new System.Drawing.Point(154, 32);
+            this.txtTotalTroco.Location = new System.Drawing.Point(154, 26);
             this.txtTotalTroco.MenuManager = this.ribbonControl;
             this.txtTotalTroco.Name = "txtTotalTroco";
             this.txtTotalTroco.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -743,30 +776,30 @@
             this.txtTotalTroco.Size = new System.Drawing.Size(204, 26);
             this.txtTotalTroco.TabIndex = 15;
             // 
-            // labelControl2
+            // lblDinheiroTroco
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(5, 35);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(118, 19);
-            this.labelControl2.TabIndex = 18;
-            this.labelControl2.Text = "Dinheiro (Troco)";
+            this.lblDinheiroTroco.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDinheiroTroco.Appearance.Options.UseFont = true;
+            this.lblDinheiroTroco.Location = new System.Drawing.Point(5, 29);
+            this.lblDinheiroTroco.Name = "lblDinheiroTroco";
+            this.lblDinheiroTroco.Size = new System.Drawing.Size(118, 19);
+            this.lblDinheiroTroco.TabIndex = 18;
+            this.lblDinheiroTroco.Text = "Dinheiro (Troco)";
             // 
-            // labelControl1
+            // lblDevolucoes
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(5, 67);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(80, 19);
-            this.labelControl1.TabIndex = 17;
-            this.labelControl1.Text = "Devoluções";
+            this.lblDevolucoes.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDevolucoes.Appearance.Options.UseFont = true;
+            this.lblDevolucoes.Location = new System.Drawing.Point(5, 93);
+            this.lblDevolucoes.Name = "lblDevolucoes";
+            this.lblDevolucoes.Size = new System.Drawing.Size(80, 19);
+            this.lblDevolucoes.TabIndex = 17;
+            this.lblDevolucoes.Text = "Devoluções";
             // 
             // txtTotalSangria
             // 
             this.txtTotalSangria.EditValue = "0";
-            this.txtTotalSangria.Location = new System.Drawing.Point(154, 96);
+            this.txtTotalSangria.Location = new System.Drawing.Point(154, 122);
             this.txtTotalSangria.MenuManager = this.ribbonControl;
             this.txtTotalSangria.Name = "txtTotalSangria";
             this.txtTotalSangria.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -779,12 +812,12 @@
             this.txtTotalSangria.Properties.ReadOnly = true;
             this.txtTotalSangria.Properties.UseReadOnlyAppearance = false;
             this.txtTotalSangria.Size = new System.Drawing.Size(204, 26);
-            this.txtTotalSangria.TabIndex = 17;
+            this.txtTotalSangria.TabIndex = 18;
             // 
             // txtSaldoSaidas
             // 
             this.txtSaldoSaidas.EditValue = "0";
-            this.txtSaldoSaidas.Location = new System.Drawing.Point(154, 128);
+            this.txtSaldoSaidas.Location = new System.Drawing.Point(154, 154);
             this.txtSaldoSaidas.MenuManager = this.ribbonControl;
             this.txtSaldoSaidas.Name = "txtSaldoSaidas";
             this.txtSaldoSaidas.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -797,7 +830,7 @@
             this.txtSaldoSaidas.Properties.ReadOnly = true;
             this.txtSaldoSaidas.Properties.UseReadOnlyAppearance = false;
             this.txtSaldoSaidas.Size = new System.Drawing.Size(204, 26);
-            this.txtSaldoSaidas.TabIndex = 18;
+            this.txtSaldoSaidas.TabIndex = 19;
             // 
             // lblSaldoSaidas
             // 
@@ -805,7 +838,7 @@
             this.lblSaldoSaidas.Appearance.ForeColor = System.Drawing.Color.Red;
             this.lblSaldoSaidas.Appearance.Options.UseFont = true;
             this.lblSaldoSaidas.Appearance.Options.UseForeColor = true;
-            this.lblSaldoSaidas.Location = new System.Drawing.Point(5, 131);
+            this.lblSaldoSaidas.Location = new System.Drawing.Point(5, 157);
             this.lblSaldoSaidas.Name = "lblSaldoSaidas";
             this.lblSaldoSaidas.Size = new System.Drawing.Size(45, 19);
             this.lblSaldoSaidas.TabIndex = 14;
@@ -814,7 +847,7 @@
             // txtDevolucoes
             // 
             this.txtDevolucoes.EditValue = "0";
-            this.txtDevolucoes.Location = new System.Drawing.Point(154, 64);
+            this.txtDevolucoes.Location = new System.Drawing.Point(154, 90);
             this.txtDevolucoes.MenuManager = this.ribbonControl;
             this.txtDevolucoes.Name = "txtDevolucoes";
             this.txtDevolucoes.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -827,13 +860,13 @@
             this.txtDevolucoes.Properties.ReadOnly = true;
             this.txtDevolucoes.Properties.UseReadOnlyAppearance = false;
             this.txtDevolucoes.Size = new System.Drawing.Size(204, 26);
-            this.txtDevolucoes.TabIndex = 16;
+            this.txtDevolucoes.TabIndex = 17;
             // 
             // lblTotalSangria
             // 
             this.lblTotalSangria.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalSangria.Appearance.Options.UseFont = true;
-            this.lblTotalSangria.Location = new System.Drawing.Point(5, 99);
+            this.lblTotalSangria.Location = new System.Drawing.Point(5, 125);
             this.lblTotalSangria.Name = "lblTotalSangria";
             this.lblTotalSangria.Size = new System.Drawing.Size(94, 19);
             this.lblTotalSangria.TabIndex = 3;
@@ -845,7 +878,7 @@
             this.lblSaldoCaixa.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.lblSaldoCaixa.Appearance.Options.UseFont = true;
             this.lblSaldoCaixa.Appearance.Options.UseForeColor = true;
-            this.lblSaldoCaixa.Location = new System.Drawing.Point(24, 500);
+            this.lblSaldoCaixa.Location = new System.Drawing.Point(24, 493);
             this.lblSaldoCaixa.Name = "lblSaldoCaixa";
             this.lblSaldoCaixa.Size = new System.Drawing.Size(126, 19);
             this.lblSaldoCaixa.TabIndex = 5;
@@ -887,9 +920,37 @@
             this.groupControl1.Controls.Add(this.lblCartaoDebito);
             this.groupControl1.Location = new System.Drawing.Point(19, 41);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(363, 268);
+            this.groupControl1.Size = new System.Drawing.Size(363, 251);
             this.groupControl1.TabIndex = 10;
             this.groupControl1.Text = "Entradas ( + )";
+            // 
+            // lblTransferenciaBancaria
+            // 
+            this.lblTransferenciaBancaria.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransferenciaBancaria.Appearance.Options.UseFont = true;
+            this.lblTransferenciaBancaria.Location = new System.Drawing.Point(5, 125);
+            this.lblTransferenciaBancaria.Name = "lblTransferenciaBancaria";
+            this.lblTransferenciaBancaria.Size = new System.Drawing.Size(109, 19);
+            this.lblTransferenciaBancaria.TabIndex = 15;
+            this.lblTransferenciaBancaria.Text = "Trans. Bancária";
+            // 
+            // txtTransferenciaBancaria
+            // 
+            this.txtTransferenciaBancaria.EditValue = "0";
+            this.txtTransferenciaBancaria.Location = new System.Drawing.Point(154, 122);
+            this.txtTransferenciaBancaria.MenuManager = this.ribbonControl;
+            this.txtTransferenciaBancaria.Name = "txtTransferenciaBancaria";
+            this.txtTransferenciaBancaria.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTransferenciaBancaria.Properties.Appearance.Options.UseFont = true;
+            this.txtTransferenciaBancaria.Properties.DisplayFormat.FormatString = "c";
+            this.txtTransferenciaBancaria.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txtTransferenciaBancaria.Properties.Mask.EditMask = "c";
+            this.txtTransferenciaBancaria.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTransferenciaBancaria.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtTransferenciaBancaria.Properties.ReadOnly = true;
+            this.txtTransferenciaBancaria.Properties.UseReadOnlyAppearance = false;
+            this.txtTransferenciaBancaria.Size = new System.Drawing.Size(204, 26);
+            this.txtTransferenciaBancaria.TabIndex = 11;
             // 
             // lblSaldoEntradas
             // 
@@ -897,7 +958,7 @@
             this.lblSaldoEntradas.Appearance.ForeColor = System.Drawing.Color.DodgerBlue;
             this.lblSaldoEntradas.Appearance.Options.UseFont = true;
             this.lblSaldoEntradas.Appearance.Options.UseForeColor = true;
-            this.lblSaldoEntradas.Location = new System.Drawing.Point(5, 229);
+            this.lblSaldoEntradas.Location = new System.Drawing.Point(5, 221);
             this.lblSaldoEntradas.Name = "lblSaldoEntradas";
             this.lblSaldoEntradas.Size = new System.Drawing.Size(45, 19);
             this.lblSaldoEntradas.TabIndex = 1;
@@ -906,7 +967,7 @@
             // txtSaldoEntradas
             // 
             this.txtSaldoEntradas.EditValue = "0";
-            this.txtSaldoEntradas.Location = new System.Drawing.Point(154, 226);
+            this.txtSaldoEntradas.Location = new System.Drawing.Point(154, 218);
             this.txtSaldoEntradas.MenuManager = this.ribbonControl;
             this.txtSaldoEntradas.Name = "txtSaldoEntradas";
             this.txtSaldoEntradas.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -924,7 +985,7 @@
             // txtTotalSuplemento
             // 
             this.txtTotalSuplemento.EditValue = "0";
-            this.txtTotalSuplemento.Location = new System.Drawing.Point(154, 194);
+            this.txtTotalSuplemento.Location = new System.Drawing.Point(154, 186);
             this.txtTotalSuplemento.MenuManager = this.ribbonControl;
             this.txtTotalSuplemento.Name = "txtTotalSuplemento";
             this.txtTotalSuplemento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -942,7 +1003,7 @@
             // txtLinkPagamento
             // 
             this.txtLinkPagamento.EditValue = "0";
-            this.txtLinkPagamento.Location = new System.Drawing.Point(154, 162);
+            this.txtLinkPagamento.Location = new System.Drawing.Point(154, 154);
             this.txtLinkPagamento.MenuManager = this.ribbonControl;
             this.txtLinkPagamento.Name = "txtLinkPagamento";
             this.txtLinkPagamento.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -960,7 +1021,7 @@
             // txtCartaoDebito
             // 
             this.txtCartaoDebito.EditValue = "0";
-            this.txtCartaoDebito.Location = new System.Drawing.Point(154, 97);
+            this.txtCartaoDebito.Location = new System.Drawing.Point(154, 90);
             this.txtCartaoDebito.MenuManager = this.ribbonControl;
             this.txtCartaoDebito.Name = "txtCartaoDebito";
             this.txtCartaoDebito.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -978,7 +1039,7 @@
             // txtCartaoCredito
             // 
             this.txtCartaoCredito.EditValue = "0";
-            this.txtCartaoCredito.Location = new System.Drawing.Point(154, 65);
+            this.txtCartaoCredito.Location = new System.Drawing.Point(154, 58);
             this.txtCartaoCredito.MenuManager = this.ribbonControl;
             this.txtCartaoCredito.Name = "txtCartaoCredito";
             this.txtCartaoCredito.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -997,7 +1058,7 @@
             // 
             this.lblLinkPagamento.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLinkPagamento.Appearance.Options.UseFont = true;
-            this.lblLinkPagamento.Location = new System.Drawing.Point(5, 165);
+            this.lblLinkPagamento.Location = new System.Drawing.Point(5, 157);
             this.lblLinkPagamento.Name = "lblLinkPagamento";
             this.lblLinkPagamento.Size = new System.Drawing.Size(113, 19);
             this.lblLinkPagamento.TabIndex = 9;
@@ -1007,7 +1068,7 @@
             // 
             this.lblTotalSuplemento.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalSuplemento.Appearance.Options.UseFont = true;
-            this.lblTotalSuplemento.Location = new System.Drawing.Point(5, 197);
+            this.lblTotalSuplemento.Location = new System.Drawing.Point(5, 189);
             this.lblTotalSuplemento.Name = "lblTotalSuplemento";
             this.lblTotalSuplemento.Size = new System.Drawing.Size(125, 19);
             this.lblTotalSuplemento.TabIndex = 2;
@@ -1017,7 +1078,7 @@
             // 
             this.lblDinheiro.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDinheiro.Appearance.Options.UseFont = true;
-            this.lblDinheiro.Location = new System.Drawing.Point(5, 36);
+            this.lblDinheiro.Location = new System.Drawing.Point(5, 29);
             this.lblDinheiro.Name = "lblDinheiro";
             this.lblDinheiro.Size = new System.Drawing.Size(60, 19);
             this.lblDinheiro.TabIndex = 6;
@@ -1026,7 +1087,7 @@
             // txtDinheiro
             // 
             this.txtDinheiro.EditValue = "0";
-            this.txtDinheiro.Location = new System.Drawing.Point(154, 33);
+            this.txtDinheiro.Location = new System.Drawing.Point(154, 26);
             this.txtDinheiro.MenuManager = this.ribbonControl;
             this.txtDinheiro.Name = "txtDinheiro";
             this.txtDinheiro.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1045,7 +1106,7 @@
             // 
             this.lblCartaoCredito.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCartaoCredito.Appearance.Options.UseFont = true;
-            this.lblCartaoCredito.Location = new System.Drawing.Point(5, 68);
+            this.lblCartaoCredito.Location = new System.Drawing.Point(5, 61);
             this.lblCartaoCredito.Name = "lblCartaoCredito";
             this.lblCartaoCredito.Size = new System.Drawing.Size(102, 19);
             this.lblCartaoCredito.TabIndex = 7;
@@ -1055,7 +1116,7 @@
             // 
             this.lblCartaoDebito.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCartaoDebito.Appearance.Options.UseFont = true;
-            this.lblCartaoDebito.Location = new System.Drawing.Point(5, 100);
+            this.lblCartaoDebito.Location = new System.Drawing.Point(3, 93);
             this.lblCartaoDebito.Name = "lblCartaoDebito";
             this.lblCartaoDebito.Size = new System.Drawing.Size(97, 19);
             this.lblCartaoDebito.TabIndex = 8;
@@ -1075,39 +1136,11 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // txtTransferenciaBancaria
-            // 
-            this.txtTransferenciaBancaria.EditValue = "0";
-            this.txtTransferenciaBancaria.Location = new System.Drawing.Point(154, 130);
-            this.txtTransferenciaBancaria.MenuManager = this.ribbonControl;
-            this.txtTransferenciaBancaria.Name = "txtTransferenciaBancaria";
-            this.txtTransferenciaBancaria.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTransferenciaBancaria.Properties.Appearance.Options.UseFont = true;
-            this.txtTransferenciaBancaria.Properties.DisplayFormat.FormatString = "c";
-            this.txtTransferenciaBancaria.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.txtTransferenciaBancaria.Properties.Mask.EditMask = "c";
-            this.txtTransferenciaBancaria.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtTransferenciaBancaria.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.txtTransferenciaBancaria.Properties.ReadOnly = true;
-            this.txtTransferenciaBancaria.Properties.UseReadOnlyAppearance = false;
-            this.txtTransferenciaBancaria.Size = new System.Drawing.Size(204, 26);
-            this.txtTransferenciaBancaria.TabIndex = 11;
-            // 
-            // lblTransferenciaBancaria
-            // 
-            this.lblTransferenciaBancaria.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransferenciaBancaria.Appearance.Options.UseFont = true;
-            this.lblTransferenciaBancaria.Location = new System.Drawing.Point(5, 133);
-            this.lblTransferenciaBancaria.Name = "lblTransferenciaBancaria";
-            this.lblTransferenciaBancaria.Size = new System.Drawing.Size(109, 19);
-            this.lblTransferenciaBancaria.TabIndex = 15;
-            this.lblTransferenciaBancaria.Text = "Trans. Bancária";
-            // 
             // TransacoesCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 728);
+            this.ClientSize = new System.Drawing.Size(876, 742);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.gridControl);
@@ -1131,6 +1164,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContasPagas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalTroco.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalSangria.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoSaidas.Properties)).EndInit();
@@ -1139,13 +1173,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTransferenciaBancaria.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSaldoEntradas.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTotalSuplemento.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLinkPagamento.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoDebito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCartaoCredito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtDinheiro.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTransferenciaBancaria.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1191,7 +1225,7 @@
         private DevExpress.XtraBars.BarButtonItem bbiFecharCaixa;
         private DevExpress.XtraBars.BarButtonItem bbiAdicionarDinheiro;
         private DevExpress.XtraBars.BarButtonItem bbiRetirarDinheiro;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lblDevolucoes;
         private DevExpress.XtraEditors.TextEdit txtTotalSangria;
         private DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView advBandedGridViewTransacoesCaixa;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumnCodigo;
@@ -1218,8 +1252,10 @@
         private DevExpress.XtraBars.BarButtonItem bbiLinkPagamento;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private DevExpress.XtraEditors.TextEdit txtTotalTroco;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl lblDinheiroTroco;
         private DevExpress.XtraEditors.LabelControl lblTransferenciaBancaria;
         private DevExpress.XtraEditors.TextEdit txtTransferenciaBancaria;
+        private DevExpress.XtraEditors.LabelControl lblContasPagas;
+        private DevExpress.XtraEditors.TextEdit txtContasPagas;
     }
 }

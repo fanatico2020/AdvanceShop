@@ -377,7 +377,7 @@ namespace AdvanceShop.Views
         {
             if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
             {
-                Views.ClientesPessoas FormClientesPessoas = new ClientesPessoas(usuarioLogado);
+                Views.ClientesFornecedores FormClientesPessoas = new ClientesFornecedores(usuarioLogado);
                 FormClientesPessoas.ShowDialog();
             }
         }

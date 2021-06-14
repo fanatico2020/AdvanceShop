@@ -1,6 +1,6 @@
 ﻿namespace AdvanceShop.Views
 {
-    partial class ClientesPessoas
+    partial class ClientesFornecedores
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
             DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesPessoas));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientesFornecedores));
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             this.gridColumnTipoPessoa = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
@@ -63,7 +63,7 @@
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiVisualizarImprimir = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
-            this.bbiNovoClientePessoa = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiNovoClienteFornecedor = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEditar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDeletar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAtualizar = new DevExpress.XtraBars.BarButtonItem();
@@ -537,7 +537,7 @@
             this.ribbonControl.SearchEditItem,
             this.bbiVisualizarImprimir,
             this.bsiRecordsCount,
-            this.bbiNovoClientePessoa,
+            this.bbiNovoClienteFornecedor,
             this.bbiEditar,
             this.bbiDeletar,
             this.bbiAtualizar,
@@ -571,17 +571,17 @@
             this.bsiRecordsCount.Id = 15;
             this.bsiRecordsCount.Name = "bsiRecordsCount";
             // 
-            // bbiNovoClientePessoa
+            // bbiNovoClienteFornecedor
             // 
-            this.bbiNovoClientePessoa.Caption = "Novo Cliente / Pessoa";
-            this.bbiNovoClientePessoa.Id = 16;
-            this.bbiNovoClientePessoa.ImageOptions.ImageUri.Uri = "New";
-            this.bbiNovoClientePessoa.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiNovoClientePessoa.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiNovoClientePessoa.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiNovoClientePessoa.ItemAppearance.Normal.Options.UseFont = true;
-            this.bbiNovoClientePessoa.Name = "bbiNovoClientePessoa";
-            this.bbiNovoClientePessoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNovoClientePessoa_ItemClick);
+            this.bbiNovoClienteFornecedor.Caption = "Novo Cliente / Fornecedor";
+            this.bbiNovoClienteFornecedor.Id = 16;
+            this.bbiNovoClienteFornecedor.ImageOptions.ImageUri.Uri = "New";
+            this.bbiNovoClienteFornecedor.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiNovoClienteFornecedor.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiNovoClienteFornecedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiNovoClienteFornecedor.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiNovoClienteFornecedor.Name = "bbiNovoClienteFornecedor";
+            this.bbiNovoClienteFornecedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNovoClientePessoa_ItemClick);
             // 
             // bbiEditar
             // 
@@ -638,13 +638,13 @@
             this.ribbonPageGroup2});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Clientes / Pessoas";
+            this.ribbonPage1.Text = "Clientes / Fornecedores";
             // 
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.AllowTextClipping = false;
             this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNovoClientePessoa);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNovoClienteFornecedor);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiEditar);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDeletar);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAtualizar);
@@ -667,7 +667,7 @@
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(956, 24);
             // 
-            // ClientesPessoas
+            // ClientesFornecedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -676,7 +676,7 @@
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonControl);
             this.KeyPreview = true;
-            this.Name = "ClientesPessoas";
+            this.Name = "ClientesFornecedores";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Clientes / Pessoas";
@@ -701,7 +701,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarStaticItem bsiRecordsCount;
-        private DevExpress.XtraBars.BarButtonItem bbiNovoClientePessoa;
+        private DevExpress.XtraBars.BarButtonItem bbiNovoClienteFornecedor;
         private DevExpress.XtraBars.BarButtonItem bbiEditar;
         private DevExpress.XtraBars.BarButtonItem bbiDeletar;
         private DevExpress.XtraBars.BarButtonItem bbiAtualizar;

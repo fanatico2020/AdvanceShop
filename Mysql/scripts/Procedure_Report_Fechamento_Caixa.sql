@@ -43,7 +43,6 @@ set @entradatransferenciabancaria =
 on formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa 
 where transacoescaixa.tipo = 1 and formaspagamento.descricao = 'TRANSFERÊNCIA BANCÁRIA' and transacoescaixa.deletado = 0 and transacoescaixa.caixas_idcaixas = id_caixa);
 
-
 -- entrada link pagamento
 set @entradalinkpagamento = 
 (select ifnull(sum(formaspagamento.valor),0) from formaspagamento left join transacoescaixa 
@@ -56,6 +55,13 @@ set @saidasangria =
 on formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa 
 where transacoescaixa.tipo = 0 and transacoescaixa.descricaotransacao = 'Sangria, Dinheiro retirado do caixa' 
 and formaspagamento.descricao = 'DINHEIRO' and transacoescaixa.deletado = 0 and transacoescaixa.caixas_idcaixas = id_caixa);
+
+-- saida contas pagas
+set @saidacontaspagas = 
+(select ifnull(sum(formaspagamento.valor),0) from formaspagamento left join transacoescaixa 
+on formaspagamento.transacoescaixa_idtransacoescaixa = transacoescaixa.idtransacoescaixa 
+where transacoescaixa.tipo = 0 and transacoescaixa.descricaotransacao = 'Pagamento de Conta A Pagar' 
+and transacoescaixa.deletado = 0 and transacoescaixa.caixas_idcaixas = id_caixa);
 
 -- saida troco
 set @saidatroco = 
@@ -100,10 +106,10 @@ set @usuariofechamento =
 set @observacaocaixa = 
 (select observacaocaixa from caixas where idcaixas = id_caixa);
 
-select @saldoinicial,@entradadinheiro,@entradasuplemento,@entradacartaocredito,@entradacartaodebito,@entradatransferenciabancaria,@entradalinkpagamento,@saidatroco,@saidasangria,@saidadevolucoes,@saldofinal,@valorinformado,@quebracaixa,@datahoraterminocaixa,@datahorainiciocaixa,@usuariocaixa,@usuariofechamento,@observacaocaixa;
+select @saldoinicial,@entradadinheiro,@entradasuplemento,@entradacartaocredito,@entradacartaodebito,@entradatransferenciabancaria,@entradalinkpagamento,@saidatroco,@saidacontaspagas,@saidasangria,@saidadevolucoes,@saldofinal,@valorinformado,@quebracaixa,@datahoraterminocaixa,@datahorainiciocaixa,@usuariocaixa,@usuariofechamento,@observacaocaixa;
 
 END;
 DELIMITER;
 
-call RelatorioFechamentoCaixa(1);
+call RelatorioFechamentoCaixa(4);
 

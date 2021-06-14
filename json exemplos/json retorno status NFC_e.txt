@@ -1,0 +1,22 @@
+{
+"cnpj_emitente": "08160609000130",
+"ref": "81",
+"status": "autorizado",
+"status_sefaz": "100",
+"mensagem_sefaz":"Autorizado o uso da NF-e",
+"chave_nfe": "NFe15210508160609000130650010000000081703679240",
+"numero": "8",
+"serie": "1",
+"caminho_xml_nota_fiscal": "/arquivos_development/08160609000130/202105/XMLs/15210508160609000130650010000000081703679240-nfe.xml",
+"caminho_danfe": "/notas_fiscais_consumidor/NFe15210508160609000130650010000000081703679240.html",
+"qrcode_url": "https://appnfc.sefa.pa.gov.br/portal-homologacao/view/consultas/nfce/nfceForm.seam?p=15210508160609000130650010000000081703679240|2|2|1|E9654E458FB7CFD308ABC72F1B767BBF45B6FCFC",
+"url_consulta_nf": "http://www.sefa.pa.gov.br/nfce/consulta"
+}
+
+
+
+
+
+
+
+https://api.focusnfe.com.br/notas_fiscais_consumidor/NFe15210508160609000130650010000000081703679240.html

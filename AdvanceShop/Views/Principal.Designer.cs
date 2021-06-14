@@ -36,7 +36,7 @@
             this.bbiAlterarSenha = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSairSistema = new DevExpress.XtraBars.BarButtonItem();
             this.bbiVendas = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiClientesPessoas = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiClientesFornecedores = new DevExpress.XtraBars.BarButtonItem();
             this.bbiProdutos = new DevExpress.XtraBars.BarButtonItem();
             this.bbiContasApagar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCaixas = new DevExpress.XtraBars.BarButtonItem();
@@ -70,6 +70,7 @@
             this.bbiAtualizacaoSoftware = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRelComissaoPorVendedor = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPagePrincipal = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupPrincipal = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageRelatorios = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -83,7 +84,6 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
-            this.bbiRelComissaoPorVendedor = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenuPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -100,7 +100,7 @@
             this.ribbonControlPrincipal.ExpandCollapseItem,
             this.ribbonControlPrincipal.SearchEditItem,
             this.bbiVendas,
-            this.bbiClientesPessoas,
+            this.bbiClientesFornecedores,
             this.bbiProdutos,
             this.bbiContasApagar,
             this.bbiCaixas,
@@ -199,18 +199,18 @@
             this.bbiVendas.Name = "bbiVendas";
             this.bbiVendas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiVendas_ItemClick);
             // 
-            // bbiClientesPessoas
+            // bbiClientesFornecedores
             // 
-            this.bbiClientesPessoas.Caption = "Clientes / Pessoas";
-            this.bbiClientesPessoas.Id = 2;
-            this.bbiClientesPessoas.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiClientesPessoas.ImageOptions.Image")));
-            this.bbiClientesPessoas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClientesPessoas.ImageOptions.LargeImage")));
-            this.bbiClientesPessoas.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiClientesPessoas.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiClientesPessoas.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiClientesPessoas.ItemAppearance.Normal.Options.UseFont = true;
-            this.bbiClientesPessoas.Name = "bbiClientesPessoas";
-            this.bbiClientesPessoas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClientesPessoas_ItemClick);
+            this.bbiClientesFornecedores.Caption = "Clientes / Fornecedores";
+            this.bbiClientesFornecedores.Id = 2;
+            this.bbiClientesFornecedores.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiClientesPessoas.ImageOptions.Image")));
+            this.bbiClientesFornecedores.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClientesPessoas.ImageOptions.LargeImage")));
+            this.bbiClientesFornecedores.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiClientesFornecedores.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiClientesFornecedores.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiClientesFornecedores.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiClientesFornecedores.Name = "bbiClientesFornecedores";
+            this.bbiClientesFornecedores.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClientesPessoas_ItemClick);
             // 
             // bbiProdutos
             // 
@@ -529,6 +529,18 @@
             this.barButtonItem1.Id = 60;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // bbiRelComissaoPorVendedor
+            // 
+            this.bbiRelComissaoPorVendedor.Caption = "Comissão Por Vendedor";
+            this.bbiRelComissaoPorVendedor.Id = 61;
+            this.bbiRelComissaoPorVendedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelComissaoPorVendedor.ImageOptions.LargeImage")));
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiRelComissaoPorVendedor.Name = "bbiRelComissaoPorVendedor";
+            this.bbiRelComissaoPorVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelComissaoPorVendedor_ItemClick);
+            // 
             // ribbonPagePrincipal
             // 
             this.ribbonPagePrincipal.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -541,7 +553,7 @@
             // ribbonPageGroupPrincipal
             // 
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiVendas);
-            this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiClientesPessoas);
+            this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiClientesFornecedores);
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiProdutos);
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiTransacoesEstoque);
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiContasApagar);
@@ -636,18 +648,6 @@
             this.barHeaderItem1.Id = 32;
             this.barHeaderItem1.Name = "barHeaderItem1";
             // 
-            // bbiRelComissaoPorVendedor
-            // 
-            this.bbiRelComissaoPorVendedor.Caption = "Comissão Por Vendedor";
-            this.bbiRelComissaoPorVendedor.Id = 61;
-            this.bbiRelComissaoPorVendedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelComissaoPorVendedor.ImageOptions.LargeImage")));
-            this.bbiRelComissaoPorVendedor.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiRelComissaoPorVendedor.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Options.UseFont = true;
-            this.bbiRelComissaoPorVendedor.Name = "bbiRelComissaoPorVendedor";
-            this.bbiRelComissaoPorVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelComissaoPorVendedor_ItemClick);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -683,7 +683,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.BarButtonItem bbiVendas;
-        private DevExpress.XtraBars.BarButtonItem bbiClientesPessoas;
+        private DevExpress.XtraBars.BarButtonItem bbiClientesFornecedores;
         private DevExpress.XtraBars.BarButtonItem bbiProdutos;
         private DevExpress.XtraBars.BarButtonItem bbiContasApagar;
         private DevExpress.XtraBars.BarButtonItem bbiCaixas;

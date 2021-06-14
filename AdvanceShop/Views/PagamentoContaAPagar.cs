@@ -19,10 +19,12 @@ namespace AdvanceShop.Views
         UsuariosModel usuarioLogado = new UsuariosModel();
         ContasAPagarModel contaAPagar = new ContasAPagarModel();
         ContasAPagarController contaAPagarController = new ContasAPagarController();
-        TransacoesCaixaModel transacoescaixa = new TransacoesCaixaModel();
-        TransacoesCaixaController transacoescaixaController = new TransacoesCaixaController();
+        TransacoesCaixaModel transacaoCaixa = new TransacoesCaixaModel();
+        TransacoesCaixaController transacaoCaixaController = new TransacoesCaixaController();
         //ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
         ClientesPessoasController clientePessoaController = new ClientesPessoasController();
+        CaixasModel caixa = new CaixasModel();
+        CaixasController caixaController = new CaixasController();
 
         public PagamentoContaAPagar(UsuariosModel UsuarioLogado,ContasAPagarModel ContaAPagar)
         {
@@ -36,6 +38,8 @@ namespace AdvanceShop.Views
             txtValor.Text = Convert.ToString(ContaAPagar.Valor);
             txtVencimento.DateTime = Convert.ToDateTime(ContaAPagar.DataVencimento);
             txtPagamento.DateTime = DateTime.Now;
+
+            
         }
         private void AtualizarFornecedor()
         {
@@ -46,7 +50,7 @@ namespace AdvanceShop.Views
         }
         private void AtualizarGrid()
         {
-            Views.ContasAPagarPagas view = Application.OpenForms["ContasAPagar"] as Views.ContasAPagarPagas;
+            Views.ContasAPagarPagas view = Application.OpenForms["ContasAPagarPagas"] as Views.ContasAPagarPagas;
             if (view != null)
             {
                 view.AtualizarGrid();
@@ -59,10 +63,23 @@ namespace AdvanceShop.Views
 
         private void cbxAbaterValorCaixaAtual_CheckedChanged(object sender, EventArgs e)
         {
-
+            caixa.usuarios_idusuarios = usuarioLogado.IdUsuarios;
+            if (caixaController.VerificarCaixaAbertoOuNao(caixa) && cbxAbaterValorCaixaAtual.Checked)
+            {
+                transacaoCaixa.DescricaoTransacao = "Pagamento de Conta A Pagar";
+                transacaoCaixa.ObservacaoTransacao = $"{txtReferentea.Text} - Vencimento {txtVencimento.Text}";
+                transacaoCaixa.Status = 1;
+                transacaoCaixa.Valor = Convert.ToDecimal(txtValorPago.Text.Replace("R$", ""));
+            }
+            else
+            {
+                MessageBoxWarning.Show($"Você deve primeiro abrir seu caixa para pode abater o valor pago no seu caixa!");
+                Views.AbrirCaixa FormAbrirCaixa = new AbrirCaixa(usuarioLogado);
+                FormAbrirCaixa.ShowDialog();
+            }
+            
         }
-
-        private void btnSalvar_Click(object sender, EventArgs e)
+        private void Salvar()
         {
             try
             {
@@ -74,7 +91,14 @@ namespace AdvanceShop.Views
                 ValidacaoCampos.Validar(contaAPagar);
                 if (ValidacaoCampos.IsValid() && MessageBoxQuestionYesNo.Show($"Deseja salvar?") == DialogResult.Yes)
                 {
-                    contaAPagarController.EditarEfetuarPagamento(contaAPagar,usuarioLogado);
+                    if (cbxAbaterValorCaixaAtual.Checked)
+                    {
+                        caixa = caixaController.AutenticarCaixaUsuario(caixa);
+                        transacaoCaixa.caixas_idcaixas = caixa.IdCaixas;
+                        transacaoCaixaController.Adicionar_SuplementoSangria(transacaoCaixa, usuarioLogado);
+                    }
+                    contaAPagarController.EditarEfetuarPagamento(contaAPagar, usuarioLogado);
+
                     MessageBoxOK.Show("Salvo com sucesso!");
                     AtualizarGrid();
                     Close();
@@ -84,7 +108,12 @@ namespace AdvanceShop.Views
             {
                 MessageBoxError.Show($"{ex.Message} Informe um valor de pagamento valido!");
             }
-            
+        }
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            Salvar();
+
+
         }
 
         private void PagamentoContaAPagar_KeyPress(object sender, KeyPressEventArgs e)
@@ -96,7 +125,7 @@ namespace AdvanceShop.Views
         {
             if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
             {
-                Views.ClientesPessoas FormClientesPessoas = new ClientesPessoas(usuarioLogado);
+                Views.ClientesFornecedores FormClientesPessoas = new ClientesFornecedores(usuarioLogado);
                 FormClientesPessoas.ShowDialog();
             }
         }
@@ -109,6 +138,14 @@ namespace AdvanceShop.Views
         private void txtValorPago_KeyPress(object sender, KeyPressEventArgs e)
         {
             ValidacaoCamposCustom.StringKeyPressNumeroPontoVirgula(sender, e);
+        }
+
+        private void PagamentoContaAPagar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                Salvar();
+            }
         }
     }
 }

@@ -46,6 +46,27 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@usuariocadastro", usuarioLogado.UsuarioAcesso));
             comando.ExecuteNonQuery();
         }
+        //public void Pagamento_ContaAPagar(TransacoesCaixaModel transacaoCaixa, UsuariosModel usuarioLogado)
+        //{
+
+        //    MySqlConnection conexao = ConexaoMySql.GetConexao();
+        //    MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+        //    comando.CommandType = System.Data.CommandType.Text;
+        //    comando.CommandText =
+        //    "insert into transacoescaixa(tipo,descricaotransacao,valor,observacaotransacao,status,caixas_idcaixas,deletado) values(@tipo,@descricaotransacao,@valor,@observacaotransacao,@status,@caixas_idcaixas,0); " +
+        //    "select last_insert_id() into @first_id; " +
+        //    "insert into datahora(datahoracadastro, usuariocadastro, transacoescaixa_idtransacoescaixa) values(now(), @usuariocadastro, last_insert_id()); " +
+        //    "insert into formaspagamento(descricao,valor,transacoescaixa_idtransacoescaixa) values('DINHEIRO',@valor,@first_id);";
+
+        //    comando.Parameters.Add(new MySqlParameter("@caixas_idcaixas", transacaoCaixa.caixas_idcaixas));
+        //    comando.Parameters.Add(new MySqlParameter("@tipo", transacaoCaixa.Tipo));
+        //    comando.Parameters.Add(new MySqlParameter("@descricaotransacao", transacaoCaixa.DescricaoTransacao));
+        //    comando.Parameters.Add(new MySqlParameter("@observacaotransacao", transacaoCaixa.ObservacaoTransacao));
+        //    comando.Parameters.Add(new MySqlParameter("@valor", transacaoCaixa.Valor));
+        //    comando.Parameters.Add(new MySqlParameter("@status", transacaoCaixa.Status));
+        //    comando.Parameters.Add(new MySqlParameter("@usuariocadastro", usuarioLogado.UsuarioAcesso));
+        //    comando.ExecuteNonQuery();
+        //}
 
         public void Deletar(TransacoesCaixaModel transacaoCaixa)
         {

@@ -18,7 +18,7 @@ using DevExpress.Utils.Menu;
 
 namespace AdvanceShop.Views
 {
-    public partial class ClientesPessoas : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class ClientesFornecedores : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
         ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
@@ -26,7 +26,7 @@ namespace AdvanceShop.Views
         public ClientesPessoasModel clientePessoaPDV { get; set; }
         bool PDVAtivo = false;
 
-        public ClientesPessoas(UsuariosModel UsuarioLogado)
+        public ClientesFornecedores(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
@@ -77,7 +77,7 @@ namespace AdvanceShop.Views
         }
         private void NovoClientePessoa()
         {
-            Views.NovoClientePessoa FormNovoClientePessoa = new NovoClientePessoa(usuarioLogado);
+            Views.NovoClienteFornecedor FormNovoClientePessoa = new NovoClienteFornecedor(usuarioLogado);
             FormNovoClientePessoa.ShowDialog();
         }
         private void EditarClientePessoa()
@@ -102,7 +102,7 @@ namespace AdvanceShop.Views
             clientePessoa.StatusClientePessoa = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[18]));
             clientePessoa.TipoPessoa = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[17]));
 
-            Views.NovoClientePessoa FormEditarClientePessoa = new NovoClientePessoa(usuarioLogado,clientePessoa);
+            Views.NovoClienteFornecedor FormEditarClientePessoa = new NovoClienteFornecedor(usuarioLogado,clientePessoa);
             FormEditarClientePessoa.Show();
         }
         private void DeletarClientePessoa()

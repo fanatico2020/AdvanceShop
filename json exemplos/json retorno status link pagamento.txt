@@ -1,0 +1,16 @@
+{{
+  "code": 200,
+  "data": {
+    "charge_id": 1290261,
+    "status": "link",
+    "total": 26250,
+    "custom_id": "0",
+    "payment_url": "https://pagamento.gerencianet.com.br/631c15af-f6fd-416a-8d0b-e3062deab33d",
+    "payment_method": "all",
+    "conditional_discount_date": null,
+    "request_delivery_address": false,
+    "message": "Isso e um teste de link de pagamento",
+    "expire_at": "2021-04-22",
+    "created_at": "2021-04-22 17:05:10"
+  }
+}}

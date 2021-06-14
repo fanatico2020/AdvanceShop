@@ -20,18 +20,18 @@ using System.Windows.Forms;
 
 namespace AdvanceShop.Views
 {
-    public partial class NovoClientePessoa : DevExpress.XtraEditors.XtraForm
+    public partial class NovoClienteFornecedor : DevExpress.XtraEditors.XtraForm
     {
         UsuariosModel usuarioLogado = new UsuariosModel();
         ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
         ClientesPessoasController clientePessoaController = new ClientesPessoasController();
         bool edicao = false;
-        public NovoClientePessoa(UsuariosModel UsuarioLogado)
+        public NovoClienteFornecedor(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
         }
-        public NovoClientePessoa(UsuariosModel UsuarioLogado,ClientesPessoasModel ClientePessoaEdicao)
+        public NovoClienteFornecedor(UsuariosModel UsuarioLogado,ClientesPessoasModel ClientePessoaEdicao)
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
@@ -179,7 +179,7 @@ namespace AdvanceShop.Views
         }
         private void AtualizarGrid()
         {
-            Views.ClientesPessoas view = Application.OpenForms["ClientesPessoas"] as Views.ClientesPessoas;
+            Views.ClientesFornecedores view = Application.OpenForms["ClientesFornecedores"] as Views.ClientesFornecedores;
             if (view != null)
             {
                 view.AtualizarGrid();

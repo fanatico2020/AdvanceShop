@@ -325,6 +325,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagamento Conta A Pagar";
             this.Load += new System.EventHandler(this.PagamentoContaAPagar_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PagamentoContaAPagar_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PagamentoContaAPagar_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

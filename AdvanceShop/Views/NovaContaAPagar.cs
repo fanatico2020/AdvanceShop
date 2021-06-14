@@ -50,7 +50,7 @@ namespace AdvanceShop.Views
         }
         private void AtualizarGrid()
         {
-            Views.ContasAPagarPagas view = Application.OpenForms["ContasAPagar"] as Views.ContasAPagarPagas;
+            Views.ContasAPagarPagas view = Application.OpenForms["ContasAPagarPagas"] as Views.ContasAPagarPagas;
             if (view != null)
             {
                 view.AtualizarGrid();
@@ -60,7 +60,7 @@ namespace AdvanceShop.Views
         {
             if(e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis)
             {
-                Views.ClientesPessoas FormClientesPessoas = new ClientesPessoas(usuarioLogado);
+                Views.ClientesFornecedores FormClientesPessoas = new ClientesFornecedores(usuarioLogado);
                 FormClientesPessoas.ShowDialog();
             }
         }

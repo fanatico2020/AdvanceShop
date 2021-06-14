@@ -200,7 +200,7 @@ namespace AdvanceShop.Views
         }
         private void SelecionarClienteVenda()//Form de clientes para selecionar o cliente da venda caso não seja cliente padrão CONSUMIDOR!
         {
-            Views.ClientesPessoas FormPesquisarCliente = new ClientesPessoas(usuarioLogado);
+            Views.ClientesFornecedores FormPesquisarCliente = new ClientesFornecedores(usuarioLogado);
             DialogResult ResultadoPesquisarCliente = FormPesquisarCliente.ShowDialog();
             if (ResultadoPesquisarCliente == DialogResult.OK)
             {
