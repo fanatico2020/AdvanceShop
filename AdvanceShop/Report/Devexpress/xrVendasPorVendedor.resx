@@ -117,4 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="sqlDataAdapter1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 56</value>
+  </metadata>
+  <metadata name="sqlDeleteCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlDeleteCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlInsertCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlInsertCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlSelectCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlSelectCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlUpdateCommand1.DesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlUpdateCommand1.CommandDesignTimeVisible" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>select i.produtos_idprodutos,i.vendas_idvendas,i.item,p.descricaoproduto,i.quantidade,i.valorunitario,i.subtotal from itensvendas i
+inner join produtos p on p.idprodutos = i.produtos_idprodutos order by i.vendas_idvendas asc, i.item asc;</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9ImFkdmFuY2VzaG9wZGJfUmVsYXRvcmlvVmVuZGFzUG9yVmVuZGVkb3IiPjxGaWVsZCBOYW1lPSJWZW5kYSIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IlZhbG9yVmVuZGEiIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IkRlc2NvbnRvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJUb3RhbFZlbmRhIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJWYWxvclBhZ28iIFR5cGU9IkRlY2ltYWwiIC8+PEZpZWxkIE5hbWU9IlRyb2NvIiBUeXBlPSJEZWNpbWFsIiAvPjxGaWVsZCBOYW1lPSJDb2RpZ29DbGllbnRlIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ2xpZW50ZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJEYXRhVmVuZGEiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJ1c3VhcmlvY2FkYXN0cm8iIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUXRkSXRlbnMiIFR5cGU9IkRlY2ltYWwiIC8+PC9WaWV3PjxWaWV3IE5hbWU9Ikl0ZW5zRGFWZW5kYSI+PEZpZWxkIE5hbWU9InByb2R1dG9zX2lkcHJvZHV0b3MiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJ2ZW5kYXNfaWR2ZW5kYXMiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJpdGVtIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iZGVzY3JpY2FvcHJvZHV0byIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJxdWFudGlkYWRlIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0idmFsb3J1bml0YXJpbyIgVHlwZT0iRGVjaW1hbCIgLz48RmllbGQgTmFtZT0ic3VidG90YWwiIFR5cGU9IkRlY2ltYWwiIC8+PC9WaWV3PjwvRGF0YVNldD4=</value>
+  </data>
 </root>

@@ -80,14 +80,11 @@ namespace AdvanceShop.Views
                     if (ValidacaoConexaoInternet.EstarConectado())
                     {
                         Shared.CustomPrint.FechamentoCaixa.EnviarFechamentoCaixa(caixa, usuarioCaixa, emailenvio);
+                       
                     }
-                    else
-                    {
-                        Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
-                    }
-
+                    
                     AtualizarGrid();
-
+                    Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
                     Close();
                 }
             }

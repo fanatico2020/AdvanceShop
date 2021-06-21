@@ -107,7 +107,7 @@ set @observacaocaixa =
 (select observacaocaixa from caixas where idcaixas = id_caixa);
 
 select @saldoinicial,@entradadinheiro,@entradasuplemento,@entradacartaocredito,@entradacartaodebito,@entradatransferenciabancaria,@entradalinkpagamento,@saidatroco,@saidacontaspagas,@saidasangria,@saidadevolucoes,@saldofinal,@valorinformado,@quebracaixa,@datahoraterminocaixa,@datahorainiciocaixa,@usuariocaixa,@usuariofechamento,@observacaocaixa;
-
+select * from transacoescaixa where caixas_idcaixas = id_caixa;
 END;
 DELIMITER;
 

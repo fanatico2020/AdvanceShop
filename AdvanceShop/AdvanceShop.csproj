@@ -92,6 +92,7 @@
     <Reference Include="DevExpress.XtraSpellChecker.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeMap.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.2, Version=19.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Gerencianet.SDK, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Gerencianet.SDK.1.0.9\lib\net45\Gerencianet.SDK.dll</HintPath>
     </Reference>
@@ -641,6 +642,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\RelParCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RelParCaixa.Designer.cs">
+      <DependentUpon>RelParCaixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\RelParPeriodoComissaoPorVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -849,6 +856,9 @@
     </Compile>
     <EmbeddedResource Include="Views\Produtos.resx">
       <DependentUpon>Produtos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RelParCaixa.resx">
+      <DependentUpon>RelParCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RelParPeriodoComissaoPorVendedor.resx">
       <DependentUpon>RelParPeriodoComissaoPorVendedor.cs</DependentUpon>

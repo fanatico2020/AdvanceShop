@@ -37,6 +37,7 @@ namespace AdvanceShop.Report.Devexpress
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter4 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(xrComissaoPorVendedor));
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
@@ -89,7 +90,6 @@ namespace AdvanceShop.Report.Devexpress
             this.PeriodoFinal = new DevExpress.XtraReports.Parameters.Parameter();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.Emissao = new DevExpress.XtraReports.Parameters.Parameter();
-            this.CalcTotalComissao = new DevExpress.XtraReports.UI.CalculatedField();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -192,12 +192,10 @@ namespace AdvanceShop.Report.Devexpress
             // tclComissao
             // 
             this.tclComissao.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "([TotalVenda]*?PorcComissao)/100")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Comissao]")});
             this.tclComissao.Multiline = true;
             this.tclComissao.Name = "tclComissao";
             this.tclComissao.StylePriority.UseTextAlignment = false;
-            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
-            this.tclComissao.Summary = xrSummary1;
             this.tclComissao.Text = "Comissão";
             this.tclComissao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tclComissao.TextFormatString = "{0:c}";
@@ -480,8 +478,8 @@ namespace AdvanceShop.Report.Devexpress
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([QtdItens])")});
             this.xrTableCell16.Multiline = true;
             this.xrTableCell16.Name = "xrTableCell16";
-            xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
-            this.xrTableCell16.Summary = xrSummary2;
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.xrTableCell16.Summary = xrSummary1;
             this.xrTableCell16.Text = "Qtd itens";
             this.xrTableCell16.Weight = 0.59374999999999978D;
             // 
@@ -492,8 +490,8 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableCell17.Multiline = true;
             this.xrTableCell17.Name = "xrTableCell17";
             this.xrTableCell17.StylePriority.UseTextAlignment = false;
-            xrSummary3.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
-            this.xrTableCell17.Summary = xrSummary3;
+            xrSummary2.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.xrTableCell17.Summary = xrSummary2;
             this.xrTableCell17.Text = "Total Venda";
             this.xrTableCell17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell17.TextFormatString = "{0:c}";
@@ -502,10 +500,12 @@ namespace AdvanceShop.Report.Devexpress
             // xrTableCell18
             // 
             this.xrTableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CalcTotalComissao]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([Comissao])")});
             this.xrTableCell18.Multiline = true;
             this.xrTableCell18.Name = "xrTableCell18";
             this.xrTableCell18.StylePriority.UseTextAlignment = false;
+            xrSummary3.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.xrTableCell18.Summary = xrSummary3;
             this.xrTableCell18.Text = "Comissão";
             this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell18.TextFormatString = "{0:c}";
@@ -627,9 +627,13 @@ namespace AdvanceShop.Report.Devexpress
             queryParameter3.Name = "@DataFinal";
             queryParameter3.Type = typeof(DevExpress.DataAccess.Expression);
             queryParameter3.Value = new DevExpress.DataAccess.Expression("?PeriodoFinal", typeof(System.DateTime));
+            queryParameter4.Name = "@PorComissao";
+            queryParameter4.Type = typeof(DevExpress.DataAccess.Expression);
+            queryParameter4.Value = new DevExpress.DataAccess.Expression("?PorcComissao", typeof(decimal));
             storedProcQuery1.Parameters.Add(queryParameter1);
             storedProcQuery1.Parameters.Add(queryParameter2);
             storedProcQuery1.Parameters.Add(queryParameter3);
+            storedProcQuery1.Parameters.Add(queryParameter4);
             storedProcQuery1.StoredProcName = "advanceshopdb.RelatorioComissaoPorVendedor";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
@@ -643,12 +647,6 @@ namespace AdvanceShop.Report.Devexpress
             this.Emissao.Type = typeof(System.DateTime);
             this.Emissao.Visible = false;
             // 
-            // CalcTotalComissao
-            // 
-            this.CalcTotalComissao.DataMember = "advanceshopdb_RelatorioComissaoPorVendedor";
-            this.CalcTotalComissao.Expression = "(Sum([TotalVenda]) * ?PorcComissao) / 100";
-            this.CalcTotalComissao.Name = "CalcTotalComissao";
-            // 
             // xrComissaoPorVendedor
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -658,8 +656,6 @@ namespace AdvanceShop.Report.Devexpress
             this.ReportHeader,
             this.ReportFooter,
             this.PageFooter});
-            this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
-            this.CalcTotalComissao});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
             this.DataMember = "advanceshopdb_RelatorioComissaoPorVendedor";
@@ -736,6 +732,5 @@ namespace AdvanceShop.Report.Devexpress
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell16;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell17;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell18;
-        private DevExpress.XtraReports.UI.CalculatedField CalcTotalComissao;
     }
 }

@@ -4,7 +4,7 @@ CREATE PROCEDURE RelatorioProdutosMaisVendidos(in DataInicial DATETIME ,in DataF
 BEGIN
 
 select produtos.idprodutos,produtos.descricaoproduto,produtos.codigobarra, 
-ifnull(sum(itensvendas.quantidade),0) as quantidade,ifnull(sum(itensvendas.precocusto),0) as totalcusto, 
+ifnull(count(itensvendas.quantidade),0) as quantidade,ifnull(sum(itensvendas.precocusto),0) as totalcusto, 
 ifnull(sum(itensvendas.valorunitario),0) as totalvenda from itensvendas inner join 
 produtos on produtos.idprodutos = itensvendas.produtos_idprodutos inner join
 vendas on vendas.idvendas = itensvendas.vendas_idvendas  left join  
@@ -16,4 +16,4 @@ END;
 DELIMITER;
 
 
-call RelatorioProdutosMaisVendidos('2021/05/13','2021/05/14');
+call RelatorioProdutosMaisVendidos('2021/05/01','2021/06/17');

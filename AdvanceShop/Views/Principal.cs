@@ -183,16 +183,18 @@ namespace AdvanceShop.Views
 
         private void bbiRelFechmanetoCaixa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            caixa.IdCaixas = Convert.ToInt32(InputBoxTextEdit.Show("Número do caixa", "Relatório Fechamento de Caixa"));
-            caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
-            if (caixa.status == 1)
-            {
-                Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
-            }
-            else
-            {
-                MessageBoxWarning.Show("Caixa inexistente ou não foi fechado ainda, favor verifique!");
-            }
+            RelParCaixa FormParametros = new RelParCaixa("Selecione o caixa");
+            FormParametros.ShowDialog();
+            //caixa.IdCaixas = Convert.ToInt32(InputBoxTextEdit.Show("Número do caixa", "Relatório Fechamento de Caixa"));
+            //caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
+            //if (caixa.status == 1)
+            //{
+            //    Shared.CustomPrint.FechamentoCaixa.ImprimirFechamentoCaixa(caixa);
+            //}
+            //else
+            //{
+            //    MessageBoxWarning.Show("Caixa inexistente ou não foi fechado ainda, favor verifique!");
+            //}
         }
 
         private void bbiRelMeioDePagamento_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

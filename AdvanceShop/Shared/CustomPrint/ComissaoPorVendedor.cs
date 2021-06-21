@@ -19,6 +19,7 @@ namespace AdvanceShop.Shared.CustomPrint
             //Parametros
             report.Parameters["Emissao"].Value = DateTime.Now;
             report.Parameters["Vendedor"].Value = UsuarioVendedor;
+            report.Parameters["PorcComissao"].Value = PorcComissao;
             report.Parameters["PeriodoInicial"].Value = DataInicial;
             report.Parameters["PeriodoFinal"].Value = DataFinal;
             //filter

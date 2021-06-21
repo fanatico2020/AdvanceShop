@@ -30,14 +30,14 @@ namespace AdvanceShop.Report.Devexpress
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
-            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(xrProdutosMaisVendidos));
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary3 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary4 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(xrProdutosMaisVendidos));
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
@@ -71,6 +71,14 @@ namespace AdvanceShop.Report.Devexpress
             this.lblFechamentoCaixa = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell15 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
             this.lblEmissao = new DevExpress.XtraReports.UI.XRLabel();
             this.lblPag = new DevExpress.XtraReports.UI.XRLabel();
             this.lblsite = new DevExpress.XtraReports.UI.XRLabel();
@@ -83,14 +91,6 @@ namespace AdvanceShop.Report.Devexpress
             this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.CalcTotalLucro = new DevExpress.XtraReports.UI.CalculatedField();
             this.CalcPorcLucro = new DevExpress.XtraReports.UI.CalculatedField();
-            this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell15 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell16 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.tbProdutosMaisVendidos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrtDescricaoColunas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
@@ -103,7 +103,7 @@ namespace AdvanceShop.Report.Devexpress
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 3.125F;
+            this.BottomMargin.HeightF = 3F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // Detail
@@ -127,7 +127,7 @@ namespace AdvanceShop.Report.Devexpress
             this.tbProdutosMaisVendidos.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.tbProdutosMaisVendidos.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
-            this.tbProdutosMaisVendidos.SizeF = new System.Drawing.SizeF(1157F, 25F);
+            this.tbProdutosMaisVendidos.SizeF = new System.Drawing.SizeF(1123F, 25F);
             this.tbProdutosMaisVendidos.StylePriority.UseBorderDashStyle = false;
             this.tbProdutosMaisVendidos.StylePriority.UseBorders = false;
             // 
@@ -238,7 +238,7 @@ namespace AdvanceShop.Report.Devexpress
             this.tclLucro.Text = "tclLucro";
             this.tclLucro.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.tclLucro.TextFormatString = "{0:c}";
-            this.tclLucro.Weight = 1.1220825195312503D;
+            this.tclLucro.Weight = 0.78208374023437521D;
             // 
             // ReportHeader
             // 
@@ -307,7 +307,7 @@ namespace AdvanceShop.Report.Devexpress
             this.xrtDescricaoColunas.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrtDescricaoColunas.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrtDescricaoColunas.SizeF = new System.Drawing.SizeF(1157F, 25F);
+            this.xrtDescricaoColunas.SizeF = new System.Drawing.SizeF(1123F, 25F);
             this.xrtDescricaoColunas.StylePriority.UseBorders = false;
             this.xrtDescricaoColunas.StylePriority.UseFont = false;
             this.xrtDescricaoColunas.StylePriority.UseTextAlignment = false;
@@ -381,13 +381,13 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableCell8.Multiline = true;
             this.xrTableCell8.Name = "xrTableCell8";
             this.xrTableCell8.Text = "Total Lucro";
-            this.xrTableCell8.Weight = 1.12208251953125D;
+            this.xrTableCell8.Weight = 0.78208129882812494D;
             // 
             // xrLine3
             // 
             this.xrLine3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 95.12499F);
             this.xrLine3.Name = "xrLine3";
-            this.xrLine3.SizeF = new System.Drawing.SizeF(1157F, 23F);
+            this.xrLine3.SizeF = new System.Drawing.SizeF(1123F, 23F);
             // 
             // lblCodigoCaixa
             // 
@@ -406,7 +406,7 @@ namespace AdvanceShop.Report.Devexpress
             // 
             this.xrLine2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 49.12499F);
             this.xrLine2.Name = "xrLine2";
-            this.xrLine2.SizeF = new System.Drawing.SizeF(1157F, 23F);
+            this.xrLine2.SizeF = new System.Drawing.SizeF(1123F, 23F);
             // 
             // lblFechamentoCaixa
             // 
@@ -415,7 +415,7 @@ namespace AdvanceShop.Report.Devexpress
             this.lblFechamentoCaixa.Multiline = true;
             this.lblFechamentoCaixa.Name = "lblFechamentoCaixa";
             this.lblFechamentoCaixa.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblFechamentoCaixa.SizeF = new System.Drawing.SizeF(1157F, 26.12498F);
+            this.lblFechamentoCaixa.SizeF = new System.Drawing.SizeF(1123F, 26.12498F);
             this.lblFechamentoCaixa.StylePriority.UseFont = false;
             this.lblFechamentoCaixa.StylePriority.UseTextAlignment = false;
             this.lblFechamentoCaixa.Text = "PRODUTOS MAIS VENDIDOS";
@@ -425,7 +425,7 @@ namespace AdvanceShop.Report.Devexpress
             // 
             this.xrLine1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.xrLine1.Name = "xrLine1";
-            this.xrLine1.SizeF = new System.Drawing.SizeF(1157F, 23F);
+            this.xrLine1.SizeF = new System.Drawing.SizeF(1123F, 23F);
             // 
             // ReportFooter
             // 
@@ -433,131 +433,6 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTable1});
             this.ReportFooter.HeightF = 26.91717F;
             this.ReportFooter.Name = "ReportFooter";
-            // 
-            // lblEmissao
-            // 
-            this.lblEmissao.LocationFloat = new DevExpress.Utils.PointFloat(945.5468F, 0F);
-            this.lblEmissao.Multiline = true;
-            this.lblEmissao.Name = "lblEmissao";
-            this.lblEmissao.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblEmissao.SizeF = new System.Drawing.SizeF(64.58331F, 23F);
-            this.lblEmissao.StylePriority.UseTextAlignment = false;
-            this.lblEmissao.Text = "Emissão:";
-            this.lblEmissao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // lblPag
-            // 
-            this.lblPag.LocationFloat = new DevExpress.Utils.PointFloat(563.5416F, 0F);
-            this.lblPag.Multiline = true;
-            this.lblPag.Name = "lblPag";
-            this.lblPag.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblPag.SizeF = new System.Drawing.SizeF(35.33337F, 23F);
-            this.lblPag.StylePriority.UseTextAlignment = false;
-            this.lblPag.Text = "Pag:";
-            this.lblPag.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // lblsite
-            // 
-            this.lblsite.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblsite.ForeColor = System.Drawing.Color.Blue;
-            this.lblsite.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.lblsite.Multiline = true;
-            this.lblsite.Name = "lblsite";
-            this.lblsite.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.lblsite.SizeF = new System.Drawing.SizeF(218.7501F, 23F);
-            this.lblsite.StylePriority.UseFont = false;
-            this.lblsite.StylePriority.UseForeColor = false;
-            this.lblsite.StylePriority.UseTextAlignment = false;
-            this.lblsite.Text = "www.advanceshopsistema.com.br";
-            this.lblsite.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // PeriodoInicial
-            // 
-            this.PeriodoInicial.AllowNull = true;
-            this.PeriodoInicial.Description = "PeriodoInicial";
-            this.PeriodoInicial.Name = "PeriodoInicial";
-            this.PeriodoInicial.Type = typeof(System.DateTime);
-            this.PeriodoInicial.Visible = false;
-            // 
-            // PeriodoFinal
-            // 
-            this.PeriodoFinal.AllowNull = true;
-            this.PeriodoFinal.Description = "PeriodoFinal";
-            this.PeriodoFinal.Name = "PeriodoFinal";
-            this.PeriodoFinal.Type = typeof(System.DateTime);
-            this.PeriodoFinal.Visible = false;
-            // 
-            // Emissao
-            // 
-            this.Emissao.AllowNull = true;
-            this.Emissao.Description = "Emissao";
-            this.Emissao.Name = "Emissao";
-            this.Emissao.Type = typeof(System.DateTime);
-            this.Emissao.Visible = false;
-            // 
-            // xrLabel1
-            // 
-            this.xrLabel1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?Emissao")});
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(1010.13F, 0F);
-            this.xrLabel1.Multiline = true;
-            this.xrLabel1.Name = "xrLabel1";
-            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(146.87F, 23F);
-            this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "xrLabel1";
-            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            this.xrLabel1.TextFormatString = "{0:d}";
-            // 
-            // sqlDataSource1
-            // 
-            this.sqlDataSource1.ConnectionName = "localhost_advanceshopdb_Connection";
-            this.sqlDataSource1.Name = "sqlDataSource1";
-            storedProcQuery1.Name = "advanceshopdb_RelatorioProdutosMaisVendidos";
-            queryParameter1.Name = "@DataInicial";
-            queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
-            queryParameter1.Value = new DevExpress.DataAccess.Expression("?PeriodoInicial", typeof(System.DateTime));
-            queryParameter2.Name = "@DataFinal";
-            queryParameter2.Type = typeof(DevExpress.DataAccess.Expression);
-            queryParameter2.Value = new DevExpress.DataAccess.Expression("?PeriodoFinal", typeof(System.DateTime));
-            storedProcQuery1.Parameters.Add(queryParameter1);
-            storedProcQuery1.Parameters.Add(queryParameter2);
-            storedProcQuery1.StoredProcName = "advanceshopdb.RelatorioProdutosMaisVendidos";
-            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            storedProcQuery1});
-            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
-            // 
-            // PageFooter
-            // 
-            this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrPageInfo1,
-            this.lblEmissao,
-            this.xrLabel1,
-            this.lblsite,
-            this.lblPag});
-            this.PageFooter.HeightF = 27.08398F;
-            this.PageFooter.Name = "PageFooter";
-            // 
-            // xrPageInfo1
-            // 
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(600F, 0F);
-            this.xrPageInfo1.Name = "xrPageInfo1";
-            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(48.95831F, 22.99999F);
-            this.xrPageInfo1.StylePriority.UseTextAlignment = false;
-            this.xrPageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
-            // 
-            // CalcTotalLucro
-            // 
-            this.CalcTotalLucro.DataMember = "advanceshopdb_RelatorioProdutosMaisVendidos";
-            this.CalcTotalLucro.Expression = "[totalvenda]-[totalcusto]";
-            this.CalcTotalLucro.Name = "CalcTotalLucro";
-            // 
-            // CalcPorcLucro
-            // 
-            this.CalcPorcLucro.DataMember = "advanceshopdb_RelatorioProdutosMaisVendidos";
-            this.CalcPorcLucro.Expression = "[CalcTotalLucro]/[totalvenda]";
-            this.CalcPorcLucro.Name = "CalcPorcLucro";
             // 
             // xrTable1
             // 
@@ -570,7 +445,7 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow3});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(1157F, 25F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(1123F, 25F);
             this.xrTable1.StylePriority.UseBorders = false;
             this.xrTable1.StylePriority.UseFont = false;
             this.xrTable1.StylePriority.UseTextAlignment = false;
@@ -654,7 +529,132 @@ namespace AdvanceShop.Report.Devexpress
             this.xrTableCell16.Text = "Total Lucro";
             this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell16.TextFormatString = "{0:c}";
-            this.xrTableCell16.Weight = 1.12208251953125D;
+            this.xrTableCell16.Weight = 0.782083740234375D;
+            // 
+            // lblEmissao
+            // 
+            this.lblEmissao.LocationFloat = new DevExpress.Utils.PointFloat(911.5468F, 0F);
+            this.lblEmissao.Multiline = true;
+            this.lblEmissao.Name = "lblEmissao";
+            this.lblEmissao.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblEmissao.SizeF = new System.Drawing.SizeF(64.58331F, 23F);
+            this.lblEmissao.StylePriority.UseTextAlignment = false;
+            this.lblEmissao.Text = "Emissão:";
+            this.lblEmissao.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // lblPag
+            // 
+            this.lblPag.LocationFloat = new DevExpress.Utils.PointFloat(563.5416F, 0F);
+            this.lblPag.Multiline = true;
+            this.lblPag.Name = "lblPag";
+            this.lblPag.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblPag.SizeF = new System.Drawing.SizeF(35.33337F, 23F);
+            this.lblPag.StylePriority.UseTextAlignment = false;
+            this.lblPag.Text = "Pag:";
+            this.lblPag.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // lblsite
+            // 
+            this.lblsite.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsite.ForeColor = System.Drawing.Color.Blue;
+            this.lblsite.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.lblsite.Multiline = true;
+            this.lblsite.Name = "lblsite";
+            this.lblsite.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.lblsite.SizeF = new System.Drawing.SizeF(218.7501F, 23F);
+            this.lblsite.StylePriority.UseFont = false;
+            this.lblsite.StylePriority.UseForeColor = false;
+            this.lblsite.StylePriority.UseTextAlignment = false;
+            this.lblsite.Text = "www.advanceshopsistema.com.br";
+            this.lblsite.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // PeriodoInicial
+            // 
+            this.PeriodoInicial.AllowNull = true;
+            this.PeriodoInicial.Description = "PeriodoInicial";
+            this.PeriodoInicial.Name = "PeriodoInicial";
+            this.PeriodoInicial.Type = typeof(System.DateTime);
+            this.PeriodoInicial.Visible = false;
+            // 
+            // PeriodoFinal
+            // 
+            this.PeriodoFinal.AllowNull = true;
+            this.PeriodoFinal.Description = "PeriodoFinal";
+            this.PeriodoFinal.Name = "PeriodoFinal";
+            this.PeriodoFinal.Type = typeof(System.DateTime);
+            this.PeriodoFinal.Visible = false;
+            // 
+            // Emissao
+            // 
+            this.Emissao.AllowNull = true;
+            this.Emissao.Description = "Emissao";
+            this.Emissao.Name = "Emissao";
+            this.Emissao.Type = typeof(System.DateTime);
+            this.Emissao.Visible = false;
+            // 
+            // xrLabel1
+            // 
+            this.xrLabel1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?Emissao")});
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(976.1301F, 0F);
+            this.xrLabel1.Multiline = true;
+            this.xrLabel1.Name = "xrLabel1";
+            this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(146.87F, 23F);
+            this.xrLabel1.StylePriority.UseTextAlignment = false;
+            this.xrLabel1.Text = "xrLabel1";
+            this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrLabel1.TextFormatString = "{0:d}";
+            // 
+            // sqlDataSource1
+            // 
+            this.sqlDataSource1.ConnectionName = "localhost_advanceshopdb_Connection";
+            this.sqlDataSource1.Name = "sqlDataSource1";
+            storedProcQuery1.Name = "advanceshopdb_RelatorioProdutosMaisVendidos";
+            queryParameter1.Name = "@DataInicial";
+            queryParameter1.Type = typeof(DevExpress.DataAccess.Expression);
+            queryParameter1.Value = new DevExpress.DataAccess.Expression("?PeriodoInicial", typeof(System.DateTime));
+            queryParameter2.Name = "@DataFinal";
+            queryParameter2.Type = typeof(DevExpress.DataAccess.Expression);
+            queryParameter2.Value = new DevExpress.DataAccess.Expression("?PeriodoFinal", typeof(System.DateTime));
+            storedProcQuery1.Parameters.Add(queryParameter1);
+            storedProcQuery1.Parameters.Add(queryParameter2);
+            storedProcQuery1.StoredProcName = "advanceshopdb.RelatorioProdutosMaisVendidos";
+            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            storedProcQuery1});
+            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
+            // 
+            // PageFooter
+            // 
+            this.PageFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrPageInfo1,
+            this.lblEmissao,
+            this.xrLabel1,
+            this.lblsite,
+            this.lblPag});
+            this.PageFooter.HeightF = 27.08398F;
+            this.PageFooter.Name = "PageFooter";
+            // 
+            // xrPageInfo1
+            // 
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(600F, 0F);
+            this.xrPageInfo1.Name = "xrPageInfo1";
+            this.xrPageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(48.95831F, 22.99999F);
+            this.xrPageInfo1.StylePriority.UseTextAlignment = false;
+            this.xrPageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            // 
+            // CalcTotalLucro
+            // 
+            this.CalcTotalLucro.DataMember = "advanceshopdb_RelatorioProdutosMaisVendidos";
+            this.CalcTotalLucro.Expression = "[totalvenda]-[totalcusto]";
+            this.CalcTotalLucro.Name = "CalcTotalLucro";
+            // 
+            // CalcPorcLucro
+            // 
+            this.CalcPorcLucro.DataMember = "advanceshopdb_RelatorioProdutosMaisVendidos";
+            this.CalcPorcLucro.Expression = "[CalcTotalLucro]/[totalvenda]";
+            this.CalcPorcLucro.Name = "CalcPorcLucro";
             // 
             // xrProdutosMaisVendidos
             // 
@@ -674,7 +674,7 @@ namespace AdvanceShop.Report.Devexpress
             this.DataSource = this.sqlDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Landscape = true;
-            this.Margins = new System.Drawing.Printing.Margins(5, 7, 2, 3);
+            this.Margins = new System.Drawing.Printing.Margins(23, 23, 2, 3);
             this.PageHeight = 827;
             this.PageWidth = 1169;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;
