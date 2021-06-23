@@ -47,7 +47,7 @@ namespace AdvanceShop.Views
             // 
             this.lblSaldoInicial.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSaldoInicial.Appearance.Options.UseFont = true;
-            this.lblSaldoInicial.Location = new System.Drawing.Point(12, 28);
+            this.lblSaldoInicial.Location = new System.Drawing.Point(12, 12);
             this.lblSaldoInicial.Name = "lblSaldoInicial";
             this.lblSaldoInicial.Size = new System.Drawing.Size(107, 19);
             this.lblSaldoInicial.TabIndex = 2;
@@ -60,7 +60,7 @@ namespace AdvanceShop.Views
             this.txtPeriodoInicial.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtPeriodoInicial.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.txtPeriodoInicial.Location = new System.Drawing.Point(12, 53);
+            this.txtPeriodoInicial.Location = new System.Drawing.Point(12, 37);
             this.txtPeriodoInicial.Name = "txtPeriodoInicial";
             this.txtPeriodoInicial.Size = new System.Drawing.Size(241, 250);
             this.txtPeriodoInicial.TabIndex = 3;
@@ -72,7 +72,7 @@ namespace AdvanceShop.Views
             this.txtPeriodoFinal.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtPeriodoFinal.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.txtPeriodoFinal.Location = new System.Drawing.Point(296, 53);
+            this.txtPeriodoFinal.Location = new System.Drawing.Point(296, 37);
             this.txtPeriodoFinal.Name = "txtPeriodoFinal";
             this.txtPeriodoFinal.Size = new System.Drawing.Size(241, 250);
             this.txtPeriodoFinal.TabIndex = 4;
@@ -80,7 +80,7 @@ namespace AdvanceShop.Views
             // separatorControl1
             // 
             this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
-            this.separatorControl1.Location = new System.Drawing.Point(259, 28);
+            this.separatorControl1.Location = new System.Drawing.Point(259, -9);
             this.separatorControl1.Name = "separatorControl1";
             this.separatorControl1.Size = new System.Drawing.Size(31, 296);
             this.separatorControl1.TabIndex = 5;
@@ -89,7 +89,7 @@ namespace AdvanceShop.Views
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(296, 28);
+            this.labelControl1.Location = new System.Drawing.Point(296, 12);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(98, 19);
             this.labelControl1.TabIndex = 6;
@@ -99,8 +99,8 @@ namespace AdvanceShop.Views
             // 
             this.btnVisualizar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVisualizar.Appearance.Options.UseFont = true;
-            this.btnVisualizar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnGerar.ImageOptions.Image")));
-            this.btnVisualizar.Location = new System.Drawing.Point(426, 309);
+            this.btnVisualizar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVisualizar.ImageOptions.Image")));
+            this.btnVisualizar.Location = new System.Drawing.Point(426, 293);
             this.btnVisualizar.Name = "btnVisualizar";
             this.btnVisualizar.Size = new System.Drawing.Size(111, 36);
             this.btnVisualizar.TabIndex = 7;
@@ -111,7 +111,7 @@ namespace AdvanceShop.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 353);
+            this.ClientSize = new System.Drawing.Size(552, 343);
             this.Controls.Add(this.btnVisualizar);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.separatorControl1);

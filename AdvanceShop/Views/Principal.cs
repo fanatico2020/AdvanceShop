@@ -214,5 +214,11 @@ namespace AdvanceShop.Views
             RelParPeriodoComissaoPorVendedor FormParametros = new RelParPeriodoComissaoPorVendedor("Informe o período de vendas/vendedor/% Comissão", "RelatorioComissaoPorVendedor");
             FormParametros.ShowDialog();
         }
+
+        private void bbiRelVendasPorVendedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RelParPeriodoVendasPorVendedor FormParametros = new RelParPeriodoVendasPorVendedor("Informe o vendedor/período de vendas");
+            FormParametros.ShowDialog();
+        }
     }
 }

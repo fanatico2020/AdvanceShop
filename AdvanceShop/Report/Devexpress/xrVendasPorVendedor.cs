@@ -13,5 +13,21 @@ namespace AdvanceShop.Report.Devexpress
             InitializeComponent();
         }
 
+        private void sqlDataSource2_CustomizeFilterExpression(object sender, DevExpress.DataAccess.Sql.CustomizeFilterExpressionEventArgs e)
+        {
+           
+        }
+
+        private void DetailReport_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            //FilterString = $"[vendas_idvendas] = {tbcVenda.Value}";
+        }
+
+        private void DetailReport_AfterPrint(object sender, EventArgs e)
+        {
+            
+           
+            
+        }
     }
 }

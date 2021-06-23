@@ -490,6 +490,7 @@
     <Compile Include="Shared\CustomPrint\FechamentoCaixa.cs" />
     <Compile Include="Shared\CustomPrint\MeiosDePagamento.cs" />
     <Compile Include="Shared\CustomPrint\ProdutosMaisVendidos.cs" />
+    <Compile Include="Shared\CustomPrint\VendasPorVendedor.cs" />
     <Compile Include="Shared\Email\EmailSistema.cs" />
     <Compile Include="Shared\Library\EncryptorDecrypt.cs" />
     <Compile Include="Shared\Library\HashMd5.cs" />
@@ -659,6 +660,12 @@
     </Compile>
     <Compile Include="Views\RelParPeriodo.Designer.cs">
       <DependentUpon>RelParPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RelParPeriodoVendasPorVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RelParPeriodoVendasPorVendedor.Designer.cs">
+      <DependentUpon>RelParPeriodoVendasPorVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SuplementoSangria.cs">
       <SubType>Form</SubType>
@@ -865,6 +872,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RelParPeriodo.resx">
       <DependentUpon>RelParPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RelParPeriodoVendasPorVendedor.resx">
+      <DependentUpon>RelParPeriodoVendasPorVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SuplementoSangria.resx">
       <DependentUpon>SuplementoSangria.cs</DependentUpon>

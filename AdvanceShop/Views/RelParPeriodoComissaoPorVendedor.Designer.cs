@@ -55,7 +55,7 @@ namespace AdvanceShop.Views
             // 
             this.lblSaldoInicial.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSaldoInicial.Appearance.Options.UseFont = true;
-            this.lblSaldoInicial.Location = new System.Drawing.Point(12, 28);
+            this.lblSaldoInicial.Location = new System.Drawing.Point(12, 12);
             this.lblSaldoInicial.Name = "lblSaldoInicial";
             this.lblSaldoInicial.Size = new System.Drawing.Size(107, 19);
             this.lblSaldoInicial.TabIndex = 2;
@@ -68,7 +68,7 @@ namespace AdvanceShop.Views
             this.txtPeriodoInicial.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtPeriodoInicial.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.txtPeriodoInicial.Location = new System.Drawing.Point(12, 53);
+            this.txtPeriodoInicial.Location = new System.Drawing.Point(12, 37);
             this.txtPeriodoInicial.Name = "txtPeriodoInicial";
             this.txtPeriodoInicial.Size = new System.Drawing.Size(241, 250);
             this.txtPeriodoInicial.TabIndex = 1;
@@ -80,7 +80,7 @@ namespace AdvanceShop.Views
             this.txtPeriodoFinal.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.txtPeriodoFinal.FirstDayOfWeek = System.DayOfWeek.Sunday;
-            this.txtPeriodoFinal.Location = new System.Drawing.Point(296, 53);
+            this.txtPeriodoFinal.Location = new System.Drawing.Point(296, 37);
             this.txtPeriodoFinal.Name = "txtPeriodoFinal";
             this.txtPeriodoFinal.Size = new System.Drawing.Size(241, 250);
             this.txtPeriodoFinal.TabIndex = 2;
@@ -88,7 +88,7 @@ namespace AdvanceShop.Views
             // separatorControl1
             // 
             this.separatorControl1.LineOrientation = System.Windows.Forms.Orientation.Vertical;
-            this.separatorControl1.Location = new System.Drawing.Point(259, 28);
+            this.separatorControl1.Location = new System.Drawing.Point(259, 12);
             this.separatorControl1.Name = "separatorControl1";
             this.separatorControl1.Size = new System.Drawing.Size(31, 275);
             this.separatorControl1.TabIndex = 5;
@@ -97,7 +97,7 @@ namespace AdvanceShop.Views
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(296, 28);
+            this.labelControl1.Location = new System.Drawing.Point(296, 12);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(98, 19);
             this.labelControl1.TabIndex = 6;
@@ -108,7 +108,7 @@ namespace AdvanceShop.Views
             this.btnVisualizar.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVisualizar.Appearance.Options.UseFont = true;
             this.btnVisualizar.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnVisualizar.ImageOptions.Image")));
-            this.btnVisualizar.Location = new System.Drawing.Point(426, 403);
+            this.btnVisualizar.Location = new System.Drawing.Point(426, 387);
             this.btnVisualizar.Name = "btnVisualizar";
             this.btnVisualizar.Size = new System.Drawing.Size(111, 36);
             this.btnVisualizar.TabIndex = 5;
@@ -119,7 +119,7 @@ namespace AdvanceShop.Views
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Location = new System.Drawing.Point(12, 346);
+            this.labelControl2.Location = new System.Drawing.Point(12, 330);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(134, 19);
             this.labelControl2.TabIndex = 8;
@@ -127,14 +127,14 @@ namespace AdvanceShop.Views
             // 
             // separatorControl2
             // 
-            this.separatorControl2.Location = new System.Drawing.Point(12, 309);
+            this.separatorControl2.Location = new System.Drawing.Point(15, 293);
             this.separatorControl2.Name = "separatorControl2";
             this.separatorControl2.Size = new System.Drawing.Size(525, 31);
             this.separatorControl2.TabIndex = 9;
             // 
             // cbxUsuarioVendedor
             // 
-            this.cbxUsuarioVendedor.Location = new System.Drawing.Point(12, 371);
+            this.cbxUsuarioVendedor.Location = new System.Drawing.Point(12, 355);
             this.cbxUsuarioVendedor.Name = "cbxUsuarioVendedor";
             this.cbxUsuarioVendedor.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxUsuarioVendedor.Properties.Appearance.Options.UseFont = true;
@@ -148,7 +148,7 @@ namespace AdvanceShop.Views
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(296, 346);
+            this.labelControl3.Location = new System.Drawing.Point(296, 330);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(95, 19);
             this.labelControl3.TabIndex = 11;
@@ -156,7 +156,7 @@ namespace AdvanceShop.Views
             // 
             // txtPorcentagemComissao
             // 
-            this.txtPorcentagemComissao.Location = new System.Drawing.Point(296, 371);
+            this.txtPorcentagemComissao.Location = new System.Drawing.Point(296, 355);
             this.txtPorcentagemComissao.Name = "txtPorcentagemComissao";
             this.txtPorcentagemComissao.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPorcentagemComissao.Properties.Appearance.Options.UseFont = true;
@@ -168,7 +168,7 @@ namespace AdvanceShop.Views
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 456);
+            this.ClientSize = new System.Drawing.Size(552, 440);
             this.Controls.Add(this.txtPorcentagemComissao);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.cbxUsuarioVendedor);

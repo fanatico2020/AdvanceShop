@@ -203,8 +203,8 @@
             // 
             this.bbiClientesFornecedores.Caption = "Clientes / Fornecedores";
             this.bbiClientesFornecedores.Id = 2;
-            this.bbiClientesFornecedores.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiClientesPessoas.ImageOptions.Image")));
-            this.bbiClientesFornecedores.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClientesPessoas.ImageOptions.LargeImage")));
+            this.bbiClientesFornecedores.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiClientesFornecedores.ImageOptions.Image")));
+            this.bbiClientesFornecedores.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClientesFornecedores.ImageOptions.LargeImage")));
             this.bbiClientesFornecedores.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiClientesFornecedores.ItemAppearance.Hovered.Options.UseFont = true;
             this.bbiClientesFornecedores.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -343,6 +343,7 @@
             this.bbiRelVendasPorVendedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
             this.bbiRelVendasPorVendedor.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelVendasPorVendedor.Name = "bbiRelVendasPorVendedor";
+            this.bbiRelVendasPorVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelVendasPorVendedor_ItemClick);
             // 
             // bbiConfiguracoesGerais
             // 
