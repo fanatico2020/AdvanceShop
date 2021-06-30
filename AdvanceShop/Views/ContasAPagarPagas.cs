@@ -24,6 +24,7 @@ namespace AdvanceShop.Views
         ContasAPagarModel contaAPagar = new ContasAPagarModel();
         ContasAPagarController contaAPagarController = new ContasAPagarController();
         ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         public ContasAPagarPagas(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();

@@ -35,6 +35,7 @@ namespace AdvanceShop.Views
         FormasPagamentoController formaPagamentoController = new FormasPagamentoController();
         DataHoraModel dataHora = new DataHoraModel();
         DataHoraController dataHoraController = new DataHoraController();
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         public TransacoesCaixa(UsuariosModel UsuarioLogado,CaixasModel Caixa)
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace AdvanceShop.Views
             gridControl.Refresh();
             bsiRecordsCount.Caption = "Registros : " + dataSource.Rows.Count;
 
-            if (ValidacaoConexaoInternet.EstarConectado())
+            if (ValidacaoConexaoInternet.EstarConectado() && apiGerenciaNet.usarapi == 1)
             {
                 //atualizar status pagamento
                 //int id = Convert.ToInt32(advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[12]));

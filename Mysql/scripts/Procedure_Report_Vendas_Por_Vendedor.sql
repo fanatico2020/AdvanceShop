@@ -8,7 +8,7 @@ v.valorpago as ValorPago,v.troco as Troco,v.clientespessoas_idclientespessoas as
 c.nome as Cliente,d.datahoracadastro as DataVenda,d.usuariocadastro,sum(i.quantidade) as QtdItens from vendas v
 left join clientespessoas c on c.idclientespessoas = v.clientespessoas_idclientespessoas
 inner join datahora d on v.idvendas = d.vendas_idvendas 
-inner join itensvendas i on v.idvendas = i.vendas_idvendas where 
+inner join itensvendas i on v.idvendas = i.vendas_idvendas where v.deletado = 0 and
 d.usuariocadastro = Vendedor and d.datahoracadastro between 
 cast(DataInicial as datetime) and cast(DataFinal as datetime) group by v.idvendas;
 

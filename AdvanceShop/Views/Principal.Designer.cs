@@ -84,6 +84,7 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
+            this.bbiRelRelacaoDeContasPorStatus = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenuPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -137,10 +138,11 @@
             this.bbiAtualizacaoSoftware,
             this.barStaticItem1,
             this.barButtonItem1,
-            this.bbiRelComissaoPorVendedor});
+            this.bbiRelComissaoPorVendedor,
+            this.bbiRelRelacaoDeContasPorStatus});
             this.ribbonControlPrincipal.Location = new System.Drawing.Point(0, 0);
             this.ribbonControlPrincipal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControlPrincipal.MaxItemId = 62;
+            this.ribbonControlPrincipal.MaxItemId = 63;
             this.ribbonControlPrincipal.Name = "ribbonControlPrincipal";
             this.ribbonControlPrincipal.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPagePrincipal,
@@ -194,7 +196,7 @@
             this.bbiVendas.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiVendas.ImageOptions.SvgImage")));
             this.bbiVendas.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiVendas.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiVendas.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiVendas.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiVendas.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiVendas.Name = "bbiVendas";
             this.bbiVendas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiVendas_ItemClick);
@@ -207,7 +209,7 @@
             this.bbiClientesFornecedores.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClientesFornecedores.ImageOptions.LargeImage")));
             this.bbiClientesFornecedores.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiClientesFornecedores.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiClientesFornecedores.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiClientesFornecedores.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiClientesFornecedores.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiClientesFornecedores.Name = "bbiClientesFornecedores";
             this.bbiClientesFornecedores.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClientesPessoas_ItemClick);
@@ -220,7 +222,7 @@
             this.bbiProdutos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiProdutos.ImageOptions.LargeImage")));
             this.bbiProdutos.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiProdutos.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiProdutos.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiProdutos.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiProdutos.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiProdutos.Name = "bbiProdutos";
             this.bbiProdutos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiProdutos_ItemClick);
@@ -233,7 +235,7 @@
             this.bbiContasApagar.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiContasApagar.ImageOptions.LargeImage")));
             this.bbiContasApagar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiContasApagar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiContasApagar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiContasApagar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiContasApagar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiContasApagar.Name = "bbiContasApagar";
             this.bbiContasApagar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiContasApagar_ItemClick);
@@ -246,7 +248,7 @@
             this.bbiCaixas.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCaixas.ImageOptions.LargeImage")));
             this.bbiCaixas.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiCaixas.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiCaixas.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiCaixas.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiCaixas.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiCaixas.Name = "bbiCaixas";
             this.bbiCaixas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCaixas_ItemClick);
@@ -271,7 +273,7 @@
             this.bbiApp.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiApp.ImageOptions.SvgImage")));
             this.bbiApp.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiApp.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiApp.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiApp.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiApp.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiApp.Name = "bbiApp";
             this.bbiApp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiApp_ItemClick);
@@ -283,7 +285,7 @@
             this.bbiRelMeioDePagamento.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelMeioDePagamento.ImageOptions.LargeImage")));
             this.bbiRelMeioDePagamento.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelMeioDePagamento.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRelMeioDePagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelMeioDePagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelMeioDePagamento.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelMeioDePagamento.Name = "bbiRelMeioDePagamento";
             this.bbiRelMeioDePagamento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelMeioDePagamento_ItemClick);
@@ -306,7 +308,7 @@
             this.bbiRelProdutosMaisVendidos.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelProdutosMaisVendidos.ImageOptions.LargeImage")));
             this.bbiRelProdutosMaisVendidos.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelProdutosMaisVendidos.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRelProdutosMaisVendidos.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.bbiRelProdutosMaisVendidos.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelProdutosMaisVendidos.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelProdutosMaisVendidos.Name = "bbiRelProdutosMaisVendidos";
             this.bbiRelProdutosMaisVendidos.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelProdutosMaisVendidos_ItemClick);
@@ -340,7 +342,7 @@
             this.bbiRelVendasPorVendedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelVendasPorVendedor.ImageOptions.LargeImage")));
             this.bbiRelVendasPorVendedor.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11F);
             this.bbiRelVendasPorVendedor.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRelVendasPorVendedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.bbiRelVendasPorVendedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelVendasPorVendedor.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelVendasPorVendedor.Name = "bbiRelVendasPorVendedor";
             this.bbiRelVendasPorVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelVendasPorVendedor_ItemClick);
@@ -353,7 +355,7 @@
             this.bbiConfiguracoesGerais.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiConfiguracoesGerais.ImageOptions.LargeImage")));
             this.bbiConfiguracoesGerais.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11F);
             this.bbiConfiguracoesGerais.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiConfiguracoesGerais.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.bbiConfiguracoesGerais.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiConfiguracoesGerais.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiConfiguracoesGerais.Name = "bbiConfiguracoesGerais";
             this.bbiConfiguracoesGerais.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiConfiguracoesGerais_ItemClick);
@@ -366,7 +368,7 @@
             this.bbiBackupRestauracaoDB.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiBackupRestauracaoDB.ImageOptions.LargeImage")));
             this.bbiBackupRestauracaoDB.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11F);
             this.bbiBackupRestauracaoDB.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiBackupRestauracaoDB.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.bbiBackupRestauracaoDB.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiBackupRestauracaoDB.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiBackupRestauracaoDB.Name = "bbiBackupRestauracaoDB";
             this.bbiBackupRestauracaoDB.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiBackupRestauracaoDB_ItemClick);
@@ -428,7 +430,7 @@
             this.bbiTransacoesEstoque.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiTransacoesEstoque.ImageOptions.LargeImage")));
             this.bbiTransacoesEstoque.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiTransacoesEstoque.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiTransacoesEstoque.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiTransacoesEstoque.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiTransacoesEstoque.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiTransacoesEstoque.Name = "bbiTransacoesEstoque";
             this.bbiTransacoesEstoque.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTransacoesEstoque_ItemClick);
@@ -441,7 +443,7 @@
             this.bbiUsuarios.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiUsuarios.ImageOptions.LargeImage")));
             this.bbiUsuarios.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiUsuarios.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiUsuarios.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiUsuarios.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiUsuarios.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiUsuarios.Name = "bbiUsuarios";
             this.bbiUsuarios.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiUsuarios_ItemClick);
@@ -483,6 +485,10 @@
             this.bbiAcessoRemoto.Caption = "AnyDesk - Acesso Remoto";
             this.bbiAcessoRemoto.Id = 55;
             this.bbiAcessoRemoto.ImageOptions.Image = global::AdvanceShop.Properties.Resources.AnyDesk_128x128;
+            this.bbiAcessoRemoto.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAcessoRemoto.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiAcessoRemoto.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAcessoRemoto.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAcessoRemoto.Name = "bbiAcessoRemoto";
             this.bbiAcessoRemoto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAcessoRemoto_ItemClick);
             // 
@@ -491,6 +497,10 @@
             this.bbiSuporteTelefone.Caption = "WhatsApp - Fale Conosco";
             this.bbiSuporteTelefone.Id = 56;
             this.bbiSuporteTelefone.ImageOptions.Image = global::AdvanceShop.Properties.Resources.Whatsapp_256x256;
+            this.bbiSuporteTelefone.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiSuporteTelefone.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiSuporteTelefone.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiSuporteTelefone.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiSuporteTelefone.Name = "bbiSuporteTelefone";
             this.bbiSuporteTelefone.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSuporteTelefone_ItemClick);
             // 
@@ -501,7 +511,7 @@
             this.bbiRelFechmanetoCaixa.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelFechmanetoCaixa.ImageOptions.LargeImage")));
             this.bbiRelFechmanetoCaixa.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelFechmanetoCaixa.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRelFechmanetoCaixa.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelFechmanetoCaixa.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelFechmanetoCaixa.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelFechmanetoCaixa.Name = "bbiRelFechmanetoCaixa";
             this.bbiRelFechmanetoCaixa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelFechmanetoCaixa_ItemClick);
@@ -513,7 +523,7 @@
             this.bbiAtualizacaoSoftware.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiAtualizacaoSoftware.ImageOptions.SvgImage")));
             this.bbiAtualizacaoSoftware.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11F);
             this.bbiAtualizacaoSoftware.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiAtualizacaoSoftware.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.bbiAtualizacaoSoftware.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizacaoSoftware.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAtualizacaoSoftware.Name = "bbiAtualizacaoSoftware";
             this.bbiAtualizacaoSoftware.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtualizacaoSoftware_ItemClick);
@@ -537,7 +547,7 @@
             this.bbiRelComissaoPorVendedor.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelComissaoPorVendedor.ImageOptions.LargeImage")));
             this.bbiRelComissaoPorVendedor.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelComissaoPorVendedor.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRelComissaoPorVendedor.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRelComissaoPorVendedor.Name = "bbiRelComissaoPorVendedor";
             this.bbiRelComissaoPorVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelComissaoPorVendedor_ItemClick);
@@ -579,6 +589,7 @@
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelVendasPorVendedor);
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelFechmanetoCaixa);
             this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelComissaoPorVendedor);
+            this.ribbonPageGroupRelatorios.ItemLinks.Add(this.bbiRelRelacaoDeContasPorStatus);
             this.ribbonPageGroupRelatorios.Name = "ribbonPageGroupRelatorios";
             // 
             // ribbonPage1
@@ -648,6 +659,18 @@
             this.barHeaderItem1.Caption = "|";
             this.barHeaderItem1.Id = 32;
             this.barHeaderItem1.Name = "barHeaderItem1";
+            // 
+            // bbiRelRelacaoDeContasPorStatus
+            // 
+            this.bbiRelRelacaoDeContasPorStatus.Caption = "Relação de Contas por Status";
+            this.bbiRelRelacaoDeContasPorStatus.Id = 62;
+            this.bbiRelRelacaoDeContasPorStatus.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
+            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiRelRelacaoDeContasPorStatus.Name = "bbiRelRelacaoDeContasPorStatus";
+            this.bbiRelRelacaoDeContasPorStatus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelRelacaoDeContasPorStatus_ItemClick);
             // 
             // Principal
             // 
@@ -732,5 +755,6 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem bbiRelComissaoPorVendedor;
+        private DevExpress.XtraBars.BarButtonItem bbiRelRelacaoDeContasPorStatus;
     }
 }

@@ -42,6 +42,7 @@ namespace AdvanceShop.Views
         TransacoesEstoqueController transacaoEstoqueController = new TransacoesEstoqueController();
         ItensVendasModel itensVenda = new ItensVendasModel();
         ItensVendasController itensVendaController = new ItensVendasController();
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         public TransacoesEstoque(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();

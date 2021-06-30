@@ -14,6 +14,7 @@ namespace AdvanceShop.Views
         UsuariosModel usuarioLogado = new UsuariosModel();
         ProdutosModel produto = new ProdutosModel();
         ProdutosController produtoController = new ProdutosController();
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         public Produtos(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();

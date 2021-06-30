@@ -27,10 +27,12 @@ namespace AdvanceShop.Views
         UsuariosController usuarioController = new UsuariosController();
         PermissoesController permissoesController = new PermissoesController();
         UsuarioTemPermissaoModel usuarioTemPermissaoModel = new UsuarioTemPermissaoModel();
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         public Usuarios(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
 
         }
         public void AtualizarGrid()
@@ -96,8 +98,13 @@ namespace AdvanceShop.Views
         }
         private void NovoUsuario()
         {
-            Views.NovoUsuario FormNovoUsuario = new NovoUsuario(usuarioLogado);
-            FormNovoUsuario.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 28;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                Views.NovoUsuario FormNovoUsuario = new NovoUsuario(usuarioLogado);
+                FormNovoUsuario.ShowDialog();
+            }
+            
         }
         private void EditarUsuario()
         {
@@ -126,7 +133,7 @@ namespace AdvanceShop.Views
         }
         private void ClonarUsuario()
         {
-
+            MessageBoxOK.Show("Em desenvolvimento...");
         }
         private void bbiEditarUsuario_ItemClick(object sender, ItemClickEventArgs e)
         {

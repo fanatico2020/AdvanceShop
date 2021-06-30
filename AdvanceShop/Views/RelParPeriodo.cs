@@ -35,6 +35,7 @@ namespace AdvanceShop.Views
                     break;
                 case "RelatorioProdutosMaisVendidos":
                     Shared.CustomPrint.ProdutosMaisVendidos.ImprimirProdutosMaisVendidos(txtPeriodoInicial.DateTime, txtPeriodoFinal.DateTime);
+                    Close();
                     break;
                 default:
                     break;

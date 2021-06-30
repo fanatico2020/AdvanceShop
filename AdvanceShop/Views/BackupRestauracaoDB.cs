@@ -22,6 +22,7 @@ namespace AdvanceShop.Views
         UsuariosModel usuarioLogado = new UsuariosModel();
         //BackgroundWorker bgwProgresso = new BackgroundWorker();
         private System.ComponentModel.BackgroundWorker bgwProgresso = new System.ComponentModel.BackgroundWorker();
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         bool restaurar = false;
         public BackupRestauracaoDB(UsuariosModel UsuarioLogado)
         {

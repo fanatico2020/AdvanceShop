@@ -35,8 +35,13 @@ namespace AdvanceShop.Views
         private void Principal_Load(object sender, EventArgs e)
         {
             this.Text = Text + " - " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            
+
             //Checa update
+            usuarioTemPermissao.permissoes_idpermissoes = 1;
+            if (!UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                Application.Exit();
+            }
 
         }
        
@@ -52,12 +57,10 @@ namespace AdvanceShop.Views
 
         private void bbiUsuarios_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            usuarioTemPermissao.permissoes_idpermissoes = 1;
-            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
-            {
-                Views.Usuarios FormUsuarios = new Usuarios(usuarioLogado);
-                FormUsuarios.Show();
-            }
+            Views.Usuarios FormUsuarios = new Usuarios(usuarioLogado);
+            FormUsuarios.Show();
+            
+            
             
         }
 
@@ -218,6 +221,12 @@ namespace AdvanceShop.Views
         private void bbiRelVendasPorVendedor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             RelParPeriodoVendasPorVendedor FormParametros = new RelParPeriodoVendasPorVendedor("Informe o vendedor/período de vendas");
+            FormParametros.ShowDialog();
+        }
+
+        private void bbiRelRelacaoDeContasPorStatus_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RelParStatusPgPeriodo FormParametros = new RelParStatusPgPeriodo("Informe o status pagamento e o período");
             FormParametros.ShowDialog();
         }
     }

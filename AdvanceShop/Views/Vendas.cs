@@ -63,7 +63,7 @@ namespace AdvanceShop.Views
             bsiRecordsCount.Caption = "Registros : " + dataSource.Rows.Count;
 
             splashScreenManager1.CloseWaitForm();
-            if (ValidacaoConexaoInternet.EstarConectado())
+            if (ValidacaoConexaoInternet.EstarConectado() && apiFocusNfe.usarapi == 1)
             {
                 foreach (DataRow row in dataSource.Rows)
                 {
@@ -87,6 +87,7 @@ namespace AdvanceShop.Views
                                 venda.nfcstatus = 3;
                                 break;
                             default:
+                                venda.nfcstatus = int.Parse(null);
                                 break;
                         }
                         
@@ -186,7 +187,7 @@ namespace AdvanceShop.Views
         {
             string statusnfc = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[13]).ToString();
             string referencia = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]).ToString();
-            if (statusnfc == "0" && statusnfc != "")
+            if (statusnfc == "0")
             {
                 string caminhoDanfe = advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[17]).ToString();
 

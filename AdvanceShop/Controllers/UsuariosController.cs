@@ -63,7 +63,44 @@ namespace AdvanceShop.Controllers
             comando.CommandText =
                 "insert into usuarios(usuarioacesso,senhaacesso,nomecompleto,email,contato,usadescontomaximo,descontomaximo,status,deletado) " +
                 "values(@usuarioacesso,md5(@senhaacesso),@nomecompleto,@email,@contato,@usadescontomaximo,@descontomaximo,@status,0); " +
-                "insert into datahora(datahoracadastro,usuariocadastro,usuarios_idusuarios) values(now(),@usuariocadastro,last_insert_id());";
+                "select last_insert_id() into @usuarios_idusuarios; " +
+                "insert into datahora(datahoracadastro,usuariocadastro,usuarios_idusuarios) values(now(),@usuariocadastro,@usuarios_idusuarios);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,1);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,2);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,3);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,4);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,5);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,6);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,7);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,8);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,9);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,10);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,11);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,12);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,13);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,14);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,15);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,16);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,17);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,18);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,19);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,20);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,21);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,22);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,23);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,24);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,25);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,26);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,27);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,28);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,29);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,30);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,31);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,32);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,33);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,@usuarios_idusuarios,34);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,35);" +
+                "insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (0,@usuarios_idusuarios,36);";
             comando.Parameters.Add(new MySqlParameter("@usuarioacesso", usuario.UsuarioAcesso));
             comando.Parameters.Add(new MySqlParameter("@senhaacesso", usuario.SenhaAcesso));
             comando.Parameters.Add(new MySqlParameter("@nomecompleto", usuario.NomeCompleto));

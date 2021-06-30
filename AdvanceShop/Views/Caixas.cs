@@ -23,6 +23,7 @@ namespace AdvanceShop.Views
         UsuariosModel usuarioLogado = new UsuariosModel();
         CaixasModel caixa = new CaixasModel();
         CaixasController caixaController = new CaixasController();
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         public Caixas(UsuariosModel UsuarioLogado)
         {
             InitializeComponent();
@@ -91,6 +92,7 @@ namespace AdvanceShop.Views
         }
         private void TransacoesCaixa()
         {
+
             caixa.IdCaixas = Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[0]));
             
             Views.TransacoesCaixa FormTransacoesCaixa = new TransacoesCaixa(usuarioLogado,caixa);

@@ -431,6 +431,12 @@
     <Compile Include="Report\Devexpress\xrComissaoPorVendedor.Designer.cs">
       <DependentUpon>xrComissaoPorVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\Devexpress\xrContasAPagarPagas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\Devexpress\xrContasAPagarPagas.Designer.cs">
+      <DependentUpon>xrContasAPagarPagas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\Devexpress\xrCupomNaoFiscal.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -491,6 +497,7 @@
     <Compile Include="Shared\CustomPrint\MeiosDePagamento.cs" />
     <Compile Include="Shared\CustomPrint\ProdutosMaisVendidos.cs" />
     <Compile Include="Shared\CustomPrint\VendasPorVendedor.cs" />
+    <Compile Include="Shared\CustomPrint\ContasAPagarPagas.cs" />
     <Compile Include="Shared\Email\EmailSistema.cs" />
     <Compile Include="Shared\Library\EncryptorDecrypt.cs" />
     <Compile Include="Shared\Library\HashMd5.cs" />
@@ -667,6 +674,12 @@
     <Compile Include="Views\RelParPeriodoVendasPorVendedor.Designer.cs">
       <DependentUpon>RelParPeriodoVendasPorVendedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\RelParStatusPgPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RelParStatusPgPeriodo.Designer.cs">
+      <DependentUpon>RelParStatusPgPeriodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SuplementoSangria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -747,6 +760,9 @@
     </Compile>
     <EmbeddedResource Include="Report\Devexpress\xrComissaoPorVendedor.resx">
       <DependentUpon>xrComissaoPorVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Devexpress\xrContasAPagarPagas.resx">
+      <DependentUpon>xrContasAPagarPagas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\Devexpress\xrCupomNaoFiscal.resx">
       <DependentUpon>xrCupomNaoFiscal.cs</DependentUpon>
@@ -875,6 +891,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RelParPeriodoVendasPorVendedor.resx">
       <DependentUpon>RelParPeriodoVendasPorVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RelParStatusPgPeriodo.resx">
+      <DependentUpon>RelParStatusPgPeriodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SuplementoSangria.resx">
       <DependentUpon>SuplementoSangria.cs</DependentUpon>

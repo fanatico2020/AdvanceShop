@@ -23,6 +23,7 @@ namespace AdvanceShop.Views
         UsuariosModel usuarioLogado = new UsuariosModel();
         ClientesPessoasModel clientePessoa = new ClientesPessoasModel();
         ClientesPessoasController clientePessoaController = new ClientesPessoasController();
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         public ClientesPessoasModel clientePessoaPDV { get; set; }
         bool PDVAtivo = false;
 

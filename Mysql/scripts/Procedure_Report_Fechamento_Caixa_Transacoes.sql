@@ -4,7 +4,7 @@ CREATE PROCEDURE RelatorioFechamentoCaixaTransacoes(id_caixa int)
 
 BEGIN
 
-select idtransacoescaixa,if(tipo = 1,'1 - Entrada','0 - Saída') as Tipo,descricaotransacao,valor,observacaotransacao from transacoescaixa where caixas_idcaixas = id_caixa;
+select idtransacoescaixa,if(tipo = 1,'1 - Entrada','0 - Saída') as Tipo,descricaotransacao,valor,observacaotransacao from transacoescaixa where deletado = 0 and caixas_idcaixas = id_caixa;
 
 END;
 DELIMITER;

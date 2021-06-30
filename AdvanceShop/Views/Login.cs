@@ -18,6 +18,7 @@ namespace AdvanceShop.Views
     {
         UsuariosModel usuarioLogin = new UsuariosModel();
         UsuariosController usuarioController = new UsuariosController();
+        
         public Login()
         {
             InitializeComponent();
@@ -53,10 +54,9 @@ namespace AdvanceShop.Views
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            
             usuarioLogin.UsuarioAcesso = cbxUsuario.Text;
             usuarioLogin.SenhaAcesso = txtSenha.Text;
-            usuarioLogin =  usuarioController.AutenticarUsuario(usuarioLogin);
+            usuarioLogin = usuarioController.AutenticarUsuario(usuarioLogin);
             if (usuarioLogin.logado == 1)
             {
                 Hide();
@@ -67,6 +67,8 @@ namespace AdvanceShop.Views
             {
                 MessageBoxError.Show("Usuário de acesso ou senha de acesso incorreto!");
             }
+            
+            
         }
 
         private void Login_Load(object sender, EventArgs e)

@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleIconSet formatConditionRuleIconSet1 = new DevExpress.XtraEditors.FormatConditionRuleIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSet formatConditionIconSet1 = new DevExpress.XtraEditors.FormatConditionIconSet();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon1 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
+            DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Usuarios));
             this.gridViewPermissoes = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -81,6 +86,26 @@
             this.gridColumnPermitido,
             this.gridColumnDescricaoPermissao,
             this.gridColumnCodigoUsuario});
+            gridFormatRule1.Column = this.gridColumnPermitido;
+            gridFormatRule1.ColumnApplyTo = this.gridColumnPermitido;
+            gridFormatRule1.Name = "FormatPermissao";
+            formatConditionIconSet1.CategoryName = "Symbols";
+            formatConditionIconSetIcon1.PredefinedName = "Symbols23_1.png";
+            formatConditionIconSetIcon1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            formatConditionIconSetIcon1.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSetIcon2.PredefinedName = "Symbols23_3.png";
+            formatConditionIconSetIcon2.ValueComparison = DevExpress.XtraEditors.FormatConditionComparisonType.GreaterOrEqual;
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon1);
+            formatConditionIconSet1.Icons.Add(formatConditionIconSetIcon2);
+            formatConditionIconSet1.Name = "Symbols3Uncircled";
+            formatConditionIconSet1.ValueType = DevExpress.XtraEditors.FormatConditionValueType.Number;
+            formatConditionRuleIconSet1.IconSet = formatConditionIconSet1;
+            gridFormatRule1.Rule = formatConditionRuleIconSet1;
+            this.gridViewPermissoes.FormatRules.Add(gridFormatRule1);
             this.gridViewPermissoes.GridControl = this.gridControlUsuarios;
             this.gridViewPermissoes.Name = "gridViewPermissoes";
             this.gridViewPermissoes.OptionsBehavior.Editable = false;
