@@ -75,30 +75,35 @@ namespace AdvanceShop.Views
         }
         private void AtivarDesativarUsuario()
         {
-            string msg;
-            usuario.IdUsuarios = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[0]));
-            usuario.Status = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[7]));
-            usuario.UsuarioAcesso = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[1]).ToString();
-            if (usuario.Status == 1)
+            usuarioTemPermissao.permissoes_idpermissoes = 30;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                msg = $"Confirmar desativar a conta do usuário {usuario.UsuarioAcesso} ?";
-                usuario.Status = 0;
+                string msg;
+                usuario.IdUsuarios = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[0]));
+                usuario.Status = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[7]));
+                usuario.UsuarioAcesso = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[1]).ToString();
+                if (usuario.Status == 1)
+                {
+                    msg = $"Confirmar desativar a conta do usuário {usuario.UsuarioAcesso} ?";
+                    usuario.Status = 0;
+                }
+                else
+                {
+                    msg = $"Confirmar ativar a conta do usuário {usuario.UsuarioAcesso} ?";
+                    usuario.Status = 1;
+                }
+                if (MessageBoxQuestionYesNo.Show(msg) == DialogResult.Yes)
+                {
+                    usuarioController.EditarStatus(usuario, usuarioLogado);
+                    AtualizarGrid();
+                }
             }
-            else
-            {
-                msg = $"Confirmar ativar a conta do usuário {usuario.UsuarioAcesso} ?";
-                usuario.Status = 1;
-            }
-            if (MessageBoxQuestionYesNo.Show(msg) == DialogResult.Yes)
-            {
-                usuarioController.EditarStatus(usuario, usuarioLogado);
-                AtualizarGrid();
-            }
+            
 
         }
         private void NovoUsuario()
         {
-            usuarioTemPermissao.permissoes_idpermissoes = 28;
+            usuarioTemPermissao.permissoes_idpermissoes = 27;
             if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
                 Views.NovoUsuario FormNovoUsuario = new NovoUsuario(usuarioLogado);
@@ -108,32 +113,47 @@ namespace AdvanceShop.Views
         }
         private void EditarUsuario()
         {
-            usuario.IdUsuarios = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[0]));
-            usuario.UsuarioAcesso = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[1]).ToString();
-            usuario.NomeCompleto = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[2]).ToString();
-            usuario.Email = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[3]).ToString();
-            usuario.Contato = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[4]).ToString();
-            usuario.DescontoMaximo = Convert.ToDecimal(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[5]));
-            usuario.UsaDescontoMaximo = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[6]));
-            usuario.Status = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[7]));
-            usuario.SenhaAcesso = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[12]).ToString();
-            Views.NovoUsuario FormNovoEditarUsuario = new NovoUsuario(usuarioLogado, usuario);
-            FormNovoEditarUsuario.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 28;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                usuario.IdUsuarios = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[0]));
+                usuario.UsuarioAcesso = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[1]).ToString();
+                usuario.NomeCompleto = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[2]).ToString();
+                usuario.Email = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[3]).ToString();
+                usuario.Contato = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[4]).ToString();
+                usuario.DescontoMaximo = Convert.ToDecimal(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[5]));
+                usuario.UsaDescontoMaximo = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[6]));
+                usuario.Status = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[7]));
+                usuario.SenhaAcesso = advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[12]).ToString();
+                Views.NovoUsuario FormNovoEditarUsuario = new NovoUsuario(usuarioLogado, usuario);
+                FormNovoEditarUsuario.ShowDialog();
+            }
+            
         }
         private void DeletarUsuario()
         {
-            usuario.IdUsuarios = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[0]));
-            if (advBandedGridViewUsuarios.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+            usuarioTemPermissao.permissoes_idpermissoes = 29;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                usuarioController.Deletar(usuario);
-                MessageBoxOK.Show("Deletado com sucesso!");
-                AtualizarGrid();
+                usuario.IdUsuarios = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[0]));
+                if (advBandedGridViewUsuarios.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                {
+                    usuarioController.Deletar(usuario);
+                    MessageBoxOK.Show("Deletado com sucesso!");
+                    AtualizarGrid();
+                }
             }
+            
 
         }
         private void ClonarUsuario()
         {
-            MessageBoxOK.Show("Em desenvolvimento...");
+            usuarioTemPermissao.permissoes_idpermissoes = 32;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                MessageBoxOK.Show("Em desenvolvimento...");
+            }
+            
         }
         private void bbiEditarUsuario_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -158,15 +178,20 @@ namespace AdvanceShop.Views
 
         private void PermitirNaoPermitir(int status)
         {
-            var detailView = gridControlUsuarios.FocusedView as GridView;
-            if (detailView.GetRowCellValue(detailView.GetSelectedRows()[0], gridViewPermissoes.Columns[0]) != null)
+            usuarioTemPermissao.permissoes_idpermissoes = 31;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                usuarioTemPermissaoModel.status = status;
-                usuarioTemPermissaoModel.permissoes_idpermissoes = Convert.ToInt32(detailView.GetFocusedRowCellValue(gridViewPermissoes.Columns[0]));
-                usuarioTemPermissaoModel.usuarios_idusuarios = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[0]));
-                UsuarioTemPermissaoController.EditarPermissaoSimNao(usuarioTemPermissaoModel);
-                AtualizarGrid();
+                var detailView = gridControlUsuarios.FocusedView as GridView;
+                if (detailView.GetRowCellValue(detailView.GetSelectedRows()[0], gridViewPermissoes.Columns[0]) != null)
+                {
+                    usuarioTemPermissaoModel.status = status;
+                    usuarioTemPermissaoModel.permissoes_idpermissoes = Convert.ToInt32(detailView.GetFocusedRowCellValue(gridViewPermissoes.Columns[0]));
+                    usuarioTemPermissaoModel.usuarios_idusuarios = Convert.ToInt32(advBandedGridViewUsuarios.GetRowCellValue(advBandedGridViewUsuarios.GetSelectedRows()[0], advBandedGridViewUsuarios.Columns[0]));
+                    UsuarioTemPermissaoController.EditarPermissaoSimNao(usuarioTemPermissaoModel);
+                    AtualizarGrid();
+                }
             }
+            
         }
         private void bbiPermitir_ItemClick(object sender, ItemClickEventArgs e)
         {

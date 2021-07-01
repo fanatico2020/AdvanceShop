@@ -29,7 +29,8 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
-            
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
+
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -44,54 +45,74 @@ namespace AdvanceShop.Views
         }
         private void NovaContaAPagar()
         {
-            Views.NovaContaAPagar FormNovaContaAPagar = new NovaContaAPagar(usuarioLogado);
-            FormNovaContaAPagar.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 23;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                Views.NovaContaAPagar FormNovaContaAPagar = new NovaContaAPagar(usuarioLogado);
+                FormNovaContaAPagar.ShowDialog();
+            }
+            
         }
         private void EditarContaAPagar()
         {
-            contaAPagar.IdContasApagar = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[0]));
-            contaAPagar.Referentea = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[3]).ToString();
-            contaAPagar.Documento = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[7]).ToString();
-            contaAPagar.Observacao = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[8]).ToString();
-            contaAPagar.DataVencimento = Convert.ToDateTime(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[1]));
-            contaAPagar.Valor = Convert.ToDecimal(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[2]));
-            contaAPagar.categoriascontasapagar_idcategoriascontasapagar = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[10]));
-            contaAPagar.clientespessoas_idclientespessoas = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[9]));
-
-            Views.NovaContaAPagar FormEditarContaAPagar = new NovaContaAPagar(usuarioLogado,contaAPagar);
-            FormEditarContaAPagar.ShowDialog();
-        }
-        private void DeletarContaAPagar()
-        {
-            contaAPagar.IdContasApagar = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[0]));
-            if (advBandedGridViewContasAPagar.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
-            {
-                contaAPagarController.Deletar(contaAPagar);
-                MessageBoxOK.Show("Deletado com sucesso!");
-                AtualizarGrid();
-            }
-        }
-        private void PagarContaAPagar()
-        {
-            if(advBandedGridViewContasAPagar.SelectedRowsCount == 1 && Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[4])) == 0)
+            usuarioTemPermissao.permissoes_idpermissoes = 24;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
                 contaAPagar.IdContasApagar = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[0]));
-                contaAPagar.DataVencimento = Convert.ToDateTime(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[1]));
                 contaAPagar.Referentea = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[3]).ToString();
                 contaAPagar.Documento = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[7]).ToString();
                 contaAPagar.Observacao = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[8]).ToString();
                 contaAPagar.DataVencimento = Convert.ToDateTime(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[1]));
                 contaAPagar.Valor = Convert.ToDecimal(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[2]));
-                contaAPagar.clientespessoas_idclientespessoas = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[9]));
                 contaAPagar.categoriascontasapagar_idcategoriascontasapagar = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[10]));
-                contaAPagar.Valor = Convert.ToDecimal(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[2]));
-                Views.PagamentoContaAPagar FormPagarConta = new PagamentoContaAPagar(usuarioLogado, contaAPagar);
-                FormPagarConta.ShowDialog();
+                contaAPagar.clientespessoas_idclientespessoas = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[9]));
+
+                Views.NovaContaAPagar FormEditarContaAPagar = new NovaContaAPagar(usuarioLogado, contaAPagar);
+                FormEditarContaAPagar.ShowDialog();
             }
-            else
+            
+        }
+        private void DeletarContaAPagar()
+        {
+            usuarioTemPermissao.permissoes_idpermissoes = 25;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                MessageBoxOK.Show("Débito já pago, favor selecione somente com status A Pagar!");
+                contaAPagar.IdContasApagar = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[0]));
+                if (advBandedGridViewContasAPagar.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                {
+                    contaAPagarController.Deletar(contaAPagar);
+                    MessageBoxOK.Show("Deletado com sucesso!");
+                    AtualizarGrid();
+                }
             }
+            
+        }
+        private void PagarContaAPagar()
+        {
+            usuarioTemPermissao.permissoes_idpermissoes = 26;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                if (advBandedGridViewContasAPagar.SelectedRowsCount == 1 && Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[4])) == 0)
+                {
+                    contaAPagar.IdContasApagar = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[0]));
+                    contaAPagar.DataVencimento = Convert.ToDateTime(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[1]));
+                    contaAPagar.Referentea = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[3]).ToString();
+                    contaAPagar.Documento = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[7]).ToString();
+                    contaAPagar.Observacao = advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[8]).ToString();
+                    contaAPagar.DataVencimento = Convert.ToDateTime(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[1]));
+                    contaAPagar.Valor = Convert.ToDecimal(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[2]));
+                    contaAPagar.clientespessoas_idclientespessoas = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[9]));
+                    contaAPagar.categoriascontasapagar_idcategoriascontasapagar = Convert.ToInt32(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[10]));
+                    contaAPagar.Valor = Convert.ToDecimal(advBandedGridViewContasAPagar.GetRowCellValue(advBandedGridViewContasAPagar.GetSelectedRows()[0], advBandedGridViewContasAPagar.Columns[2]));
+                    Views.PagamentoContaAPagar FormPagarConta = new PagamentoContaAPagar(usuarioLogado, contaAPagar);
+                    FormPagarConta.ShowDialog();
+                }
+                else
+                {
+                    MessageBoxOK.Show("Débito já pago, favor selecione somente com status A Pagar!");
+                }
+            }
+            
             
         }
         private void ContasAPagar_Load(object sender, EventArgs e)

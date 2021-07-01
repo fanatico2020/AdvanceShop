@@ -47,7 +47,7 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
-
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -67,13 +67,23 @@ namespace AdvanceShop.Views
         }
         private void NovaTransacaoEntrada()
         {
-            Views.NovaEntradaEstoque FormEntradaEstoque = new NovaEntradaEstoque(usuarioLogado);
-            FormEntradaEstoque.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 20;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                Views.NovaEntradaEstoque FormEntradaEstoque = new NovaEntradaEstoque(usuarioLogado);
+                FormEntradaEstoque.ShowDialog();
+            }
+            
         }
         private void NovaTransacaoSaida()
         {
-            Views.NovaSaidaEstoque FormSaidaEstoque = new NovaSaidaEstoque(usuarioLogado);
-            FormSaidaEstoque.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 21;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                Views.NovaSaidaEstoque FormSaidaEstoque = new NovaSaidaEstoque(usuarioLogado);
+                FormSaidaEstoque.ShowDialog();
+            }
+            
         }
         private void EditarTransacao()
         {
@@ -81,22 +91,27 @@ namespace AdvanceShop.Views
         }
         private void DeletarTransacao()
         {
-            transacaoEstoque.IdTransacoesEstoque = Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[0]));
-            transacaoEstoque.TipoDescricao = Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[12]));
-            if (Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[1])) != 5)
+            usuarioTemPermissao.permissoes_idpermissoes = 22;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                if (advBandedGridViewTransacoesEstoque.SelectedRowsCount == 1 &&
-                MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                transacaoEstoque.IdTransacoesEstoque = Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[0]));
+                transacaoEstoque.TipoDescricao = Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[12]));
+                if (Convert.ToInt32(advBandedGridViewTransacoesEstoque.GetRowCellValue(advBandedGridViewTransacoesEstoque.GetSelectedRows()[0], advBandedGridViewTransacoesEstoque.Columns[1])) != 5)
                 {
-                    transacaoEstoqueController.Deletar(transacaoEstoque);
-                    MessageBoxOK.Show("Deletado com sucesso!");
-                    AtualizarGrid();
+                    if (advBandedGridViewTransacoesEstoque.SelectedRowsCount == 1 &&
+                    MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                    {
+                        transacaoEstoqueController.Deletar(transacaoEstoque);
+                        MessageBoxOK.Show("Deletado com sucesso!");
+                        AtualizarGrid();
+                    }
+                }
+                else
+                {
+                    MessageBoxWarning.Show("Opa para deletar esse tipo de transação de venda somente deletando a venda!");
                 }
             }
-            else
-            {
-                MessageBoxWarning.Show("Opa para deletar esse tipo de transação de venda somente deletando a venda!");
-            }
+            
         }
         private void bbiEntrada_ItemClick(object sender, ItemClickEventArgs e)
         {

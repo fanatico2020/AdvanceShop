@@ -41,7 +41,7 @@ namespace AdvanceShop.Views
         VendasController vendaController = new VendasController();
         ItensVendasModel itensVenda = new ItensVendasModel();
         ItensVendasController itensVendaController = new ItensVendasController();
-
+        UsuarioTemPermissaoModel usuarioTemPermissao = new UsuarioTemPermissaoModel();
         //fiscal
         Consulta consultaNFC_e = new Consulta();
         ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
@@ -50,6 +50,7 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
             configGerais = configGeraisController.ObterConfiguracoesGerais();
             apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
         }
@@ -116,21 +117,32 @@ namespace AdvanceShop.Views
         
         private void NovaVenda()
         {
-            caixa.usuarios_idusuarios = usuarioLogado.IdUsuarios;
+            usuarioTemPermissao.permissoes_idpermissoes = 11;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                caixa.usuarios_idusuarios = usuarioLogado.IdUsuarios;
+
+                if (caixaController.VerificarCaixaAbertoOuNao(caixa))
+                {
+
+                    caixa = caixaController.AutenticarCaixaUsuario(caixa);
+                    Views.VendaCaixaPDV FormPDV = new VendaCaixaPDV(usuarioLogado, caixa);
+                    FormPDV.Show();
+                }
+                else
+                {
+                    usuarioTemPermissao.permissoes_idpermissoes = 8;
+                    if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+                    {
+                        MessageBoxWarning.Show($"Você deve primeiro abrir seu caixa para usar o PDV!");
+
+                        Views.AbrirCaixa FormAbrirCaixa = new AbrirCaixa(usuarioLogado);
+                        FormAbrirCaixa.ShowDialog();
+                    }
+
+                }
+            }
             
-            if (caixaController.VerificarCaixaAbertoOuNao(caixa))
-            {
-                
-                caixa = caixaController.AutenticarCaixaUsuario(caixa);
-                Views.VendaCaixaPDV FormPDV = new VendaCaixaPDV(usuarioLogado,caixa);
-                FormPDV.Show();
-            }
-            else
-            {
-                MessageBoxWarning.Show($"Você deve primeiro abrir seu caixa para usar o PDV!");
-                Views.AbrirCaixa FormAbrirCaixa = new AbrirCaixa(usuarioLogado);
-                FormAbrirCaixa.ShowDialog();
-            }
         }
         private void TrocaDevolucao()
         {
@@ -145,14 +157,19 @@ namespace AdvanceShop.Views
         }
         private void DeletarVenda()
         {
-            venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
-
-            if (advBandedGridViewVendas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+            usuarioTemPermissao.permissoes_idpermissoes = 13;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                vendaController.Deletar(venda);
-                MessageBoxOK.Show("Deletado com sucesso!");
-                AtualizarGrid();
+                venda.IdVendas = Convert.ToInt32(advBandedGridViewVendas.GetRowCellValue(advBandedGridViewVendas.GetSelectedRows()[0], advBandedGridViewVendas.Columns[0]));
+
+                if (advBandedGridViewVendas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                {
+                    vendaController.Deletar(venda);
+                    MessageBoxOK.Show("Deletado com sucesso!");
+                    AtualizarGrid();
+                }
             }
+            
         }
         private void ReimprimirCupomNaoFiscal()
         {

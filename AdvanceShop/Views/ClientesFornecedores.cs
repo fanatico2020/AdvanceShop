@@ -31,7 +31,8 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
-            
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
+
         }
         public void AtualizarGrid()
         {
@@ -78,43 +79,58 @@ namespace AdvanceShop.Views
         }
         private void NovoClientePessoa()
         {
-            Views.NovoClienteFornecedor FormNovoClientePessoa = new NovoClienteFornecedor(usuarioLogado);
-            FormNovoClientePessoa.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 14;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                Views.NovoClienteFornecedor FormNovoClientePessoa = new NovoClienteFornecedor(usuarioLogado);
+                FormNovoClientePessoa.ShowDialog();
+            }
+            
         }
         private void EditarClientePessoa()
         {
-            clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[0]));
-            clientePessoa.NomeClientePessoa = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[1]).ToString();
-            clientePessoa.CPFCNPJ = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[4]).ToString();
-            clientePessoa.RGIE = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[3]).ToString();
-            clientePessoa.DataNascimento = Convert.ToDateTime(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[2]));
-            clientePessoa.Sexo = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[12]).ToString();
-            clientePessoa.Contato1 = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[13]).ToString();
-            clientePessoa.Contato2 = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[14]).ToString();
-            clientePessoa.Email = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[15]).ToString();
-            clientePessoa.Observacao = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[16]).ToString();
-            clientePessoa.CEP = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[11]).ToString();
-            clientePessoa.Endereco = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[5]).ToString();
-            clientePessoa.NumeroCasa = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[6]).ToString();
-            clientePessoa.Complemento = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[7]).ToString();
-            clientePessoa.Bairro = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[8]).ToString();
-            clientePessoa.Cidade = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[9]).ToString();
-            clientePessoa.UF = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[10]).ToString();
-            clientePessoa.StatusClientePessoa = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[18]));
-            clientePessoa.TipoPessoa = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[17]));
+            usuarioTemPermissao.permissoes_idpermissoes = 15;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[0]));
+                clientePessoa.NomeClientePessoa = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[1]).ToString();
+                clientePessoa.CPFCNPJ = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[4]).ToString();
+                clientePessoa.RGIE = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[3]).ToString();
+                clientePessoa.DataNascimento = Convert.ToDateTime(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[2]));
+                clientePessoa.Sexo = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[12]).ToString();
+                clientePessoa.Contato1 = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[13]).ToString();
+                clientePessoa.Contato2 = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[14]).ToString();
+                clientePessoa.Email = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[15]).ToString();
+                clientePessoa.Observacao = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[16]).ToString();
+                clientePessoa.CEP = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[11]).ToString();
+                clientePessoa.Endereco = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[5]).ToString();
+                clientePessoa.NumeroCasa = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[6]).ToString();
+                clientePessoa.Complemento = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[7]).ToString();
+                clientePessoa.Bairro = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[8]).ToString();
+                clientePessoa.Cidade = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[9]).ToString();
+                clientePessoa.UF = advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[10]).ToString();
+                clientePessoa.StatusClientePessoa = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[18]));
+                clientePessoa.TipoPessoa = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[17]));
 
-            Views.NovoClienteFornecedor FormEditarClientePessoa = new NovoClienteFornecedor(usuarioLogado,clientePessoa);
-            FormEditarClientePessoa.Show();
+                Views.NovoClienteFornecedor FormEditarClientePessoa = new NovoClienteFornecedor(usuarioLogado, clientePessoa);
+                FormEditarClientePessoa.Show();
+            }
+            
         }
         private void DeletarClientePessoa()
         {
-            clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[0]));
-            if (advBandedGridViewClientesPessoas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+            usuarioTemPermissao.permissoes_idpermissoes = 16;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                clientePessoaController.Deletar(clientePessoa);
-                MessageBoxOK.Show("Deletado com sucesso!");
-                AtualizarGrid();
+                clientePessoa.IdClientesPessoas = Convert.ToInt32(advBandedGridViewClientesPessoas.GetRowCellValue(advBandedGridViewClientesPessoas.GetSelectedRows()[0], advBandedGridViewClientesPessoas.Columns[0]));
+                if (advBandedGridViewClientesPessoas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                {
+                    clientePessoaController.Deletar(clientePessoa);
+                    MessageBoxOK.Show("Deletado com sucesso!");
+                    AtualizarGrid();
+                }
             }
+            
 
         }
         private void ClientesPessoas_KeyPress(object sender, KeyPressEventArgs e)

@@ -19,7 +19,8 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
-            
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
+
         }
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -59,45 +60,60 @@ namespace AdvanceShop.Views
         }
         private void NovoProduto()
         {
-            Views.NovoProduto FormNovoProduto = new NovoProduto(usuarioLogado);
-            FormNovoProduto.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 17;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                Views.NovoProduto FormNovoProduto = new NovoProduto(usuarioLogado);
+                FormNovoProduto.ShowDialog();
+            }
+            
         }
         private void EditarProduto()
         {
-            produto.IdProdutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[0]));
-            produto.DescricaoProduto = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[1]).ToString();
-            produto.CodigoBarra = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[2]).ToString();
-            produto.clientespessoas_idclientespessoas = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[11]));
-            produto.categoriasprodutos_idcategoriasprodutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[10]));
-            produto.marcasprodutos_idmarcasprodutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[12]));
-            produto.unidadesmedidasprodutos_idunidadesmedidasprodutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[13]));
-            produto.PrecoCusto = Convert.ToDecimal(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[6]));
-            produto.MargemLucro = Convert.ToDecimal(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[7]));
-            produto.PrecoVenda = Convert.ToDecimal(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[8]));
-            produto.EstoqueAtual = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[3]));
-            produto.EstoqueMinimo = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[4]));
-            produto.EstoqueMaximo = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[5]));
-            produto.StatusProduto = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[9]));
-            produto.CalcularAutomatico = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[14]));
-            produto.ControlarEstoque = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[15]));
-            //fiscal
-            produto.Codigo_NCM = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[20]).ToString();
-            produto.Codigo_CFOP = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[21]).ToString();
-            produto.ICMS_Origem = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[22]).ToString();
-            produto.ICMS_Situacao_Tributaria = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[23]).ToString();
+            usuarioTemPermissao.permissoes_idpermissoes = 18;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                produto.IdProdutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[0]));
+                produto.DescricaoProduto = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[1]).ToString();
+                produto.CodigoBarra = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[2]).ToString();
+                produto.clientespessoas_idclientespessoas = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[11]));
+                produto.categoriasprodutos_idcategoriasprodutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[10]));
+                produto.marcasprodutos_idmarcasprodutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[12]));
+                produto.unidadesmedidasprodutos_idunidadesmedidasprodutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[13]));
+                produto.PrecoCusto = Convert.ToDecimal(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[6]));
+                produto.MargemLucro = Convert.ToDecimal(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[7]));
+                produto.PrecoVenda = Convert.ToDecimal(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[8]));
+                produto.EstoqueAtual = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[3]));
+                produto.EstoqueMinimo = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[4]));
+                produto.EstoqueMaximo = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[5]));
+                produto.StatusProduto = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[9]));
+                produto.CalcularAutomatico = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[14]));
+                produto.ControlarEstoque = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[15]));
+                //fiscal
+                produto.Codigo_NCM = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[20]).ToString();
+                produto.Codigo_CFOP = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[21]).ToString();
+                produto.ICMS_Origem = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[22]).ToString();
+                produto.ICMS_Situacao_Tributaria = advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[23]).ToString();
 
-            Views.NovoProduto FormEditarProduto = new NovoProduto(usuarioLogado, produto);
-            FormEditarProduto.Show();
+                Views.NovoProduto FormEditarProduto = new NovoProduto(usuarioLogado, produto);
+                FormEditarProduto.Show();
+            }
+            
         }
         private void DeletarProduto()
         {
-            produto.IdProdutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[0]));
-            if (advBandedGridViewProdutos.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+            usuarioTemPermissao.permissoes_idpermissoes = 19;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                produtoController.Deletar(produto);
-                MessageBoxOK.Show("Deletado com sucesso!");
-                AtualizarGrid();
+                produto.IdProdutos = Convert.ToInt32(advBandedGridViewProdutos.GetRowCellValue(advBandedGridViewProdutos.GetSelectedRows()[0], advBandedGridViewProdutos.Columns[0]));
+                if (advBandedGridViewProdutos.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                {
+                    produtoController.Deletar(produto);
+                    MessageBoxOK.Show("Deletado com sucesso!");
+                    AtualizarGrid();
+                }
             }
+            
         }
         private void AtivarDesativarProduto()
         {

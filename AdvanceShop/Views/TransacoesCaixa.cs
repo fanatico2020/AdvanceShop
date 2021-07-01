@@ -42,6 +42,7 @@ namespace AdvanceShop.Views
             apiGerenciaNet = apiGerenciaNetController.ObterConfiguracoesApiGerenciaNet();
             usuarioLogado = UsuarioLogado;
             caixa.IdCaixas = Caixa.IdCaixas;
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
             caixa = caixaController.ObterDadosDoCaixaPorID(caixa);
             transacaoCaixa.caixas_idcaixas = caixa.IdCaixas;
             dataHora = dataHoraController.ObterDadosDataHoraPorIDCaixa(caixa);
@@ -163,17 +164,22 @@ namespace AdvanceShop.Views
         }
         private void FecharCaixa()
         {
-            if(caixa.status == 0)
+            usuarioTemPermissao.permissoes_idpermissoes = 8;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                AtualizarGrid();
-                caixa.SaldoFinal = Convert.ToDecimal(txtSaldoCaixa.Text.Replace("R$", ""));
-                Views.FecharCaixa FormFecharCaixa = new FecharCaixa(usuarioLogado, dataHora, caixa);
-                FormFecharCaixa.ShowDialog();
+                if (caixa.status == 0)
+                {
+                    AtualizarGrid();
+                    caixa.SaldoFinal = Convert.ToDecimal(txtSaldoCaixa.Text.Replace("R$", ""));
+                    Views.FecharCaixa FormFecharCaixa = new FecharCaixa(usuarioLogado, dataHora, caixa);
+                    FormFecharCaixa.ShowDialog();
+                }
+                else
+                {
+                    MessageBoxWarning.Show($"Opa esse caixa já foi fechado pelo usuário {caixa.UsuarioFechamento} no dia {caixa.DataHoraFechamento}!");
+                }
             }
-            else
-            {
-                MessageBoxWarning.Show($"Opa esse caixa já foi fechado pelo usuário {caixa.UsuarioFechamento} no dia {caixa.DataHoraFechamento}!");
-            }
+            
             
         }
         private void EditarTransacao()//Editar forma de pagamento
@@ -197,37 +203,53 @@ namespace AdvanceShop.Views
         }
         private void DeletarTransacao()
         {
-            transacaoCaixa.IdTransacoesCaixa = Convert.ToInt32(advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[0]));
-            transacaoCaixa.DescricaoTransacao = advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[2]).ToString();
+            usuarioTemPermissao.permissoes_idpermissoes = 7;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                transacaoCaixa.IdTransacoesCaixa = Convert.ToInt32(advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[0]));
+                transacaoCaixa.DescricaoTransacao = advBandedGridViewTransacoesCaixa.GetRowCellValue(advBandedGridViewTransacoesCaixa.GetSelectedRows()[0], advBandedGridViewTransacoesCaixa.Columns[2]).ToString();
+
+                if (transacaoCaixa.DescricaoTransacao == "Abertura Caixa")
+                {
+                    MessageBoxWarning.Show("Opa a Abertura do caixa não pode ser deletada, você pode editar o valor da mesma na tela dos caixas!");
+                }
+                else if (transacaoCaixa.DescricaoTransacao.Substring(0, 5) == "VENDA")
+                {
+                    MessageBoxWarning.Show("Opa para deletar uma transação referente a uma venda, vá a tela vendas e delete a venda, assim a transação e deletada junto!");
+                }
+                else if (advBandedGridViewTransacoesCaixa.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                {
+                    transacaoCaixaController.Deletar(transacaoCaixa);
+                    MessageBoxOK.Show("Deletado com sucesso!");
+                    AtualizarGrid();
+                }
+            }
             
-            if(transacaoCaixa.DescricaoTransacao == "Abertura Caixa")
-            {
-                MessageBoxWarning.Show("Opa a Abertura do caixa não pode ser deletada, você pode editar o valor da mesma na tela dos caixas!");
-            }
-            else if(transacaoCaixa.DescricaoTransacao.Substring(0,5) == "VENDA")
-            {
-                MessageBoxWarning.Show("Opa para deletar uma transação referente a uma venda, vá a tela vendas e delete a venda, assim a transação e deletada junto!");
-            }
-            else if(advBandedGridViewTransacoesCaixa.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
-            {
-                transacaoCaixaController.Deletar(transacaoCaixa);
-                MessageBoxOK.Show("Deletado com sucesso!");
-                AtualizarGrid();
-            }
         }
         private void SuplementoSangria(int Tipo)
         {
-            if(caixa.status == 0)
+            if (Tipo == 1)// add
             {
-                transacaoCaixa.Tipo = Tipo;
-                Views.SuplementoSangria FormSuplementoSangria = new SuplementoSangria(transacaoCaixa, usuarioLogado);
-                FormSuplementoSangria.ShowDialog();
-            }
-            else
+                usuarioTemPermissao.permissoes_idpermissoes = 5;
+
+            }else if(Tipo == 0)// Remv
             {
-                MessageBoxWarning.Show($"Opa esse caixa já foi fechado pelo usuário {caixa.UsuarioFechamento} no dia {caixa.DataHoraFechamento}, não tem como adicionar ou retirar dinheiro de um caixa fechado!");
+                usuarioTemPermissao.permissoes_idpermissoes = 6;
             }
-            
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                if (caixa.status == 0)
+                {
+                    transacaoCaixa.Tipo = Tipo;
+                    Views.SuplementoSangria FormSuplementoSangria = new SuplementoSangria(transacaoCaixa, usuarioLogado);
+                    FormSuplementoSangria.ShowDialog();
+                }
+                else
+                {
+                    MessageBoxWarning.Show($"Opa esse caixa já foi fechado pelo usuário {caixa.UsuarioFechamento} no dia {caixa.DataHoraFechamento}, não tem como adicionar ou retirar dinheiro de um caixa fechado!");
+                }
+            }
+
         }
         private void LinkPagamento()
         {

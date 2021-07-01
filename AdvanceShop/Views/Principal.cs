@@ -138,8 +138,13 @@ namespace AdvanceShop.Views
 
         private void bbiConfiguracoesGerais_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ConfiguracoesGerais FormConfiguracoes = new ConfiguracoesGerais(usuarioLogado);
-            FormConfiguracoes.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 33;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                ConfiguracoesGerais FormConfiguracoes = new ConfiguracoesGerais(usuarioLogado);
+                FormConfiguracoes.ShowDialog();
+            }
+            
         }
 
         private void bbiBackupRestauracaoDB_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -175,8 +180,13 @@ namespace AdvanceShop.Views
 
         private void bbiAtualizacaoSoftware_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Views.AtualizacaoSoftware FormAtualizarSoftware = new AtualizacaoSoftware();
-            FormAtualizarSoftware.ShowDialog();
+            usuarioTemPermissao.permissoes_idpermissoes = 36;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
+            {
+                Views.AtualizacaoSoftware FormAtualizarSoftware = new AtualizacaoSoftware();
+                FormAtualizarSoftware.ShowDialog();
+            }
+            
         }
 
         private void lblCaminhoSistema_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

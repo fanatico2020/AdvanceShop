@@ -1,4 +1,5 @@
-﻿using AdvanceShop.Data;
+﻿using AdvanceShop.Controllers;
+using AdvanceShop.Data;
 using AdvanceShop.Models;
 using AdvanceShop.Shared.CustomMessageBox;
 using AdvanceShop.Shared.Validation;
@@ -28,6 +29,7 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
             bgwProgresso.WorkerReportsProgress = true;
             bgwProgresso.WorkerSupportsCancellation = true;
             bgwProgresso.DoWork += new System.ComponentModel.DoWorkEventHandler(bgwProgresso_DoWork);
@@ -80,27 +82,29 @@ namespace AdvanceShop.Views
         }
         private void GerarBackup()
         {
-            if (Directory.Exists(txtCaminhoBackup.Text) || !Directory.Exists(txtCaminhoBackup.Text))
+            usuarioTemPermissao.permissoes_idpermissoes = 34;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                if (MessageBoxQuestionYesNo.Show($"Deseja salvar o backup no caminho '{txtCaminhoBackup.Text}' ?") == DialogResult.Yes)
+                if (Directory.Exists(txtCaminhoBackup.Text) || !Directory.Exists(txtCaminhoBackup.Text))
                 {
-                    restaurar = false;
-                    if (!Directory.Exists(txtCaminhoBackup.Text) && MessageBoxQuestionYesNo.Show($"O caminho informado não existe deseja criá-lo e continuar com o backup?") == DialogResult.Yes)
+                    if (MessageBoxQuestionYesNo.Show($"Deseja salvar o backup no caminho '{txtCaminhoBackup.Text}' ?") == DialogResult.Yes)
                     {
+                        restaurar = false;
+                        if (!Directory.Exists(txtCaminhoBackup.Text) && MessageBoxQuestionYesNo.Show($"O caminho informado não existe deseja criá-lo e continuar com o backup?") == DialogResult.Yes)
+                        {
 
-                        Directory.CreateDirectory(txtCaminhoBackup.Text);
-                        bgwProgresso.RunWorkerAsync();
-                    }
-                    else if (Directory.Exists(txtCaminhoBackup.Text))
-                    {
-                        bgwProgresso.RunWorkerAsync();
-                    }
+                            Directory.CreateDirectory(txtCaminhoBackup.Text);
+                            bgwProgresso.RunWorkerAsync();
+                        }
+                        else if (Directory.Exists(txtCaminhoBackup.Text))
+                        {
+                            bgwProgresso.RunWorkerAsync();
+                        }
 
+                    }
                 }
             }
             
-
-
         }
 
         private void btnGerarBackup_Click(object sender, EventArgs e)
@@ -297,22 +301,27 @@ namespace AdvanceShop.Views
         }
         private void RestaurarBackup()
         {
-            if (File.Exists(txtCaminhoArquivoRestaurar.Text))
+            usuarioTemPermissao.permissoes_idpermissoes = 35;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                if (MessageBoxQuestionYesNo.Show($"Deseja restaurar o banco de dados com o backup '{txtCaminhoArquivoRestaurar.Text}' ?") == DialogResult.Yes)
+                if (File.Exists(txtCaminhoArquivoRestaurar.Text))
                 {
-                    restaurar = true;
-                    if (!bgwProgresso.IsBusy)
+                    if (MessageBoxQuestionYesNo.Show($"Deseja restaurar o banco de dados com o backup '{txtCaminhoArquivoRestaurar.Text}' ?") == DialogResult.Yes)
                     {
-                        bgwProgresso.RunWorkerAsync();
-                    }
+                        restaurar = true;
+                        if (!bgwProgresso.IsBusy)
+                        {
+                            bgwProgresso.RunWorkerAsync();
+                        }
 
+                    }
+                }
+                else
+                {
+                    MessageBoxWarning.Show("Opa arquivo não existe!");
                 }
             }
-            else
-            {
-                MessageBoxWarning.Show("Opa arquivo não existe!");
-            }
+            
             
         }
         private void btnProcurarArquivo_Click(object sender, EventArgs e)

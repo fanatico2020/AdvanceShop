@@ -28,6 +28,7 @@ namespace AdvanceShop.Views
         {
             InitializeComponent();
             usuarioLogado = UsuarioLogado;
+            usuarioTemPermissao.usuarios_idusuarios = UsuarioLogado.IdUsuarios;
 
         }
         public void AtualizarGrid()
@@ -48,46 +49,58 @@ namespace AdvanceShop.Views
         }
         private void NovoCaixa()
         {
-            caixa.usuarios_idusuarios = usuarioLogado.IdUsuarios;
-            caixa = caixaController.AutenticarCaixaUsuario(caixa);
-            if(!caixa.caixaAberto)
+            usuarioTemPermissao.permissoes_idpermissoes = 8;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                Views.AbrirCaixa FormAbrirCaixa = new AbrirCaixa(usuarioLogado);
-                FormAbrirCaixa.ShowDialog();
+                caixa.usuarios_idusuarios = usuarioLogado.IdUsuarios;
+                caixa = caixaController.AutenticarCaixaUsuario(caixa);
+                if (!caixa.caixaAberto)
+                {
+                    Views.AbrirCaixa FormAbrirCaixa = new AbrirCaixa(usuarioLogado);
+                    FormAbrirCaixa.ShowDialog();
+                }
+                else
+                {
+                    MessageBoxWarning.Show($"Já existe um caixa aberto para o seu usuário na maquina {caixa.Maquina}, Código do caixa {caixa.IdCaixas}, você deve fechar o caixa aberto para iniciar um novo!");
+                }
             }
-            else
-            {
-                MessageBoxWarning.Show($"Já existe um caixa aberto para o seu usuário na maquina {caixa.Maquina}, Código do caixa {caixa.IdCaixas}, você deve fechar o caixa aberto para iniciar um novo!");
-            }
+           
             
         }
         private void EditarCaixa()
         {
-
-            caixa.IdCaixas = Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[0]));
-            caixa.SaldoInicial = Convert.ToDecimal(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[2]));
-            if(advBandedGridViewCaixas.SelectedRowsCount == 1 && Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[12])) == 0)
+            usuarioTemPermissao.permissoes_idpermissoes = 9;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                Views.AbrirCaixa FormEditaSaldoInicial = new AbrirCaixa(usuarioLogado, caixa);
-                FormEditaSaldoInicial.ShowDialog();
-            }
-            else
-            {
-                MessageBoxWarning.Show("Só e permitido editar saldo inicial de caixa com status 0 - Aberto!");
+                caixa.IdCaixas = Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[0]));
+                caixa.SaldoInicial = Convert.ToDecimal(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[2]));
+                if (advBandedGridViewCaixas.SelectedRowsCount == 1 && Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[12])) == 0)
+                {
+                    Views.AbrirCaixa FormEditaSaldoInicial = new AbrirCaixa(usuarioLogado, caixa);
+                    FormEditaSaldoInicial.ShowDialog();
+                }
+                else
+                {
+                    MessageBoxWarning.Show("Só e permitido editar saldo inicial de caixa com status 0 - Aberto!");
+                }
             }
             
-
         }
         private void DeletarCaixa()
         {
-            caixa.IdCaixas = Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[0]));
-            
-            if (advBandedGridViewCaixas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+            usuarioTemPermissao.permissoes_idpermissoes = 10;
+            if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                caixaController.Deletar(caixa);
-                MessageBoxOK.Show("Deletado com sucesso!");
-                AtualizarGrid();
+                caixa.IdCaixas = Convert.ToInt32(advBandedGridViewCaixas.GetRowCellValue(advBandedGridViewCaixas.GetSelectedRows()[0], advBandedGridViewCaixas.Columns[0]));
+
+                if (advBandedGridViewCaixas.SelectedRowsCount == 1 && MessageBoxQuestionYesNo.Show("Confirmar deletar registro selecionado?") == DialogResult.Yes)
+                {
+                    caixaController.Deletar(caixa);
+                    MessageBoxOK.Show("Deletado com sucesso!");
+                    AtualizarGrid();
+                }
             }
+            
             
         }
         private void TransacoesCaixa()
