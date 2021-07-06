@@ -500,6 +500,7 @@
     <Compile Include="Shared\CustomPrint\ContasAPagarPagas.cs" />
     <Compile Include="Shared\Email\EmailSistema.cs" />
     <Compile Include="Shared\Library\EncryptorDecrypt.cs" />
+    <Compile Include="Shared\Library\ExportarExcel.cs" />
     <Compile Include="Shared\Library\HashMd5.cs" />
     <Compile Include="Shared\Library\MostrarSenha.cs" />
     <Compile Include="Shared\Library\SufixoTamanhoBytes.cs" />
@@ -977,6 +978,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NFC-e_128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel_48x48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />

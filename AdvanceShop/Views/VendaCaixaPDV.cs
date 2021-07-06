@@ -23,6 +23,12 @@ namespace AdvanceShop.Views
         UsuariosController usuarioController = new UsuariosController();
         ConfiguracoesGeraisController configGeraisController = new ConfiguracoesGeraisController();
         ConfiguracoesGeraisModel configGerais = new ConfiguracoesGeraisModel();
+        //api
+        ApiFocusNfeModel apiFocusNfe = new ApiFocusNfeModel();
+        ApiFocusNFeController apiFocusNfeController = new ApiFocusNFeController();
+        ApiGerenciaNetModel apiGerenciaNet = new ApiGerenciaNetModel();
+        ApiGerenciaNetController apiGerenciaNetController = new ApiGerenciaNetController();
+        //
         CaixasModel caixa = new CaixasModel();
         CaixasController caixaController = new CaixasController();
         DataHoraModel dataHora = new DataHoraModel();
@@ -45,7 +51,18 @@ namespace AdvanceShop.Views
             transacaoCaixa.caixas_idcaixas = caixa.IdCaixas;
             
             configGerais = configGeraisController.ObterConfiguracoesGerais();
+            apiFocusNfe = apiFocusNfeController.ObterConfiguracoesApiFocusNfe();
+            apiGerenciaNet = apiGerenciaNetController.ObterConfiguracoesApiGerenciaNet();
+            string msgApihomologacao = "";
+            if(apiFocusNfe.usarapi == 1 && apiFocusNfe.ambiente == "homologacao" || apiGerenciaNet.usarapi == 1 && apiGerenciaNet.ambiente == "homologacao")
+            {
+                msgApihomologacao = $"Api Focus-Nfe ambiente {apiFocusNfe.ambiente} e Api GerenciaNet ambiente {apiGerenciaNet.ambiente}.";
+            }if(msgApihomologacao != "")
+            {
+                MessageBoxWarning.Show(msgApihomologacao);
+            }
 
+            
         }
         public void FecharPDV()
         {

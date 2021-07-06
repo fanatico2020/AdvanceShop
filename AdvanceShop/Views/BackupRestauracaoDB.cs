@@ -85,7 +85,7 @@ namespace AdvanceShop.Views
             usuarioTemPermissao.permissoes_idpermissoes = 34;
             if (UsuarioTemPermissaoController.AutenticarPermissao(usuarioTemPermissao))
             {
-                if (Directory.Exists(txtCaminhoBackup.Text) || !Directory.Exists(txtCaminhoBackup.Text))
+                if (Directory.Exists(txtCaminhoBackup.Text) || !Directory.Exists(txtCaminhoBackup.Text) && txtCaminhoBackup.Text != string.Empty)
                 {
                     if (MessageBoxQuestionYesNo.Show($"Deseja salvar o backup no caminho '{txtCaminhoBackup.Text}' ?") == DialogResult.Yes)
                     {
@@ -102,6 +102,10 @@ namespace AdvanceShop.Views
                         }
 
                     }
+                }
+                else
+                {
+                    MessageBoxError.Show("Opa o caminho informado não existe!");
                 }
             }
             
@@ -318,7 +322,7 @@ namespace AdvanceShop.Views
                 }
                 else
                 {
-                    MessageBoxWarning.Show("Opa arquivo não existe!");
+                    MessageBoxError.Show("Opa o arquivo selecionado não existe!");
                 }
             }
             

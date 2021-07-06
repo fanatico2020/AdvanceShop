@@ -35,9 +35,9 @@
             DevExpress.XtraEditors.FormatConditionIconSetIcon formatConditionIconSetIcon2 = new DevExpress.XtraEditors.FormatConditionIconSetIcon();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Usuarios));
+            this.gridColumnPermitido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridViewPermissoes = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumnCodigo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumnPermitido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnDescricaoPermissao = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumnCodigoUsuario = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControlUsuarios = new DevExpress.XtraGrid.GridControl();
@@ -68,6 +68,7 @@
             this.bbiAtivarDesativarUsuario = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPermitir = new DevExpress.XtraBars.BarButtonItem();
             this.bbiNaoPermitir = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExportarExcel = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -78,6 +79,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewUsuarios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gridColumnPermitido
+            // 
+            this.gridColumnPermitido.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumnPermitido.AppearanceCell.Options.UseFont = true;
+            this.gridColumnPermitido.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumnPermitido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnPermitido.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumnPermitido.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridColumnPermitido.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumnPermitido.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumnPermitido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumnPermitido.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumnPermitido.Caption = "Permitido";
+            this.gridColumnPermitido.FieldName = "status";
+            this.gridColumnPermitido.Name = "gridColumnPermitido";
+            this.gridColumnPermitido.Visible = true;
+            this.gridColumnPermitido.VisibleIndex = 1;
+            this.gridColumnPermitido.Width = 90;
             // 
             // gridViewPermissoes
             // 
@@ -133,25 +153,6 @@
             this.gridColumnCodigo.VisibleIndex = 0;
             this.gridColumnCodigo.Width = 73;
             // 
-            // gridColumnPermitido
-            // 
-            this.gridColumnPermitido.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridColumnPermitido.AppearanceCell.Options.UseFont = true;
-            this.gridColumnPermitido.AppearanceCell.Options.UseTextOptions = true;
-            this.gridColumnPermitido.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumnPermitido.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumnPermitido.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridColumnPermitido.AppearanceHeader.Options.UseForeColor = true;
-            this.gridColumnPermitido.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridColumnPermitido.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridColumnPermitido.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.gridColumnPermitido.Caption = "Permitido";
-            this.gridColumnPermitido.FieldName = "status";
-            this.gridColumnPermitido.Name = "gridColumnPermitido";
-            this.gridColumnPermitido.Visible = true;
-            this.gridColumnPermitido.VisibleIndex = 1;
-            this.gridColumnPermitido.Width = 90;
-            // 
             // gridColumnDescricaoPermissao
             // 
             this.gridColumnDescricaoPermissao.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
@@ -185,7 +186,7 @@
             this.gridControlUsuarios.MainView = this.advBandedGridViewUsuarios;
             this.gridControlUsuarios.MenuManager = this.ribbonControl;
             this.gridControlUsuarios.Name = "gridControlUsuarios";
-            this.gridControlUsuarios.Size = new System.Drawing.Size(798, 399);
+            this.gridControlUsuarios.Size = new System.Drawing.Size(967, 399);
             this.gridControlUsuarios.TabIndex = 10;
             this.gridControlUsuarios.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridViewUsuarios,
@@ -447,15 +448,16 @@
             this.bbiNovoUsuario,
             this.bbiAtivarDesativarUsuario,
             this.bbiPermitir,
-            this.bbiNaoPermitir});
+            this.bbiNaoPermitir,
+            this.bbiExportarExcel});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 25;
+            this.ribbonControl.MaxItemId = 26;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(798, 164);
+            this.ribbonControl.Size = new System.Drawing.Size(967, 164);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -466,7 +468,7 @@
             this.bbiVisualizarImprimir.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiVisualizarImprimir.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiVisualizarImprimir.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiVisualizarImprimir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiVisualizarImprimir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiVisualizarImprimir.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiVisualizarImprimir.Name = "bbiVisualizarImprimir";
             this.bbiVisualizarImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
@@ -493,7 +495,7 @@
             this.bbiEditarUsuario.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEditarUsuario.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditarUsuario.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiEditarUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiEditarUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditarUsuario.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiEditarUsuario.Name = "bbiEditarUsuario";
             this.bbiEditarUsuario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditarUsuario_ItemClick);
@@ -505,7 +507,7 @@
             this.bbiDeletarUsuario.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDeletarUsuario.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletarUsuario.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiDeletarUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiDeletarUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletarUsuario.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiDeletarUsuario.Name = "bbiDeletarUsuario";
             this.bbiDeletarUsuario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeletarUsuario_ItemClick);
@@ -517,7 +519,7 @@
             this.bbiAtualizarGrid.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiAtualizarGrid.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizarGrid.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiAtualizarGrid.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAtualizarGrid.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizarGrid.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAtualizarGrid.Name = "bbiAtualizarGrid";
             this.bbiAtualizarGrid.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtualizarGrid_ItemClick);
@@ -530,7 +532,7 @@
             this.bbiClonarUsuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiClonarUsuario.ImageOptions.LargeImage")));
             this.bbiClonarUsuario.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiClonarUsuario.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiClonarUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiClonarUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiClonarUsuario.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiClonarUsuario.Name = "bbiClonarUsuario";
             this.bbiClonarUsuario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClonarUsuario_ItemClick);
@@ -543,7 +545,7 @@
             this.bbiNovoUsuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNovoUsuario.ImageOptions.LargeImage")));
             this.bbiNovoUsuario.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiNovoUsuario.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiNovoUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiNovoUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiNovoUsuario.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiNovoUsuario.Name = "bbiNovoUsuario";
             this.bbiNovoUsuario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNovoUsuario_ItemClick);
@@ -556,7 +558,7 @@
             this.bbiAtivarDesativarUsuario.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAtivarDesativarUsuario.ImageOptions.LargeImage")));
             this.bbiAtivarDesativarUsuario.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtivarDesativarUsuario.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiAtivarDesativarUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAtivarDesativarUsuario.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtivarDesativarUsuario.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAtivarDesativarUsuario.Name = "bbiAtivarDesativarUsuario";
             this.bbiAtivarDesativarUsuario.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtivarDesativarUsuario_ItemClick);
@@ -566,6 +568,10 @@
             this.bbiPermitir.Caption = "Permitir";
             this.bbiPermitir.Id = 23;
             this.bbiPermitir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPermitir.ImageOptions.SvgImage")));
+            this.bbiPermitir.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiPermitir.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiPermitir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiPermitir.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiPermitir.Name = "bbiPermitir";
             this.bbiPermitir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPermitir_ItemClick);
             // 
@@ -574,8 +580,25 @@
             this.bbiNaoPermitir.Caption = "Não Permitir";
             this.bbiNaoPermitir.Id = 24;
             this.bbiNaoPermitir.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiNaoPermitir.ImageOptions.SvgImage")));
+            this.bbiNaoPermitir.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiNaoPermitir.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiNaoPermitir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiNaoPermitir.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiNaoPermitir.Name = "bbiNaoPermitir";
             this.bbiNaoPermitir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNaoPermitir_ItemClick);
+            // 
+            // bbiExportarExcel
+            // 
+            this.bbiExportarExcel.Caption = "Exportar Excel";
+            this.bbiExportarExcel.Id = 25;
+            this.bbiExportarExcel.ImageOptions.Image = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ImageOptions.LargeImage = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiExportarExcel.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiExportarExcel.Name = "bbiExportarExcel";
+            this.bbiExportarExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportarExcel_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -614,7 +637,9 @@
             this.ribbonPageGroup2.AllowTextClipping = false;
             this.ribbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiVisualizarImprimir);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiExportarExcel);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Grid";
             // 
             // ribbonStatusBar
             // 
@@ -622,13 +647,13 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 575);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(798, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(967, 24);
             // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(798, 599);
+            this.ClientSize = new System.Drawing.Size(967, 599);
             this.Controls.Add(this.gridControlUsuarios);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
@@ -688,5 +713,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnDataHoraEdi;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnUsuarioEdi;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnSenhaMD5;
+        private DevExpress.XtraBars.BarButtonItem bbiExportarExcel;
     }
 }

@@ -64,6 +64,7 @@
             this.bbiRetirarDinheiro = new DevExpress.XtraBars.BarButtonItem();
             this.bbiContadorDinheiro = new DevExpress.XtraBars.BarButtonItem();
             this.bbiLinkPagamento = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExportarExcel = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -216,7 +217,7 @@
             this.gridControl.MainView = this.advBandedGridViewTransacoesCaixa;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(476, 542);
+            this.gridControl.Size = new System.Drawing.Size(656, 542);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.advBandedGridViewTransacoesCaixa,
@@ -499,15 +500,16 @@
             this.bbiAdicionarDinheiro,
             this.bbiRetirarDinheiro,
             this.bbiContadorDinheiro,
-            this.bbiLinkPagamento});
+            this.bbiLinkPagamento,
+            this.bbiExportarExcel});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 25;
+            this.ribbonControl.MaxItemId = 26;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(876, 164);
+            this.ribbonControl.Size = new System.Drawing.Size(1056, 164);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -518,7 +520,7 @@
             this.bbiVisualizarImprimir.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiVisualizarImprimir.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiVisualizarImprimir.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiVisualizarImprimir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiVisualizarImprimir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiVisualizarImprimir.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiVisualizarImprimir.Name = "bbiVisualizarImprimir";
             this.bbiVisualizarImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
@@ -546,7 +548,7 @@
             this.bbiEditarFormasPagamento.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEditarFormasPagamento.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditarFormasPagamento.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiEditarFormasPagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiEditarFormasPagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditarFormasPagamento.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiEditarFormasPagamento.Name = "bbiEditarFormasPagamento";
             this.bbiEditarFormasPagamento.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -560,7 +562,7 @@
             this.bbiDeletar.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDeletar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiDeletar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiDeletar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiDeletar.Name = "bbiDeletar";
             this.bbiDeletar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeletar_ItemClick);
@@ -572,7 +574,7 @@
             this.bbiAtualizar.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiAtualizar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiAtualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAtualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAtualizar.Name = "bbiAtualizar";
             this.bbiAtualizar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtualizar_ItemClick);
@@ -584,7 +586,7 @@
             this.bbiFecharCaixa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiFecharCaixa.ImageOptions.SvgImage")));
             this.bbiFecharCaixa.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiFecharCaixa.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiFecharCaixa.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiFecharCaixa.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiFecharCaixa.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiFecharCaixa.Name = "bbiFecharCaixa";
             this.bbiFecharCaixa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFecharCaixa_ItemClick);
@@ -597,7 +599,7 @@
             this.bbiAdicionarDinheiro.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiAdicionarDinheiro.ImageOptions.LargeImage")));
             this.bbiAdicionarDinheiro.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAdicionarDinheiro.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiAdicionarDinheiro.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAdicionarDinheiro.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAdicionarDinheiro.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAdicionarDinheiro.Name = "bbiAdicionarDinheiro";
             this.bbiAdicionarDinheiro.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAdicionarDinheiro_ItemClick);
@@ -609,7 +611,7 @@
             this.bbiRetirarDinheiro.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiRetirarDinheiro.ImageOptions.SvgImage")));
             this.bbiRetirarDinheiro.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRetirarDinheiro.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRetirarDinheiro.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRetirarDinheiro.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiRetirarDinheiro.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiRetirarDinheiro.Name = "bbiRetirarDinheiro";
             this.bbiRetirarDinheiro.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRetirarDinheiro_ItemClick);
@@ -621,7 +623,7 @@
             this.bbiContadorDinheiro.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiContadorDinheiro.ImageOptions.SvgImage")));
             this.bbiContadorDinheiro.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiContadorDinheiro.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiContadorDinheiro.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiContadorDinheiro.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiContadorDinheiro.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiContadorDinheiro.Name = "bbiContadorDinheiro";
             this.bbiContadorDinheiro.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiContadorDinheiro_ItemClick);
@@ -633,10 +635,23 @@
             this.bbiLinkPagamento.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiLinkPagamento.ImageOptions.SvgImage")));
             this.bbiLinkPagamento.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiLinkPagamento.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiLinkPagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiLinkPagamento.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiLinkPagamento.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiLinkPagamento.Name = "bbiLinkPagamento";
             this.bbiLinkPagamento.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiLinkPagamento_ItemClick);
+            // 
+            // bbiExportarExcel
+            // 
+            this.bbiExportarExcel.Caption = "Exportar Excel";
+            this.bbiExportarExcel.Id = 25;
+            this.bbiExportarExcel.ImageOptions.Image = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ImageOptions.LargeImage = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiExportarExcel.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiExportarExcel.Name = "bbiExportarExcel";
+            this.bbiExportarExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportarExcel_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -669,7 +684,9 @@
             this.ribbonPageGroup2.AllowTextClipping = false;
             this.ribbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiVisualizarImprimir);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiExportarExcel);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Grid";
             // 
             // ribbonStatusBar
             // 
@@ -677,7 +694,7 @@
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 718);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(876, 24);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1056, 24);
             // 
             // panelControl1
             // 
@@ -689,7 +706,7 @@
             this.panelControl1.Controls.Add(this.txtSaldoInicial);
             this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Controls.Add(this.lblSaldoInicial);
-            this.panelControl1.Location = new System.Drawing.Point(482, 170);
+            this.panelControl1.Location = new System.Drawing.Point(662, 170);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(394, 530);
             this.panelControl1.TabIndex = 4;
@@ -1140,7 +1157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(876, 742);
+            this.ClientSize = new System.Drawing.Size(1056, 742);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.gridControl);
@@ -1257,5 +1274,6 @@
         private DevExpress.XtraEditors.TextEdit txtTransferenciaBancaria;
         private DevExpress.XtraEditors.LabelControl lblContasPagas;
         private DevExpress.XtraEditors.TextEdit txtContasPagas;
+        private DevExpress.XtraBars.BarButtonItem bbiExportarExcel;
     }
 }

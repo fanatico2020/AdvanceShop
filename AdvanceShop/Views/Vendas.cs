@@ -23,6 +23,7 @@ using System.Net;
 using SelectPdf;
 using DevExpress.XtraPdfViewer;
 using DevExpress.Utils.Menu;
+using AdvanceShop.Shared.Library;
 
 namespace AdvanceShop.Views
 {
@@ -70,7 +71,7 @@ namespace AdvanceShop.Views
                 {
                     string referencia = row[0].ToString();
                     consultaNFC_e = await apiFocusNfeController.RetornaInformacaoSobreNFC_e(apiFocusNfe, referencia);
-                    if(consultaNFC_e.codigo != "nao_encontrado")
+                    if(consultaNFC_e.codigo != "nao_encontrado" && consultaNFC_e.numero != null)
                     {
                         venda.IdVendas = Convert.ToInt32(referencia);
                         switch (consultaNFC_e.status)
@@ -88,7 +89,7 @@ namespace AdvanceShop.Views
                                 venda.nfcstatus = 3;
                                 break;
                             default:
-                                venda.nfcstatus = int.Parse(null);
+                                
                                 break;
                         }
                         
@@ -423,6 +424,9 @@ namespace AdvanceShop.Views
             }
         }
 
-        
+        private void bbiExportarExcel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportarExcel.Grid(advBandedGridViewVendas);
+        }
     }
 }

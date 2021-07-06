@@ -1,6 +1,7 @@
 ﻿using AdvanceShop.Controllers;
 using AdvanceShop.Models;
 using AdvanceShop.Shared.CustomMessageBox;
+using AdvanceShop.Shared.Library;
 using AdvanceShop.Shared.Validation;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraBars;
@@ -203,6 +204,11 @@ namespace AdvanceShop.Views
             {
                 view.AtualizarProdutos();
             }
+        }
+
+        private void bbiExportarExcel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportarExcel.Grid(advBandedGridViewProdutos);
         }
     }
 }

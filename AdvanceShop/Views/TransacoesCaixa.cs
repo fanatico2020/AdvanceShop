@@ -16,6 +16,7 @@ using AdvanceShop.Controllers;
 using AdvanceShop.Shared.CustomMessageBox;
 using DevExpress.Utils.Menu;
 using AdvanceShop.JsonModels.GerenciaNet;
+using AdvanceShop.Shared.Library;
 
 namespace AdvanceShop.Views
 {
@@ -447,6 +448,11 @@ namespace AdvanceShop.Views
         private void bbiLinkPagamento_ItemClick(object sender, ItemClickEventArgs e)
         {
             LinkPagamento();
+        }
+
+        private void bbiExportarExcel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportarExcel.Grid(advBandedGridViewTransacoesCaixa);
         }
     }
 }

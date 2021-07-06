@@ -15,6 +15,7 @@ using AdvanceShop.Shared.Validation;
 using AdvanceShop.Controllers;
 using AdvanceShop.Shared.CustomMessageBox;
 using DevExpress.Utils.Menu;
+using AdvanceShop.Shared.Library;
 
 namespace AdvanceShop.Views
 {
@@ -250,6 +251,11 @@ namespace AdvanceShop.Views
         private void bbiAdicionarClientePDV_ItemClick(object sender, ItemClickEventArgs e)
         {
             AdicionarClientePDV();
+        }
+
+        private void bbiExportarExcel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportarExcel.Grid(advBandedGridViewClientesPessoas);
         }
     }
 }

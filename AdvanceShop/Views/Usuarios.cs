@@ -17,6 +17,7 @@ using DevExpress.Utils.Menu;
 using AdvanceShop.Shared.Validation;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Base;
+using AdvanceShop.Shared.Library;
 
 namespace AdvanceShop.Views
 {
@@ -323,6 +324,11 @@ namespace AdvanceShop.Views
 
                 }
             }
+        }
+
+        private void bbiExportarExcel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportarExcel.Grid(advBandedGridViewUsuarios);
         }
     }
 }

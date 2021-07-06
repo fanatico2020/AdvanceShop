@@ -41,6 +41,7 @@
             this.bandedGridColumnStatus = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.advBandedGridViewContasAPagar = new DevExpress.XtraGrid.Views.BandedGrid.AdvBandedGridView();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumnCodigo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnReferentea = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumnValor = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -64,11 +65,11 @@
             this.bbiDeletar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiAtualizar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPagar = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExportarExcel = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advBandedGridViewContasAPagar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
@@ -199,6 +200,32 @@
             this.advBandedGridViewContasAPagar.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.advBandedGridViewContasAPagar_PopupMenuShowing);
             this.advBandedGridViewContasAPagar.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.advBandedGridViewContasAPagar_CustomColumnDisplayText);
             this.advBandedGridViewContasAPagar.DoubleClick += new System.EventHandler(this.advBandedGridViewContasAPagar_DoubleClick);
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
+            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
+            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridBand1.Caption = "Contas A Pagar / Contas Pagas";
+            this.gridBand1.Columns.Add(this.bandedGridColumnCodigo);
+            this.gridBand1.Columns.Add(this.bandedGridColumnStatus);
+            this.gridBand1.Columns.Add(this.bandedGridColumnReferentea);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDataVencimento);
+            this.gridBand1.Columns.Add(this.bandedGridColumnValor);
+            this.gridBand1.Columns.Add(this.bandedGridColumnCategoria);
+            this.gridBand1.Columns.Add(this.bandedGridColumnFornecedor);
+            this.gridBand1.Columns.Add(this.bandedGridColumnValorPago);
+            this.gridBand1.Columns.Add(this.bandedGridColumnPagoEm);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDocumento);
+            this.gridBand1.Columns.Add(this.bandedGridColumnObservacao);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraCad);
+            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioCad);
+            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraEdi);
+            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioEdi);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 1999;
             // 
             // bandedGridColumnCodigo
             // 
@@ -433,9 +460,10 @@
             this.bbiEditar,
             this.bbiDeletar,
             this.bbiAtualizar,
-            this.bbiPagar});
+            this.bbiPagar,
+            this.bbiExportarExcel});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 21;
+            this.ribbonControl.MaxItemId = 22;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -452,7 +480,7 @@
             this.bbiVisualizarImprimir.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiVisualizarImprimir.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiVisualizarImprimir.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiVisualizarImprimir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiVisualizarImprimir.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiVisualizarImprimir.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiVisualizarImprimir.Name = "bbiVisualizarImprimir";
             this.bbiVisualizarImprimir.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
@@ -470,7 +498,7 @@
             this.bbiNovoDebito.ImageOptions.ImageUri.Uri = "New";
             this.bbiNovoDebito.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiNovoDebito.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiNovoDebito.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiNovoDebito.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiNovoDebito.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiNovoDebito.Name = "bbiNovoDebito";
             this.bbiNovoDebito.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNovoDebito_ItemClick);
@@ -482,7 +510,7 @@
             this.bbiEditar.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEditar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiEditar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiEditar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiEditar.Name = "bbiEditar";
             this.bbiEditar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditar_ItemClick);
@@ -494,7 +522,7 @@
             this.bbiDeletar.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDeletar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiDeletar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiDeletar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiDeletar.Name = "bbiDeletar";
             this.bbiDeletar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeletar_ItemClick);
@@ -506,7 +534,7 @@
             this.bbiAtualizar.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiAtualizar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiAtualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAtualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAtualizar.Name = "bbiAtualizar";
             this.bbiAtualizar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtualizar_ItemClick);
@@ -516,8 +544,25 @@
             this.bbiPagar.Caption = "Pagar";
             this.bbiPagar.Id = 20;
             this.bbiPagar.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPagar.ImageOptions.SvgImage")));
+            this.bbiPagar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiPagar.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiPagar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiPagar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiPagar.Name = "bbiPagar";
             this.bbiPagar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPagar_ItemClick);
+            // 
+            // bbiExportarExcel
+            // 
+            this.bbiExportarExcel.Caption = "Exportar Excel";
+            this.bbiExportarExcel.Id = 21;
+            this.bbiExportarExcel.ImageOptions.Image = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ImageOptions.LargeImage = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiExportarExcel.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiExportarExcel.Name = "bbiExportarExcel";
+            this.bbiExportarExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportarExcel_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -547,7 +592,9 @@
             this.ribbonPageGroup2.AllowTextClipping = false;
             this.ribbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiVisualizarImprimir);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiExportarExcel);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Grid";
             // 
             // ribbonStatusBar
             // 
@@ -556,32 +603,6 @@
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
             this.ribbonStatusBar.Size = new System.Drawing.Size(809, 24);
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.AppearanceHeader.ForeColor = System.Drawing.Color.Black;
-            this.gridBand1.AppearanceHeader.Options.UseForeColor = true;
-            this.gridBand1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gridBand1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridBand1.Caption = "Contas A Pagar / Contas Pagas";
-            this.gridBand1.Columns.Add(this.bandedGridColumnCodigo);
-            this.gridBand1.Columns.Add(this.bandedGridColumnStatus);
-            this.gridBand1.Columns.Add(this.bandedGridColumnReferentea);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDataVencimento);
-            this.gridBand1.Columns.Add(this.bandedGridColumnValor);
-            this.gridBand1.Columns.Add(this.bandedGridColumnCategoria);
-            this.gridBand1.Columns.Add(this.bandedGridColumnFornecedor);
-            this.gridBand1.Columns.Add(this.bandedGridColumnValorPago);
-            this.gridBand1.Columns.Add(this.bandedGridColumnPagoEm);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDocumento);
-            this.gridBand1.Columns.Add(this.bandedGridColumnObservacao);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraCad);
-            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioCad);
-            this.gridBand1.Columns.Add(this.bandedGridColumnDataHoraEdi);
-            this.gridBand1.Columns.Add(this.bandedGridColumnUsuarioEdi);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 1999;
             // 
             // ContasAPagarPagas
             // 
@@ -641,5 +662,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnDataHoraEdi;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnUsuarioEdi;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraBars.BarButtonItem bbiExportarExcel;
     }
 }

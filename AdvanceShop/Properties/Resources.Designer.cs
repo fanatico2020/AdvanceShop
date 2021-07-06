@@ -73,6 +73,16 @@ namespace AdvanceShop.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Excel_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("Excel_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap focusnfe32x32 {
             get {
                 object obj = ResourceManager.GetObject("focusnfe32x32", resourceCulture);

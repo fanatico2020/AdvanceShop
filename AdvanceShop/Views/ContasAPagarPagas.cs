@@ -15,6 +15,7 @@ using AdvanceShop.Controllers;
 using AdvanceShop.Shared.CustomMessageBox;
 using DevExpress.Utils.Menu;
 using AdvanceShop.Shared.Validation;
+using AdvanceShop.Shared.Library;
 
 namespace AdvanceShop.Views
 {
@@ -203,6 +204,11 @@ namespace AdvanceShop.Views
         private void bbiPagar_ItemClick(object sender, ItemClickEventArgs e)
         {
             PagarContaAPagar();
+        }
+
+        private void bbiExportarExcel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportarExcel.Grid(advBandedGridViewContasAPagar);
         }
     }
 }

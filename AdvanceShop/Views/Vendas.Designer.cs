@@ -81,6 +81,7 @@
             this.bbiReimprimirCupomNaoFiscal = new DevExpress.XtraBars.BarButtonItem();
             this.bbiReimprimirNFC_e = new DevExpress.XtraBars.BarButtonItem();
             this.bbiXML_NFC_e = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExportarExcel = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -648,9 +649,10 @@
             this.bbiTrocaDevolucao,
             this.bbiReimprimirCupomNaoFiscal,
             this.bbiReimprimirNFC_e,
-            this.bbiXML_NFC_e});
+            this.bbiXML_NFC_e,
+            this.bbiExportarExcel});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 24;
+            this.ribbonControl.MaxItemId = 25;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -667,7 +669,7 @@
             this.bbiImprimirVisualizar.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiImprimirVisualizar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiImprimirVisualizar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiImprimirVisualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiImprimirVisualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiImprimirVisualizar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiImprimirVisualizar.Name = "bbiImprimirVisualizar";
             this.bbiImprimirVisualizar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
@@ -686,7 +688,7 @@
             this.bbiNovaVenda.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiNovaVenda.ImageOptions.SvgImage")));
             this.bbiNovaVenda.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiNovaVenda.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiNovaVenda.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiNovaVenda.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiNovaVenda.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiNovaVenda.Name = "bbiNovaVenda";
             this.bbiNovaVenda.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNovaVenda_ItemClick);
@@ -698,7 +700,7 @@
             this.bbiEditarVenda.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEditarVenda.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditarVenda.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiEditarVenda.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiEditarVenda.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditarVenda.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiEditarVenda.Name = "bbiEditarVenda";
             this.bbiEditarVenda.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
@@ -712,7 +714,7 @@
             this.bbiDeletarVenda.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDeletarVenda.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletarVenda.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiDeletarVenda.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiDeletarVenda.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletarVenda.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiDeletarVenda.Name = "bbiDeletarVenda";
             this.bbiDeletarVenda.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeletarVenda_ItemClick);
@@ -724,7 +726,7 @@
             this.bbiAtualizarGrid.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiAtualizarGrid.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizarGrid.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiAtualizarGrid.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAtualizarGrid.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizarGrid.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAtualizarGrid.Name = "bbiAtualizarGrid";
             this.bbiAtualizarGrid.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtualizarGrid_ItemClick);
@@ -734,6 +736,10 @@
             this.bbiTrocaDevolucao.Caption = "Troca / Devolução";
             this.bbiTrocaDevolucao.Id = 20;
             this.bbiTrocaDevolucao.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiTrocaDevolucao.ImageOptions.SvgImage")));
+            this.bbiTrocaDevolucao.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiTrocaDevolucao.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiTrocaDevolucao.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiTrocaDevolucao.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiTrocaDevolucao.Name = "bbiTrocaDevolucao";
             this.bbiTrocaDevolucao.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTrocaDevolucao_ItemClick);
             // 
@@ -743,6 +749,10 @@
             this.bbiReimprimirCupomNaoFiscal.Id = 21;
             this.bbiReimprimirCupomNaoFiscal.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReimprimirCupomNaoFiscal.ImageOptions.Image")));
             this.bbiReimprimirCupomNaoFiscal.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReimprimirCupomNaoFiscal.ImageOptions.LargeImage")));
+            this.bbiReimprimirCupomNaoFiscal.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiReimprimirCupomNaoFiscal.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiReimprimirCupomNaoFiscal.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiReimprimirCupomNaoFiscal.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiReimprimirCupomNaoFiscal.Name = "bbiReimprimirCupomNaoFiscal";
             this.bbiReimprimirCupomNaoFiscal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReimprimirCupomNaoFiscal_ItemClick);
             // 
@@ -752,6 +762,10 @@
             this.bbiReimprimirNFC_e.Id = 22;
             this.bbiReimprimirNFC_e.ImageOptions.Image = global::AdvanceShop.Properties.Resources.NFC_e_64x64;
             this.bbiReimprimirNFC_e.ImageOptions.LargeImage = global::AdvanceShop.Properties.Resources.NFC_e_64x64;
+            this.bbiReimprimirNFC_e.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiReimprimirNFC_e.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiReimprimirNFC_e.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiReimprimirNFC_e.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiReimprimirNFC_e.Name = "bbiReimprimirNFC_e";
             this.bbiReimprimirNFC_e.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReimprimirNFC_e_ItemClick);
             // 
@@ -761,8 +775,25 @@
             this.bbiXML_NFC_e.Id = 23;
             this.bbiXML_NFC_e.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiXML_NFC_e.ImageOptions.Image")));
             this.bbiXML_NFC_e.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiXML_NFC_e.ImageOptions.LargeImage")));
+            this.bbiXML_NFC_e.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiXML_NFC_e.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiXML_NFC_e.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiXML_NFC_e.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiXML_NFC_e.Name = "bbiXML_NFC_e";
             this.bbiXML_NFC_e.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiXML_NFC_e_ItemClick);
+            // 
+            // bbiExportarExcel
+            // 
+            this.bbiExportarExcel.Caption = "Exportar Excel";
+            this.bbiExportarExcel.Id = 24;
+            this.bbiExportarExcel.ImageOptions.Image = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ImageOptions.LargeImage = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiExportarExcel.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiExportarExcel.Name = "bbiExportarExcel";
+            this.bbiExportarExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportarExcel_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -795,7 +826,9 @@
             this.ribbonPageGroup2.AllowTextClipping = false;
             this.ribbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiImprimirVisualizar);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiExportarExcel);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Grid";
             // 
             // ribbonStatusBar
             // 
@@ -883,5 +916,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiXML_NFC_e;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraBars.BarButtonItem bbiExportarExcel;
     }
 }

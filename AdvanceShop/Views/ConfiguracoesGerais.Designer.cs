@@ -64,6 +64,7 @@
             this.lblTokenHomologacao = new DevExpress.XtraEditors.LabelControl();
             this.tsAtivarApiFocusNfe = new DevExpress.XtraEditors.ToggleSwitch();
             this.xtbpApiGerenciaNet = new DevExpress.XtraTab.XtraTabPage();
+            this.lblLinkGerencianet = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.txtClientSecretProducao = new DevExpress.XtraEditors.TextEdit();
             this.lblClient_Secret_producao = new DevExpress.XtraEditors.LabelControl();
@@ -78,7 +79,6 @@
             this.lblClient_id_homologacao = new DevExpress.XtraEditors.LabelControl();
             this.tsAtivarApiGerenciaNet = new DevExpress.XtraEditors.ToggleSwitch();
             this.btnSalvar = new DevExpress.XtraEditors.SimpleButton();
-            this.lblLinkGerencianet = new DevExpress.XtraEditors.HyperlinkLabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.xtbpcConfigGerais)).BeginInit();
             this.xtbpcConfigGerais.SuspendLayout();
             this.xtbpVenda.SuspendLayout();
@@ -467,6 +467,7 @@
             // 
             // rgbAmbienteFocusNfe
             // 
+            this.rgbAmbienteFocusNfe.EditValue = "homologacao";
             this.rgbAmbienteFocusNfe.Location = new System.Drawing.Point(5, 144);
             this.rgbAmbienteFocusNfe.Name = "rgbAmbienteFocusNfe";
             this.rgbAmbienteFocusNfe.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
@@ -535,6 +536,15 @@
             this.xtbpApiGerenciaNet.Name = "xtbpApiGerenciaNet";
             this.xtbpApiGerenciaNet.Size = new System.Drawing.Size(605, 366);
             this.xtbpApiGerenciaNet.Text = "Api - GerenciaNet";
+            // 
+            // lblLinkGerencianet
+            // 
+            this.lblLinkGerencianet.Location = new System.Drawing.Point(443, 8);
+            this.lblLinkGerencianet.Name = "lblLinkGerencianet";
+            this.lblLinkGerencianet.Size = new System.Drawing.Size(159, 13);
+            this.lblLinkGerencianet.TabIndex = 0;
+            this.lblLinkGerencianet.Text = "Ir para o site gerencianet.com.br";
+            this.lblLinkGerencianet.Click += new System.EventHandler(this.lblLinkGerencianet_Click);
             // 
             // panelControl1
             // 
@@ -614,6 +624,7 @@
             // 
             // rgbAmbienteGerenciaNet
             // 
+            this.rgbAmbienteGerenciaNet.EditValue = "homologacao";
             this.rgbAmbienteGerenciaNet.Location = new System.Drawing.Point(5, 287);
             this.rgbAmbienteGerenciaNet.Name = "rgbAmbienteGerenciaNet";
             this.rgbAmbienteGerenciaNet.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
@@ -682,15 +693,6 @@
             this.btnSalvar.TabIndex = 0;
             this.btnSalvar.Text = "Salvar (F2)";
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // lblLinkGerencianet
-            // 
-            this.lblLinkGerencianet.Location = new System.Drawing.Point(443, 8);
-            this.lblLinkGerencianet.Name = "lblLinkGerencianet";
-            this.lblLinkGerencianet.Size = new System.Drawing.Size(159, 13);
-            this.lblLinkGerencianet.TabIndex = 0;
-            this.lblLinkGerencianet.Text = "Ir para o site gerencianet.com.br";
-            this.lblLinkGerencianet.Click += new System.EventHandler(this.lblLinkGerencianet_Click);
             // 
             // ConfiguracoesGerais
             // 

@@ -15,6 +15,7 @@ using AdvanceShop.Controllers;
 using AdvanceShop.Shared.CustomMessageBox;
 using AdvanceShop.Shared.Validation;
 using DevExpress.Utils.Menu;
+using AdvanceShop.Shared.Library;
 
 namespace AdvanceShop.Views
 {
@@ -259,6 +260,11 @@ namespace AdvanceShop.Views
 
                 }
             }
+        }
+
+        private void bbiExportarExcel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportarExcel.Grid(advBandedGridViewTransacoesEstoque);
         }
     }
 }

@@ -66,6 +66,7 @@
             this.bbiAtualizar = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiExportarExcel = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -519,9 +520,10 @@
             this.bbiDeletarProduto,
             this.bbiAtualizar,
             this.barButtonItem1,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.bbiExportarExcel});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 22;
+            this.ribbonControl.MaxItemId = 23;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -538,7 +540,7 @@
             this.bbiImprimirVisualizar.ImageOptions.ImageUri.Uri = "Preview";
             this.bbiImprimirVisualizar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiImprimirVisualizar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiImprimirVisualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiImprimirVisualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiImprimirVisualizar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiImprimirVisualizar.Name = "bbiImprimirVisualizar";
             this.bbiImprimirVisualizar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPreview_ItemClick);
@@ -558,7 +560,7 @@
             this.bbiNovoProduto.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNovoProduto.ImageOptions.LargeImage")));
             this.bbiNovoProduto.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiNovoProduto.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiNovoProduto.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiNovoProduto.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiNovoProduto.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiNovoProduto.Name = "bbiNovoProduto";
             this.bbiNovoProduto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNovoProduto_ItemClick);
@@ -570,7 +572,7 @@
             this.bbiEditarProduto.ImageOptions.ImageUri.Uri = "Edit";
             this.bbiEditarProduto.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditarProduto.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiEditarProduto.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiEditarProduto.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiEditarProduto.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiEditarProduto.Name = "bbiEditarProduto";
             this.bbiEditarProduto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditarProduto_ItemClick);
@@ -582,7 +584,7 @@
             this.bbiDeletarProduto.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDeletarProduto.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletarProduto.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiDeletarProduto.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiDeletarProduto.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiDeletarProduto.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiDeletarProduto.Name = "bbiDeletarProduto";
             this.bbiDeletarProduto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDeletarProduto_ItemClick);
@@ -594,7 +596,7 @@
             this.bbiAtualizar.ImageOptions.ImageUri.Uri = "Refresh";
             this.bbiAtualizar.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizar.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiAtualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiAtualizar.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bbiAtualizar.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiAtualizar.Name = "bbiAtualizar";
             this.bbiAtualizar.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAtualizar_ItemClick);
@@ -615,6 +617,19 @@
             this.barButtonItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
             this.barButtonItem2.Name = "barButtonItem2";
             // 
+            // bbiExportarExcel
+            // 
+            this.bbiExportarExcel.Caption = "Exportar Excel";
+            this.bbiExportarExcel.Id = 22;
+            this.bbiExportarExcel.ImageOptions.Image = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ImageOptions.LargeImage = global::AdvanceShop.Properties.Resources.Excel_48x48;
+            this.bbiExportarExcel.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiExportarExcel.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiExportarExcel.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiExportarExcel.Name = "bbiExportarExcel";
+            this.bbiExportarExcel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportarExcel_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -633,13 +648,16 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiDeletarProduto);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbiAtualizar);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Tarefas";
             // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.AllowTextClipping = false;
             this.ribbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiImprimirVisualizar);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiExportarExcel);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Grid";
             // 
             // ribbonStatusBar
             // 
@@ -717,5 +735,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumncodigocfop;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnicmsorigem;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumnicmssituacaotributaria;
+        private DevExpress.XtraBars.BarButtonItem bbiExportarExcel;
     }
 }
