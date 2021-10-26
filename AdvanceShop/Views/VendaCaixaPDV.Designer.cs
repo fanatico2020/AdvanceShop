@@ -608,9 +608,10 @@
             this.lblDemaisComandos.Appearance.Options.UseFont = true;
             this.lblDemaisComandos.Location = new System.Drawing.Point(5, 72);
             this.lblDemaisComandos.Name = "lblDemaisComandos";
-            this.lblDemaisComandos.Size = new System.Drawing.Size(495, 19);
+            this.lblDemaisComandos.Size = new System.Drawing.Size(683, 19);
             this.lblDemaisComandos.TabIndex = 16;
-            this.lblDemaisComandos.Text = "Remover item da venda (F6) - Cancelar venda (F7) - Fechar caixa (F8)";
+            this.lblDemaisComandos.Text = "Remover item da venda (F6) - Cancelar venda (F7) - Fechar caixa (F8) - Orçamento " +
+    "Simples (F9)";
             // 
             // lblSubtotal
             // 
@@ -889,11 +890,10 @@
             this.Controls.Add(this.panelQtdValores);
             this.Controls.Add(this.panelProduto);
             this.Controls.Add(this.panelTarefas);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "VendaCaixaPDV";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDV";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.VendaCaixaPDV_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VendaCaixaPDV_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.VendaCaixaPDV_KeyPress);

@@ -42,6 +42,7 @@ namespace AdvanceShop.Views
             tsImprimirNomeVendedorFinalizarVenda.IsOn = Convert.ToBoolean(configGerais.imprimirnomevendedorfinalizarvenda);
             //tsImprimirNotaFiscalFinalizarVenda.IsOn = Convert.ToBoolean();
             tsVendaCartaoPermitirDesconto.IsOn = Convert.ToBoolean(configGerais.vendacartaopermitirdesconto);
+            tsPermitirVenderCEstoqueZerado.IsOn = Convert.ToBoolean(configGerais.permitirvendercomestoquezerado);
             tsTrocoMaximo.IsOn = Convert.ToBoolean(configGerais.trocomaximo);
             txtTrocoMaximo.Text = Convert.ToString(configGerais.valortrocomaximo);
         }
@@ -121,6 +122,7 @@ namespace AdvanceShop.Views
                 configGerais.vendacartaopermitirdesconto = Convert.ToInt32(tsVendaCartaoPermitirDesconto.IsOn);
                 configGerais.avisarclienteaniversariante = Convert.ToInt32(tsAvisarClienteAniversariante.IsOn);
                 configGerais.avisarprodutoestoquebaixo = Convert.ToInt32(tsAvisarProdutoEstoqueBaixo.IsOn);
+                configGerais.permitirvendercomestoquezerado = Convert.ToInt32(tsPermitirVenderCEstoqueZerado.IsOn);
 
                 configGeraisController.SalvarConfiguracao(configGerais);
 

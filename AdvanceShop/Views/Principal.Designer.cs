@@ -41,7 +41,6 @@
             this.bbiContasApagar = new DevExpress.XtraBars.BarButtonItem();
             this.bbiCaixas = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFiscal = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiApp = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelMeioDePagamento = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelMovimentacaoProdutos = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelProdutosMaisVendidos = new DevExpress.XtraBars.BarButtonItem();
@@ -71,6 +70,7 @@
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bbiRelComissaoPorVendedor = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRelRelacaoDeContasPorStatus = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPagePrincipal = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupPrincipal = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageRelatorios = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -84,7 +84,6 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.barHeaderItem1 = new DevExpress.XtraBars.BarHeaderItem();
-            this.bbiRelRelacaoDeContasPorStatus = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControlPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenuPrincipal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHyperLinkEdit1)).BeginInit();
@@ -94,6 +93,7 @@
             // 
             // ribbonControlPrincipal
             // 
+            this.ribbonControlPrincipal.AllowMinimizeRibbon = false;
             this.ribbonControlPrincipal.ApplicationButtonDropDownControl = this.applicationMenuPrincipal;
             this.ribbonControlPrincipal.ExpandCollapseItem.Id = 0;
             this.ribbonControlPrincipal.Font = new System.Drawing.Font("Tahoma", 8.25F);
@@ -106,7 +106,6 @@
             this.bbiContasApagar,
             this.bbiCaixas,
             this.bbiFiscal,
-            this.bbiApp,
             this.bbiRelMeioDePagamento,
             this.bbiRelMovimentacaoProdutos,
             this.bbiRelProdutosMaisVendidos,
@@ -152,8 +151,10 @@
             this.repositoryItemHyperLinkEdit1,
             this.repositoryItemHyperLinkEdit2,
             this.repositoryItemHypertextLabel1});
+            this.ribbonControlPrincipal.ShowToolbarCustomizeItem = false;
             this.ribbonControlPrincipal.Size = new System.Drawing.Size(826, 164);
             this.ribbonControlPrincipal.StatusBar = this.ribbonStatusBar1;
+            this.ribbonControlPrincipal.Toolbar.ShowCustomizeItem = false;
             // 
             // applicationMenuPrincipal
             // 
@@ -265,18 +266,6 @@
             this.bbiFiscal.ItemAppearance.Normal.Options.UseFont = true;
             this.bbiFiscal.Name = "bbiFiscal";
             this.bbiFiscal.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFiscal_ItemClick);
-            // 
-            // bbiApp
-            // 
-            this.bbiApp.Caption = "AdvanceShop App";
-            this.bbiApp.Id = 8;
-            this.bbiApp.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiApp.ImageOptions.SvgImage")));
-            this.bbiApp.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiApp.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiApp.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiApp.ItemAppearance.Normal.Options.UseFont = true;
-            this.bbiApp.Name = "bbiApp";
-            this.bbiApp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiApp_ItemClick);
             // 
             // bbiRelMeioDePagamento
             // 
@@ -552,6 +541,18 @@
             this.bbiRelComissaoPorVendedor.Name = "bbiRelComissaoPorVendedor";
             this.bbiRelComissaoPorVendedor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelComissaoPorVendedor_ItemClick);
             // 
+            // bbiRelRelacaoDeContasPorStatus
+            // 
+            this.bbiRelRelacaoDeContasPorStatus.Caption = "Relação de Contas por Status";
+            this.bbiRelRelacaoDeContasPorStatus.Id = 62;
+            this.bbiRelRelacaoDeContasPorStatus.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiRelRelacaoDeContasPorStatus.ImageOptions.LargeImage")));
+            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Hovered.Options.UseFont = true;
+            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Normal.Options.UseFont = true;
+            this.bbiRelRelacaoDeContasPorStatus.Name = "bbiRelRelacaoDeContasPorStatus";
+            this.bbiRelRelacaoDeContasPorStatus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelRelacaoDeContasPorStatus_ItemClick);
+            // 
             // ribbonPagePrincipal
             // 
             this.ribbonPagePrincipal.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -570,7 +571,6 @@
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiContasApagar);
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiCaixas);
             this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiUsuarios);
-            this.ribbonPageGroupPrincipal.ItemLinks.Add(this.bbiApp);
             this.ribbonPageGroupPrincipal.Name = "ribbonPageGroupPrincipal";
             // 
             // ribbonPageRelatorios
@@ -660,18 +660,6 @@
             this.barHeaderItem1.Id = 32;
             this.barHeaderItem1.Name = "barHeaderItem1";
             // 
-            // bbiRelRelacaoDeContasPorStatus
-            // 
-            this.bbiRelRelacaoDeContasPorStatus.Caption = "Relação de Contas por Status";
-            this.bbiRelRelacaoDeContasPorStatus.Id = 62;
-            this.bbiRelRelacaoDeContasPorStatus.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.ImageOptions.LargeImage")));
-            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Hovered.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Hovered.Options.UseFont = true;
-            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bbiRelRelacaoDeContasPorStatus.ItemAppearance.Normal.Options.UseFont = true;
-            this.bbiRelRelacaoDeContasPorStatus.Name = "bbiRelRelacaoDeContasPorStatus";
-            this.bbiRelRelacaoDeContasPorStatus.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRelRelacaoDeContasPorStatus_ItemClick);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,7 +700,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiContasApagar;
         private DevExpress.XtraBars.BarButtonItem bbiCaixas;
         private DevExpress.XtraBars.BarButtonItem bbiFiscal;
-        private DevExpress.XtraBars.BarButtonItem bbiApp;
         private DevExpress.XtraBars.BarButtonItem bbiRelMeioDePagamento;
         private DevExpress.XtraBars.BarButtonItem bbiRelMovimentacaoProdutos;
         private DevExpress.XtraBars.BarButtonItem bbiRelProdutosMaisVendidos;

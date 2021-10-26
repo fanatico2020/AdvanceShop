@@ -79,7 +79,7 @@ insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermis
 insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,1,35);
 insert into usuario_tem_permissao(status,usuarios_idusuarios,permissoes_idpermissoes) values (1,1,36);
 -- FIM ADD PERMISSÃO ADMIN
-insert into configuracoesgerais(idconfiguracoesgerais,trocomaximo,valortrocomaximo,imprimircpfcnpjnocupom,imprimircupomfinalizarvenda,imprimircupomfiscalnfcefinalizarvenda,imprimirnomevendedorfinalizarvenda,vendacartaopermitirdesconto,avisarclienteaniversariante,avisarprodutoestoquebaixo) values (1,0,0,0,1,0,0,0,0,1);
+insert into configuracoesgerais(idconfiguracoesgerais,trocomaximo,valortrocomaximo,imprimircpfcnpjnocupom,imprimircupomfinalizarvenda,imprimircupomfiscalnfcefinalizarvenda,imprimirnomevendedorfinalizarvenda,vendacartaopermitirdesconto,avisarclienteaniversariante,avisarprodutoestoquebaixo,permitirvendercomestoquezerado) values (1,0,0,0,1,0,0,0,0,1,0);
 insert into apifocusnfe(idapifocusnfe,usarapi,tokenhomologacao,tokenproducao,ambiente,indicadoriedestinatario,clientespessoas_idclientespessoas) values (1,0,'','','','',null);
 insert into apigerencianet(idapigerencianet,usarapi,clientidhomologacao,clientsecrethomologacao,clientidproducao,clientsecretproducao,ambiente) values (1,0,'','','','','');
 insert into emailsistema(idemailsistema,emailprincipal,emailcopia1,emailcopia2) values (1,'','','');

@@ -189,13 +189,14 @@
             this.advBandedGridViewContasAPagar.Name = "advBandedGridViewContasAPagar";
             this.advBandedGridViewContasAPagar.OptionsBehavior.Editable = false;
             this.advBandedGridViewContasAPagar.OptionsBehavior.ReadOnly = true;
+            this.advBandedGridViewContasAPagar.OptionsMenu.ShowFooterItem = true;
             this.advBandedGridViewContasAPagar.OptionsPrint.EnableAppearanceEvenRow = true;
             this.advBandedGridViewContasAPagar.OptionsPrint.PrintDetails = true;
             this.advBandedGridViewContasAPagar.OptionsPrint.PrintFilterInfo = true;
-            this.advBandedGridViewContasAPagar.OptionsPrint.PrintGroupFooter = false;
             this.advBandedGridViewContasAPagar.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.advBandedGridViewContasAPagar.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.advBandedGridViewContasAPagar.OptionsView.EnableAppearanceEvenRow = true;
+            this.advBandedGridViewContasAPagar.OptionsView.ShowFooter = true;
             this.advBandedGridViewContasAPagar.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             this.advBandedGridViewContasAPagar.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.advBandedGridViewContasAPagar_PopupMenuShowing);
             this.advBandedGridViewContasAPagar.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.advBandedGridViewContasAPagar_CustomColumnDisplayText);
@@ -240,6 +241,8 @@
             this.bandedGridColumnCodigo.Caption = "Código";
             this.bandedGridColumnCodigo.FieldName = "idcontasapagar";
             this.bandedGridColumnCodigo.Name = "bandedGridColumnCodigo";
+            this.bandedGridColumnCodigo.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "idcontasapagar", "Qtd={0}")});
             this.bandedGridColumnCodigo.Visible = true;
             this.bandedGridColumnCodigo.Width = 69;
             // 
@@ -268,6 +271,8 @@
             this.bandedGridColumnValor.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumnValor.FieldName = "valor";
             this.bandedGridColumnValor.Name = "bandedGridColumnValor";
+            this.bandedGridColumnValor.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "valor", "Total={0:c}")});
             this.bandedGridColumnValor.Visible = true;
             this.bandedGridColumnValor.Width = 105;
             // 
@@ -309,6 +314,8 @@
             this.bandedGridColumnValorPago.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumnValorPago.FieldName = "valorpago";
             this.bandedGridColumnValorPago.Name = "bandedGridColumnValorPago";
+            this.bandedGridColumnValorPago.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "valorpago", "Total={0:c}")});
             this.bandedGridColumnValorPago.Visible = true;
             this.bandedGridColumnValorPago.Width = 92;
             // 

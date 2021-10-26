@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfiguracoesGerais));
             this.xtbpcConfigGerais = new DevExpress.XtraTab.XtraTabControl();
             this.xtbpVenda = new DevExpress.XtraTab.XtraTabPage();
+            this.tsPermitirVenderCEstoqueZerado = new DevExpress.XtraEditors.ToggleSwitch();
             this.txtTrocoMaximo = new DevExpress.XtraEditors.TextEdit();
             this.tsAvisarClienteAniversariante = new DevExpress.XtraEditors.ToggleSwitch();
             this.tsAvisarProdutoEstoqueBaixo = new DevExpress.XtraEditors.ToggleSwitch();
@@ -82,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtbpcConfigGerais)).BeginInit();
             this.xtbpcConfigGerais.SuspendLayout();
             this.xtbpVenda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tsPermitirVenderCEstoqueZerado.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTrocoMaximo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAvisarClienteAniversariante.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAvisarProdutoEstoqueBaixo.Properties)).BeginInit();
@@ -136,6 +138,7 @@
             // 
             this.xtbpVenda.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xtbpVenda.Appearance.Header.Options.UseFont = true;
+            this.xtbpVenda.Controls.Add(this.tsPermitirVenderCEstoqueZerado);
             this.xtbpVenda.Controls.Add(this.txtTrocoMaximo);
             this.xtbpVenda.Controls.Add(this.tsAvisarClienteAniversariante);
             this.xtbpVenda.Controls.Add(this.tsAvisarProdutoEstoqueBaixo);
@@ -150,6 +153,17 @@
             this.xtbpVenda.Name = "xtbpVenda";
             this.xtbpVenda.Size = new System.Drawing.Size(605, 366);
             this.xtbpVenda.Text = "Venda";
+            // 
+            // tsPermitirVenderCEstoqueZerado
+            // 
+            this.tsPermitirVenderCEstoqueZerado.Location = new System.Drawing.Point(3, 273);
+            this.tsPermitirVenderCEstoqueZerado.Name = "tsPermitirVenderCEstoqueZerado";
+            this.tsPermitirVenderCEstoqueZerado.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsPermitirVenderCEstoqueZerado.Properties.Appearance.Options.UseFont = true;
+            this.tsPermitirVenderCEstoqueZerado.Properties.OffText = "Permitir vender com estoque zerado";
+            this.tsPermitirVenderCEstoqueZerado.Properties.OnText = "Permitir vender com estoque zerado";
+            this.tsPermitirVenderCEstoqueZerado.Size = new System.Drawing.Size(334, 24);
+            this.tsPermitirVenderCEstoqueZerado.TabIndex = 11;
             // 
             // txtTrocoMaximo
             // 
@@ -713,6 +727,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtbpcConfigGerais)).EndInit();
             this.xtbpcConfigGerais.ResumeLayout(false);
             this.xtbpVenda.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tsPermitirVenderCEstoqueZerado.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTrocoMaximo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAvisarClienteAniversariante.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tsAvisarProdutoEstoqueBaixo.Properties)).EndInit();
@@ -810,5 +825,6 @@
         private DevExpress.XtraEditors.SeparatorControl separatorControl1;
         private DevExpress.XtraEditors.HyperlinkLabelControl lblLinkFocusNfe;
         private DevExpress.XtraEditors.HyperlinkLabelControl lblLinkGerencianet;
+        private DevExpress.XtraEditors.ToggleSwitch tsPermitirVenderCEstoqueZerado;
     }
 }

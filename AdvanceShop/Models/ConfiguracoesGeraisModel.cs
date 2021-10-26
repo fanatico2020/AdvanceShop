@@ -18,6 +18,7 @@ namespace AdvanceShop.Models
         public int vendacartaopermitirdesconto { get; set; }
         public int avisarprodutoestoquebaixo { get; set; }
         public int avisarclienteaniversariante { get; set; }
+        public int permitirvendercomestoquezerado { get; set; }
 
     }
 }

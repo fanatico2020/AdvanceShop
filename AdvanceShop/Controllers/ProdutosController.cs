@@ -141,6 +141,23 @@ namespace AdvanceShop.Controllers
             
             return result;
         }
+        public int VerificarProdutoEstoqueZerado(ProdutosModel produto)
+        {
+            int result = 0;
+            MySqlConnection conexao = ConexaoMySql.GetConexao();
+            MySqlCommand comando = ConexaoMySql.GetComando(conexao);
+            comando.CommandText =
+                "select if((select estoqueatual from produtos where idprodutos = @idprodutos) < 1,true,false);";
+            comando.CommandType = CommandType.Text;
+            comando.Parameters.Add(new MySqlParameter("@idprodutos", produto.IdProdutos));
+            MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
+            while (reader.Read())
+            {
+                result = Convert.ToInt32(reader.GetInt32(0).ToString());
+            }
+
+            return result;
+        }
 
     }
 }

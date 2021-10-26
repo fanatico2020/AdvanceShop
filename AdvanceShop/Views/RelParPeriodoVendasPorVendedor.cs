@@ -15,7 +15,7 @@ namespace AdvanceShop.Views
 {
     public partial class RelParPeriodoVendasPorVendedor : DevExpress.XtraEditors.XtraForm
     {
-        string relatorio;
+        
         UsuariosController usuarioController = new UsuariosController();
         public RelParPeriodoVendasPorVendedor(string Titulo)
         {

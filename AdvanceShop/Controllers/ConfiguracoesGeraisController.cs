@@ -33,6 +33,7 @@ namespace AdvanceShop.Controllers
             dt.Columns.Add("vendacartaopermitirdesconto", typeof(int));
             dt.Columns.Add("avisarclienteaniversariante", typeof(int));
             dt.Columns.Add("avisarprodutoestoquebaixo", typeof(int));
+            dt.Columns.Add("permitirvendercomestoquezerado", typeof(int));
             //Lendo dt
             MySqlDataReader reader = ConexaoMySql.GetDataReader(comando);
             resultado = reader.HasRows;
@@ -50,6 +51,7 @@ namespace AdvanceShop.Controllers
                 config.vendacartaopermitirdesconto = Convert.ToInt32(dt.Rows[0]["vendacartaopermitirdesconto"]);
                 config.avisarclienteaniversariante = Convert.ToInt32(dt.Rows[0]["avisarclienteaniversariante"]);
                 config.avisarprodutoestoquebaixo = Convert.ToInt32(dt.Rows[0]["avisarprodutoestoquebaixo"]);
+                config.permitirvendercomestoquezerado = Convert.ToInt32(dt.Rows[0]["permitirvendercomestoquezerado"]);
                 return config;
             }
             else
@@ -65,7 +67,7 @@ namespace AdvanceShop.Controllers
             MySqlCommand comando = ConexaoMySql.GetComando(conexao);
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText =
-                "update configuracoesgerais set trocomaximo = @trocomaximo,valortrocomaximo = @valortrocomaximo,imprimircpfcnpjnocupom = @imprimircpfcnpjnocupom,imprimircupomfinalizarvenda = @imprimircupomfinalizarvenda,imprimircupomfiscalnfcefinalizarvenda = @imprimircupomfiscalnfcefinalizarvenda,imprimirnomevendedorfinalizarvenda = @imprimirnomevendedorfinalizarvenda,vendacartaopermitirdesconto = @vendacartaopermitirdesconto,avisarclienteaniversariante = @avisarclienteaniversariante,avisarprodutoestoquebaixo = @avisarprodutoestoquebaixo where idconfiguracoesgerais = 1";
+                "update configuracoesgerais set trocomaximo = @trocomaximo,valortrocomaximo = @valortrocomaximo,imprimircpfcnpjnocupom = @imprimircpfcnpjnocupom,imprimircupomfinalizarvenda = @imprimircupomfinalizarvenda,imprimircupomfiscalnfcefinalizarvenda = @imprimircupomfiscalnfcefinalizarvenda,imprimirnomevendedorfinalizarvenda = @imprimirnomevendedorfinalizarvenda,vendacartaopermitirdesconto = @vendacartaopermitirdesconto,avisarclienteaniversariante = @avisarclienteaniversariante,avisarprodutoestoquebaixo = @avisarprodutoestoquebaixo, permitirvendercomestoquezerado = @permitirvendercomestoquezerado where idconfiguracoesgerais = 1";
             comando.Parameters.Add(new MySqlParameter("@trocomaximo", config.trocomaximo));
             comando.Parameters.Add(new MySqlParameter("@valortrocomaximo", config.valortrocomaximo));
             comando.Parameters.Add(new MySqlParameter("@imprimircpfcnpjnocupom", config.imprimircpfcnpjnocupom));
@@ -75,6 +77,7 @@ namespace AdvanceShop.Controllers
             comando.Parameters.Add(new MySqlParameter("@vendacartaopermitirdesconto", config.vendacartaopermitirdesconto));
             comando.Parameters.Add(new MySqlParameter("@avisarclienteaniversariante", config.avisarclienteaniversariante));
             comando.Parameters.Add(new MySqlParameter("@avisarprodutoestoquebaixo", config.avisarprodutoestoquebaixo));
+            comando.Parameters.Add(new MySqlParameter("@permitirvendercomestoquezerado", config.permitirvendercomestoquezerado));
             comando.ExecuteNonQuery();
         }
     }

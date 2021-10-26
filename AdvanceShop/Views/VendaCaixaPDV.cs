@@ -1,9 +1,12 @@
 ﻿using AdvanceShop.Controllers;
 using AdvanceShop.Models;
+using AdvanceShop.Report.Devexpress;
 using AdvanceShop.Shared.CustomMessageBox;
 using AdvanceShop.Shared.Validation;
+using DevExpress.LookAndFeel;
 using DevExpress.Utils.Menu;
 using DevExpress.XtraEditors;
+using DevExpress.XtraReports.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +44,8 @@ namespace AdvanceShop.Views
         ProdutosPDVModel produtosPDV = new ProdutosPDVModel();
         List<ItensVendasModel> itensVenda = new List<ItensVendasModel>();
         int contagemItem = 1;
+        int totalItens;
+        decimal totalGeral, totalfinal;
         public VendaCaixaPDV(UsuariosModel UsuarioLogado,CaixasModel Caixa)
         {
             InitializeComponent();
@@ -108,9 +113,9 @@ namespace AdvanceShop.Views
         private void CalcularTotalItensTotalSubTotal()
         {
             advBandedGridViewItensPDV.UpdateTotalSummary();
-            decimal totalGeral = Convert.ToDecimal(advBandedGridViewItensPDV.Columns["subtotal"].SummaryItem.SummaryValue);
-            int totalItens = Convert.ToInt32(advBandedGridViewItensPDV.Columns["quantidade"].SummaryItem.SummaryValue);
-            decimal totalfinal = totalGeral - venda.Desconto;
+            totalGeral = Convert.ToDecimal(advBandedGridViewItensPDV.Columns["subtotal"].SummaryItem.SummaryValue);
+            totalItens = Convert.ToInt32(advBandedGridViewItensPDV.Columns["quantidade"].SummaryItem.SummaryValue);
+            totalfinal = totalGeral - venda.Desconto;
             lblSubtotal.Text = $"Subtotal = {totalGeral.ToString("C")}";
             lblQtditensValorTotal.Text = $"Qtd Itens = {totalItens} | Total = {totalfinal.ToString("C")}";
             transacaoCaixa.Valor = totalfinal;
@@ -313,6 +318,25 @@ namespace AdvanceShop.Views
                 NovaVenda();
             }
         }
+        private void OrcamentoSimples()
+        {
+            PrintableComponentContainer printableComponentContainer = new PrintableComponentContainer();
+            Report.Devexpress.xrOrcamentoSimples report = new xrOrcamentoSimples();
+            
+            //Parametros
+            report.Parameters["Emissao"].Value = DateTime.Now;
+            report.Parameters["Desconto"].Value = venda.Desconto;
+            report.Parameters["QtdItens"].Value = totalItens;
+            report.Parameters["Subtotal"].Value = totalGeral;
+            report.Parameters["Total"].Value = totalfinal;
+            printableComponentContainer.WinControl = gridControlItensVenda;
+            printableComponentContainer.PrintMode = WinControlPrintMode.Default;
+            report.Bands[BandKind.Detail].Controls.Add(printableComponentContainer);
+            report.CreateDocument();
+
+            report.ShowPreview(UserLookAndFeel.Default);
+            
+        }
         private void VendaCaixaPDV_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -347,35 +371,53 @@ namespace AdvanceShop.Views
                 case Keys.F8: //Fechar caixa
                     FecharCaixa();
                     break;
+                case Keys.F9:
+                    OrcamentoSimples();
+                    break;
                 default:
                     break;
             }
         }
-
+       
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            produtosPDV.codigoproduto = Convert.ToInt32(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[0]));
-            produtosPDV.item = contagemItem++;
-            produtosPDV.descricaoproduto = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[1]).ToString();
-            produtosPDV.quantidade = Convert.ToInt32(txtQtd.Text);
-            produtosPDV.precounitario = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[4]));
-            produtosPDV.subtotal = produtosPDV.quantidade * produtosPDV.precounitario;
-            produtosPDV.margemlucro = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[3]));
-            produtosPDV.precocusto = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[2]));
-            produtosPDV.unidademedida = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[8]).ToString();
-            produtosPDV.codigo_ncm = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[10]).ToString();
-            produtosPDV.cfop = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[11]).ToString();
-            produtosPDV.icms_origem = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[12]).ToString();
-            produtosPDV.icms_situacao_tributaria = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[13]).ToString();
-
-            AdicionarNovaRowItem(produtosPDV);
-
-            txtQtd.Text = "1";
-            lblPrecoUniTotal.Text = "Preço: R$0,00 Total: R$0,00";
-
-            advBandedGridViewItensPDV.FocusedRowHandle = advBandedGridViewItensPDV.RowCount;
+            //Verificar se produto estar com estoque baixo, caso a conf esteja marcado pra avisar usuario
+            produto.IdProdutos = Convert.ToInt32(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[0]));
             
-            cbxProcurarProduto.Focus();
+            if (Convert.ToBoolean(configGerais.avisarprodutoestoquebaixo) && Convert.ToBoolean(produtoController.VerificarProdutoEstoqueBaixo(produto)) && !Convert.ToBoolean(produtoController.VerificarProdutoEstoqueZerado(produto)))
+            {
+                MessageBoxWarning.Show($"Produto '{cbxProcurarProduto.Text}' com estoque baixo!");
+            }
+            if (!Convert.ToBoolean(configGerais.permitirvendercomestoquezerado) && Convert.ToBoolean(produtoController.VerificarProdutoEstoqueZerado(produto)))
+            {
+                MessageBoxWarning.Show($"Produto com estoque ZERADO, não permitido a venda!");
+            }
+            else
+            {
+                produtosPDV.codigoproduto = Convert.ToInt32(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[0]));
+                produtosPDV.item = contagemItem++;
+                produtosPDV.descricaoproduto = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[1]).ToString();
+                produtosPDV.quantidade = Convert.ToInt32(txtQtd.Text);
+                produtosPDV.precounitario = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[4]));
+                produtosPDV.subtotal = produtosPDV.quantidade * produtosPDV.precounitario;
+                produtosPDV.margemlucro = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[3]));
+                produtosPDV.precocusto = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[2]));
+                produtosPDV.unidademedida = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[8]).ToString();
+                produtosPDV.codigo_ncm = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[10]).ToString();
+                produtosPDV.cfop = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[11]).ToString();
+                produtosPDV.icms_origem = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[12]).ToString();
+                produtosPDV.icms_situacao_tributaria = cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[13]).ToString();
+
+                AdicionarNovaRowItem(produtosPDV);
+
+                txtQtd.Text = "1";
+                lblPrecoUniTotal.Text = "Preço: R$0,00 Total: R$0,00";
+
+                advBandedGridViewItensPDV.FocusedRowHandle = advBandedGridViewItensPDV.RowCount;
+
+                cbxProcurarProduto.Focus();
+            }
+           
         }
 
         private void cbxProcurarProduto_KeyPress(object sender, KeyPressEventArgs e)
@@ -392,12 +434,7 @@ namespace AdvanceShop.Views
         {
             try
             {
-                //Verificar se produto estar com estoque baixo, caso a conf esteja marcado pra avisar usuario
-                produto.IdProdutos = Convert.ToInt32(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[0]));
-                if (Convert.ToBoolean(configGerais.avisarprodutoestoquebaixo) && Convert.ToBoolean(produtoController.VerificarProdutoEstoqueBaixo(produto)))
-                {
-                    MessageBoxWarning.Show($"Produto '{cbxProcurarProduto.Text}' com estoque baixo!");
-                }
+                
                 if (e.KeyChar == (char)13)
                 {
                     decimal valorproduto = Convert.ToDecimal(cbxPesquisarProduto.GetRowCellValue(cbxPesquisarProduto.GetSelectedRows()[0], cbxPesquisarProduto.Columns[4]));
